@@ -1,1 +1,6 @@
 <h1>Georelevent</h1>
+<ul>
+  <% database.tables.each do |table| %>
+    <li><%= table %></li>
+  <% end %>
+</ul>
