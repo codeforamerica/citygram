@@ -1,8 +1,20 @@
 require 'dedent'
+require 'uri'
 require File.expand_path('../../app', __FILE__)
 Sequel.extension :migration
 
 module DatabaseHelper
+  PG_ERROR = /error|fail|fatal/i
+  MIGRATION_TEMPLATE = <<-TEMPLATE.dedent.freeze
+    Sequel.migration do
+      up do
+      end
+
+      down do
+      end
+    end
+  TEMPLATE
+
   def app
     Georelevent::App
   end
@@ -15,11 +27,12 @@ module DatabaseHelper
     @migration_path ||= File.join(app.root, 'db/migrations')
   end
 
+  def schema_path
+    @schema_path ||= File.join(app.root, 'db/schema.sql')
+  end
+
   def db_name
-    @db_name ||= begin
-      require 'uri'
-      URI(database.url).path.gsub('/', '')
-    end
+    @db_name ||= URI(database.url).path.gsub('/', '')
   end
 
   def db_version
@@ -33,7 +46,7 @@ module DatabaseHelper
       Sequel::Migrator.run(database, migration_path)
     end
 
-    self
+    schema_dump
   rescue Sequel::Migrator::Error => e
     puts e
   end
@@ -42,33 +55,35 @@ module DatabaseHelper
     next_version = format('%03d', db_version + 1)
     path = "db/migrations/#{next_version}_#{name}.rb"
     File.write(path, MIGRATION_TEMPLATE+"\n")
-
-    self
   end
 
   def create_db
-    res = `createdb #{db_name} -w`
-    raise res if /ERROR/i === res
-
-    self
+    pg_command("createdb #{db_name} -w")
   end
 
   def drop_db
-    res = `dropdb #{db_name}`
-    raise res if /ERROR/i === res
+    pg_command("dropdb #{db_name}")
+  end
 
-    self
+  def schema_dump
+    `rm #{schema_path}`
+    pg_command("pg_dump -i -s -x -O -f #{schema_path} #{db_name}")
   end
 
   def rollback_db(version = nil)
     previous_version = version || db_version - 1
     migrate_db(previous_version)
-
-    self
   end
 
   def reset
-    drop_db.create_db.migrate_db
+    drop_db
+    create_db
+    migrate_db
+  end
+
+  def pg_command(command)
+    res = system(command)
+    raise res if PG_ERROR === res
   end
 
   def console
@@ -76,14 +91,4 @@ module DatabaseHelper
     ARGV.clear
     IRB.start
   end
-
-  MIGRATION_TEMPLATE = <<-TEMPLATE.dedent.freeze
-    Sequel.migration do
-      up do
-      end
-
-      down do
-      end
-    end
-  TEMPLATE
 end

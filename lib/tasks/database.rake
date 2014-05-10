@@ -1,7 +1,7 @@
 require_relative '../database_helper'
 include DatabaseHelper
 
-desc 'Run and interaction REPL session'
+desc 'Run an interactive REPL session'
 task :console do
   console
 end
@@ -30,6 +30,11 @@ namespace :db do
   desc 'Rollback to the previous version or specify a version'
   task :rollback, [:version] do |t, args|
     rollback_db(args[:version])
+  end
+
+  desc 'Dump the schema as sql'
+  task :schema_dump do
+    schema_dump
   end
 end
 
