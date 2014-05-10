@@ -3,6 +3,5 @@ rvm:
   - 2.1.1
   - ruby-head
 script:
-  - bundle install
-  - rake db:create db:migrate DATABASE_URL=postgres://localhost/georelevent_test
-  - rake
+  - bundle exec rake db:create db:migrate DATABASE_URL=postgres://localhost/georelevent_test
+  - bundle exec rake
