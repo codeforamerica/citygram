@@ -6,8 +6,10 @@ else
   ruby '2.1.2'
 end
 
+gem 'activesupport'
 gem 'dedent'
 gem 'dotenv', '~> 0.11'
+gem 'georuby', '~> 2.1'
 gem 'pg'
 gem 'rake'
 gem 'sequel', '~> 4.10'

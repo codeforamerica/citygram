@@ -1,4 +1,4 @@
-# require 'app/models/user'
+require 'app/models/event'
 
 module Georelevent
   module Models
