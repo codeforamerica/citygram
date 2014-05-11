@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 if ENV['CI']
   ruby RUBY_VERSION
 else
-  ruby '2.1.1'
+  ruby '2.1.2'
 end
 
 gem 'dedent'
