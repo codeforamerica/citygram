@@ -1,15 +1,7 @@
-GIT
-  remote: git://github.com/invisiblefunnel/sinatra-sequel.git
-  revision: 281677c143994530adb79b9d08b43df7cb8f1caf
-  ref: 281677c
-  specs:
-    sinatra-sequel (0.9.0)
-      sequel (>= 3.2.0)
-      sinatra (>= 0.9.4)
-
 GEM
   remote: https://rubygems.org/
   specs:
+    database_cleaner (1.2.0)
     dedent (1.0.1)
     diff-lcs (1.2.5)
     dotenv (0.11.1)
@@ -47,6 +39,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  database_cleaner
   dedent
   dotenv (~> 0.11)
   pg
@@ -55,5 +48,4 @@ DEPENDENCIES
   rspec (~> 2.14)
   sequel (~> 4.10)
   sinatra (~> 1.4)
-  sinatra-sequel!
   unicorn
