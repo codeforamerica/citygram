@@ -1,2 +1,5 @@
 require './app'
-run Georelevent::App
+run Rack::Cascade.new [
+  Georelevent::App,
+  Georelevent::API
+]
