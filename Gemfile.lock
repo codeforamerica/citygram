@@ -13,6 +13,9 @@ GEM
     dotenv (0.11.1)
       dotenv-deployment (~> 0.0.2)
     dotenv-deployment (0.0.2)
+    factory_girl (4.4.0)
+      activesupport (>= 3.0.0)
+    ffaker (1.24.0)
     georuby (2.2.1)
     i18n (0.6.9)
     json (1.8.1)
@@ -56,6 +59,8 @@ DEPENDENCIES
   database_cleaner
   dedent
   dotenv (~> 0.11)
+  factory_girl
+  ffaker
   georuby (~> 2.1)
   pg
   rack-test

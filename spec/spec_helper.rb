@@ -1,6 +1,8 @@
 ENV['RACK_ENV'] = 'test'
 
 require 'database_cleaner'
+require 'factory_girl'
+require 'ffaker'
 require 'rack/test'
 require 'rspec'
 
@@ -20,6 +22,12 @@ module Georelevent::Routes
       subject
     end
   end
+end
+
+# setup factory girl shortcuts
+require 'spec/factories'
+RSpec.configure do |config|
+  config.include FactoryGirl::Syntax::Methods
 end
 
 DatabaseCleaner[:sequel, connection: Sequel::Model.db].strategy = :transaction
