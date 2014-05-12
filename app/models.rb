@@ -22,4 +22,5 @@ module Georelevent
 end
 
 require 'app/models/event'
+require 'app/models/publisher'
 require 'app/models/subscription'
