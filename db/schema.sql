@@ -192,6 +192,13 @@ ALTER TABLE ONLY subscriptions
 
 
 --
+-- Name: events_geom_gist; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX events_geom_gist ON events USING gist (geom);
+
+
+--
 -- Name: subscriptions_geom_gist; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
