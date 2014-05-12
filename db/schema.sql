@@ -192,6 +192,13 @@ ALTER TABLE ONLY subscriptions
 
 
 --
+-- Name: subscriptions_geom_gist; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX subscriptions_geom_gist ON subscriptions USING gist (geom);
+
+
+--
 -- PostgreSQL database dump complete
 --
 
