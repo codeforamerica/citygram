@@ -15,6 +15,21 @@ describe Georelevent::Routes::Subscriptions do
       get "/subscriptions/#{subscription.id}", format: 'json'
       expect(last_response.body).to eq subscription.to_json
     end
+
+    context 'missing' do
+      let(:missing_id) { (Subscription.max(:id) || 0) + 1 }
+
+      it 'responds with 404 NOT FOUND' do
+        get "/subscriptions/#{missing_id}"
+        expect(last_response.status).to eq 404
+      end
+
+      it 'explains the error' do
+        get "/subscriptions/#{missing_id}"
+        error = { error: 'not found' }.to_json
+        expect(last_response.body).to eq error
+      end
+    end
   end
 
   describe 'POST /subscriptions' do

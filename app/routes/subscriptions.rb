@@ -4,6 +4,10 @@ module Georelevent
       version 'v1', using: :header, vendor: 'georelevent'
       format :json
 
+      rescue_from Sequel::NoMatchingRow do
+        Rack::Response.new({error: 'not found'}.to_json, 404)
+      end
+
       desc 'Retrieve a subscription'
 
       params do
