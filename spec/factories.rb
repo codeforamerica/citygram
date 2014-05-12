@@ -1,4 +1,9 @@
 FactoryGirl.define do
+  factory :publisher, class: Georelevent::Models::Publisher do
+    title { Faker::Lorem.sentence(3) }
+    endpoint { Faker::Internet.uri('https') }
+  end
+
   factory :event, class: Georelevent::Models::Event do
     title { Faker::Lorem.sentence(3) }
     description { Faker::Lorem.paragraph(2) }

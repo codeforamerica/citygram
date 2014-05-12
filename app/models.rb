@@ -1,12 +1,15 @@
 require 'geo_ruby/geojson'
 require 'lib/sequel/save_helpers'
+require 'lib/sequel/url_validation_helpers'
 
 Sequel.default_timezone = :utc
 
 Sequel::Model.plugin :timestamps, update_on_create: true
 Sequel::Model.plugin :serialization
 Sequel::Model.plugin :json_serializer
+Sequel::Model.plugin :validation_helpers
 Sequel::Model.plugin Sequel::Plugins::SaveHelpers
+Sequel::Model.plugin Sequel::Plugins::URLValidationHelpers
 
 # round trip a geojson geometry through a postgis geometry column
 Sequel::Plugins::Serialization.register_format(:geojson,
