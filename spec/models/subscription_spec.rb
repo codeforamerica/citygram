@@ -11,4 +11,9 @@ describe Georelevent::Models::Subscription do
     subscription = Subscription.first!(id: subscription_id)
     expect(subscription.geom).to eq geojson
   end
+
+  it 'requires a valid GeoJSON feature geometry' do
+    subscription = build(:subscription, geom: '{"type":"Feature","coordinates":[[[100.0,0.0],[101.0,0.0],[101.0,1.0],[100.0,1.0],[100.0,0.0]]]}')
+    expect(subscription).not_to be_valid
+  end
 end
