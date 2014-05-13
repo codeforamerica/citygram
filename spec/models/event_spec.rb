@@ -11,4 +11,9 @@ describe Georelevent::Models::Event do
     event = Event.first!(id: event_id)
     expect(event.geom).to eq geometry
   end
+
+  it 'requires a valid GeoJSON feature geometry' do
+    event = build(:event, geom: '{"type":"Feature","coordinates":[[[100.0,0.0],[101.0,0.0],[101.0,1.0],[100.0,1.0],[100.0,0.0]]]}')
+    expect(event).not_to be_valid
+  end
 end
