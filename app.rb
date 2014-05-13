@@ -16,7 +16,6 @@ require 'app/routes'
 
 module Georelevent
   class App < Sinatra::Application
-    use Routes::Home
   end
 end
 
