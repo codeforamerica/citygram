@@ -83,7 +83,9 @@ ALTER SEQUENCE events_id_seq OWNED BY events.id;
 CREATE TABLE publishers (
     id integer NOT NULL,
     title text,
-    endpoint text
+    endpoint text,
+    updated_at timestamp without time zone,
+    created_at timestamp without time zone
 );
 
 
