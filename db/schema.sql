@@ -123,7 +123,8 @@ CREATE TABLE subscriptions (
     id integer NOT NULL,
     geom geometry,
     updated_at timestamp without time zone,
-    created_at timestamp without time zone
+    created_at timestamp without time zone,
+    publisher_id integer
 );
 
 
@@ -203,6 +204,14 @@ CREATE INDEX events_geom_gist ON events USING gist (geom);
 --
 
 CREATE INDEX subscriptions_geom_gist ON subscriptions USING gist (geom);
+
+
+--
+-- Name: subscriptions_publisher_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY subscriptions
+    ADD CONSTRAINT subscriptions_publisher_id_fkey FOREIGN KEY (publisher_id) REFERENCES publishers(id);
 
 
 --

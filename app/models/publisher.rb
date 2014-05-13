@@ -1,6 +1,8 @@
 module Georelevent
   module Models
     class Publisher < Sequel::Model
+      one_to_many :subscriptions
+
       set_allowed_columns :title, :endpoint
 
       def validate

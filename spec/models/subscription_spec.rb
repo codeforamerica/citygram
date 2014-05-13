@@ -1,6 +1,12 @@
 require 'spec_helper'
 
 describe Georelevent::Models::Subscription do
+  it 'belongs to a publisher' do
+    publisher = create(:publisher)
+    subscription = create(:subscription, publisher: publisher).reload 
+    expect(subscription.publisher).to eq publisher
+  end
+
   it 'whitelists mass-assignable attributes' do
     expect(Subscription.allowed_columns).to eq [:geom]
   end
