@@ -87,6 +87,10 @@ module DatabaseHelper
   end
 
   def console
+    require 'factory_girl'
+    require 'ffaker'
+    require File.join(app.root, 'spec/factories')
+    include FactoryGirl::Syntax::Methods
     require 'irb'
     ARGV.clear
     IRB.start
