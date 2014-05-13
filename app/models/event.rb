@@ -6,7 +6,7 @@ module Georelevent
 
       def validate
         super
-        validates_presence [:geom]
+        validates_presence [:title, :geom]
         validates_geometry :geom
       end
     end
