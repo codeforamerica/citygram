@@ -16,6 +16,11 @@ require 'app/routes'
 
 module Georelevent
   class App < Sinatra::Application
+    use Routes::Home
+  end
+
+  class API < Grape::API
+    mount Routes::Subscriptions
   end
 end
 
