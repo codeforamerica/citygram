@@ -1,6 +1,12 @@
 require 'spec_helper'
 
 describe Georelevent::Models::Event do
+  it 'belongs to a publisher' do
+    publisher = create(:publisher)
+    event = create(:event, publisher: publisher).reload
+    expect(event.publisher).to eq publisher
+  end
+
   it 'whitelists mass-assignable attributes' do
     expect(Event.allowed_columns).to eq [:title, :description, :geom]
   end

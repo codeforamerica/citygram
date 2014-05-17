@@ -2,6 +2,7 @@ module Georelevent
   module Models
     class Publisher < Sequel::Model
       one_to_many :subscriptions
+      one_to_many :events
 
       set_allowed_columns :title, :endpoint
 

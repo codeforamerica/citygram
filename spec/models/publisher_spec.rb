@@ -7,6 +7,12 @@ describe Georelevent::Models::Publisher do
     expect(publisher.subscriptions).to eq [subscription]
   end
 
+  it 'has many events' do
+    publisher = create(:publisher)
+    event = create(:event, publisher: publisher)
+    expect(publisher.events).to eq [event]
+  end
+
   it 'whitelists mass-assignable columns' do
     expect(Publisher.allowed_columns).to eq [:title, :endpoint]
   end
