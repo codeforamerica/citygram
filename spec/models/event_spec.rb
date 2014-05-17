@@ -2,9 +2,8 @@ require 'spec_helper'
 
 describe Georelevent::Models::Event do
   it 'belongs to a publisher' do
-    publisher = create(:publisher)
-    event = create(:event, publisher: publisher).reload
-    expect(event.publisher).to eq publisher
+    type = Event.association_reflections[:publisher][:type]
+    expect(type).to eq :many_to_one
   end
 
   it 'whitelists mass-assignable attributes' do

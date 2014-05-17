@@ -2,15 +2,13 @@ require 'spec_helper'
 
 describe Georelevent::Models::Publisher do
   it 'has many subscriptions' do
-    publisher = create(:publisher)
-    subscription = create(:subscription, publisher: publisher)
-    expect(publisher.subscriptions).to eq [subscription]
+    type = Publisher.association_reflections[:subscriptions][:type]
+    expect(type).to eq :one_to_many
   end
 
   it 'has many events' do
-    publisher = create(:publisher)
-    event = create(:event, publisher: publisher)
-    expect(publisher.events).to eq [event]
+    type = Publisher.association_reflections[:events][:type]
+    expect(type).to eq :one_to_many
   end
 
   it 'whitelists mass-assignable columns' do
