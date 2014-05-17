@@ -1,4 +1,5 @@
 require 'geo_ruby/geojson'
+require 'lib/sequel/attributes_helpers'
 require 'lib/sequel/geometry_validation_helpers'
 require 'lib/sequel/save_helpers'
 require 'lib/sequel/url_validation_helpers'
@@ -11,6 +12,7 @@ Sequel::Model.plugin :timestamps, update_on_create: true
 Sequel::Model.plugin :serialization
 Sequel::Model.plugin :json_serializer
 Sequel::Model.plugin :validation_helpers
+Sequel::Model.plugin Sequel::Plugins::AttributesHelpers
 Sequel::Model.plugin Sequel::Plugins::GeometryValidationHelpers
 Sequel::Model.plugin Sequel::Plugins::SaveHelpers
 Sequel::Model.plugin Sequel::Plugins::URLValidationHelpers
