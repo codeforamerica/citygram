@@ -7,12 +7,12 @@ describe Georelevent::Routes::Subscriptions do
     let(:subscription) { create(:subscription) }
 
     it 'responds with 200 OK' do
-      get "/subscriptions/#{subscription.id}", format: 'json'
+      get "/subscriptions/#{subscription.id}"
       expect(last_response.status).to eq 200
     end
 
     it 'returns the record' do
-      get "/subscriptions/#{subscription.id}", format: 'json'
+      get "/subscriptions/#{subscription.id}"
       expect(last_response.body).to eq subscription.to_json
     end
 
@@ -33,10 +33,7 @@ describe Georelevent::Routes::Subscriptions do
   end
 
   describe 'POST /subscriptions' do
-    let(:params) {{
-      subscription: attributes_for(:subscription),
-      format: 'json'
-    }}
+    let(:params) {{ subscription: attributes_for(:subscription) }}
 
     it 'responds with 201 CREATED' do
       post '/subscriptions', params
