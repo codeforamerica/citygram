@@ -10,7 +10,6 @@ h1 {
 
 .card {
 	border-radius: 4px;
-	text-align: center;
 	font-size: 14px;
 	font-weight: 300;
 	letter-spacing: .02em;
@@ -25,6 +24,8 @@ h1 {
 	font-size: 22px;
 	font-weight: 900;
 	padding-top: 7px;
+	margin-top: 0;
+	margin-bottom: 0;
 }
 
 h5 {
@@ -40,6 +41,10 @@ h5 {
 	transition: opacity .1s linear;
 }
 
+.topic-card p {
+	margin: 0`;
+}
+
 .detail-card {
 	background-color: pink;
 	border-radius: 4px;
@@ -53,6 +58,10 @@ h5 {
 	transition: opacity .2s linear;
 }
 
+.detail-card .btn {
+	margin-top: 10px;
+}
+
 .detail-card:hover {
 	opacity:1;
 }
@@ -63,6 +72,8 @@ img.icon {
 	margin: 0 auto;
 	padding-bottom: 12px;
 	padding-top: 12px;
+	max-height: 124px;
+	max-width: 100px;
 }
 
 .btn-huge {
