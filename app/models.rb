@@ -17,6 +17,9 @@ Sequel::Model.plugin Sequel::Plugins::GeometryValidationHelpers
 Sequel::Model.plugin Sequel::Plugins::SaveHelpers
 Sequel::Model.plugin Sequel::Plugins::URLValidationHelpers
 
+# enable pagination
+Sequel::Model.db.extension :pagination
+
 # round trip a geojson geometry through a postgis geometry column
 Sequel::Plugins::Serialization.register_format(:geojson,
   # transform a geojson geometry into extended well-known text format
