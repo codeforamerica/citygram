@@ -1,6 +1,190 @@
-<h1>Georelevent</h1>
-<ul>
-  <% database.tables.each do |table| %>
-    <li><%= table %></li>
-  <% end %>
-</ul>
+<div id="categories" class="section">
+  <div class="container">
+    <div class="page-header">
+      <h1>Hi! I want updates about:</h1>
+      <h2>select a topic. <small>this is step 1 of 4. don't worry - you can go back and select more topics later.</small></h2>
+    </div>
+
+<div class="row">
+    <div class="col-md-3">
+      <div class="card">
+        <div class="topic-card">
+        <div class="topic">street closures</div>
+        <img class="icon" src="icons/svg/traffic-cone.svg">
+            when a roadway is planned to be blocked off due to construction or an event, and may require a detour.
+        </div>
+      <div class="detail-card">
+      <h5>when will i be notified?</h5>
+      usually the day before.<br><br>
+      <h5>where's the info coming from?</h5>
+      the Charlotte Department of Transportation. 
+      <br>
+      <br>
+      <button type="button" class="btn btn-info btn-lg">choose</button>
+      </div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card">
+        <div class="topic-card">
+        <div class="topic">special events</div>
+        <img class="icon" src="icons/svg/balloon.svg">
+            festivals, street fairs, markets, and more -- as reported by event permits awarded to citizens.
+        </div>
+      <div class="detail-card">
+      <h5>when will i be notified?</h5>
+      usually the day before.<br><br>
+      <h5>where's the info coming from?</h5>
+      the Charlotte Department of Transportation. 
+      <br>
+      <br>
+      <button type="button" class="btn btn-info btn-lg">choose</button>
+      </div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card">
+        <div class="topic-card">
+          <div class="topic">public meetings</div>
+            <img class="icon" src="icons/svg/meeting.svg">
+            city council meetings, forums, workshops, and other gatherings where the city seeks public input.
+          </div>
+          <div class="detail-card">
+            <h5>when will i be notified?</h5>
+            usually a week before.<br><br>
+            <h5>where's the info coming from?</h5>
+            Charlotte Corporate Communications and Planning.<br><br>
+            <button type="button" class="btn btn-info btn-lg">choose</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="card">
+          <div class="topic-card">
+            <div class="topic">area plans</div>
+            <img class="icon" src="icons/svg/plans.svg">
+            policy guides providing frameworks for future growth and development for a specific geography.
+          </div>
+          <div class="detail-card">
+            <h5>when will i be notified?</h5>
+            when an area plan is published or updated.<br><br>
+            <h5>where's the info coming from?</h5>
+            Charlotte's Planning Dept.
+            <br>
+            <br>
+            <button type="button" class="btn btn-info btn-lg">choose</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="card">
+          <div class="topic-card">
+            <div class="topic">water services</div>
+            <img class="icon" src="icons/svg/water.svg" height=124px width=auto>warnings about water main breaks, repairs, brown water, illegal dumping, and more.
+          </div>
+          <div class="detail-card">
+            <h5>when will i be notified?</h5>
+            usually a week before.<br><br>
+            <h5>where's the info coming from?</h5>
+            Charlotte-Mecklenburg Utilities Department.<br><br>
+            <button type="button" class="btn btn-info btn-lg">choose</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="card">
+          <div class="topic-card">
+            <div class="topic">rezonings</div>
+            <img class="icon" src="icons/svg/rezoning.svg" height=124 width=100>approved changes when owners want to develop their property outside current regulations.
+          </div>
+          <div class="detail-card">
+            <h5>when will i be notified?</h5>
+            as soon as a rezoning is filed.<br><br>
+            <h5>where's the info coming from?</h5>
+            Charlotte Planning.<br><br>
+            <button type="button" class="btn btn-info btn-lg">choose</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="card">
+          <div class="topic-card">
+            <div class="topic">new businesses</div>
+            <img class="icon" src="icons/svg/license.svg" height=124 width=100>find out which new businesses have received their privilege business licenses to begin operations.
+          </div>
+          <div class="detail-card">
+            <h5>when will i be notified?</h5>
+            once a week.<br><br>
+            <h5>where's the info coming from?</h5>
+            Mecklenburg County Tax Collections.<br><br>
+            <button type="button" class="btn btn-info btn-lg">choose</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="card">
+          <div class="topic-card">
+            <div class="topic">traffic incidents</div>
+            <img class="icon" src="icons/svg/car.svg" height=124 width=100>traffic accidents + roadway obstructions. Labeled "open" when active and "closed" when cleared.
+          </div>
+          <div class="detail-card">
+            <h5>when will i be notified?</h5>
+            as soon as one happens.<br><br>
+            <h5>where's the info coming from?</h5>
+            Charlotte-Mecklenburg Police Department.<br><br>
+            <button type="button" class="btn btn-info btn-lg">choose</button>
+          </div>
+        </div>
+      </div>
+    </div> <!-- end topic buttons -->
+  </div>
+</div> <!-- end #categories -->
+
+
+<div id="location" class="section">
+  <div class="container">
+    <div class="page-header">
+      <h1>in my area:</h1>
+      <h2>define where you're interested. <small>this is step 2 of 4. draw on the map!</small></h2>
+    </div>
+
+    <div id="map"></div>
+
+  </div>
+</div> <!-- end #location -->
+
+<div id="contact" class="section">
+  <div class="container">
+    <div class="page-header">
+      <h1>in this way:</h1>
+      <h2>how would you like your city to talk to you? <small>this is step 3 of 3.</small></h2>
+    </div>
+    <div id="message-method" class="row">
+      <div class="col-md-5 col-md-offset-1 col-xs-6">
+        <a href="#" id="phone" class="btn btn-huge btn-info btn-block" data-placeholder="phone number"><img src="icons/svg/text.svg"><br>SMS</a>
+      </div>
+      <div class="col-md-5 col-xs-6">
+        <a href="#" id="email" class="btn btn-huge btn-info btn-block" data-placeholder="email address"><img src="icons/svg/email.svg"><br>email</a>
+      </div>
+    </div>
+
+      <form id="subscription-info" class="form-horizontal hidden" role="form">
+        <div class="form-group">
+          <input id="contact-method" type="hidden" value="none">
+          <div class="col-md-7 col-md-offset-1 col-sm-12">
+            <input id="contact-info" type="text" class="form-control" placeholder="">
+          </div>
+          <div class="col-md-3 col-sm-12">
+            <a href="#" id="subscribe" class="btn btn-success btn-block">subscribe</a>
+          </div>
+        </div>
+      </form> <!-- end #subscribe -->
+  </div>
+</div> <!-- end #contact -->  
