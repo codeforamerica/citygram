@@ -1,0 +1,99 @@
+#map {
+  height: 500px;
+}
+
+h1 {
+	font-weight: 900;
+	font-size: 60px;
+	color: #BBB;
+}
+
+.card {
+	border-radius: 4px;
+	text-align: center;
+	font-size: 14px;
+	font-weight: 300;
+	letter-spacing: .02em;
+	line-height: 17px;
+	text-align: center;
+	position: relative;
+	margin-bottom: 30px;
+}
+
+.topic {
+	text-align: center;
+	font-size: 22px;
+	font-weight: 900;
+	padding-top: 7px;
+}
+
+h5 {
+	font-weight: 900;
+	letter-spacing: 0;
+}
+
+.topic-card {
+	background-color: #DDD;
+	border-radius: 4px;
+	padding:15px;
+	opacity: 1;
+	transition: opacity .1s linear;
+}
+
+.detail-card {
+	background-color: pink;
+	border-radius: 4px;
+	padding:15px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	opacity:0;
+	transition: opacity .2s linear;
+}
+
+.detail-card:hover {
+	opacity:1;
+}
+
+
+img.icon {
+	display:block;
+	margin: 0 auto;
+	padding-bottom: 12px;
+	padding-top: 12px;
+}
+
+.btn-huge {
+	font-size: 40px;	
+}
+
+.btn {
+	line-height:1.6;
+	border: 5px;
+	padding: 6px 12px;
+}
+
+form.form-inline {
+	padding: 20px;
+}
+
+input.form-control {
+	height: 72px;
+	font-size: 36px;
+	text-align: center;
+}
+
+#contact .btn {
+	font-size: 36px;
+	font-weight: 100;
+}
+
+#message-method {
+	margin-bottom: 20px;
+}
+
+#message-method .btn img {
+	height: 50px;
+}
