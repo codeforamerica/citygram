@@ -5,3 +5,5 @@ rvm:
 script:
   - bundle exec rake db:create db:migrate DATABASE_URL=postgres://localhost/georelevent_test
   - bundle exec rake
+notifications:
+  webhooks: http://cfa-project-monitor.herokuapp.com/projects/707eb273-de8f-4125-9f9f-846fb30bd83c/status
