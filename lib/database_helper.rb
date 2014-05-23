@@ -62,7 +62,11 @@ module DatabaseHelper
   end
 
   def drop_db
-    pg_command("dropdb #{db_name}")
+    tables = database.tables - [:spatial_ref_sys]
+
+    tables.each do |table|
+      database.run("DROP TABLE #{table} CASCADE")
+    end
   end
 
   def schema_dump
