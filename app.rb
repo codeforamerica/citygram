@@ -12,7 +12,6 @@ $: << File.expand_path('../lib', __FILE__)
 require 'sinatra/base'
 require 'sinatra-sequel'
 
-Dir['lib/validators/**/*.rb'].each { |f| require(f) }
 require 'app/routes'
 
 module Georelevent
