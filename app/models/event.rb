@@ -4,7 +4,7 @@ module Georelevent
       many_to_one :publisher
 
       plugin :serialization, :geojson, :geom
-      set_allowed_columns :title, :description, :geom
+      set_allowed_columns *[] # disallow mass-assignment
 
       def validate
         super

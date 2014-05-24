@@ -7,7 +7,7 @@ describe Georelevent::Models::Event do
   end
 
   it 'whitelists mass-assignable attributes' do
-    expect(Event.allowed_columns).to eq [:title, :description, :geom]
+    expect(Event.allowed_columns).to eq []
   end
 
   it 'round trip a geojson geometry through a postgis geometry column' do
