@@ -9,8 +9,9 @@ module Georelevent
 
       def validate
         super
-        validates_presence [:title, :geom]
+        validates_presence [:title, :geom, :feature_id]
         validates_geometry :geom
+        validates_unique [:publisher_id, :feature_id]
       end
     end
   end 
