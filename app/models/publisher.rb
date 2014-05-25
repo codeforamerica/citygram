@@ -1,3 +1,5 @@
+require 'lib/connection_builder'
+
 module Georelevent
   module Models
     class Publisher < Sequel::Model
@@ -7,12 +9,7 @@ module Georelevent
       set_allowed_columns :title, :endpoint
 
       def connection
-        Faraday.new(url: endpoint) do |conn|
-          conn.options.timeout = 5
-          conn.headers['Content-Type'] = 'application/json'
-          conn.response :json
-          conn.adapter Faraday.default_adapter
-        end
+        ConnectionBuilder.json(url: endpoint)
       end
 
       def validate
