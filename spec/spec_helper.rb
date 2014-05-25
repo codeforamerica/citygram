@@ -4,11 +4,6 @@ require 'rack/test'
 require 'rspec'
 require 'webmock/rspec'
 
-begin
-  require 'debugger'
-rescue LoadError
-end
-
 # require the application
 require_relative '../app'
 
