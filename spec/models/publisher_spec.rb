@@ -5,13 +5,8 @@ describe Georelevent::Models::Publisher do
     it 'connects to the endpoint' do
       publisher = build(:publisher)
       connection = publisher.connection
+      expect(connection).to be_kind_of Faraday::Connection
       expect(connection.build_url.to_s).to match publisher.endpoint
-    end
-
-    it 'sets a reasonable timeout' do
-      publisher = build(:publisher)
-      connection = publisher.connection
-      expect(connection.options.timeout).to eq 5
     end
   end
 
