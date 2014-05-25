@@ -9,6 +9,8 @@ end
 gem 'activesupport'
 gem 'dedent'
 gem 'dotenv', '~> 0.11'
+gem 'faraday', '~> 0.9'
+gem 'faraday_middleware', '~> 0.9'
 gem 'georuby', '~> 2.1'
 gem 'grape', '~> 0.7'
 gem 'pg'

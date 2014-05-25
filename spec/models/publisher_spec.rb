@@ -1,6 +1,20 @@
 require 'spec_helper'
 
 describe Georelevent::Models::Publisher do
+  describe '#connection' do
+    it 'connects to the endpoint' do
+      publisher = build(:publisher)
+      connection = publisher.connection
+      expect(connection.build_url.to_s).to match publisher.endpoint
+    end
+
+    it 'sets a reasonable timeout' do
+      publisher = build(:publisher)
+      connection = publisher.connection
+      expect(connection.options.timeout).to eq 5
+    end
+  end
+
   it 'has many subscriptions' do
     type = Publisher.association_reflections[:subscriptions][:type]
     expect(type).to eq :one_to_many
