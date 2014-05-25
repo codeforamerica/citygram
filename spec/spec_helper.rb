@@ -2,6 +2,7 @@ ENV['RACK_ENV'] = 'test'
 
 require 'rack/test'
 require 'rspec'
+require 'webmock/rspec'
 
 begin
   require 'debugger'

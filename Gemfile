@@ -25,4 +25,5 @@ group :test do
   gem 'ffaker'
   gem 'rack-test'
   gem 'rspec', '~> 2.14'
+  gem 'webmock'
 end
