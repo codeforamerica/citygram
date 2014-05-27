@@ -6,6 +6,7 @@ Geographically relevant notification platform (georelevent is a working title)
 
 ## Setup
 
+* Install Redis - `brew install redis`
 * [Install PostgreSQL](https://github.com/codeforamerica/howto/blob/master/PostgreSQL.md)
 * [Install Ruby](https://github.com/codeforamerica/howto/blob/master/Ruby.md)
 
@@ -18,5 +19,5 @@ bundle install
 rake db:create db:migrate
 rake db:create db:migrate DATABASE_URL=postgres://localhost/georelevent_test
 rake # run the test suite
-rackup
+bundle exec foreman start -f Procfile.dev
 ```
