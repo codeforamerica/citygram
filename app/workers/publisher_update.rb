@@ -28,6 +28,7 @@ module Georelevent
           e.title        = feature.title
           e.description  = feature.description
           e.geom         = feature.geometry
+          e.properties.merge!(feature.properties)
         end
       end
 
