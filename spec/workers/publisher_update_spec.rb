@@ -1,5 +1,6 @@
 require 'spec_helper'
 require 'app/workers/publisher_update'
+load 'lib/tasks/publishers.rake'
 
 describe Georelevent::Workers::PublisherUpdate do
   subject { Georelevent::Workers::PublisherUpdate.new(features, publisher) }
@@ -57,5 +58,13 @@ describe Georelevent::Workers::PublisherUpdate do
       '{"type":"Point","coordinates":[-80.749406,35.157557]}',
       '{"type":"Point","coordinates":[-80.849765,35.052173]}'
     ]
+  end
+
+  describe 'events:update' do
+    it 'queues a job for each publisher' do
+      create_list(:publisher, 3)
+      expect{ Rake::Task['publishers:update'].invoke }
+        .to change{ Georelevent::Workers::PublisherUpdate.jobs.count }.by(+3)
+    end
   end
 end
