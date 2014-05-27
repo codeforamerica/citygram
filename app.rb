@@ -12,6 +12,9 @@ $: << File.expand_path('../lib', __FILE__)
 require 'sinatra/base'
 require 'sinatra-sequel'
 
+require 'sidekiq'
+require 'app/workers'
+
 require 'app/routes'
 
 module Georelevent

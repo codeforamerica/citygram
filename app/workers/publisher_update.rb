@@ -1,6 +1,14 @@
 module Georelevent
   module Workers
     class PublisherUpdate < Struct.new(:features, :publisher)
+      include Sidekiq::Worker
+
+      def perform(publisher_id)
+        publisher = Publisher.first!(id: publisher_id)
+        feature_collection = publisher.connection.get.body
+        PublisherUpdate.new(feature_collection['features'], publisher).call
+      end
+
       def call
         features.lazy.
           map(&method(:wrap_feature)).
