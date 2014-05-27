@@ -60,7 +60,7 @@ describe Georelevent::Workers::PublisherUpdate do
     ]
   end
 
-  describe 'events:update' do
+  describe 'publishers:update' do
     it 'queues a job for each publisher' do
       create_list(:publisher, 3)
       expect{ Rake::Task['publishers:update'].invoke }
