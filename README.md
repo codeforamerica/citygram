@@ -1,4 +1,4 @@
-georelevent
+citygram
 ===========
 
 Citygram is a geographically relevant notification platform for cities. It allows citizens to designate geographic area(s) they are interested in, subscribe to specific topics, and and delivers information to citizens when something they’ve subscribed to happens in their area. Citygram is a [Code for America](https://github.com/codeforamerica) project by the Charlotte Team for the 2014 fellowship.
