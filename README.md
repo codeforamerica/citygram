@@ -7,19 +7,12 @@ __Citygram__ (still a working title, previously known as "georelevent") is a geo
 We believe that there is an opportunity to help citizens better understand what’s going on in their area, when it’s going to happen, and why. By providing timely information to citizens in areas that are relevant to them, the city can be proactive instead of reactive, build trust through transparency, and increase civic engagement across the board.
 
 ### What does this do now?
-* user can see a gallery of topics to subscribe to 
-* user can input their address and designate the area that they are interested in by drawing a polygon
-* user can input their phone number and email address
-* extract / transform / load publishers' datasets into geoJSON
-* a geospatial query system -  a way to find subscribers whose areas of interest intersect with an event. (definition of an “event”: an event exists in a topic area and consists of a title, description of what’s going on, a time component, and a geographic component)
+
+TODO
 
 ### What will this do in the future?
-* user can subscribe to multiple topics
-* user can receive SMS or emails based on their subscriptions
-* user can choose their city
-* user can designate the area that they are interested via radius or past polygon that they've drawn
-* user can edit their subscriptions
-* user can respond via email / text to provide feedback
+
+TODO
 
 ### Who is this made by?
 - [Danny Whalen](https://github.com/invisiblefunnel)
