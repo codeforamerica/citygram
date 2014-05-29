@@ -1,6 +1,15 @@
 require 'spec_helper'
 
 describe Georelevent::Models::Publisher do
+  describe '#connection' do
+    it 'connects to the endpoint' do
+      publisher = build(:publisher)
+      connection = publisher.connection
+      expect(connection).to be_kind_of Faraday::Connection
+      expect(connection.build_url.to_s).to match publisher.endpoint
+    end
+  end
+
   it 'has many subscriptions' do
     type = Publisher.association_reflections[:subscriptions][:type]
     expect(type).to eq :one_to_many

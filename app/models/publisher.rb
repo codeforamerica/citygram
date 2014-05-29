@@ -1,3 +1,5 @@
+require 'lib/connection_builder'
+
 module Georelevent
   module Models
     class Publisher < Sequel::Model
@@ -5,6 +7,10 @@ module Georelevent
       one_to_many :events
 
       set_allowed_columns :title, :endpoint
+
+      def connection
+        ConnectionBuilder.json(url: endpoint)
+      end
 
       def validate
         super

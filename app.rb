@@ -12,6 +12,9 @@ $: << File.expand_path('../lib', __FILE__)
 require 'sinatra/base'
 require 'sinatra-sequel'
 
+require 'sidekiq'
+require 'app/workers'
+
 require 'app/routes'
 
 module Georelevent
@@ -22,6 +25,9 @@ module Georelevent
   class API < Grape::API
     mount Routes::Publishers
     mount Routes::Subscriptions
+
+    require 'sidekiq/web'
+    mount Sidekiq::Web => '/_jobs'
   end
 end
 

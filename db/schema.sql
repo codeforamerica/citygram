@@ -54,7 +54,9 @@ CREATE TABLE events (
     geom geometry,
     updated_at timestamp without time zone,
     created_at timestamp without time zone,
-    publisher_id integer
+    publisher_id integer,
+    properties text DEFAULT '{}'::text,
+    feature_id text
 );
 
 
@@ -200,6 +202,13 @@ ALTER TABLE ONLY subscriptions
 --
 
 CREATE INDEX events_geom_gist ON events USING gist (geom);
+
+
+--
+-- Name: events_publisher_id_feature_id_index; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX events_publisher_id_feature_id_index ON events USING btree (publisher_id, feature_id);
 
 
 --

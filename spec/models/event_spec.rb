@@ -7,7 +7,7 @@ describe Georelevent::Models::Event do
   end
 
   it 'whitelists mass-assignable attributes' do
-    expect(Event.allowed_columns).to eq [:title, :description, :geom]
+    expect(Event.allowed_columns).to eq []
   end
 
   it 'round trip a geojson geometry through a postgis geometry column' do
@@ -25,5 +25,18 @@ describe Georelevent::Models::Event do
   it 'requires a valid GeoJSON feature geometry' do
     event = build(:event, geom: '{"type":"Feature","coordinates":[[[100.0,0.0],[101.0,0.0],[101.0,1.0],[100.0,1.0],[100.0,0.0]]]}')
     expect(event).not_to be_valid
+  end
+
+  it 'requires a feature_id' do
+    event = build(:event, feature_id: '')
+    expect(event).not_to be_valid
+  end
+
+  it 'requires a unique publisher_id/feature_id combination' do
+    feature_id = 'abc123'
+    publisher = create(:publisher)
+    event = create(:event, publisher_id: publisher.id, feature_id: feature_id)
+    duplicate = build(:event, publisher_id: publisher.id, feature_id: feature_id)
+    expect(duplicate).not_to be_valid
   end
 end
