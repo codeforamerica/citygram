@@ -1,12 +1,8 @@
 module Georelevent
-  module Workers
+  module Services
     class PublisherUpdate < Struct.new(:features, :publisher)
-      include Sidekiq::Worker
-
-      def perform(publisher_id)
-        publisher = Publisher.first!(id: publisher_id)
-        feature_collection = publisher.connection.get.body
-        PublisherUpdate.new(feature_collection['features'], publisher).call
+      def self.call(*args)
+        new(*args).call
       end
 
       def call
