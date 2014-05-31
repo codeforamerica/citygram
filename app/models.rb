@@ -3,6 +3,7 @@ require 'lib/sequel/attributes_helpers'
 require 'lib/sequel/geometry_validation_helpers'
 require 'lib/sequel/save_helpers'
 require 'lib/sequel/url_validation_helpers'
+require 'lib/sequel/intersection_query_methods'
 
 Sequel.default_timezone = :utc
 
@@ -16,6 +17,7 @@ Sequel::Model.plugin Sequel::Plugins::AttributesHelpers
 Sequel::Model.plugin Sequel::Plugins::GeometryValidationHelpers
 Sequel::Model.plugin Sequel::Plugins::SaveHelpers
 Sequel::Model.plugin Sequel::Plugins::URLValidationHelpers
+Sequel::Model.plugin Sequel::Plugins::IntersectionQueryMethods
 
 # enable pagination
 Sequel::Model.db.extension :pagination
