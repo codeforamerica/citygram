@@ -212,6 +212,20 @@ CREATE UNIQUE INDEX events_publisher_id_feature_id_index ON events USING btree (
 
 
 --
+-- Name: publishers_endpoint_index; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX publishers_endpoint_index ON publishers USING btree (endpoint);
+
+
+--
+-- Name: publishers_title_index; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX publishers_title_index ON publishers USING btree (title);
+
+
+--
 -- Name: subscriptions_geom_gist; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
