@@ -16,6 +16,8 @@ module Georelevent
         super
         validates_presence [:title, :endpoint]
         validates_url :endpoint
+        validates_unique :title
+        validates_unique :endpoint
       end
     end
   end

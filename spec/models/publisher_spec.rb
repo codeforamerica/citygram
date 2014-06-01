@@ -33,4 +33,16 @@ describe Georelevent::Models::Publisher do
     publisher = build(:publisher, endpoint: 'foo.com/events')
     expect(publisher).not_to be_valid
   end
+
+  it 'requires a unique title' do
+    publisher = create(:publisher)
+    other = build(:publisher, title: publisher.title)
+    expect(other).not_to be_valid
+  end
+
+  it 'requires a unique endpoint' do
+    publisher = create(:publisher)
+    other = build(:publisher, endpoint: publisher.endpoint)
+    expect(other).not_to be_valid
+  end
 end
