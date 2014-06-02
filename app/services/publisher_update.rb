@@ -1,15 +1,30 @@
 module Georelevent
   module Services
     class PublisherUpdate < Struct.new(:features, :publisher)
+      include Enumerable
+
       def self.call(*args)
         new(*args).call
       end
 
+      def each(&block)
+        features.each(&block)
+      end
+
       def call
-        features.lazy.
+        lazy.
+          # wrap each feature in a helper class to
+          # provide method access to nested attributes
+          # and granular control over the values
           map(&method(:wrap_feature)).
+          # build event instances from the wrapped
+          # features and assign the publisher
           map(&method(:build_event)).
+          # attempt to save each event, relying on
+          # model validations for deduplication,
+          # select only the new events
           select(&method(:save_event?)).
+          # evaluate the lazy enumeration
           force
       end
 
@@ -52,7 +67,7 @@ module Georelevent
         def properties
           data['properties'] || {}
         end
-      end # Feature
-    end # PublisherUpdate
-  end # Workers
-end # Georelevent
+      end
+    end
+  end
+end
