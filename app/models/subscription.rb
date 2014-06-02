@@ -4,7 +4,11 @@ module Georelevent
       many_to_one :publisher
 
       plugin :serialization, :geojson, :geom
-      set_allowed_columns :geom
+      set_allowed_columns :endpoint, :geom
+
+      def connection
+        ConnectionBuilder.json(url: endpoint)
+      end
 
       def validate
         super

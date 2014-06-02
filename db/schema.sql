@@ -129,7 +129,8 @@ CREATE TABLE subscriptions (
     geom geometry,
     updated_at timestamp without time zone,
     created_at timestamp without time zone,
-    publisher_id integer
+    publisher_id integer,
+    endpoint text NOT NULL
 );
 
 

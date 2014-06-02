@@ -8,7 +8,7 @@ describe Georelevent::Models::Subscription do
   end
 
   it 'whitelists mass-assignable attributes' do
-    expect(Subscription.allowed_columns).to eq [:geom]
+    expect(Subscription.allowed_columns).to eq [:endpoint, :geom]
   end
 
   it 'round trip a geojson geometry through a postgis geometry column' do
