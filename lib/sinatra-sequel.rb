@@ -16,18 +16,13 @@ module Sinatra
     end
 
     def database
-      @database ||= Sequel.connect(database_url, encoding: 'unicode')
+      @database ||= Sequel.connect(database_url)
     end
 
   protected
 
     def self.registered(app)
       app.set :database, ->{ ENV['DATABASE_URL'] || "postgres://localhost/georelevent_#{environment}" }
-
-      if app.development?
-        app.database.loggers << Logger.new(STDOUT)
-      end
-
       app.helpers SequelHelper
     end
   end
