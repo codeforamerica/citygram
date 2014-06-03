@@ -57,4 +57,12 @@ describe Georelevent::Services::PublisherUpdate do
       '{"type":"Point","coordinates":[-80.849765,35.052173]}'
     ]
   end
+
+  it 'queues notification jobs for each new event' do
+    clt_area = '{"type":"Polygon","coordinates":[[[-80.93490600585938,35.263561862152095],[-80.69320678710938,35.32745068492882],[-80.60531616210938,35.14124815600257],[-80.83328247070312,35.06597313798418],[-80.93490600585938,35.263561862152095]]]}'
+    subscription = create(:subscription, publisher_id: publisher.id, geom: clt_area)
+
+    expect{ Georelevent::Services::PublisherUpdate.call(features, publisher) }.
+      to change{ Georelevent::Workers::Notifier.jobs.count }.by(+3)
+  end
 end
