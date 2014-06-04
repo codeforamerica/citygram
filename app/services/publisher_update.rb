@@ -52,7 +52,7 @@ module Georelevent
 
       def queue_notifications(event)
         subscriptions = Subscription.select(:id).
-                                     where(publisher_id: publisher.id).
+                                     where(publisher_id: event.publisher_id).
                                      intersecting(event.geom) # lazy relation
 
         subscriptions.paged_each do |subscription|
