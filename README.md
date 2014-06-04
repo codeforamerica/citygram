@@ -1,5 +1,8 @@
-citygram [![Build Status](https://travis-ci.org/codeforamerica/georelevent.svg?branch=master)](https://travis-ci.org/codeforamerica/georelevent) [![Code Climate](https://codeclimate.com/github/codeforamerica/georelevent.png)](https://codeclimate.com/github/codeforamerica/georelevent)
-===========
+# citygram [![Build Status](http://img.shields.io/travis/codeforamerica/georelevent.svg)][travis] [![Dependency Status](http://img.shields.io/gemnasium/codeforamerica/georelevent.svg)][gemnasium] [![Code Climate](http://img.shields.io/codeclimate/github/codeforamerica/georelevent.svg)][codeclimate]
+
+[travis]: https://travis-ci.org/codeforamerica/georelevent
+[gemnasium]: https://gemnasium.com/codeforamerica/georelevent
+[codeclimate]: https://codeclimate.com/github/codeforamerica/georelevent
 
 __Citygram__ (still a working title, previously known as "georelevent") is a geographically relevant notification platform for cities. It allows citizens to designate geographic area(s) they are interested in, subscribe to specific topics, and and delivers information to citizens when something they’ve subscribed to happens in their area. Citygram is a [Code for America](https://github.com/codeforamerica) project by the [Charlotte Team](team-charlotte.tumblr.com) for the [2014 fellowship](http://www.codeforamerica.org/geeks/our-geeks/2014-fellows/).
 
