@@ -4,3 +4,4 @@ module Georelevent
 end
 
 require 'app/workers/publisher_poll'
+require 'app/workers/notifier'

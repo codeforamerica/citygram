@@ -25,7 +25,10 @@ module Georelevent
           # select only the new events
           select(&method(:save_event?)).
           # evaluate the lazy enumeration
-          force
+          force.
+          # tap into the chain to preserve the return value of call
+          # queue notification jobs for each new event
+          tap { |events| events.each(&method(:queue_notifications)) }
       end
 
       def wrap_feature(feature)
@@ -45,6 +48,16 @@ module Georelevent
 
       def save_event?(event)
         event.save
+      end
+
+      def queue_notifications(event)
+        subscriptions = Subscription.select(:id).
+                                     where(publisher_id: publisher.id).
+                                     intersecting(event.geom) # lazy relation
+
+        subscriptions.paged_each do |subscription|
+          Georelevent::Workers::Notifier.perform_async(subscription.id, event.id)
+        end
       end
 
       class Feature < Struct.new(:data)

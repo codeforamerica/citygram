@@ -17,6 +17,7 @@ FactoryGirl.define do
   end
 
   factory :subscription, class: Georelevent::Models::Subscription do
+    endpoint { Faker::Internet.uri('https') }
     geom do
       JSON.generate({
         "type"=>"Polygon",
