@@ -4,6 +4,7 @@ require 'app/models/plugins/geometry_validation_helpers'
 require 'app/models/plugins/save_helpers'
 require 'app/models/plugins/url_validation_helpers'
 require 'app/models/plugins/intersection_query_methods'
+require 'app/services/connection_builder'
 
 Sequel.default_timezone = :utc
 

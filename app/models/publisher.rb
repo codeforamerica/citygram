@@ -1,5 +1,3 @@
-require 'lib/connection_builder'
-
 module Georelevent
   module Models
     class Publisher < Sequel::Model
