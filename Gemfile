@@ -29,6 +29,6 @@ group :test do
   gem 'factory_girl'
   gem 'ffaker'
   gem 'rack-test'
-  gem 'rspec', '~> 2.14'
+  gem 'rspec', '~> 3.0'
   gem 'webmock'
 end

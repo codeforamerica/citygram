@@ -5,7 +5,7 @@ describe 'Factories' do
     subject { build(name) }
 
     it "builds a valid #{name} object" do
-      should be_valid
+      is_expected.to be_valid
     end
   end
 end
