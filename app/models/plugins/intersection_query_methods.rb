@@ -14,5 +14,7 @@ module Sequel
         Plugins.def_dataset_methods(self, :intersecting)
       end
     end
+
+    Sequel::Model.plugin IntersectionQueryMethods
   end
 end

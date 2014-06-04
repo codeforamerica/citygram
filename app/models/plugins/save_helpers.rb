@@ -10,5 +10,7 @@ module Sequel
         end
       end
     end
+
+    Sequel::Model.plugin SaveHelpers
   end
 end

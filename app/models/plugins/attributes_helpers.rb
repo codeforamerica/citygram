@@ -15,5 +15,7 @@ module Sequel
         end
       end
     end
+
+    Sequel::Model.plugin AttributesHelpers
   end
 end

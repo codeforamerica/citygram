@@ -15,7 +15,7 @@ module Sequel
         ).freeze
 
         def validates_geometry(atts, opts = {})
-          validatable_attributes(atts, opts.merge(:message => 'is an invalid geometry')) do |attribute, value, message|
+          validatable_attributes(atts, opts.merge(message: 'is an invalid geometry')) do |attribute, value, message|
             validation_error_message(message) unless valid_geometry?(value)
           end
         end
@@ -36,5 +36,7 @@ module Sequel
         end
       end
     end
+
+    Sequel::Model.plugin GeometryValidationHelpers
   end
 end

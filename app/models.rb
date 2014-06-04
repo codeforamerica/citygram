@@ -1,9 +1,9 @@
 require 'geo_ruby/geojson'
-require 'lib/sequel/attributes_helpers'
-require 'lib/sequel/geometry_validation_helpers'
-require 'lib/sequel/save_helpers'
-require 'lib/sequel/url_validation_helpers'
-require 'lib/sequel/intersection_query_methods'
+require 'app/models/plugins/attributes_helpers'
+require 'app/models/plugins/geometry_validation_helpers'
+require 'app/models/plugins/save_helpers'
+require 'app/models/plugins/url_validation_helpers'
+require 'app/models/plugins/intersection_query_methods'
 
 Sequel.default_timezone = :utc
 
@@ -13,11 +13,6 @@ Sequel::Model.plugin :timestamps, update_on_create: true
 Sequel::Model.plugin :serialization
 Sequel::Model.plugin :json_serializer
 Sequel::Model.plugin :validation_helpers
-Sequel::Model.plugin Sequel::Plugins::AttributesHelpers
-Sequel::Model.plugin Sequel::Plugins::GeometryValidationHelpers
-Sequel::Model.plugin Sequel::Plugins::SaveHelpers
-Sequel::Model.plugin Sequel::Plugins::URLValidationHelpers
-Sequel::Model.plugin Sequel::Plugins::IntersectionQueryMethods
 
 # enable pagination
 Sequel::Model.db.extension :pagination
