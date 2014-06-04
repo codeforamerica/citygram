@@ -5,6 +5,18 @@ L.tileLayer('http://{s}.tiles.mapbox.com/v3/ardouglass.h3mingmm/{z}/{x}/{y}.png'
     maxZoom: 18
 }).addTo(map);
 
+var featureGroup = L.featureGroup().addTo(map);
+
+var drawControl = new L.Control.Draw({
+    edit: {
+      featureGroup: featureGroup
+    }
+  }).addTo(map);
+
+  map.on('draw:created', function(e) {
+      featureGroup.addLayer(e.layer);
+  });
+
 $("#message-method .btn").click(function(e) {
   e.preventDefault();
   var id = $(this).attr("id");
