@@ -59,6 +59,7 @@ GEM
     multi_json (1.10.1)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
+    newrelic_rpm (3.8.1.221)
     pg (0.17.1)
     rack (1.5.2)
     rack-accept (0.4.5)
@@ -132,6 +133,7 @@ DEPENDENCIES
   foreman
   georuby (~> 2.1)
   grape (~> 0.7)
+  newrelic_rpm
   pg
   rack-test
   rake

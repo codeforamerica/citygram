@@ -20,6 +20,10 @@ module Georelevent
       set :logger, Logger.new(STDOUT)
     end
 
+    configure :production do
+      require 'newrelic_rpm'
+    end
+
     use Routes::Home
   end
 
