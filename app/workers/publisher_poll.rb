@@ -4,6 +4,7 @@ module Georelevent
   module Workers
     class PublisherPoll
       include Sidekiq::Worker
+      sidekiq_options retry: 5
 
       def perform(publisher_id)
         publisher = Publisher.first!(id: publisher_id)
