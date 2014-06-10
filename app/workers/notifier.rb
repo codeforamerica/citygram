@@ -2,6 +2,7 @@ module Georelevent
   module Workers
     class Notifier
       include Sidekiq::Worker
+      sidekiq_options retry: 20
 
       class NotificationFailure < StandardError; end
 
