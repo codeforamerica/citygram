@@ -19,6 +19,10 @@ require 'app/routes'
 
 module Georelevent
   class App < Sinatra::Application
+    configure do
+      set :logger, Logger.new(STDOUT)
+    end
+
     use Routes::Home
   end
 
@@ -28,10 +32,6 @@ module Georelevent
 
     require 'sidekiq/web'
     mount Sidekiq::Web => '/_jobs'
-  end
-
-  def self.logger
-    @logger ||= Logger.new(STDOUT)
   end
 end
 

@@ -11,13 +11,18 @@ module ConnectionBuilder
       conn.adapter Faraday.default_adapter
     end
   end
-end
 
-if !Georelevent::App.test?
-  ActiveSupport::Notifications.subscribe(/^request\.(publisher|subscription)\./) do |name, starts, ends, _, env|
-    url = env[:url]
-    http_method = env[:method].to_s.upcase
-    duration = ends - starts
-    Georelevent.logger.info '[%s] %s %s (%.3f s)' % [url.host, http_method, url.request_uri, duration]
+  class RequestLog < Struct.new(:logger)
+    def call(name, starts, ends, _, env)
+      url = env[:url]
+      http_method = env[:method].to_s.upcase
+      duration = ends - starts
+      logger.info '[%s] %s %s (%.3f s)' % [url.host, http_method, url.request_uri, duration]
+    end
+
+    # log requests unless we're in the test environment
+    if ! Georelevent::App.test?
+      ActiveSupport::Notifications.subscribe /^request\.(publisher|subscription)\./, new(Georelevent::App.logger)
+    end
   end
 end
