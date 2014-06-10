@@ -7,7 +7,7 @@ module Georelevent
       set_allowed_columns :title, :endpoint
 
       def connection
-        ConnectionBuilder.json(url: endpoint)
+        ConnectionBuilder.json("request.publisher.#{id}", url: endpoint)
       end
 
       def validate

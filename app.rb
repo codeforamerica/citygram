@@ -29,6 +29,10 @@ module Georelevent
     require 'sidekiq/web'
     mount Sidekiq::Web => '/_jobs'
   end
+
+  def self.logger
+    @logger ||= Logger.new(STDOUT)
+  end
 end
 
 require 'app/models'
