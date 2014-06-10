@@ -6,8 +6,8 @@ module Georelevent
       end
 
       def call
-        new_events.each do |event|
-          queue_notifications(event)
+        new_events.tap do
+          new_events.each(&method(:queue_notifications))
         end
       end
 
@@ -18,26 +18,22 @@ module Georelevent
       end
 
       def new_events
-        features.lazy.
-        # wrap each feature in a helper class to
-        # provide method access to nested attributes
-        # and granular control over the values
-        map(&method(:wrap_feature)).
-        # build event instances from the wrapped
-        # features and assign the publisher
-        map(&method(:build_event)).
-        # attempt to save each event, relying on
-        # model validations for deduplication,
-        # select only the new events
-        select(&method(:save_event?)).
-        # evaluate the lazy enumeration
-        force
+        @new_events ||= features.lazy.
+          map(&method(:wrap_feature)).
+          map(&method(:build_event)).
+          select(&method(:save_event?)).
+          force
       end
 
+      # wrap feature in a helper class to
+      # provide method access to nested attributes
+      # and granular control over the values
       def wrap_feature(feature)
         Feature.new(feature)
       end
 
+      # build event instance from the wrapped
+      # feature and assign the publisher
       def build_event(feature)
         Event.new do |e|
           e.publisher_id = publisher.id
@@ -49,6 +45,9 @@ module Georelevent
         end
       end
 
+      # attempt to save the event, relying on
+      # model validations for deduplication,
+      # select iff the event has not been seen before.
       def save_event?(event)
         event.save
       end
