@@ -8,6 +8,9 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
     addressable (2.3.6)
+    airbrake (4.0.0)
+      builder
+      multi_json
     axiom-types (0.1.1)
       descendants_tracker (~> 0.0.4)
       ice_nine (~> 0.11.0)
@@ -123,6 +126,7 @@ PLATFORMS
 
 DEPENDENCIES
   activesupport
+  airbrake
   database_cleaner
   dedent
   dotenv (~> 0.11)
