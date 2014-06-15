@@ -1,7 +1,7 @@
-module Georelevent
+module Citygram
   module Routes
     class Publishers < Grape::API
-      version 'v1', using: :header, vendor: 'georelevent'
+      version 'v1', using: :header, vendor: 'citygram'
       format :json
 
       rescue_from Sequel::NoMatchingRow do

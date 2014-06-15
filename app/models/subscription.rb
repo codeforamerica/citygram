@@ -1,4 +1,4 @@
-module Georelevent
+module Citygram
   module Models
     class Subscription < Sequel::Model
       many_to_one :publisher

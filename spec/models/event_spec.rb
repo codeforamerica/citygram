@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Georelevent::Models::Event do
+describe Citygram::Models::Event do
   it 'belongs to a publisher' do
     type = Event.association_reflections[:publisher][:type]
     expect(type).to eq :many_to_one

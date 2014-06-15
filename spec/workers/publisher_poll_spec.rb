@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-describe Georelevent::Workers::PublisherPoll do
-  subject { Georelevent::Workers::PublisherPoll.new }
+describe Citygram::Workers::PublisherPoll do
+  subject { Citygram::Workers::PublisherPoll.new }
   let(:publisher) { create(:publisher) }
   let(:features) { JSON.parse(geojson)['features'] }
   let(:geojson) { fixture('cmpd-traffic-incidents.geojson') }
@@ -18,7 +18,7 @@ describe Georelevent::Workers::PublisherPoll do
   end
 
   it 'passes the retrieved features to PublisherUpdate' do
-    expect(Georelevent::Services::PublisherUpdate).to receive(:call).with(features, publisher)
+    expect(Citygram::Services::PublisherUpdate).to receive(:call).with(features, publisher)
     subject.perform(publisher.id)
   end
 end

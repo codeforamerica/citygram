@@ -1,4 +1,4 @@
-module Georelevent
+module Citygram
   module Routes
     class Base < Sinatra::Application
       configure do

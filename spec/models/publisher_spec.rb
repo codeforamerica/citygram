@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Georelevent::Models::Publisher do
+describe Citygram::Models::Publisher do
   describe '#connection' do
     it 'connects to the endpoint' do
       publisher = build(:publisher)

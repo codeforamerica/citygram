@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Georelevent::Models::Subscription do
+describe Citygram::Models::Subscription do
   it 'belongs to a publisher' do
     publisher = create(:publisher)
     subscription = create(:subscription, publisher: publisher).reload 

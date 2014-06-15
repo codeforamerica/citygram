@@ -5,7 +5,7 @@ require 'app/routes/home'
 require 'app/routes/publishers'
 require 'app/routes/subscriptions'
 
-module Georelevent
+module Citygram
   module Routes
   end
 end
