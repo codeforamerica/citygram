@@ -7,7 +7,7 @@ module Citygram
       set_allowed_columns :title, :endpoint
 
       def connection
-        ConnectionBuilder.json("request.publisher.#{id}", url: endpoint)
+        Citygram::Services::ConnectionBuilder.json("request.publisher.#{id}", url: endpoint)
       end
 
       def validate

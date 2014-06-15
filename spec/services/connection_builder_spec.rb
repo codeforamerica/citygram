@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-describe ConnectionBuilder do
-  subject { ConnectionBuilder.json('test.connection', url: url) }
+describe Citygram::Services::ConnectionBuilder do
+  subject { Citygram::Services::ConnectionBuilder.json('test.connection', url: url) }
   let(:url) { Faker::Internet.uri('https') }
 
   it 'connects to the given url' do

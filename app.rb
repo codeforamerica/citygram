@@ -17,7 +17,7 @@ require 'app/routes'
 module Citygram
   class App < Sinatra::Application
     configure do
-      set :logger, Logger.new(STDOUT)
+      set :logger, Logger.new(test? ? nil : STDOUT)
     end
 
     configure :production do
@@ -39,3 +39,9 @@ end
 require 'app/workers'
 require 'app/models'
 include Citygram::Models
+
+# Log instrumented requests for publisher and subscription connections
+ActiveSupport::Notifications.subscribe(
+  /^request\.(publisher|subscription)\./,
+  Citygram::Services::ConnectionBuilder::RequestLog.new(Citygram::App.logger)
+)

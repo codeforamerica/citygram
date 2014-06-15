@@ -13,7 +13,7 @@ module Citygram
       end
 
       def connection
-        ConnectionBuilder.json("request.subscription.#{id}", url: endpoint)
+        Citygram::Services::ConnectionBuilder.json("request.subscription.#{id}", url: endpoint)
       end
 
       def validate
