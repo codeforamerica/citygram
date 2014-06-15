@@ -1,4 +1,4 @@
-module Georelevent
+module Citygram
   module Workers
     class Notifier
       include Sidekiq::Worker

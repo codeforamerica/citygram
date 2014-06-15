@@ -14,7 +14,7 @@ require 'sinatra-sequel'
 
 require 'app/routes'
 
-module Georelevent
+module Citygram
   class App < Sinatra::Application
     configure do
       set :logger, Logger.new(STDOUT)
@@ -38,4 +38,4 @@ end
 
 require 'app/workers'
 require 'app/models'
-include Georelevent::Models
+include Citygram::Models

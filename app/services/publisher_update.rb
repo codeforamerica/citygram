@@ -1,4 +1,4 @@
-module Georelevent
+module Citygram
   module Services
     class PublisherUpdate < Struct.new(:features, :publisher)
       def self.call(*args)
@@ -13,7 +13,7 @@ module Georelevent
 
       def queue_notifications(event)
         Subscription.for_event(event).select(:id).paged_each do |subscription|
-          Georelevent::Workers::Notifier.perform_async(subscription.id, event.id)
+          Citygram::Workers::Notifier.perform_async(subscription.id, event.id)
         end
       end
 

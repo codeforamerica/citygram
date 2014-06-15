@@ -1,4 +1,4 @@
-module Georelevent::Routes
+module Citygram::Routes
   module TestHelpers
     include Rack::Test::Methods
 

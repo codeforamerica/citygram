@@ -1,10 +1,10 @@
 FactoryGirl.define do
-  factory :publisher, class: Georelevent::Models::Publisher do
+  factory :publisher, class: Citygram::Models::Publisher do
     title { Faker::Lorem.sentence(3) }
     endpoint { Faker::Internet.uri('https') }
   end
 
-  factory :event, class: Georelevent::Models::Event do
+  factory :event, class: Citygram::Models::Event do
     title { Faker::Lorem.sentence(3) }
     description { Faker::Lorem.paragraph(2) }
     feature_id { SecureRandom.hex(10) }
@@ -16,7 +16,7 @@ FactoryGirl.define do
     end
   end
 
-  factory :subscription, class: Georelevent::Models::Subscription do
+  factory :subscription, class: Citygram::Models::Subscription do
     endpoint { Faker::Internet.uri('https') }
     geom do
       JSON.generate({

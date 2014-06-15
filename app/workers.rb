@@ -1,6 +1,6 @@
 require 'sidekiq'
 
-module Georelevent
+module Citygram
   module Workers
   end
 end
@@ -11,6 +11,6 @@ require 'app/workers/middleware/database_connections'
 
 Sidekiq.configure_server do |config|
   config.server_middleware do |chain|
-    chain.add Georelevent::Workers::Middleware::DatabaseConnections, Georelevent::App.database
+    chain.add Citygram::Workers::Middleware::DatabaseConnections, Citygram::App.database
   end
 end

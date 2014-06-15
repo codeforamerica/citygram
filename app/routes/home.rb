@@ -1,4 +1,4 @@
-module Georelevent
+module Citygram
   module Routes
     class Home < Base
       get '/' do

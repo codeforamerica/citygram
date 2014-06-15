@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-describe Georelevent::Routes::Publishers do
-  include Georelevent::Routes::TestHelpers
+describe Citygram::Routes::Publishers do
+  include Citygram::Routes::TestHelpers
 
   describe 'GET /publishers' do
     let(:params) {{ page: 2, per: 2 }}

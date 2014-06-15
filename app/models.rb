@@ -26,7 +26,7 @@ Sequel::Plugins::Serialization.register_format(:geojson,
   ->(v){ GeoRuby::SimpleFeatures::Geometry.from_hex_ewkb(v).to_json }
 )
 
-module Georelevent
+module Citygram
   module Models
   end
 end

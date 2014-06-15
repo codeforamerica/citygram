@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-describe Georelevent::Routes::Subscriptions do
-  include Georelevent::Routes::TestHelpers
+describe Citygram::Routes::Subscriptions do
+  include Citygram::Routes::TestHelpers
 
   describe 'GET /subscriptions/:id' do
     let(:subscription) { create(:subscription) }

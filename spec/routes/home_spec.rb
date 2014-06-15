@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-describe Georelevent::Routes::Home do
-  include Georelevent::Routes::TestHelpers
+describe Citygram::Routes::Home do
+  include Citygram::Routes::TestHelpers
 
   describe 'GET /' do
     it 'responds with 200 OK' do

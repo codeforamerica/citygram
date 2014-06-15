@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-describe Georelevent::Workers::Notifier do
-  subject { Georelevent::Workers::Notifier.new }
+describe Citygram::Workers::Notifier do
+  subject { Citygram::Workers::Notifier.new }
   let(:body) { event.attributes.to_json }
   let(:headers) { {'Content-Type'=>'application/json'} }
   let(:subscription) { create(:subscription) }
@@ -42,7 +42,7 @@ describe Georelevent::Workers::Notifier do
 
     it "raises an exception on non-2xx response" do
       expect{ subject.perform(subscription.id, event.id) }.
-        to raise_error Georelevent::Workers::Notifier::NotificationFailure, /HTTP status code: #{failed_status}/
+        to raise_error Citygram::Workers::Notifier::NotificationFailure, /HTTP status code: #{failed_status}/
     end
   end
 end

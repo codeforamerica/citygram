@@ -16,7 +16,7 @@ module DatabaseHelper
   TEMPLATE
 
   def app
-    Georelevent::App
+    Citygram::App
   end
 
   def database
