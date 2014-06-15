@@ -30,13 +30,13 @@ TODO
 * [Install Ruby](https://github.com/codeforamerica/howto/blob/master/Ruby.md)
 
 ```
-git clone https://github.com/codeforamerica/georelevent.git
-cd georelevent
+git clone https://github.com/codeforamerica/citygram.git
+cd citygram
 cp .env.sample .env
 gem install bundler
 bundle install
 rake db:create db:migrate
-rake db:create db:migrate DATABASE_URL=postgres://localhost/georelevent_test
+rake db:create db:migrate DATABASE_URL=postgres://localhost/citygram_test
 rake # run the test suite
 bundle exec foreman start -f Procfile.dev
 ```

@@ -22,7 +22,7 @@ module Sinatra
   protected
 
     def self.registered(app)
-      app.set :database, ->{ ENV['DATABASE_URL'] || "postgres://localhost/georelevent_#{environment}" }
+      app.set :database, ->{ ENV['DATABASE_URL'] || "postgres://localhost/citygram_#{environment}" }
       app.helpers SequelHelper
     end
   end
