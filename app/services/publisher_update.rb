@@ -6,15 +6,24 @@ module Citygram
       end
 
       def call
-        new_events.tap do
-          new_events.each(&method(:queue_notifications))
+        queue_notifications
+        new_events
+      end
+
+      def queue_notifications
+        notification_pairs.paged_each do |pair|
+          Citygram::Workers::Notifier.perform_async(pair[:subscription_id], pair[:event_id])
         end
       end
 
-      def queue_notifications(event)
-        Subscription.for_event(event).select(:id).paged_each do |subscription|
-          Citygram::Workers::Notifier.perform_async(subscription.id, event.id)
-        end
+      def notification_pairs
+        Sequel::Model.db.dataset.with_sql(<<-SQL, new_events.map(&:id))
+          SELECT subscriptions.id AS subscription_id, events.id AS event_id
+          FROM subscriptions INNER JOIN events
+            ON ST_Intersects(subscriptions.geom, events.geom)
+            AND subscriptions.publisher_id = events.publisher_id
+          WHERE events.id in ?
+        SQL
       end
 
       def new_events
