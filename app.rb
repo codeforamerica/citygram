@@ -22,6 +22,8 @@ module Citygram
 
     configure :production do
       require 'newrelic_rpm'
+      require './config/error_reporting'
+      use Airbrake::Sinatra
     end
 
     use Routes::Home

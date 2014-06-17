@@ -7,6 +7,7 @@ else
 end
 
 gem 'activesupport'
+gem 'airbrake', require: false
 gem 'dedent'
 gem 'dotenv', '~> 0.11'
 gem 'faraday', '~> 0.9'
