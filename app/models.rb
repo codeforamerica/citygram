@@ -3,7 +3,6 @@ require 'app/models/plugins/attributes_helpers'
 require 'app/models/plugins/geometry_validation_helpers'
 require 'app/models/plugins/save_helpers'
 require 'app/models/plugins/url_validation_helpers'
-require 'app/models/plugins/intersection_query_methods'
 require 'app/services/connection_builder'
 
 Sequel.default_timezone = :utc
@@ -14,6 +13,8 @@ Sequel::Model.plugin :timestamps, update_on_create: true
 Sequel::Model.plugin :serialization
 Sequel::Model.plugin :json_serializer
 Sequel::Model.plugin :validation_helpers
+Sequel::Model.plugin Citygram::Models::Plugins::AttributesHelpers
+Sequel::Model.plugin Citygram::Models::Plugins::SaveHelpers
 
 # enable pagination
 Sequel::Model.db.extension :pagination

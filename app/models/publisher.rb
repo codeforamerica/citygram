@@ -4,6 +4,7 @@ module Citygram
       one_to_many :subscriptions
       one_to_many :events
 
+      plugin Citygram::Models::Plugins::URLValidationHelpers
       set_allowed_columns :title, :endpoint
 
       def connection

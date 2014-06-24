@@ -5,6 +5,7 @@ module Citygram
 
       plugin :serialization, :geojson, :geom
       plugin :serialization, :json, :properties
+      plugin Citygram::Models::Plugins::GeometryValidationHelpers
       set_allowed_columns *[] # disallow mass-assignment
 
       def validate

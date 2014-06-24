@@ -4,13 +4,8 @@ module Citygram
       many_to_one :publisher
 
       plugin :serialization, :geojson, :geom
+      plugin Citygram::Models::Plugins::GeometryValidationHelpers
       set_allowed_columns :endpoint, :geom
-
-      dataset_module do
-        def for_event(event)
-          where(publisher_id: event.publisher_id).intersecting(event.geom)
-        end
-      end
 
       def connection
         Citygram::Services::ConnectionBuilder.json("request.subscription.#{id}", url: endpoint)
