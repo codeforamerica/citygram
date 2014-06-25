@@ -11,6 +11,6 @@ require 'app/workers/middleware/database_connections'
 
 Sidekiq.configure_server do |config|
   config.server_middleware do |chain|
-    chain.add Citygram::Workers::Middleware::DatabaseConnections, Citygram::App.database
+    chain.add Citygram::Workers::Middleware::DatabaseConnections, Sequel::Model.db
   end
 end
