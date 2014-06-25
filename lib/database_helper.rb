@@ -1,6 +1,11 @@
+require 'dotenv'
+Dotenv.load
+
 require 'dedent'
+require 'sequel'
+require 'shellwords'
 require 'uri'
-require File.expand_path('../../app', __FILE__)
+
 Sequel.extension :migration
 
 module DatabaseHelper
@@ -15,20 +20,28 @@ module DatabaseHelper
     end
   TEMPLATE
 
-  def app
-    Citygram::App
+  def environment
+    ENV['RACK_ENV'] ||= 'development'
+  end
+
+  def database_url
+    ENV['DATABASE_URL'] ||= "postgres://localhost/transitmix_#{environment}"
   end
 
   def database
-    app.database
+    @database ||= Sequel.connect(database_url)
+  end
+
+  def app_root
+    Shellwords.shellescape(File.expand_path('../../', __FILE__))
   end
 
   def migration_path
-    @migration_path ||= File.join(app.root, 'db/migrations')
+    @migration_path ||= File.join(app_root, 'db/migrations')
   end
 
   def schema_path
-    @schema_path ||= File.join(app.root, 'db/schema.sql')
+    @schema_path ||= File.join(app_root, 'db/schema.sql')
   end
 
   def db_name
@@ -62,7 +75,7 @@ module DatabaseHelper
   end
 
   def drop_db
-    Sequel::Model.db.disconnect
+    database.disconnect
     pg_command("dropdb #{db_name}")
   end
 
@@ -88,9 +101,10 @@ module DatabaseHelper
   end
 
   def console
+    require File.expand_path('../../app', __FILE__)
     require 'factory_girl'
     require 'ffaker'
-    require File.join(app.root, 'spec/factories')
+    require File.join(app_root, 'spec/factories')
     include FactoryGirl::Syntax::Methods
     require 'irb'
     ARGV.clear
