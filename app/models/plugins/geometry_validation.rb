@@ -3,7 +3,7 @@ require 'geo_ruby/geojson'
 module Citygram
   module Models
     module Plugins
-      module GeometryValidationHelpers
+      module GeometryValidation
         module InstanceMethods
           FEATURE_TYPES = %w(
             Point

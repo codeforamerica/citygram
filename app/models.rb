@@ -1,9 +1,9 @@
 require 'geo_ruby/geojson'
 require 'app/models/plugins/attributes_helpers'
-require 'app/models/plugins/geometry_validation_helpers'
 require 'app/models/plugins/save_helpers'
-require 'app/models/plugins/url_validation_helpers'
-require 'app/services/connection_builder'
+require 'app/models/plugins/email_validation'
+require 'app/models/plugins/geometry_validation'
+require 'app/models/plugins/url_validation'
 
 Sequel.default_timezone = :utc
 

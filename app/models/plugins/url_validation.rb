@@ -2,7 +2,7 @@
 module Citygram
   module Models
     module Plugins
-      module URLValidationHelpers
+      module URLValidation
         module InstanceMethods
           def validates_url(atts, opts = {})
             validatable_attributes(atts, opts.merge(message: 'is an invalid url')) do |attribute, value, message|

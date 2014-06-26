@@ -6,6 +6,7 @@ matrix:
   allow_failures:
     - rvm: ruby-head
 script:
+  - cp .env.sample .env
   - bundle exec rake db:create db:migrate DATABASE_URL=postgres://localhost/citygram_test
   - bundle exec rake
 notifications:
