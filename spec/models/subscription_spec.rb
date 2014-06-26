@@ -8,7 +8,7 @@ describe Citygram::Models::Subscription do
   end
 
   it 'whitelists mass-assignable attributes' do
-    expect(Subscription.allowed_columns).to eq [:endpoint, :geom]
+    expect(Subscription.allowed_columns.sort).to eq [:publisher_id, :endpoint, :geom].sort
   end
 
   it 'round trip a geojson geometry through a postgis geometry column' do

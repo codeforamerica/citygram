@@ -5,7 +5,7 @@ module Citygram
 
       plugin :serialization, :geojson, :geom
       plugin Citygram::Models::Plugins::GeometryValidationHelpers
-      set_allowed_columns :endpoint, :geom
+      set_allowed_columns :endpoint, :geom, :publisher_id
 
       def connection
         Citygram::Services::ConnectionBuilder.json("request.subscription.#{id}", url: endpoint)
@@ -13,7 +13,7 @@ module Citygram
 
       def validate
         super
-        validates_presence [:geom]
+        validates_presence [:geom, :endpoint, :publisher_id]
         validates_geometry :geom
       end
     end

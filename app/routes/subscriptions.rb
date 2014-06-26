@@ -22,6 +22,8 @@ module Citygram
 
       params do
         requires :subscription, type: Hash do
+          requires :publisher_id, type: Integer
+          requires :endpoint, type: String
           requires :geom, type: String
         end
       end

@@ -3,8 +3,10 @@ require 'spec_helper'
 describe Citygram::Routes::Subscriptions do
   include Citygram::Routes::TestHelpers
 
+  let(:publisher) { create(:publisher) }
+
   describe 'GET /subscriptions/:id' do
-    let(:subscription) { create(:subscription) }
+    let(:subscription) { create(:subscription, publisher: publisher) }
 
     it 'responds with 200 OK' do
       get "/subscriptions/#{subscription.id}"
@@ -33,7 +35,7 @@ describe Citygram::Routes::Subscriptions do
   end
 
   describe 'POST /subscriptions' do
-    let(:params) {{ subscription: attributes_for(:subscription) }}
+    let(:params) {{ subscription: attributes_for(:subscription).merge(publisher_id: publisher.id) }}
 
     it 'responds with 201 CREATED' do
       post '/subscriptions', params

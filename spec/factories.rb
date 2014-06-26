@@ -17,6 +17,7 @@ FactoryGirl.define do
   end
 
   factory :subscription, class: Citygram::Models::Subscription do
+    publisher
     endpoint { Faker::Internet.uri('https') }
     geom do
       JSON.generate({
