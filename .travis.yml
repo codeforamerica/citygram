@@ -2,6 +2,9 @@ language: ruby
 rvm:
   - 2.1.2
   - ruby-head
+matrix:
+  allow_failures:
+    - rvm: ruby-head
 script:
   - bundle exec rake db:create db:migrate DATABASE_URL=postgres://localhost/citygram_test
   - bundle exec rake
