@@ -17,9 +17,11 @@ gem 'grape', '~> 0.7'
 gem 'newrelic_rpm'
 gem 'pg'
 gem 'rake'
+gem 'sass', '~> 3.3'
 gem 'sequel', '~> 4.10'
 gem 'sidekiq', '~> 3.0'
 gem 'sinatra', '~> 1.4'
+gem 'sinatra-assetpack', '~> 0.3'
 gem 'unicorn'
 
 group :development do
