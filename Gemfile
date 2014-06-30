@@ -16,10 +16,12 @@ gem 'georuby', '~> 2.1'
 gem 'grape', '~> 0.7'
 gem 'newrelic_rpm'
 gem 'pg'
+gem 'pony', '~> 1.9'
 gem 'rake'
 gem 'sequel', '~> 4.10'
 gem 'sidekiq', '~> 3.0'
 gem 'sinatra', '~> 1.4'
+gem 'twilio-ruby', '~> 3.11'
 gem 'unicorn'
 
 group :development do

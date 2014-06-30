@@ -1,19 +1,24 @@
+require 'app/services/notifications'
+
 module Citygram
   module Models
     class Subscription < Sequel::Model
       many_to_one :publisher
 
-      plugin :serialization, :geojson, :geom
-      plugin Citygram::Models::Plugins::GeometryValidationHelpers
-      set_allowed_columns :endpoint, :geom, :publisher_id
+      set_allowed_columns :contact, :geom, :publisher_id, :channel
 
-      def connection
-        Citygram::Services::ConnectionBuilder.json("request.subscription.#{id}", url: endpoint)
-      end
+      plugin :serialization, :geojson, :geom
+      plugin Citygram::Models::Plugins::URLValidation
+      plugin Citygram::Models::Plugins::EmailValidation
+      plugin Citygram::Models::Plugins::GeometryValidation
 
       def validate
         super
-        validates_presence [:geom, :endpoint, :publisher_id]
+        validates_presence [:geom, :contact, :publisher_id, :channel]
+        validates_includes Citygram::Services::Notifications.available_channels, :channel
+        validates_url :contact   if channel == 'webhook'
+        validates_email :contact if channel == 'email'
+        # TODO: validates_phone_number :contact if channel == 'sms'
         validates_geometry :geom
       end
     end

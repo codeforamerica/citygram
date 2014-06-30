@@ -3,10 +3,11 @@ module Citygram
     class Event < Sequel::Model
       many_to_one :publisher
 
+      set_allowed_columns *[] # disallow mass-assignment
+
       plugin :serialization, :geojson, :geom
       plugin :serialization, :json, :properties
-      plugin Citygram::Models::Plugins::GeometryValidationHelpers
-      set_allowed_columns *[] # disallow mass-assignment
+      plugin Citygram::Models::Plugins::GeometryValidation
 
       def validate
         super

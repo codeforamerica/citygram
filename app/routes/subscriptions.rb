@@ -1,3 +1,5 @@
+require 'app/services/notifications'
+
 module Citygram
   module Routes
     class Subscriptions < Grape::API
@@ -23,7 +25,8 @@ module Citygram
       params do
         requires :subscription, type: Hash do
           requires :publisher_id, type: Integer
-          requires :endpoint, type: String
+          requires :contact, type: String
+          requires :channel, type: String, values: Citygram::Services::Notifications.available_channels
           requires :geom, type: String
         end
       end

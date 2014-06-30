@@ -130,7 +130,8 @@ CREATE TABLE subscriptions (
     updated_at timestamp without time zone,
     created_at timestamp without time zone,
     publisher_id integer,
-    endpoint text NOT NULL
+    contact text NOT NULL,
+    channel text NOT NULL
 );
 
 

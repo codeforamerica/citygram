@@ -5,6 +5,7 @@ FactoryGirl.define do
   end
 
   factory :event, class: Citygram::Models::Event do
+    publisher
     title { Faker::Lorem.sentence(3) }
     description { Faker::Lorem.paragraph(2) }
     feature_id { SecureRandom.hex(10) }
@@ -18,7 +19,8 @@ FactoryGirl.define do
 
   factory :subscription, class: Citygram::Models::Subscription do
     publisher
-    endpoint { Faker::Internet.uri('https') }
+    contact { Faker::Internet.uri('https') }
+    channel 'webhook'
     geom do
       JSON.generate({
         "type"=>"Polygon",
