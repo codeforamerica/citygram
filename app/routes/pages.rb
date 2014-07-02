@@ -1,6 +1,6 @@
 module Citygram
   module Routes
-    class Base < Sinatra::Application
+    class Pages < Sinatra::Application
       configure do
         set :root, File.expand_path('../../../', __FILE__)
         set :views, 'app/views'
@@ -13,6 +13,10 @@ module Citygram
                   layout_options: { views: 'app/views/layouts' }
 
         enable :use_code
+      end
+
+      get '/' do
+        erb :index
       end
     end
   end

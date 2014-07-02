@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Citygram::Routes::Home do
+describe Citygram::Routes::Pages do
   include Citygram::Routes::TestHelpers
 
   describe 'GET /' do
