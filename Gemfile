@@ -21,6 +21,7 @@ gem 'rake'
 gem 'sequel', '~> 4.10'
 gem 'sidekiq', '~> 3.0'
 gem 'sinatra', '~> 1.4'
+gem 'sinatra-assetpack', require: 'sinatra/assetpack'
 gem 'twilio-ruby', '~> 3.11'
 gem 'unicorn'
 
