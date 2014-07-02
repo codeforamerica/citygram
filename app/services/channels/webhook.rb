@@ -2,7 +2,7 @@ require 'app/services/connection_builder'
 
 module Citygram
   module Services
-    module Notifications
+    module Channels
       class Webhook < Base
         def call
           response = connection.post do |conn|
@@ -33,7 +33,7 @@ module Citygram
         end
       end
 
-      add_channel :webhook, Citygram::Services::Notifications::Webhook
+      Channels[:webhook] = Citygram::Services::Channels::Webhook
     end
   end
 end

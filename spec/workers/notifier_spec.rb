@@ -6,7 +6,7 @@ describe Citygram::Workers::Notifier do
   let(:event) { create(:event) }
 
   before do
-    expect(Citygram::Services::Notifications[subscription.channel]).to receive(:call).with(subscription, event)
+    expect(Citygram::Services::Channels[subscription.channel]).to receive(:call).with(subscription, event)
   end
 
   it 'retrieves the event of interest' do

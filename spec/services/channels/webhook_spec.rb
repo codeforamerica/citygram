@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-describe Citygram::Services::Notifications::Webhook do
-  subject { Citygram::Services::Notifications::Webhook }
+describe Citygram::Services::Channels::Webhook do
+  subject { Citygram::Services::Channels::Webhook }
 
   let(:subscription) { create(:subscription, channel: 'webhook') }
   let(:event) { create(:event) }
@@ -37,7 +37,7 @@ describe Citygram::Services::Notifications::Webhook do
         to_return(status: failed_status)
 
       expect{ subject.call(subscription, event) }.
-        to raise_error Citygram::Services::Notifications::NotificationFailure, /HTTP status code: #{failed_status}/
+        to raise_error Citygram::Services::Channels::NotificationFailure, /HTTP status code: #{failed_status}/
 
       expect(a_request(:post, subscription.contact).
         with(body: body, headers: headers)).to have_been_made.once

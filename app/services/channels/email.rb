@@ -2,7 +2,7 @@ require 'pony'
 
 module Citygram
   module Services
-    module Notifications
+    module Channels
       class Email < Base
         Pony.options = {
           from: ENV.fetch('SMTP_FROM_ADDRESS'),
@@ -26,7 +26,7 @@ module Citygram
         end
       end
 
-      add_channel :email, Citygram::Services::Notifications::Email
+      Channels[:email] = Citygram::Services::Channels::Email
     end
   end
 end

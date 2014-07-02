@@ -1,6 +1,6 @@
 module Citygram
   module Services
-    module Notifications
+    module Channels
       class Base < Struct.new(:subscription, :event)
         def self.call(subscription, event)
           new(subscription, event).call
