@@ -1,9 +1,6 @@
 $(document).ready(function() {
-  var map = app.hookupMap();
+  app.hookupMap();
   app.hookupSteps();
-  
-  // Add geometry to map
-  // Set geom in subscription
 });
 
 var app = app || {};
@@ -13,21 +10,6 @@ app.state = {
   publisher_id: undefined,
 };
 
-app.init = function() {
-
-};
-
-app.submitSubscription = function(callback) {
-  $.post('/subscriptions', { subscription: app.state }, callback); 
-};
-
-
-app.scrollToElement = function(el) {
-  $('html,body').animate({
-    scrollTop: el.offset().top
-  }, 800);
-};
-
 app.hookupMap = function() {
   var options = {
     zoom: 14,
@@ -35,7 +17,7 @@ app.hookupMap = function() {
     tileLayer: { detectRetina: true },
     scrollWheelZoom: false,
   };
-  var map = L.mapbox.map('map', 'ardouglass.h3mingmm', options);
+  var map = app.map = L.mapbox.map('map', 'ardouglass.h3mingmm', options);
 
   // Initialise the FeatureGroup to store editable layers
   var drawnItems = new L.FeatureGroup();
@@ -44,7 +26,15 @@ app.hookupMap = function() {
   // Initialise the draw control and pass it the FeatureGroup of editable layers
   // TODO: Limit it to the polygon tool. Hint to start drawing?
   var drawControl = new L.Control.Draw({
-    edit: { featureGroup: drawnItems }
+    draw: {
+      polyline: false,
+      rectangle: false,
+      circle: false,
+      marker: false,
+    },
+    edit: {
+      featureGroup: drawnItems
+    },
   });
   map.addControl(drawControl);
 
@@ -52,9 +42,6 @@ app.hookupMap = function() {
     // kill any existing layers. we only want one.
     // then add the new layers.
     // then update the state
-
-
-
     var geometry = drawnItems.addLayer(e.layer);
     console.log(geometry);
     // s.subscription.geom = JSON.stringify(geometry.toGeoJSON().features[0].geometry);
@@ -84,11 +71,14 @@ app.hookupSteps = function() {
     $('.extraInfo').slideDown();
   });
 
-  $('.subscribeButton').on('click', function(event) {
+  var finishSubscribe = function(e) {
     // TODO: animate the done checkmark at the same time
+    e.preventDefault();
     $('#confirmation').slideDown();
     app.scrollToElement($('#confirmation'));
-  });
+  };
+  $('.subscribeButton').on('click', finishSubscribe);
+  $('#subscribeForm').on('submit', finishSubscribe);
 
   $('.resetButton').on('click', function(event) {
     app.scrollToElement($('#step1'));
@@ -98,4 +88,37 @@ app.hookupSteps = function() {
       $('#confirmation').hide();
     }, 800);
   });
+
+  $('#geolocateForm').on('submit', function(e) {
+    e.preventDefault();
+    var address = $('#geolocate').val();
+    app.geocode(address, function(latlng) {
+      app.map.setView(latlng, 15);
+    });
+  });
+};
+
+app.scrollToElement = function(el) {
+  $('html,body').animate({
+    scrollTop: el.offset().top
+  }, 800);
+};
+
+app.geocode = function(city, callback, context) {
+ var url = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + encodeURIComponent(city);
+
+ $.getJSON(url, function(response) {
+    if (response.error || response.results.length === 0) {
+      console.log('Unable to geocode city. Womp Womp.', response.error);
+    }
+
+    // Get the coordinates for the center of the city
+    var location = response.results[0].geometry.location;
+    var latlng = [location.lat, location.lng];
+    callback.call(context || this, latlng);
+  });
+};
+
+app.submitSubscription = function(callback) {
+  $.post('/subscriptions', { subscription: app.state }, callback); 
 };

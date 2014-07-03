@@ -11,26 +11,20 @@
     <h3>SELECT YOUR TOPIC <span>(STEP 1 OF 3)</span></h3>
   </div>
 
-  <!--   <% @publishers.each do |publisher| %>
-    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-      <a href="#location" data-publisher-id="<%= publisher.id %>" class="topic-selection">
-        <div class="panel panel-topic <% if publisher.active == true then %>panel-simple<% else %>panel-soon<% end %>">
-          <div class="panel-heading"><%= publisher.category %></div>
-          <div class="panel-body">
-            <div class="publisher-title"><%= publisher.title %></div>
-            <% if publisher.active != true then %><img class="feed-coming-soon" src="images/icons/coming-soon.png"><% end %>
-            <img src="images/icons/<%= publisher.icon %>.png">
-          </div>
-        </div>
-      </a>
-    </div>
-  <% end %> -->
+  <% @publishers.each do |publisher| %>
+  pub... 
+  <% end %>
 </section>
 
 <section id="step2">
   <div class="instruction">
     <h2>In my area:</h2>
     <h3>DRAW ON THE MAP <span>(STEP 2 OF 3)</span></h3>
+    <form id="geolocateForm">
+      <input type="text" id="geolocate" placeholder="type address to center"></input>
+      <input type="submit" style="display:none"  />
+    </form>
+
   </div>
 
   <div id="map"></div>
@@ -49,7 +43,10 @@
   </div>
 
   <div class="extraInfo" style="display:none">
-    <input type="text" class="phoneNumber" placeholder="phone number"></input>
+    <form id="subscribeForm">
+      <input type="text" class="phoneNumber" placeholder="phone number"></input>
+      <input type="submit" style="display:none"  />
+    </form>
     <div class="bigButton orangeButton subscribeButton">subscribe</div>
   <div>
 </section>
