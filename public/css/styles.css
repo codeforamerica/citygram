@@ -11,6 +11,10 @@ body {
   color: #182A4A;
 }
 
+input {
+  font-family: "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
 strong {
   font-weight: 700;
 }
@@ -158,19 +162,29 @@ section h3 span {
 
 /*********** Map Section **************/
 
-#map {
+#step2 .instruction {
+  position: relative;
+}
+
+#step2 #map {
   height: 500px;
   width: 100%; 
   border: 1px dashed #D1D5D8;
 }
 
-.mapButton {
+#step2 #geolocate {
+  position: absolute;
+  right: 0;
+  top: 17px;
+  width: 400px;
+}
+
+#step2 .mapButton {
   min-width: 80%;
   margin: 0 auto;
   display: block;
   margin-top: 40px;
 }
-
 
 /*********** Contact Section **************/
 
