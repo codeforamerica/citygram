@@ -10,6 +10,12 @@ body {
   font-family: "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
+strong {
+  font-weight: 700;
+}
+
+/*********** Form Elements **************/
+
 .bigButton {
   color: #fff;
   text-align: center;
@@ -48,12 +54,36 @@ body {
   color: #fff;
 }
 
+input {
+  height: 60px;
+  padding: 10px 16px;
+  font-size: 20px;
+  line-height: 1.428571429;
+  color: #8A949D;
+  vertical-align: middle;
+  background-color: #FFF;
+  border: 2px solid #8A949D;
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+
+input:focus {
+  outline: none;
+  border-color: #182A4A;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(24, 42, 74, 0.6);
+}
+
 header {
   background: url(/img/background.jpg);
   background-size: cover;
   height: 500px;
   position: relative;
 }
+
+/*********** Header **************/
 
 header .logo {
   background: url(/img/citygram.png);
@@ -76,23 +106,26 @@ header h1 {
 }
 
 header p {
-  font-size: 21px;
-  line-height: 29px;
+  font-size: 36px;
+  line-height: 40px;
   position: absolute;
   left: 100px;
   top: 380px;
   text-shadow: 0 2px 15px rgba(0, 0, 0, 0.25);
-  color: #fff;
+  color: #FFF;
   font-weight: 200;
-  max-width: 360px;
+  max-width: 450px;
 }
 
 header .startButton {
   position: absolute;
   right: 100px;
-  top: 360px;
+  top: 375px;
   width: 160px;
 }
+
+
+/*********** Sections **************/
 
 section {
   padding: 30px 100px;
@@ -122,6 +155,9 @@ section h3 {
   left: 6px;
 }
 
+
+/*********** Map Section **************/
+
 #map {
   height: 500px;
   width: 100%; 
@@ -135,15 +171,66 @@ section h3 {
   margin-top: 40px;
 }
 
-.contactButtons {
+
+/*********** Contact Section **************/
+
+#step3 .contactButtons {
   text-align: center;
 }
 
-.smsButton, .emailButton {
+#step3 .smsButton, #step3 .emailButton {
   min-width: 40%;
 }
 
+#step3 .extraInfo {
+  width: 80%;
+  margin: 0 auto;
+  padding-right: 195px;
+  position: relative;
+  margin-top: 20px;
+}
+
+#step3 .phoneNumber {
+  width: 100%;
+  display: inline-block
+}
+
+#step3 .subscribeButton {
+  font-size: 23px;
+  padding: 14px;
+  width: 180px;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+#step3 .subscribeButton:focus {
+  
+}
+
+/*********** Confirmation Section **************/
+
+#confirmation {
+  padding-top: 240px;
+  background: url(/img/icons/success.png)center 60px no-repeat;
+  background-size: 150px 150px;
+}
+
+#confirmation .resetButton {
+  width: 100%;
+  margin-top: 30px;
+}
+
+#confirmation p {
+  font-size: 35px;
+  line-height: 50px;
+  text-align: center;
+}
+
+/*********** Footer **************/
+
 footer {
   height: 500px;
-  background: #E47C5D;
+  background: #fff;
 }
+

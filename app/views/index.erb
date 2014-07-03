@@ -2,10 +2,9 @@
   <div class="logo"></div>
   <h1>Subscribe to your city.</h1>
   <p>Get updates on the topics and areas you care about.<p>
-  <div class="bigButton startButton">start</div>
+  <div id="start" class="bigButton startButton">start</div>
 </header>
 
-<!-- Choose topics -->
 <section id="step1">
   <div class="instruction">
     <h2>I want updates about:</h2>
@@ -28,7 +27,6 @@
   <% end %> -->
 </section>
 
-<!-- Choose location -->
 <section id="step2">
   <div class="instruction">
     <h2>In my area:</h2>
@@ -39,7 +37,6 @@
   <div class="bigButton orangeButton mapButton">I'm happy with the area above.</div>
 </section>
 
-<!-- Choose contact method -->
 <section id="step3">
   <div class="instruction">
     <h2>In this way:</h2>
@@ -52,12 +49,15 @@
   </div>
 
   <div class="extraInfo" style="display:none">
-    <input></input>
-    <div class="input"></div>
+    <input type="text" class="phoneNumber" placeholder="phone number"></input>
+    <div class="bigButton orangeButton subscribeButton">subscribe</div>
   <div>
 </section>
 
-<!-- Thank you -->
-<section></section>
+<section id="confirmation" style="display:none">
+  <p>You're subscribed to <strong>traffic incidents!</strong></p>
+  <p>Look out for your confirmation text shortly.</p>
+  <div class="bigButton greenButton resetButton">sign up for another topic</div>
+</section>
 
 <footer></footer>
