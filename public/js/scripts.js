@@ -33,24 +33,22 @@ app.hookupMap = function() {
       marker: false,
     },
     edit: {
-      featureGroup: drawnItems
+      featureGroup: drawnItems,
+      edit: false,
+      remove: false,
     },
   });
   map.addControl(drawControl);
 
-  map.on('draw:created', function(e) {
-    // kill any existing layers. we only want one.
-    // then add the new layers.
-    // then update the state
-    var geometry = drawnItems.addLayer(e.layer);
-    console.log(geometry);
-    // s.subscription.geom = JSON.stringify(geometry.toGeoJSON().features[0].geometry);
+  map.on('draw:drawstart', function(e) {
+    if (app.prevLayer) map.removeLayer(app.prevLayer);
   });
 
-  return {
-    map: map,
-
-  };
+  map.on('draw:created', function(e) {
+    var geometry = drawnItems.addLayer(e.layer);
+    app.state.geom = JSON.stringify(geometry.toGeoJSON().features[0].geometry);
+    app.prevLayer = e.layer;
+  });
 };
 
 app.hookupSteps = function() {
@@ -64,6 +62,10 @@ app.hookupSteps = function() {
 
   $('.mapButton').on('click', function() {
     app.scrollToElement($('#step3'));
+  });
+
+  $('.leaflet-draw-draw-polygon').on('click', function() {
+    $('.drawHint').fadeOut();
   });
 
   $('.smsButton').on('click', function(event) {
