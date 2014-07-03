@@ -1,110 +1,149 @@
+/* CSS reset from http://meyerweb.com/eric/tools/css/reset/  */
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}table{border-collapse:collapse;border-spacing:0}
+
+/* apply a natural box layout model to all elements */
+*, *:before, *:after {
+  -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+}
+
+body {
+  font-family: "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.bigButton {
+  color: #fff;
+  text-align: center;
+  border: 6px solid #fff;
+  border-radius: 15px;
+  padding: 20px;
+  font-size: 35px;
+  width: 200px;
+  display: inline-block;
+  font-weight: 700;
+}
+
+.bigButton:hover, .bigButton.selected {
+  background: #fff;
+  color: #E47C5D;
+  cursor: pointer;
+}
+
+.orangeButton {
+  color: #E47C5D;
+  border-color: #E47C5D;
+}
+
+.orangeButton:hover, .orangeButton.selected {
+  background: #E47C5D;
+  color: #fff;
+}
+
+.greenButton {
+  color: #59B390;
+  border-color: #59B390;
+}
+
+.greenButton:hover, .greenButton.selected {
+  background: #59B390;
+  color: #fff;
+}
+
+header {
+  background: url(/img/background.jpg);
+  background-size: cover;
+  height: 500px;
+  position: relative;
+}
+
+header .logo {
+  background: url(/img/citygram.png);
+  background-size: 320px 80px;
+  position: absolute;
+  left: 100px;
+  top: 40px;
+  height: 80px;
+  width: 320px;
+}
+
+header h1 {
+  font-size: 80px;
+  position: absolute;
+  left: 100px;
+  top: 200px;
+  text-shadow: 0 2px 15px rgba(0, 0, 0, 0.25);
+  color: #fff;
+  font-weight: 700;
+}
+
+header p {
+  font-size: 21px;
+  line-height: 29px;
+  position: absolute;
+  left: 100px;
+  top: 380px;
+  text-shadow: 0 2px 15px rgba(0, 0, 0, 0.25);
+  color: #fff;
+  font-weight: 200;
+  max-width: 360px;
+}
+
+header .startButton {
+  position: absolute;
+  right: 100px;
+  top: 360px;
+  width: 160px;
+}
+
+section {
+  padding: 30px 100px;
+  border-bottom: 1px solid #E7E8EA;
+}
+
+section .instruction {
+  border-bottom: 1px solid #D1D5D8;
+  padding-bottom: 10px;
+  margin-bottom: 30px;
+}
+
+section h2 {
+  color: #000;
+  font-size: 40px;
+  font-weight: 700;
+  display: inline-block;
+}
+
+section h3 {
+  color: #8A949D;
+  font-size: 28px;
+  font-weight: 200;
+  display: inline-block;
+  position: relative;
+  top: -3px;
+  left: 6px;
+}
+
 #map {
   height: 500px;
+  width: 100%; 
+  border: 1px dashed #D1D5D8;
 }
 
-h1 {
-	font-weight: 900;
-	font-size: 60px;
-	color: #BBB;
+.mapButton {
+  min-width: 80%;
+  margin: 0 auto;
+  display: block;
+  margin-top: 40px;
 }
 
-.card {
-	border-radius: 4px;
-	font-size: 14px;
-	font-weight: 300;
-	letter-spacing: .02em;
-	line-height: 17px;
-	text-align: center;
-	position: relative;
-	margin-bottom: 30px;
+.contactButtons {
+  text-align: center;
 }
 
-.topic {
-	text-align: center;
-	font-size: 22px;
-	font-weight: 900;
-	padding-top: 7px;
-	margin-top: 0;
-	margin-bottom: 0;
+.smsButton, .emailButton {
+  min-width: 40%;
 }
 
-h5 {
-	font-weight: 900;
-	letter-spacing: 0;
-}
-
-.topic-card {
-	background-color: #DDD;
-	border-radius: 4px;
-	padding:15px;
-	opacity: 1;
-	transition: opacity .1s linear;
-}
-
-.topic-card p {
-	margin: 0`;
-}
-
-.detail-card {
-	background-color: pink;
-	border-radius: 4px;
-	padding:15px;
-	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	opacity:0;
-	transition: opacity .2s linear;
-}
-
-.detail-card .btn {
-	margin-top: 10px;
-}
-
-.detail-card:hover {
-	opacity:1;
-}
-
-
-img.icon {
-	display:block;
-	margin: 0 auto;
-	padding-bottom: 12px;
-	padding-top: 12px;
-	max-height: 124px;
-	max-width: 100px;
-}
-
-.btn-huge {
-	font-size: 40px;	
-}
-
-.btn {
-	line-height:1.6;
-	border: 5px;
-	padding: 6px 12px;
-}
-
-form.form-inline {
-	padding: 20px;
-}
-
-input.form-control {
-	height: 72px;
-	font-size: 36px;
-	text-align: center;
-}
-
-#contact .btn {
-	font-size: 36px;
-	font-weight: 100;
-}
-
-#message-method {
-	margin-bottom: 20px;
-}
-
-#message-method .btn img {
-	height: 50px;
+footer {
+  height: 500px;
+  background: #E47C5D;
 }

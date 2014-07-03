@@ -26,6 +26,7 @@ module Citygram
       end
 
       get '/' do
+        @publishers = Publisher.all
         erb :index
       end
     end
