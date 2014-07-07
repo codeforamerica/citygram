@@ -139,7 +139,7 @@ app.resetState = function() {
   $('.publisher').removeClass('selected');
 
   app.state.geom = undefined;
-  if (app.prevLayer) map.removeLayer(app.prevLayer);
+  if (app.prevLayer) app.map.removeLayer(app.prevLayer);
   // Let's leave the type and phone number in place, for easy re-subscribe
 };
 
