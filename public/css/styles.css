@@ -1,110 +1,478 @@
-#map {
+/* CSS reset from http://meyerweb.com/eric/tools/css/reset/  */
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}table{border-collapse:collapse;border-spacing:0}
+
+/* apply a natural box layout model to all elements */
+*, *:before, *:after {
+  -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+}
+
+body {
+  font-family: "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #182A4A;
+}
+
+input {
+  font-family: "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+strong {
+  font-weight: 700;
+}
+
+/*********** Form Elements **************/
+
+.bigButton {
+  color: #fff;
+  text-align: center;
+  border: 6px solid #fff;
+  border-radius: 15px;
+  padding: 20px;
+  font-size: 35px;
+  width: 200px;
+  display: inline-block;
+  font-weight: 700;
+}
+
+.bigButton:hover, .bigButton.selected {
+  background: #fff;
+  color: #E47C5D;
+  cursor: pointer;
+}
+
+.orangeButton {
+  color: #E47C5D;
+  border-color: #E47C5D;
+}
+
+.orangeButton:hover, .orangeButton.selected {
+  background: #E47C5D;
+  color: #fff;
+}
+
+.greenButton {
+  color: #59B390;
+  border-color: #59B390;
+}
+
+.greenButton:hover, .greenButton.selected {
+  background: #59B390;
+  color: #fff;
+}
+
+input {
+  height: 60px;
+  padding: 10px 16px;
+  font-size: 20px;
+  line-height: 1.428571429;
+  color: #8A949D;
+  vertical-align: middle;
+  background-color: #FFF;
+  border: 2px solid #8A949D;
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+
+input:focus {
+  outline: none;
+  border-color: #182A4A;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(24, 42, 74, 0.6);
+}
+
+header {
+  background: url(/img/background.jpg);
+  background-size: cover;
   height: 500px;
+  position: relative;
 }
 
-h1 {
-	font-weight: 900;
-	font-size: 60px;
-	color: #BBB;
+/*********** Header **************/
+
+header .logo {
+  background: url(/img/citygram.png);
+  background-size: 320px 80px;
+  position: absolute;
+  left: 100px;
+  top: 40px;
+  height: 80px;
+  width: 320px;
 }
 
-.card {
-	border-radius: 4px;
-	font-size: 14px;
-	font-weight: 300;
-	letter-spacing: .02em;
-	line-height: 17px;
-	text-align: center;
-	position: relative;
-	margin-bottom: 30px;
+header h1 {
+  font-size: 80px;
+  position: absolute;
+  left: 100px;
+  top: 200px;
+  text-shadow: 0 2px 15px rgba(0, 0, 0, 0.25);
+  color: #fff;
+  font-weight: 700;
 }
 
-.topic {
-	text-align: center;
-	font-size: 22px;
-	font-weight: 900;
-	padding-top: 7px;
-	margin-top: 0;
-	margin-bottom: 0;
+header p {
+  font-size: 36px;
+  line-height: 40px;
+  position: absolute;
+  left: 100px;
+  top: 380px;
+  text-shadow: 0 2px 15px rgba(0, 0, 0, 0.25);
+  color: #FFF;
+  font-weight: 200;
+  max-width: 450px;
 }
 
-h5 {
-	font-weight: 900;
-	letter-spacing: 0;
+header .startButton {
+  position: absolute;
+  right: 100px;
+  top: 375px;
+  width: 160px;
 }
 
-.topic-card {
-	background-color: #DDD;
-	border-radius: 4px;
-	padding:15px;
-	opacity: 1;
-	transition: opacity .1s linear;
+/*********** Sections **************/
+
+section {
+  padding: 30px 100px;
+  margin-bottom: 30px;
 }
 
-.topic-card p {
-	margin: 0`;
+section .instruction {
+  padding-bottom: 10px;
+  margin-bottom: 8px;
+<<<<<<< HEAD
 }
 
-.detail-card {
-	background-color: pink;
-	border-radius: 4px;
-	padding:15px;
-	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	opacity:0;
-	transition: opacity .2s linear;
+section h2 {
+  font-size: 44px;
+  font-weight: 800;
+  margin-bottom: 13px;
 }
 
-.detail-card .btn {
-	margin-top: 10px;
+section h3 {
+  color: #8A949D;
+  color: #D1D5D8;
+  font-size: 22px;
+  font-weight: 800;
 }
 
-.detail-card:hover {
-	opacity:1;
+section h3 span {
+  font-weight: 200;
 }
 
 
-img.icon {
-	display:block;
-	margin: 0 auto;
-	padding-bottom: 12px;
-	padding-top: 12px;
-	max-height: 124px;
-	max-width: 100px;
+/*********** Publisher Section **************/
+
+#step1 .publishers {
+  font-size: 0;
+  margin: -10px;
 }
 
-.btn-huge {
-	font-size: 40px;	
+#step1 .publisher {
+  display: inline-block;
+  background: #F1F1F2;
+  width: 220px;
+  height: 220px;
+  border-radius: 15px;
+  vertical-align: top;
+  margin: 10px;
+  text-align: center;
+  border: 1px solid #E8E8E9;
 }
 
-.btn {
-	line-height:1.6;
-	border: 5px;
-	padding: 6px 12px;
+#step1 .publisher:not(.soon):hover, #step1 .selected {
+  background: #8b969e;
+  border: 1px solid #8b969e;
+  color: #fff;
+  cursor: pointer;
 }
 
-form.form-inline {
-	padding: 20px;
+#step1 .publisher .city {
+  text-transform: uppercase;
+  border-bottom: 2px solid #BAC0C8;
+  font-size: 13px;
+  padding: 9px 0;
+  font-weight: 700;
+  padding-top: 12px;
 }
 
-input.form-control {
-	height: 72px;
-	font-size: 36px;
-	text-align: center;
+#step1 .publisher img {
+  width: 100px;
+  height: 100px;
 }
 
-#contact .btn {
-	font-size: 36px;
-	font-weight: 100;
+#step1 .publisher .title {
+  font-size: 24px;
+  padding: 8px;
+  line-height: 28px;
+  padding-top: 13px;
+  padding-bottom: 4px;
 }
 
-#message-method {
-	margin-bottom: 20px;
+#step1 .publisher.soon {
+  position: relative;
+  color: #8b969e;
 }
 
-#message-method .btn img {
-	height: 50px;
+#step1 .publisher.soon::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: url(/img/icons/coming-soon.png);
+  background-size: 120px 120px;
+  width: 120px;
+  height: 120px;
+}
+
+/*********** Map Section **************/
+
+#step2 .instruction {
+  position: relative;
+}
+
+#step2 #map {
+  height: 400px;
+  width: 100%; 
+  border: 1px dashed #D1D5D8;
+  position: relative;
+}
+
+#step2 .drawHint {
+  font-family: "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background: #757575;
+  color: #FFF;
+  position: absolute;
+  left: 54px;
+  top: 75px;
+  z-index: 9999;
+  font-size: 15px;
+  padding: 3px 8px;
+  padding-left: 5px;
+}
+
+#step2 .drawHint:after {
+  content: '';
+  position: absolute;
+  left: -13px;
+  top: 0px;
+  width: 0;
+  height: 0;
+  border-top: 13px solid rgba(0, 0, 0, 0);
+  border-bottom: 13px solid rgba(0, 0, 0, 0);
+  border-right: 13px solid #757575;
+}
+
+/* Override controls in Leaflet.Draw */
+#step2 .leaflet-draw-actions {
+  display: none !important;
+}
+
+#step2 #geolocate {
+  position: absolute;
+  right: 0;
+  top: 17px;
+  width: 400px;
+}
+
+#step2 .mapButton {
+  min-width: 80%;
+  margin: 0 auto;
+  display: block;
+  margin-top: 40px;
+}
+
+/*********** Contact Section **************/
+
+#step3 .contactButtons {
+  text-align: center;
+}
+
+#step3 .smsButton, #step3 .emailButton {
+  min-width: 40%;
+  margin-right: 1%;
+  position: relative;
+}
+
+=======
+}
+
+section h2 {
+  font-size: 44px;
+  font-weight: 800;
+  margin-bottom: 13px;
+}
+
+section h3 {
+  color: #8A949D;
+  color: #D1D5D8;
+  font-size: 22px;
+  font-weight: 800;
+}
+
+section h3 span {
+  font-weight: 200;
+}
+
+
+/*********** Map Section **************/
+
+#step2 .instruction {
+  position: relative;
+}
+
+#step2 #map {
+  height: 400px;
+  width: 100%; 
+  border: 1px dashed #D1D5D8;
+  position: relative;
+}
+
+#step2 .drawHint {
+  font-family: "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background: #757575;
+  color: #FFF;
+  position: absolute;
+  left: 54px;
+  top: 75px;
+  z-index: 9999;
+  font-size: 15px;
+  padding: 3px 8px;
+  padding-left: 5px;
+}
+
+#step2 .drawHint:after {
+  content: '';
+  position: absolute;
+  left: -13px;
+  top: 0px;
+  width: 0;
+  height: 0;
+  border-top: 13px solid rgba(0, 0, 0, 0);
+  border-bottom: 13px solid rgba(0, 0, 0, 0);
+  border-right: 13px solid #757575;
+}
+
+/* Override controls in Leaflet.Draw */
+#step2 .leaflet-draw-actions {
+  display: none !important;
+}
+
+#step2 #geolocate {
+  position: absolute;
+  right: 0;
+  top: 17px;
+  width: 400px;
+}
+
+#step2 .mapButton {
+  min-width: 80%;
+  margin: 0 auto;
+  display: block;
+  margin-top: 40px;
+}
+
+/*********** Contact Section **************/
+
+#step3 .contactButtons {
+  text-align: center;
+}
+
+#step3 .smsButton, #step3 .emailButton {
+  min-width: 40%;
+  margin-right: 1%;
+  position: relative;
+}
+
+#step3 .smsButton span, #step3 .emailButton span {
+  position: relative;
+  left: 25px;
+
+}
+
+#step3 .smsButton span::after, #step3 .emailButton span::after {
+  content: '';
+  position: absolute;
+  left: -60px;
+  top: -2px;
+  background: url(/img/icons/text.png) no-repeat;
+  background-size: 50px 50px;
+  width: 50px;
+  height: 50px;
+}
+
+#step3 .smsButton:hover span::after, #step3 .smsButton.selected span::after {
+  background: url(/img/icons/sms-inverted.png) no-repeat;
+  background-size: 50px 50px;
+}
+
+#step3 .emailButton span::after {
+  background: url(/img/icons/email.png) no-repeat;
+  background-size: 50px 50px;
+  top: -5px;
+}
+
+#step3 .emailButton:hover {
+  background: white;
+  color: #59B390;
+  cursor: auto;
+}
+
+#step3 .emailButton:after {
+  content: '';
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  background: url(/img/icons/email-coming-soon.png);
+  background-size: 160px 67px;
+  width: 160px;
+  height: 67px;
+}
+
+
+#step3 .extraInfo {
+  width: 82%;
+  margin: 0 auto;
+  padding-right: 190px;
+  position: relative;
+  margin-top: 20px;
+}
+
+#step3 .phoneNumber {
+  width: 100%;
+  display: inline-block
+}
+
+#step3 .subscribeButton {
+  font-size: 23px;
+  padding: 14px;
+  width: 180px;
+  position: absolute;
+  right: 0;
+  bottom: -1px;
+}
+
+/*********** Confirmation Section **************/
+
+#confirmation {
+  padding-top: 240px;
+  background: url(/img/icons/success.png)center 60px no-repeat;
+  background-size: 150px 150px;
+}
+
+#confirmation .resetButton {
+  width: 100%;
+  margin-top: 30px;
+}
+
+#confirmation p {
+  font-size: 35px;
+  line-height: 50px;
+  text-align: center;
+}
+
+/*********** Footer **************/
+
+footer {
+  height: 500px;
+  background: #fff;
 }

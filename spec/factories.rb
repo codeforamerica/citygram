@@ -2,6 +2,9 @@ FactoryGirl.define do
   factory :publisher, class: Citygram::Models::Publisher do
     title { Faker::Lorem.sentence(3) }
     endpoint { Faker::Internet.uri('https') }
+    sequence(:city) { |n| "City-#{n}" }
+    icon 'balloons.png'
+    active true
   end
 
   factory :event, class: Citygram::Models::Event do

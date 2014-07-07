@@ -25,7 +25,7 @@ module DatabaseHelper
   end
 
   def database_url
-    ENV['DATABASE_URL'] ||= "postgres://localhost/transitmix_#{environment}"
+    ENV['DATABASE_URL'] ||= "postgres://localhost/citygram_#{environment}"
   end
 
   def database

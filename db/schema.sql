@@ -88,7 +88,10 @@ CREATE TABLE publishers (
     title text,
     endpoint text,
     updated_at timestamp without time zone,
-    created_at timestamp without time zone
+    created_at timestamp without time zone,
+    active boolean,
+    city text,
+    icon text
 );
 
 
