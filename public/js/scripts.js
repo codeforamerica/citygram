@@ -8,6 +8,7 @@ app.state = {
   channel: 'sms',
   geom: undefined,
   publisher_id: undefined,
+  contact: undefined,
 };
 
 app.hookupMap = function() {
@@ -82,13 +83,18 @@ app.hookupSteps = function() {
   var finishSubscribe = function(e) {
     // TODO: animate the done checkmark at the same time
     e.preventDefault();
-    $('#confirmation').slideDown();
-    app.scrollToElement($('#confirmation'));
+    app.state.contact = $('.phoneNumber').val();
+
+    app.submitSubscription(function() {
+      $('#confirmation').slideDown();
+      app.scrollToElement($('#confirmation'));
+    });
   };
   $('.subscribeButton').on('click', finishSubscribe);
   $('#subscribeForm').on('submit', finishSubscribe);
 
   $('.resetButton').on('click', function(event) {
+    app.resetState();
     app.scrollToElement($('#step1'));
 
     // Hide after we've scrolled up.
@@ -125,6 +131,16 @@ app.geocode = function(city, callback, context) {
     var latlng = [location.lat, location.lng];
     callback.call(context || this, latlng);
   });
+};
+
+app.resetState = function() {
+
+  app.state.publisher_id = undefined;
+  $('.publisher').removeClass('selected');
+
+  app.state.geom = undefined;
+  if (app.prevLayer) map.removeLayer(app.prevLayer);
+  // Let's leave the type and phone number in place, for easy re-subscribe
 };
 
 app.submitSubscription = function(callback) {
