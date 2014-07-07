@@ -23,6 +23,7 @@ gem 'sidekiq', '~> 3.0'
 gem 'sinatra', '~> 1.4'
 gem 'sinatra-assetpack', require: 'sinatra/assetpack'
 gem 'twilio-ruby', '~> 3.11'
+gem 'uglifier'
 gem 'unicorn'
 
 group :development do
