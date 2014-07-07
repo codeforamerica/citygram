@@ -3,7 +3,7 @@ FactoryGirl.define do
     title { Faker::Lorem.sentence(3) }
     endpoint { Faker::Internet.uri('https') }
     sequence(:city) { |n| "City-#{n}" }
-    icon 'balloons'
+    icon 'balloons.png'
     active true
   end
 
