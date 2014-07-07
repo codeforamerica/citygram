@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-describe Citygram::Services::Notifications::SMS do
-  subject { Citygram::Services::Notifications::SMS }
+describe Citygram::Services::Channels::SMS do
+  subject { Citygram::Services::Channels::SMS }
 
   let(:subscription) { create(:subscription, channel: 'sms', contact: Faker::PhoneNumber.short_phone_number) }
   let(:event) { create(:event) }
@@ -80,7 +80,7 @@ describe Citygram::Services::Notifications::SMS do
         to_return(status: 400, body: response_body, headers: response_headers)
 
       expect { subject.call(subscription, event) }.
-        to raise_error Citygram::Services::Notifications::NotificationFailure, /#{subscription.contact}/
+        to raise_error Citygram::Services::Channels::NotificationFailure, /#{subscription.contact}/
 
       expect(a_request(:post, sms_endpoint).
         with(body: request_body, headers: request_headers)).to have_been_made.once

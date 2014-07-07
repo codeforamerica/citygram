@@ -1,6 +1,6 @@
 module Citygram
   module Services
-    module Notifications
+    module Channels
       class SMS < Base
         FROM_NUMBER = ENV.fetch('TWILIO_FROM_NUMBER')
 
@@ -24,7 +24,7 @@ module Citygram
         end
       end
 
-      add_channel :sms, Citygram::Services::Notifications::SMS
+      Channels[:sms] = Citygram::Services::Channels::SMS
     end
   end
 end

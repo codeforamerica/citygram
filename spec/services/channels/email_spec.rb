@@ -1,9 +1,9 @@
 require 'spec_helper'
 
-describe Citygram::Services::Notifications::Email do
-  include Mail::Matchers
+describe Citygram::Services::Channels::Email do
+  subject { Citygram::Services::Channels::Email }
 
-  subject { Citygram::Services::Notifications::Email }
+  include Mail::Matchers
 
   let(:subscription) { create(:subscription, channel: 'email', contact: to_email_address) }
   let(:event) { create(:event) }

@@ -25,7 +25,7 @@ module Citygram
       require 'sinatra-error-logging'
     end
 
-    use Routes::Home
+    use Routes::Pages
   end
 
   class API < Grape::API

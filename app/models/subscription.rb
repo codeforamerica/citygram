@@ -1,4 +1,4 @@
-require 'app/services/notifications'
+require 'app/services/channels'
 
 module Citygram
   module Models
@@ -15,7 +15,7 @@ module Citygram
       def validate
         super
         validates_presence [:geom, :contact, :publisher_id, :channel]
-        validates_includes Citygram::Services::Notifications.available_channels, :channel
+        validates_includes Citygram::Services::Channels.available.map(&:to_s), :channel
         validates_url :contact   if channel == 'webhook'
         validates_email :contact if channel == 'email'
         # TODO: validates_phone_number :contact if channel == 'sms'

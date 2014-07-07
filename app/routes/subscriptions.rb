@@ -1,4 +1,4 @@
-require 'app/services/notifications'
+require 'app/services/channels'
 
 module Citygram
   module Routes
@@ -26,7 +26,7 @@ module Citygram
         requires :subscription, type: Hash do
           requires :publisher_id, type: Integer
           requires :contact, type: String
-          requires :channel, type: String, values: Citygram::Services::Notifications.available_channels
+          requires :channel, type: String, values: Citygram::Services::Channels.available.map(&:to_s)
           requires :geom, type: String
         end
       end
