@@ -18,6 +18,7 @@ module Citygram
   class App < Sinatra::Application
     configure do
       set :logger, Logger.new(test? ? nil : STDOUT)
+      set :map_id, ENV.fetch('MAP_ID') { 'codeforamerica.inb9loae' }
     end
 
     configure :production do

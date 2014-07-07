@@ -18,7 +18,8 @@ app.hookupMap = function() {
     tileLayer: { detectRetina: true },
     scrollWheelZoom: false,
   };
-  var map = app.map = L.mapbox.map('map', 'ardouglass.h3mingmm', options);
+  var mapId = $('meta[name=mapId]').attr('content');
+  var map = app.map = L.mapbox.map('map', mapId, options);
 
   // Initialise the FeatureGroup to store editable layers
   var drawnItems = new L.FeatureGroup();
