@@ -16,9 +16,17 @@ module Citygram
         super
         validates_presence [:geom, :contact, :publisher_id, :channel]
         validates_includes Citygram::Services::Channels.available.map(&:to_s), :channel
-        validates_url :contact   if channel == 'webhook'
-        validates_email :contact if channel == 'email'
-        # TODO: validates_phone_number :contact if channel == 'sms'
+
+        case channel
+        when 'webhook'
+          validates_url :contact
+        when 'email'
+          validates_email :contact
+        when 'sms'
+          # TODO: best way to validate phone numbers
+          # validates_phone_number :contact
+        end
+
         validates_geometry :geom
       end
     end
