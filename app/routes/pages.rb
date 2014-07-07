@@ -32,6 +32,8 @@ module Citygram
 
         js_compression :uglify
         css_compression :simple
+
+        prebuild true
       end
 
       get '/' do
