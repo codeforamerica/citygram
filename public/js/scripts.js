@@ -56,7 +56,13 @@ app.hookupSteps = function() {
     app.scrollToElement($('#step1'));
   });
 
-  $('.somethingButton').on('click', function() {
+  $('.publisher:not(.soon)').on('click', function(event) {
+    $('.publisher').removeClass('selected');
+
+    var $publisher = $(event.currentTarget);
+    app.state.publisher_id = $publisher.data('publisher-id');
+    $publisher.addClass('selected');
+
     app.scrollToElement($('#step2'));
   });
 
