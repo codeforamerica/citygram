@@ -11,9 +11,15 @@
     <h3>SELECT YOUR TOPIC <span>(STEP 1 OF 3)</span></h3>
   </div>
 
-  <% @publishers.each do |publisher| %>
-  pub... 
-  <% end %>
+  <div class="publishers">
+    <% @publishers.each do |publisher| %>
+    <div class="publisher <%= 'soon' unless publisher.active %>" data-publisher-id="<%= publisher.id %>">
+      <div class="city"><%= publisher.city %></div>
+      <div class="title"><%= publisher.title %></div>
+      <img src="/img/icons/<%= publisher.icon %>">
+    </div>
+    <% end %>
+  </div>
 </section>
 
 <section id="step2">

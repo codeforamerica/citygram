@@ -129,7 +129,6 @@ header .startButton {
   width: 160px;
 }
 
-
 /*********** Sections **************/
 
 section {
@@ -159,6 +158,70 @@ section h3 span {
   font-weight: 200;
 }
 
+
+/*********** Publisher Section **************/
+
+#step1 .publishers {
+  font-size: 0;
+  margin: -10px;
+}
+
+#step1 .publisher {
+  display: inline-block;
+  background: #F1F1F2;
+  width: 220px;
+  height: 220px;
+  border-radius: 15px;
+  vertical-align: top;
+  margin: 10px;
+  text-align: center;
+  border: 1px solid #E8E8E9;
+}
+
+#step1 .publisher:not(.soon):hover, #step1 .selected {
+  background: #8b969e;
+  border: 1px solid #8b969e;
+  color: #fff;
+  cursor: pointer;
+}
+
+#step1 .publisher .city {
+  text-transform: uppercase;
+  border-bottom: 2px solid #BAC0C8;
+  font-size: 13px;
+  padding: 9px 0;
+  font-weight: 700;
+  padding-top: 12px;
+}
+
+#step1 .publisher img {
+  width: 100px;
+  height: 100px;
+}
+
+#step1 .publisher .title {
+  font-size: 24px;
+  padding: 8px;
+  line-height: 28px;
+  padding-top: 13px;
+  padding-bottom: 4px;
+}
+
+#step1 .publisher.soon {
+  position: relative;
+  color: #8b969e;
+}
+
+#step1 .publisher.soon::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: url(/img/icons/coming-soon.png);
+  background-size: 120px 120px;
+  width: 120px;
+  height: 120px;
+}
 
 /*********** Map Section **************/
 
