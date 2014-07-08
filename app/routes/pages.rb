@@ -33,7 +33,7 @@ module Citygram
         js_compression :uglify
         css_compression :simple
 
-        prebuild true
+        prebuild app.production?
       end
 
       get '/' do
