@@ -31,7 +31,6 @@ group :development do
 end
 
 group :test do
-  gem 'database_cleaner'
   gem 'factory_girl'
   gem 'ffaker'
   gem 'rack-test'
