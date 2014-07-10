@@ -1,4 +1,4 @@
-require 'app/routes/validators/max'
+require 'app/routes/validations/max'
 
 require 'app/routes/pages'
 require 'app/routes/publishers'
