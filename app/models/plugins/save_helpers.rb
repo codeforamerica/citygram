@@ -3,6 +3,12 @@ module Citygram
   module Models
     module Plugins
       module SaveHelpers
+        module ClassMethods
+          def create!(*args, &block)
+            new(*args, &block).save!
+          end
+        end
+
         module InstanceMethods
           def save!(*columns)
             opts = columns.last.is_a?(Hash) ? columns.pop : {}

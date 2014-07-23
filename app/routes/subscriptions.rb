@@ -32,7 +32,7 @@ module Citygram
       end
 
       post '/subscriptions' do
-        Subscription.create(params[:subscription])
+        Subscription.create!(params[:subscription])
       end
     end
   end
