@@ -69,11 +69,14 @@ app.hookupSteps = function() {
     }, 800);
   });
 
+  var prevMarker;
   var geolocate = function(e) {
     e.preventDefault();
     var address = $('#geolocate').val();
     app.geocode(address, function(latlng) {
       app.map.setView(latlng, 15);
+      if (prevMarker) app.map.removeLayer(prevMarker);
+      prevMarker = L.marker(latlng).addTo(app.map);
     });
   };
 
