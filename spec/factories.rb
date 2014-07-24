@@ -9,7 +9,7 @@ FactoryGirl.define do
 
   factory :event, class: Citygram::Models::Event do
     publisher
-    title { Faker::Lorem.sentence(3) }
+    title { Faker::Lorem.words(3) }
     description { Faker::Lorem.paragraph(2) }
     feature_id { SecureRandom.hex(10) }
     geom do

@@ -50,5 +50,11 @@ describe Citygram::Routes::Subscriptions do
       post '/subscriptions', params
       expect(last_response.body).to eq Subscription.last.to_json
     end
+
+    it 'queues a subscription confirmation job' do
+      expect {
+        post '/subscriptions', params
+      }.to change{ Citygram::Workers::SubscriptionConfirmation.jobs.count }.by(+1)
+    end
   end
 end

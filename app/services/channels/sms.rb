@@ -11,8 +11,12 @@ module Citygram
           )
         end
 
+        def self.sms(*args)
+          client.account.messages.create(*args)
+        end
+
         def call
-          self.class.client.account.messages.create(
+          self.class.sms(
             from: FROM_NUMBER,
             to: subscription.contact,
             body: event.title

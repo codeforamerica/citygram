@@ -32,7 +32,9 @@ module Citygram
       end
 
       post '/subscriptions' do
-        Subscription.create!(params[:subscription])
+        Subscription.create!(params[:subscription]).tap do |subscription|
+          Citygram::Workers::SubscriptionConfirmation.perform_async(subscription.id)
+        end
       end
     end
   end
