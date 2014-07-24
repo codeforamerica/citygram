@@ -122,9 +122,7 @@ app.resetState = function() {
   app.state.publisher_id = undefined;
   $('.publisher').removeClass('selected');
 
-  app.state.geom = undefined;
-  if (app.prevLayer) app.map.removeLayer(app.prevLayer);
-  // Let's leave the type and phone number in place, for easy re-subscribe
+  // Let's leave the location and phone number in place, for easy re-subscribe
 };
 
 app.submitSubscription = function(callback) {
