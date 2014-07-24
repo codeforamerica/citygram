@@ -13,8 +13,8 @@ app.state = {
 
 app.hookupMap = function() {
   var options = {
-    zoom: 14,
-    center: [35.225803, -80.838625],
+    zoom: 13,
+    center: [47.604432, -122.336014],
     tileLayer: { detectRetina: true },
     scrollWheelZoom: false,
   };
