@@ -72,7 +72,7 @@ app.hookupSteps = function() {
     }, 800);
   });
 
-  var prevMarker;
+  var prevMarker, prevCircle;
   var geolocate = function(e) {
     e.preventDefault();
     var address = $('#geolocate').val();
@@ -81,8 +81,10 @@ app.hookupSteps = function() {
       updateGeometry(latlng);
 
       if (prevMarker) app.map.removeLayer(prevMarker);
-      prevMarker = L.marker(latlng, { draggable: true }).addTo(app.map);
-      prevMarker.on('dragend', updateGeometry);
+      if (prevCircle) app.map.removeLayer(prevCircle);
+
+      prevMarker = L.marker(latlng).addTo(app.map);
+      prevCircle = L.circle(latlng, 1000).addTo(app.map);
     });
   };
 
