@@ -75,8 +75,21 @@ app.hookupSteps = function() {
     var address = $('#geolocate').val();
     app.geocode(address, function(latlng) {
       app.map.setView(latlng, 15);
+      updateGeometry(latlng);
+
       if (prevMarker) app.map.removeLayer(prevMarker);
-      prevMarker = L.marker(latlng).addTo(app.map);
+      prevMarker = L.marker(latlng, { draggable: true }).addTo(app.map);
+      prevMarker.on('dragend', updateGeometry);
+    });
+  };
+
+  var BOUNDING_DISTANCE_IN_KM = 1;
+  var updateGeometry = function(latlng) {
+    var center = new LatLon(latlng[0], latlng[1]);
+    var bbox = center.boundingBox(BOUNDING_DISTANCE_IN_KM);
+    app.state.geom = JSON.stringify({
+      type: 'Polygon',
+      coordinates: bbox,
     });
   };
 
@@ -106,7 +119,6 @@ app.geocode = function(city, callback, context) {
 };
 
 app.resetState = function() {
-
   app.state.publisher_id = undefined;
   $('.publisher').removeClass('selected');
 
