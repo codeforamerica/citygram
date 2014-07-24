@@ -13,7 +13,7 @@
 
   <div class="publishers">
     <% @publishers.each do |publisher| %>
-    <div class="publisher <%= 'soon' unless publisher.active %>" data-publisher-id="<%= publisher.id %>">
+    <div class="publisher <%= 'soon' unless publisher.active %>" data-publisher-id="<%= publisher.id %>" data-publisher-title="<%= publisher.title %>">
       <!-- <div class="city"><%= publisher.city %></div> -->
       <div class="title"><%= publisher.title %></div>
       <img src="/img/icons/<%= publisher.icon %>">
@@ -60,7 +60,7 @@
 </section>
 
 <section id="confirmation" style="display:none">
-  <p>You're subscribed to <strong>traffic incidents</strong> in your area!</p>
+  <p>You're subscribed to <strong class="confirmationType">traffic incidents</strong> in your area!</p>
   <p>Look out for your confirmation text shortly.</p>
   <div class="bigButton greenButton resetButton">sign up for another topic</div>
 </section>

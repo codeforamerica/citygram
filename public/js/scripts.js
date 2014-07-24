@@ -34,6 +34,9 @@ app.hookupSteps = function() {
     app.state.publisher_id = $publisher.data('publisher-id');
     $publisher.addClass('selected');
 
+    // Update the confirmation section with the name
+    $('.confirmationType').html($publisher.data('publisher-title'));
+
     app.scrollToElement($('#step2'));
   });
 
