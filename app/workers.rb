@@ -7,6 +7,7 @@ end
 
 require 'app/workers/publisher_poll'
 require 'app/workers/notifier'
+require 'app/workers/subscription_confirmation'
 require 'app/workers/middleware/database_connections'
 
 Sidekiq.configure_server do |config|
