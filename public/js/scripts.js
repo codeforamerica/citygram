@@ -13,44 +13,13 @@ app.state = {
 
 app.hookupMap = function() {
   var options = {
-    zoom: 14,
-    center: [35.225803, -80.838625],
+    zoom: 13,
+    center: [47.604432, -122.336014],
     tileLayer: { detectRetina: true },
     scrollWheelZoom: false,
   };
   var mapId = $('meta[name=mapId]').attr('content');
   var map = app.map = L.mapbox.map('map', mapId, options);
-
-  // Initialise the FeatureGroup to store editable layers
-  var drawnItems = new L.FeatureGroup();
-  map.addLayer(drawnItems);
-
-  // Initialise the draw control and pass it the FeatureGroup of editable layers
-  // TODO: Limit it to the polygon tool. Hint to start drawing?
-  var drawControl = new L.Control.Draw({
-    draw: {
-      polyline: false,
-      rectangle: false,
-      circle: false,
-      marker: false,
-    },
-    edit: {
-      featureGroup: drawnItems,
-      edit: false,
-      remove: false,
-    },
-  });
-  map.addControl(drawControl);
-
-  map.on('draw:drawstart', function(e) {
-    if (app.prevLayer) map.removeLayer(app.prevLayer);
-  });
-
-  map.on('draw:created', function(e) {
-    var geometry = drawnItems.addLayer(e.layer);
-    app.state.geom = JSON.stringify(geometry.toGeoJSON().features[0].geometry);
-    app.prevLayer = e.layer;
-  });
 };
 
 app.hookupSteps = function() {
@@ -65,15 +34,14 @@ app.hookupSteps = function() {
     app.state.publisher_id = $publisher.data('publisher-id');
     $publisher.addClass('selected');
 
+    // Update the confirmation section with the name
+    $('.confirmationType').html($publisher.data('publisher-title'));
+
     app.scrollToElement($('#step2'));
   });
 
   $('.mapButton').on('click', function() {
     app.scrollToElement($('#step3'));
-  });
-
-  $('.leaflet-draw-draw-polygon').on('click', function() {
-    $('.drawHint').fadeOut();
   });
 
   $('.smsButton').on('click', function(event) {
@@ -104,13 +72,34 @@ app.hookupSteps = function() {
     }, 800);
   });
 
-  $('#geolocateForm').on('submit', function(e) {
+  var prevMarker, prevCircle;
+  var geolocate = function(e) {
     e.preventDefault();
     var address = $('#geolocate').val();
     app.geocode(address, function(latlng) {
       app.map.setView(latlng, 15);
+      updateGeometry(latlng);
+
+      if (prevMarker) app.map.removeLayer(prevMarker);
+      if (prevCircle) app.map.removeLayer(prevCircle);
+
+      prevMarker = L.marker(latlng).addTo(app.map);
+      prevCircle = L.circle(latlng, 1000).addTo(app.map);
     });
-  });
+  };
+
+  var BOUNDING_DISTANCE_IN_KM = 1;
+  var updateGeometry = function(latlng) {
+    var center = new LatLon(latlng[0], latlng[1]);
+    var bbox = center.boundingBox(BOUNDING_DISTANCE_IN_KM);
+    app.state.geom = JSON.stringify({
+      type: 'Polygon',
+      coordinates: bbox,
+    });
+  };
+
+  $('#geolocateForm').on('submit', geolocate);
+  $('.geolocateButton').on('click', geolocate);
 };
 
 app.scrollToElement = function(el) {
@@ -135,13 +124,10 @@ app.geocode = function(city, callback, context) {
 };
 
 app.resetState = function() {
-
   app.state.publisher_id = undefined;
   $('.publisher').removeClass('selected');
 
-  app.state.geom = undefined;
-  if (app.prevLayer) app.map.removeLayer(app.prevLayer);
-  // Let's leave the type and phone number in place, for easy re-subscribe
+  // Let's leave the location and phone number in place, for easy re-subscribe
 };
 
 app.submitSubscription = function(callback) {

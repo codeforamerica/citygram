@@ -1,20 +1,20 @@
 <header>
   <div class="logo"></div>
   <h1>Subscribe to your city.</h1>
-  <p>Get updates on the topics and areas you care about.<p>
+  <p>Get updates on the topics and areas you care about in Seattle.<p>
   <div id="start" class="bigButton startButton">start</div>
 </header>
 
 <section id="step1">
   <div class="instruction">
-    <h2>I want updates about:</h2>
-    <h3>SELECT YOUR TOPIC <span>(STEP 1 OF 3)</span></h3>
+    <h2>1. Select a topic.</h2>
+    <h3>Choose one to start, and you can add more later.</h3>
   </div>
 
   <div class="publishers">
     <% @publishers.each do |publisher| %>
-    <div class="publisher <%= 'soon' unless publisher.active %>" data-publisher-id="<%= publisher.id %>">
-      <div class="city"><%= publisher.city %></div>
+    <div class="publisher <%= 'soon' unless publisher.active %>" data-publisher-id="<%= publisher.id %>" data-publisher-title="<%= publisher.title %>">
+      <!-- <div class="city"><%= publisher.city %></div> -->
       <div class="title"><%= publisher.title %></div>
       <img src="/img/icons/<%= publisher.icon %>">
     </div>
@@ -24,25 +24,25 @@
 
 <section id="step2">
   <div class="instruction">
-    <h2>In my area:</h2>
-    <h3>DRAW ON THE MAP <span>(STEP 2 OF 3)</span></h3>
+    <h2>2. What's your address?</h2>
+    <h3>Your home, your work, or wherever's important to you.</h3>
+    <!-- <h3>We'll show you a 1/2 mile radius around your address.</h3> -->
     <form id="geolocateForm">
-      <input type="text" id="geolocate" placeholder="type address to center"></input>
+      <input type="text" id="geolocate" placeholder="Your address"></input>
       <input type="submit" style="display:none"  />
+      <div class="bigButton greenButton geolocateButton">Find me</div>
     </form>
 
   </div>
 
-  <div id="map">
-    <div class="drawHint">Click here to start drawing.</div>
-  </div>
-  <div class="bigButton orangeButton mapButton">I'm happy with the area above.</div>
+  <div id="map"></div>
+  <div class="bigButton orangeButton mapButton">Done with map</div>
 </section>
 
 <section id="step3">
   <div class="instruction">
-    <h2>Via:</h2>
-    <h3>CHOOSE YOUR DELIVERY METHOD <span>(STEP 3 OF 3)</span></h3>
+    <h2>3. How do you want to be notified?</h2>
+    <h3>Only text for now, but we're expanding to email soon.</h3>
   </div>
 
   <div class="contactButtons">
@@ -60,7 +60,7 @@
 </section>
 
 <section id="confirmation" style="display:none">
-  <p>You're subscribed to <strong>traffic incidents!</strong></p>
+  <p>You're subscribed to <strong class="confirmationType">traffic incidents</strong> in your area!</p>
   <p>Look out for your confirmation text shortly.</p>
   <div class="bigButton greenButton resetButton">sign up for another topic</div>
 </section>

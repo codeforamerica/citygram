@@ -23,6 +23,7 @@ module Citygram
         serve '/img',    from: 'public/img'
 
         js :app, [
+          '/js/vendor/latlon.js',
           '/js/scripts.js',
         ]
 
