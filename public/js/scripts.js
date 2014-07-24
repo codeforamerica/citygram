@@ -20,37 +20,6 @@ app.hookupMap = function() {
   };
   var mapId = $('meta[name=mapId]').attr('content');
   var map = app.map = L.mapbox.map('map', mapId, options);
-
-  // Initialise the FeatureGroup to store editable layers
-  var drawnItems = new L.FeatureGroup();
-  map.addLayer(drawnItems);
-
-  // Initialise the draw control and pass it the FeatureGroup of editable layers
-  // TODO: Limit it to the polygon tool. Hint to start drawing?
-  var drawControl = new L.Control.Draw({
-    draw: {
-      polyline: false,
-      rectangle: false,
-      circle: false,
-      marker: false,
-    },
-    edit: {
-      featureGroup: drawnItems,
-      edit: false,
-      remove: false,
-    },
-  });
-  map.addControl(drawControl);
-
-  map.on('draw:drawstart', function(e) {
-    if (app.prevLayer) map.removeLayer(app.prevLayer);
-  });
-
-  map.on('draw:created', function(e) {
-    var geometry = drawnItems.addLayer(e.layer);
-    app.state.geom = JSON.stringify(geometry.toGeoJSON().features[0].geometry);
-    app.prevLayer = e.layer;
-  });
 };
 
 app.hookupSteps = function() {
@@ -70,10 +39,6 @@ app.hookupSteps = function() {
 
   $('.mapButton').on('click', function() {
     app.scrollToElement($('#step3'));
-  });
-
-  $('.leaflet-draw-draw-polygon').on('click', function() {
-    $('.drawHint').fadeOut();
   });
 
   $('.smsButton').on('click', function(event) {
