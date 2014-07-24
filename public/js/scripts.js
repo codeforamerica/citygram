@@ -104,13 +104,16 @@ app.hookupSteps = function() {
     }, 800);
   });
 
-  $('#geolocateForm').on('submit', function(e) {
+  var geolocate = function(e) {
     e.preventDefault();
     var address = $('#geolocate').val();
     app.geocode(address, function(latlng) {
       app.map.setView(latlng, 15);
     });
-  });
+  };
+
+  $('#geolocateForm').on('submit', geolocate);
+  $('.geolocateButton').on('click', geolocate);
 };
 
 app.scrollToElement = function(el) {
