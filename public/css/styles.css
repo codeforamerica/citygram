@@ -27,7 +27,7 @@ strong {
   border: 6px solid #fff;
   border-radius: 15px;
   padding: 20px;
-  font-size: 35px;
+  font-size: 32px;
   width: 200px;
   display: inline-block;
   font-weight: 700;
@@ -82,7 +82,7 @@ input:focus {
 }
 
 header {
-  background: url(/img/background-seattle.jpg);
+  background: url(/img/background.jpg);
   background-size: cover;
   height: 500px;
   position: relative;
@@ -116,7 +116,7 @@ header p {
   position: absolute;
   left: 100px;
   top: 380px;
-  text-shadow: 0 2px 15px rgba(0, 0, 0, 0.25);
+  text-shadow: 0 3px 20px rgba(0, 0, 0, 0.25);
   color: #FFF;
   font-weight: 200;
   max-width: 550px;
@@ -205,8 +205,8 @@ section h3 span {
 }
 
 #step1 .publisher .title {
-  font-size: 36px;
-  padding: 8px;
+  font-size: 31px;
+  padding: 12px;
   line-height: 36px;
   padding-top: 20px;
   font-weight: 200;
@@ -252,9 +252,9 @@ section h3 span {
 }
 
 #step2 .geolocateButton {
-  padding: 9px;
+  padding: 10px;
   position: relative;
-  top: 6px;
+  top: 5px;
   margin-left: 6px;
 }
 
