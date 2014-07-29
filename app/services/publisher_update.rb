@@ -1,29 +1,29 @@
 module Citygram
   module Services
     class PublisherUpdate < Struct.new(:features, :publisher)
-      def self.call(*args)
-        new(*args).call
+      def self.call(features, publisher)
+        new(features, publisher).call
       end
 
       def call
         queue_notifications
-        new_events
+        return new_events
       end
 
       def queue_notifications
-        notification_pairs.paged_each do |pair|
-          Citygram::Workers::Notifier.perform_async(pair[:subscription_id], pair[:event_id])
-        end
-      end
-
-      def notification_pairs
-        Sequel::Model.db.dataset.with_sql(<<-SQL, new_events.map(&:id))
+        sql = <<-SQL.dedent
           SELECT subscriptions.id AS subscription_id, events.id AS event_id
           FROM subscriptions INNER JOIN events
             ON ST_Intersects(subscriptions.geom, events.geom)
             AND subscriptions.publisher_id = events.publisher_id
           WHERE events.id in ?
         SQL
+
+        dataset = Sequel::Model.db.dataset.with_sql(sql, new_events.map(&:id))
+
+        dataset.paged_each do |pair|
+          Citygram::Workers::Notifier.perform_async(pair[:subscription_id], pair[:event_id])
+        end
       end
 
       def new_events
