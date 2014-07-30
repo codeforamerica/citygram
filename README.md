@@ -38,5 +38,11 @@ bundle install
 rake db:create db:migrate
 rake db:create db:migrate DATABASE_URL=postgres://localhost/citygram_test
 rake # run the test suite
+bundle exec rackup
+```
+
+To boot up the complete application and run background jobs in development:
+
+```
 bundle exec foreman start -f Procfile.dev
 ```
