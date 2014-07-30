@@ -9,14 +9,6 @@ module Citygram
         def call
           raise 'abstract - must subclass'
         end
-
-        def suppress
-          Citygram::App.logger.info 'SUPPRESSED: class=%s subscription_id=%s event_id=%s' % [
-            self.class.name,
-            subscription.id,
-            event.id
-          ]
-        end
       end
     end
   end
