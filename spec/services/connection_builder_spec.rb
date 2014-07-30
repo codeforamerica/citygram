@@ -9,7 +9,7 @@ describe Citygram::Services::ConnectionBuilder do
   end
 
   it 'sets a reasonable timeout' do
-    expect(subject.options.timeout).to eq 5
+    expect(subject.options.timeout).to eq 10
   end
 
   it 'parses the response as JSON' do

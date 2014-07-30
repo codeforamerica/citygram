@@ -6,7 +6,7 @@ module Citygram
     module ConnectionBuilder
       def self.json(name, opts)
         Faraday.new(opts) do |conn|
-          conn.options.timeout = 5
+          conn.options.timeout = 10
           conn.headers['Content-Type'] = 'application/json'
           conn.response :json
           conn.use :instrumentation, name: name
