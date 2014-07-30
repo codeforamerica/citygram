@@ -13,7 +13,7 @@ app.state = {
 
 app.hookupMap = function() {
   var options = {
-    zoom: 13,
+    zoom: 12,
     center: [47.604432, -122.336014],
     tileLayer: { detectRetina: true },
     scrollWheelZoom: false,
@@ -77,7 +77,7 @@ app.hookupSteps = function() {
     e.preventDefault();
     var address = $('#geolocate').val();
     app.geocode(address, function(latlng) {
-      app.map.setView(latlng, 15);
+      app.map.setView(latlng, 14);
       updateGeometry(latlng);
 
       if (prevMarker) app.map.removeLayer(prevMarker);
