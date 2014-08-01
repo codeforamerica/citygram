@@ -32,9 +32,6 @@ module Citygram
   class API < Grape::API
     mount Routes::Publishers
     mount Routes::Subscriptions
-
-    require 'sidekiq/web'
-    mount Sidekiq::Web => '/_jobs'
   end
 end
 
