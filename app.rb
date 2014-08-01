@@ -24,6 +24,9 @@ module Citygram
     configure :production do
       require 'newrelic_rpm'
       require 'sinatra-error-logging'
+
+      require 'rack/ssl'
+      use Rack::SSL
     end
 
     use Routes::Pages
