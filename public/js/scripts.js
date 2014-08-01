@@ -94,7 +94,7 @@ app.hookupSteps = function() {
     var bbox = center.boundingBox(BOUNDING_DISTANCE_IN_KM);
     app.state.geom = JSON.stringify({
       type: 'Polygon',
-      coordinates: bbox,
+      coordinates: [bbox],
     });
   };
 
