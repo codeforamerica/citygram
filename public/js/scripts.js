@@ -109,9 +109,9 @@ app.scrollToElement = function(el) {
 };
 
 app.geocode = function(city, callback, context) {
- var url = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + encodeURIComponent(city);
+  var url = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + encodeURIComponent(city);
 
- $.getJSON(url, function(response) {
+  $.getJSON(url, function(response) {
     if (response.error || response.results.length === 0) {
       console.log('Unable to geocode city. Womp Womp.', response.error);
     }
