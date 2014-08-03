@@ -13,7 +13,7 @@ app.state = {
 
 app.hookupMap = function() {
   var options = {
-    zoom: 12,
+    zoom: 13,
     center: [47.604432, -122.336014],
     tileLayer: { detectRetina: true },
     scrollWheelZoom: false,
@@ -77,18 +77,18 @@ app.hookupSteps = function() {
     e.preventDefault();
     var address = $('#geolocate').val();
     app.geocode(address, function(latlng) {
-      app.map.setView(latlng, 14);
+      app.map.setView(latlng, 15);
       updateGeometry(latlng);
 
       if (prevMarker) app.map.removeLayer(prevMarker);
       if (prevCircle) app.map.removeLayer(prevCircle);
 
       prevMarker = L.marker(latlng).addTo(app.map);
-      prevCircle = L.circle(latlng, 1000).addTo(app.map);
+      prevCircle = L.circle(latlng, 500).addTo(app.map);
     });
   };
 
-  var BOUNDING_DISTANCE_IN_KM = 1;
+  var BOUNDING_DISTANCE_IN_KM = 0.5;
   var updateGeometry = function(latlng) {
     var center = new LatLon(latlng[0], latlng[1]);
     var bbox = center.boundingBox(BOUNDING_DISTANCE_IN_KM);
