@@ -3,7 +3,6 @@ module Citygram
     module Channels
       class SMS < Base
         FROM_NUMBER = ENV.fetch('TWILIO_FROM_NUMBER')
-        UNSUBSCRIBED_ERROR_CODE = 21610
 
         def self.client
           @client ||= Twilio::REST::Client.new(
@@ -25,12 +24,7 @@ module Citygram
         rescue Twilio::REST::RequestError => e
           # TODO: deactivate subscription?
           Citygram::App.logger.error(e)
-
-
-          # don't retry if receiver has unsubscribed
-          if e.code.to_i != UNSUBSCRIBED_ERROR_CODE
-            raise NotificationFailure, e
-          end
+          raise NotificationFailure, e
         end
       end
 
