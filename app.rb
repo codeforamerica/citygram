@@ -30,6 +30,7 @@ module Citygram
     end
 
     use Routes::Pages
+    use Routes::Unsubscribes
   end
 
   class API < Grape::API
