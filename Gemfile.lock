@@ -100,7 +100,7 @@ GEM
       rspec-support (~> 3.0.0)
     rspec-support (3.0.3)
     safe_yaml (1.0.3)
-    sequel (4.13.0)
+    sequel (4.12.0)
     sidekiq (3.2.1)
       celluloid (>= 0.15.2)
       connection_pool (>= 2.0.0)
@@ -164,7 +164,7 @@ DEPENDENCIES
   rack-test
   rake
   rspec (~> 3.0)
-  sequel (~> 4.10)
+  sequel (= 4.12)
   sidekiq (~> 3.0)
   sinatra (~> 1.4)
   sinatra-assetpack
