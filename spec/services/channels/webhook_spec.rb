@@ -17,13 +17,13 @@ describe Citygram::Services::Channels::Webhook do
 
   context 'success' do
     it 'POSTs the event attributes to the subscription endpoint' do
-      stub_request(:post, subscription.contact).
+      stub_request(:post, subscription.webhook_url).
         with(body: body, headers: headers).
         to_return(status: 200)
 
       subject.call(subscription, event)
 
-      expect(a_request(:post, subscription.contact).
+      expect(a_request(:post, subscription.webhook_url).
         with(body: body, headers: headers)).to have_been_made.once
     end
   end
@@ -32,14 +32,14 @@ describe Citygram::Services::Channels::Webhook do
     let(:failed_status) { (300..599).to_a.sample }
 
     it "raises an exception on non-2xx response" do
-      stub_request(:post, subscription.contact).
+      stub_request(:post, subscription.webhook_url).
         with(body: body, headers: headers).
         to_return(status: failed_status)
 
       expect{ subject.call(subscription, event) }.
         to raise_error Citygram::Services::Channels::NotificationFailure, /HTTP status code: #{failed_status}/
 
-      expect(a_request(:post, subscription.contact).
+      expect(a_request(:post, subscription.webhook_url).
         with(body: body, headers: headers)).to have_been_made.once
     end
   end

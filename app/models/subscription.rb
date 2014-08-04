@@ -5,26 +5,28 @@ module Citygram
     class Subscription < Sequel::Model
       many_to_one :publisher
 
-      set_allowed_columns :contact, :geom, :publisher_id, :channel
+      set_allowed_columns :geom, :publisher_id, :channel,
+                          :webhook_url, :phone_number, :email_address
 
       plugin :serialization, :geojson, :geom
+      plugin :serialization, :phone, :phone_number
       plugin Citygram::Models::Plugins::URLValidation
       plugin Citygram::Models::Plugins::EmailValidation
       plugin Citygram::Models::Plugins::GeometryValidation
+      plugin Citygram::Models::Plugins::PhoneValidation
 
       def validate
         super
-        validates_presence [:geom, :contact, :publisher_id, :channel]
+        validates_presence [:geom, :publisher_id, :channel]
         validates_includes Citygram::Services::Channels.available.map(&:to_s), :channel
 
         case channel
         when 'webhook'
-          validates_url :contact
+          validates_url :webhook_url
         when 'email'
-          validates_email :contact
+          validates_email :email_address
         when 'sms'
-          # TODO: best way to validate phone numbers
-          # validates_phone_number :contact
+          validates_phone :phone_number
         end
 
         validates_geometry :geom

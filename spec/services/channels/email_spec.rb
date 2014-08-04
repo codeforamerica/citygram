@@ -5,7 +5,7 @@ describe Citygram::Services::Channels::Email do
 
   include Mail::Matchers
 
-  let(:subscription) { create(:subscription, channel: 'email', contact: to_email_address) }
+  let(:subscription) { create(:subscription, channel: 'email', email_address: to_email_address) }
   let(:event) { create(:event) }
 
   let(:to_email_address) { Faker::Internet.email }

@@ -14,7 +14,7 @@ module Citygram
 
           Citygram::Services::Channels::SMS.sms(
             from: Citygram::Services::Channels::SMS::FROM_NUMBER,
-            to: subscription.contact,
+            to: subscription.phone_number,
             body: body
           )
         when 'email'

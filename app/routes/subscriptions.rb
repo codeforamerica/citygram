@@ -25,9 +25,12 @@ module Citygram
       params do
         requires :subscription, type: Hash do
           requires :publisher_id, type: Integer
-          requires :contact, type: String
           requires :channel, type: String, values: Citygram::Services::Channels.available.map(&:to_s)
           requires :geom, type: String
+          optional :phone_number, type: String
+          optional :email_address, type: String
+          optional :webhook_url, type: String
+          mutually_exclusive :phone_number, :email_address, :webhook_url
         end
       end
 

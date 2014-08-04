@@ -8,7 +8,6 @@ app.state = {
   channel: 'sms',
   geom: undefined,
   publisher_id: undefined,
-  contact: undefined,
 };
 
 app.hookupMap = function() {
@@ -52,7 +51,9 @@ app.hookupSteps = function() {
   var finishSubscribe = function(e) {
     // TODO: animate the done checkmark at the same time
     e.preventDefault();
-    app.state.contact = $('.phoneNumber').val();
+
+    // TODO: handle email and webhooks also
+    app.state.phone_number = $('.phoneNumber').val();
 
     app.submitSubscription(function() {
       $('#confirmation').slideDown();

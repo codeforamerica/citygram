@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Citygram::Workers::Notifier do
   subject { Citygram::Workers::Notifier.new }
-  let(:subscription) { create(:subscription, channel: 'webhook', contact: Faker::Internet.uri('https')) }
+  let(:subscription) { create(:subscription, channel: 'webhook', webhook_url: Faker::Internet.uri('https')) }
   let(:event) { create(:event) }
 
   before do

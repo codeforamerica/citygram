@@ -19,7 +19,7 @@ module Citygram
         def call
           self.class.sms(
             from: FROM_NUMBER,
-            to: subscription.contact,
+            to: subscription.phone_number,
             body: event.title
           )
         rescue Twilio::REST::RequestError => e
