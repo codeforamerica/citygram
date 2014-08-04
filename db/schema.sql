@@ -136,7 +136,8 @@ CREATE TABLE subscriptions (
     channel text NOT NULL,
     phone_number text,
     email_address text,
-    webhook_url text
+    webhook_url text,
+    unsubscribed_at timestamp without time zone
 );
 
 
