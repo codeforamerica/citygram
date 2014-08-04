@@ -80,7 +80,7 @@ describe Citygram::Services::Channels::SMS do
         to_return(status: 400, body: response_body, headers: response_headers)
 
       expect { subject.call(subscription, event) }.
-        to raise_error Citygram::Services::Channels::NotificationFailure, /#{subscription.phone_number}/
+        to raise_error Citygram::Services::Channels::NotificationFailure
 
       expect(a_request(:post, sms_endpoint).
         with(body: request_body, headers: request_headers)).to have_been_made.once

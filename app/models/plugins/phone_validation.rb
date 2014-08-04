@@ -15,7 +15,8 @@ module Citygram
           private
 
           def valid_phone?(value)
-            Phoner::Phone.parse(value)
+            phone = Phoner::Phone.parse(value)
+            phone.number.length == 7 && phone.area_code.length == 3
           rescue
             false
           end

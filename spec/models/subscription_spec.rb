@@ -37,7 +37,7 @@ describe Citygram::Models::Subscription do
     end
 
     context 'sms' do
-      it 'requires the contact to be a valid phone number', pending: 'best way to validate phone numbers?' do
+      it 'requires the contact to be a valid phone number' do
         subscription = build(:subscription, channel: 'sms', phone_number: '555-5555')
         expect(subscription).not_to be_valid
       end
