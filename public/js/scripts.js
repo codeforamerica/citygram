@@ -82,6 +82,7 @@ app.hookupSteps = function() {
     var address = $('#geolocate').val();
     app.geocode(address+' '+city, function(latlng) {
       app.map.setView(latlng, 15);
+      updateEvents();
       updateGeometry(latlng);
 
       if (prevMarker) app.map.removeLayer(prevMarker);
@@ -92,15 +93,7 @@ app.hookupSteps = function() {
     });
   };
 
-  var BOUNDING_DISTANCE_IN_KM = 0.5;
-  var updateGeometry = function(latlng) {
-    var center = new LatLon(latlng[0], latlng[1]);
-    var bbox = center.boundingBox(BOUNDING_DISTANCE_IN_KM);
-    app.state.geom = JSON.stringify({
-      type: 'Polygon',
-      coordinates: [bbox],
-    });
-
+  var updateEvents = function() {
     var mapBounds = app.map.getBounds();
     var mapGeometry = {
       type: 'Polygon',
@@ -121,6 +114,16 @@ app.hookupSteps = function() {
       });
 
       events.forEach(app.displayEventMarker);
+    });
+  };
+
+  var BOUNDING_DISTANCE_IN_KM = 0.5;
+  var updateGeometry = function(latlng) {
+    var center = new LatLon(latlng[0], latlng[1]);
+    var bbox = center.boundingBox(BOUNDING_DISTANCE_IN_KM);
+    app.state.geom = JSON.stringify({
+      type: 'Polygon',
+      coordinates: [bbox],
     });
   };
 
