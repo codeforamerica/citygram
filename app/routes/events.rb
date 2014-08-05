@@ -19,7 +19,7 @@ module Citygram
 
       get 'publishers/:publisher_id/events' do
         geom = GeoRuby::GeojsonParser.new.parse(params[:geometry])
-        Event.dataset.with_sql(<<-SQL, params[:publisher_id], 24.hours.ago, geom.as_ewkt).all
+        Event.dataset.with_sql(<<-SQL, params[:publisher_id], 2.days.ago, geom.as_ewkt).all
           SELECT events.*
           FROM events
           WHERE events.publisher_id = ?

@@ -101,7 +101,21 @@ app.hookupSteps = function() {
       coordinates: [bbox],
     });
 
-    app.getEventsForGeometry(app.state.geom, function(events) {
+    var mapBounds = app.map.getBounds();
+    var mapGeometry = {
+      type: 'Polygon',
+      coordinates: [
+        [
+          [mapBounds._southWest.lng, mapBounds._northEast.lat],
+          [mapBounds._northEast.lng, mapBounds._northEast.lat],
+          [mapBounds._northEast.lng, mapBounds._southWest.lat],
+          [mapBounds._southWest.lng, mapBounds._southWest.lat],
+          [mapBounds._southWest.lng, mapBounds._northEast.lat]
+        ]
+      ]
+    }
+
+    app.getEventsForGeometry(JSON.stringify(mapGeometry), function(events) {
       app.eventMarkers.eachLayer(function(layer) {
         app.map.removeLayer(layer);
       });
