@@ -1,5 +1,3 @@
-require 'phone'
-
 module Citygram
   module Models
     module Plugins

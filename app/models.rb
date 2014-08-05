@@ -1,4 +1,6 @@
 require 'geo_ruby/geojson'
+require 'phone'
+
 require 'app/models/plugins/attributes_helpers'
 require 'app/models/plugins/save_helpers'
 require 'app/models/plugins/email_validation'
