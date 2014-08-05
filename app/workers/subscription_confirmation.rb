@@ -2,6 +2,7 @@ module Citygram
   module Workers
     class SubscriptionConfirmation
       include Sidekiq::Worker
+      sidekiq_options retry: 5
 
       def perform(subscription_id)
         subscription = Subscription.first!(id: subscription_id)

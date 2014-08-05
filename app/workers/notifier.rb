@@ -4,7 +4,7 @@ module Citygram
   module Workers
     class Notifier
       include Sidekiq::Worker
-      sidekiq_options retry: 10
+      sidekiq_options retry: 5
 
       def perform(subscription_id, event_id)
         subscription = Subscription.first!(id: subscription_id)

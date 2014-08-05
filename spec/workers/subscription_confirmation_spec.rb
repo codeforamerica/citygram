@@ -26,4 +26,9 @@ describe Citygram::Workers::SubscriptionConfirmation do
       subject.perform(subscription.id)
     end
   end
+
+  it 'limits the number of retries' do
+    retries = Citygram::Workers::SubscriptionConfirmation.sidekiq_options_hash["retry"]
+    expect(retries).to eq 5
+  end
 end
