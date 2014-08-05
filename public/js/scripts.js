@@ -78,8 +78,9 @@ app.hookupSteps = function() {
   var prevMarker, prevCircle;
   var geolocate = function(e) {
     e.preventDefault();
+    var city = $('.publisher.selected').data('publisher-city');
     var address = $('#geolocate').val();
-    app.geocode(address, function(latlng) {
+    app.geocode(address+' '+city, function(latlng) {
       app.map.setView(latlng, 15);
       updateGeometry(latlng);
 

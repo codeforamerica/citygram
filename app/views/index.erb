@@ -13,7 +13,7 @@
 
   <div class="publishers">
     <% @publishers.each do |publisher| %>
-    <div class="publisher <%= 'soon' unless publisher.active %>" data-publisher-id="<%= publisher.id %>" data-publisher-title="<%= publisher.title %>">
+    <div class="publisher <%= 'soon' unless publisher.active %>" data-publisher-id="<%= publisher.id %>" data-publisher-title="<%= publisher.title %>" data-publisher-city="<%= publisher.city %>">
       <!-- <div class="city"><%= publisher.city %></div> -->
       <div class="title"><%= publisher.title %></div>
       <img src="/img/icons/<%= publisher.icon %>">
