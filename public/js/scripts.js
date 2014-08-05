@@ -39,6 +39,9 @@ app.hookupSteps = function() {
     $('.confirmationType').html($publisher.data('publisher-title'));
 
     app.scrollToElement($('#step2'));
+
+    // update events for the new publisher
+    app.updateEvents();
   });
 
   $('.mapButton').on('click', function() {
