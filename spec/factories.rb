@@ -22,7 +22,7 @@ FactoryGirl.define do
 
   factory :subscription, class: Citygram::Models::Subscription do
     publisher
-    contact { Faker::Internet.uri('https') }
+    webhook_url { Faker::Internet.uri('https') }
     channel 'webhook'
     geom do
       JSON.generate({

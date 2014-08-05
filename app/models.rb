@@ -1,8 +1,11 @@
 require 'geo_ruby/geojson'
+require 'phone'
+
 require 'app/models/plugins/attributes_helpers'
 require 'app/models/plugins/save_helpers'
 require 'app/models/plugins/email_validation'
 require 'app/models/plugins/geometry_validation'
+require 'app/models/plugins/phone_validation'
 require 'app/models/plugins/url_validation'
 
 Sequel.default_timezone = :utc
@@ -25,6 +28,13 @@ Sequel::Plugins::Serialization.register_format(:geojson,
   ->(v){ GeoRuby::GeojsonParser.new.parse(v).as_ewkt },
   # transform extended well-known binary into a geojson geometry
   ->(v){ GeoRuby::SimpleFeatures::Geometry.from_hex_ewkb(v).to_json }
+)
+
+Phoner::Phone.default_country_code = '1' # set default to US for now
+
+Sequel::Plugins::Serialization.register_format(:phone,
+  ->(v){ Phoner::Phone.parse(v).to_s },
+  ->(v){ v } # identity
 )
 
 module Citygram

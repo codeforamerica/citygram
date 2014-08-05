@@ -13,7 +13,7 @@ module Citygram
         end
 
         def connection
-          Citygram::Services::ConnectionBuilder.json("request.subscription.#{subscription.id}", url: subscription.contact)
+          Citygram::Services::ConnectionBuilder.json("request.subscription.#{subscription.id}", url: subscription.webhook_url)
         end
 
         def body

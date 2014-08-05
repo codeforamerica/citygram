@@ -20,7 +20,7 @@ module Citygram
 
         def call
           Pony.mail(
-            to: subscription.contact,
+            to: subscription.email_address,
             subject: event.title
           )
         end

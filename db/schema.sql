@@ -133,8 +133,11 @@ CREATE TABLE subscriptions (
     updated_at timestamp without time zone,
     created_at timestamp without time zone,
     publisher_id integer,
-    contact text NOT NULL,
-    channel text NOT NULL
+    channel text NOT NULL,
+    phone_number text,
+    email_address text,
+    webhook_url text,
+    unsubscribed_at timestamp without time zone
 );
 
 

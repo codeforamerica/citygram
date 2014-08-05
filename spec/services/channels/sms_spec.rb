@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Citygram::Services::Channels::SMS do
   subject { Citygram::Services::Channels::SMS }
 
-  let(:subscription) { create(:subscription, channel: 'sms', contact: Faker::PhoneNumber.short_phone_number) }
+  let(:subscription) { create(:subscription, channel: 'sms', phone_number: Faker::PhoneNumber.short_phone_number) }
   let(:event) { create(:event) }
 
   let(:from_number) { ENV.fetch('TWILIO_FROM_NUMBER') }
@@ -25,7 +25,7 @@ describe Citygram::Services::Channels::SMS do
     {
       'Body' => event.title,
       'From' => from_number,
-      'To' => subscription.contact
+      'To' => subscription.phone_number
     }
   end
 
@@ -38,7 +38,7 @@ describe Citygram::Services::Channels::SMS do
   let(:response_body) do
     {
       'sid' => 'SM10ea1dce707f4bedb44204c9fbc02e39',
-      'to' => subscription.contact,
+      'to' => subscription.phone_number,
       'from' => from_number,
       'body' => event.title,
       'status' => 'queued'
@@ -68,7 +68,7 @@ describe Citygram::Services::Channels::SMS do
     let(:response_body) do
       {
         'code' => 21211,
-        'message' => "The 'To' number #{subscription.contact} is not a valid phone number.",
+        'message' => "The 'To' number #{subscription.phone_number} is not a valid phone number.",
         'more_info' => 'https://www.twilio.com/docs/errors/21211',
         'status' => 400
       }.to_json
@@ -80,7 +80,7 @@ describe Citygram::Services::Channels::SMS do
         to_return(status: 400, body: response_body, headers: response_headers)
 
       expect { subject.call(subscription, event) }.
-        to raise_error Citygram::Services::Channels::NotificationFailure, /#{subscription.contact}/
+        to raise_error Citygram::Services::Channels::NotificationFailure
 
       expect(a_request(:post, sms_endpoint).
         with(body: request_body, headers: request_headers)).to have_been_made.once
