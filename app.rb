@@ -34,6 +34,7 @@ module Citygram
   end
 
   class API < Grape::API
+    mount Routes::Events
     mount Routes::Publishers
     mount Routes::Subscriptions
   end

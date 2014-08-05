@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Citygram::Services::Channels::SMS do
   subject { Citygram::Services::Channels::SMS }
 
-  let(:subscription) { create(:subscription, channel: 'sms', phone_number: Faker::PhoneNumber.short_phone_number) }
+  let(:subscription) { create(:subscription, channel: 'sms', phone_number: '+15559874567') }
   let(:event) { create(:event) }
 
   let(:from_number) { ENV.fetch('TWILIO_FROM_NUMBER') }
