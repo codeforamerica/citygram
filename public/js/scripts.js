@@ -130,7 +130,7 @@ app.hookupSteps = function() {
 
 app.displayEventMarker = function(event) {
   var geometry = JSON.parse(event.geom);
-  var html = "<p>"+event.title+"<br/><small><time class='timeago' title='"+event.created_at+"' datetime='"+event.created_at+"'></time></small></p>"
+  var html = "<p>"+event.title+"</p>"
   var marker = L.circleMarker([geometry.coordinates[1], geometry.coordinates[0]], { radius: 4 })
                  .addTo(app.map)
                  .bindPopup(html);
