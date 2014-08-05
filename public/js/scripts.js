@@ -82,7 +82,7 @@ app.hookupSteps = function() {
     var address = $('#geolocate').val();
     app.geocode(address+' '+city, function(latlng) {
       app.map.setView(latlng, 15);
-      updateEvents();
+      app.updateEvents();
       updateGeometry(latlng);
 
       if (prevMarker) app.map.removeLayer(prevMarker);
@@ -90,30 +90,6 @@ app.hookupSteps = function() {
 
       prevMarker = L.marker(latlng).addTo(app.map);
       prevCircle = L.circle(latlng, 500).addTo(app.map);
-    });
-  };
-
-  var updateEvents = function() {
-    var mapBounds = app.map.getBounds();
-    var mapGeometry = {
-      type: 'Polygon',
-      coordinates: [
-        [
-          [mapBounds._southWest.lng, mapBounds._northEast.lat],
-          [mapBounds._northEast.lng, mapBounds._northEast.lat],
-          [mapBounds._northEast.lng, mapBounds._southWest.lat],
-          [mapBounds._southWest.lng, mapBounds._southWest.lat],
-          [mapBounds._southWest.lng, mapBounds._northEast.lat]
-        ]
-      ]
-    }
-
-    app.getEventsForGeometry(JSON.stringify(mapGeometry), function(events) {
-      app.eventMarkers.eachLayer(function(layer) {
-        app.map.removeLayer(layer);
-      });
-
-      events.forEach(app.displayEventMarker);
     });
   };
 
@@ -129,6 +105,27 @@ app.hookupSteps = function() {
 
   $('#geolocateForm').on('submit', geolocate);
   $('.geolocateButton').on('click', geolocate);
+};
+
+app.updateEvents = function() {
+  var mapBounds = app.map.getBounds();
+  var mapGeometry = {
+    type: 'Polygon',
+    coordinates: [[
+      [mapBounds._southWest.lng, mapBounds._northEast.lat],
+      [mapBounds._northEast.lng, mapBounds._northEast.lat],
+      [mapBounds._northEast.lng, mapBounds._southWest.lat],
+      [mapBounds._southWest.lng, mapBounds._southWest.lat],
+      [mapBounds._southWest.lng, mapBounds._northEast.lat]
+    ]]
+  }
+
+  app.getEventsForGeometry(JSON.stringify(mapGeometry), function(events) {
+    app.eventMarkers.eachLayer(function(layer) {
+      app.map.removeLayer(layer);
+    });
+    events.forEach(app.displayEventMarker);
+  });
 };
 
 app.displayEventMarker = function(event) {
