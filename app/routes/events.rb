@@ -24,7 +24,8 @@ module Citygram
           FROM events
           WHERE events.publisher_id = ?
             AND events.created_at > ?
-            AND ST_Intersects(events.geom, ?)
+            AND ST_Intersects(events.geom, ?::geometry)
+          ORDER BY events.created_at DESC
         SQL
       end
     end
