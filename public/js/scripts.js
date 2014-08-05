@@ -10,6 +10,8 @@ app.state = {
   publisher_id: undefined,
 };
 
+app.eventMarkers = new L.FeatureGroup();
+
 app.hookupMap = function() {
   var options = {
     zoom: 13,
@@ -97,10 +99,34 @@ app.hookupSteps = function() {
       type: 'Polygon',
       coordinates: [bbox],
     });
+
+    app.getEventsForGeometry(app.state.geom, function(events) {
+      app.eventMarkers.eachLayer(function(layer) {
+        app.map.removeLayer(layer);
+      });
+
+      events.forEach(app.displayEventMarker);
+    });
   };
 
   $('#geolocateForm').on('submit', geolocate);
   $('.geolocateButton').on('click', geolocate);
+};
+
+app.displayEventMarker = function(event) {
+  var geometry = JSON.parse(event.geom);
+  var html = "<p>"+event.title+"<br/><small><time class='timeago' title='"+event.created_at+"' datetime='"+event.created_at+"'></time></small></p>"
+  var marker = L.circleMarker([geometry.coordinates[1], geometry.coordinates[0]], { radius: 4 })
+                 .addTo(app.map)
+                 .bindPopup(html);
+
+  app.eventMarkers.addLayer(marker);
+  return marker;
+}
+
+app.getEventsForGeometry = function(geometry, callback){
+  if (!app.state.publisher_id) return;
+  $.getJSON('/publishers/'+app.state.publisher_id+'/events', { geometry: geometry }, callback);
 };
 
 app.scrollToElement = function(el) {
