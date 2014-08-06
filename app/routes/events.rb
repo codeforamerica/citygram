@@ -9,7 +9,7 @@ module Citygram
       end
 
       desc <<-DESC
-        Retrieve events from the last 24 hours for a publisher, intersecting a given geometry
+        Retrieve events from the last week for a publisher, intersecting a given geometry
       DESC
 
       params do
