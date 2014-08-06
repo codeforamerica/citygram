@@ -4,12 +4,13 @@ describe Citygram::Workers::SubscriptionConfirmation do
   subject { Citygram::Workers::SubscriptionConfirmation.new }
 
   context 'sms' do
+    let(:publisher) { subscription.publisher }
     let!(:subscription) { create(:subscription, channel: 'sms', phone_number: '212-555-1234') }
 
     before do
       stub_request(:post, "https://dev-account-sid:dev-auth-token@api.twilio.com/2010-04-01/Accounts/dev-account-sid/Messages.json").
         with(body: {
-          "Body"=>"You are now subscribed to #{subscription.publisher.title} in #{subscription.publisher.city}. Woohoo!",
+          "Body"=>"Welcome! You are now subscribed to #{publisher.title} in #{publisher.city}. Woohoo! If you'd like to give feedback, text back with your email.",
           "From"=>"15555555555",
           "To"=>"212-555-1234"}).
         to_return(status: 200, body: {
