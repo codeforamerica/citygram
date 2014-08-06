@@ -10,16 +10,6 @@ module Citygram
         Rack::Response.new({error: 'not found'}.to_json, 404)
       end
 
-      desc 'Retrieve a subscription'
-
-      params do
-        requires :id, type: Integer
-      end
-
-      get '/subscriptions/:id' do
-        Subscription.first!(id: params[:id])
-      end
-
       desc 'Create a new subscription'
 
       params do

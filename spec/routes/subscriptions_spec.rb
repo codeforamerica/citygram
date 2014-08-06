@@ -5,35 +5,6 @@ describe Citygram::Routes::Subscriptions do
 
   let(:publisher) { create(:publisher) }
 
-  describe 'GET /subscriptions/:id' do
-    let(:subscription) { create(:subscription, publisher: publisher) }
-
-    it 'responds with 200 OK' do
-      get "/subscriptions/#{subscription.id}"
-      expect(last_response.status).to eq 200
-    end
-
-    it 'returns the record' do
-      get "/subscriptions/#{subscription.id}"
-      expect(last_response.body).to eq subscription.to_json
-    end
-
-    context 'missing' do
-      let(:max_id) { Subscription.max(:id) || 0 }
-
-      it 'responds with 404 NOT FOUND' do
-        get "/subscriptions/#{max_id + 1}"
-        expect(last_response.status).to eq 404
-      end
-
-      it 'explains the error' do
-        get "/subscriptions/#{max_id + 1}"
-        error = { error: 'not found' }.to_json
-        expect(last_response.body).to eq error
-      end
-    end
-  end
-
   describe 'POST /subscriptions' do
     let(:params) {{ subscription: attributes_for(:subscription).merge(publisher_id: publisher.id) }}
 
