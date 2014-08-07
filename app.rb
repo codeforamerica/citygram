@@ -15,7 +15,7 @@ require 'sinatra-sequel'
 require 'app/routes'
 
 module Citygram
-  class App < Sinatra::Application
+  class App < Sinatra::Base
     configure do
       set :logger, Logger.new(test? ? nil : STDOUT)
       set :map_id, ENV.fetch('MAP_ID') { 'codeforamerica.inb9loae' }
@@ -28,15 +28,6 @@ module Citygram
       require 'rack/ssl'
       use Rack::SSL
     end
-
-    use Routes::Pages
-    use Routes::Unsubscribes
-  end
-
-  class API < Grape::API
-    mount Routes::Events
-    mount Routes::Publishers
-    mount Routes::Subscriptions
   end
 end
 

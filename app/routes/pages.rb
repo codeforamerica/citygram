@@ -1,6 +1,6 @@
 module Citygram
   module Routes
-    class Pages < Sinatra::Application
+    class Pages < Sinatra::Base
       configure do
         set :root, File.expand_path('../../../', __FILE__)
         set :views, 'app/views'
@@ -38,6 +38,10 @@ module Citygram
       get '/' do
         @publishers = Publisher.all
         erb :index
+      end
+
+      get '/research' do
+        erb :research, layout: false
       end
     end
   end

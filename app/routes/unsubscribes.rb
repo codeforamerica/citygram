@@ -1,6 +1,6 @@
 module Citygram
   module Routes
-    class Unsubscribes < Sinatra::Application
+    class Unsubscribes < Sinatra::Base
       FILTER_WORDS = %w(CANCEL QUIT STOP UNSUBSCRIBE)
       FILTER_WORD_REGEXP = Regexp.union(FILTER_WORDS.map{|w| /^#{w}/i })
 
