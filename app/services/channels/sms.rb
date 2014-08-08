@@ -26,9 +26,11 @@ module Citygram
           # TODO: deactivate subscription?
           Citygram::App.logger.error(e)
 
-
-          # don't retry if receiver has unsubscribed
-          if e.code.to_i != UNSUBSCRIBED_ERROR_CODE
+          if e.code.to_i == UNSUBSCRIBED_ERROR_CODE
+            # unsubscribe and skip retries if the user has
+            # replied with a filter word
+            subscription.unsubscribe!
+          else
             raise NotificationFailure, e
           end
         end

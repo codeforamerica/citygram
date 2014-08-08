@@ -85,5 +85,20 @@ describe Citygram::Services::Channels::SMS do
       expect(a_request(:post, sms_endpoint).
         with(body: request_body, headers: request_headers)).to have_been_made.once
     end
+
+    context 'user has unsubscribed with filter word' do
+      it 'deactivates the subscription if the user has replied with a filter word' do
+        unsubscribed_error = Twilio::REST::RequestError.new('dummy message', Citygram::Services::Channels::SMS::UNSUBSCRIBED_ERROR_CODE)
+        args = { from: from_number, to: subscription.phone_number, body: event.title }
+
+        expect(Citygram::Services::Channels::SMS).to receive(:sms).
+          with(args).
+          and_raise(unsubscribed_error)
+
+        expect {
+          subject.call(subscription, event)
+        }.to change{ subscription.reload.unsubscribed_at.present? }.from(false).to(true)
+      end
+    end
   end
 end

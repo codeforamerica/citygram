@@ -15,6 +15,11 @@ module Citygram
       plugin Citygram::Models::Plugins::GeometryValidation
       plugin Citygram::Models::Plugins::PhoneValidation
 
+      def unsubscribe!
+        self.unsubscribed_at = DateTime.now
+        save!
+      end
+
       def validate
         super
         validates_presence [:geom, :publisher_id, :channel]
