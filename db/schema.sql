@@ -91,7 +91,8 @@ CREATE TABLE publishers (
     created_at timestamp without time zone,
     active boolean,
     city text,
-    icon text
+    icon text,
+    visible boolean DEFAULT true
 );
 
 

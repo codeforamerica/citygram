@@ -8,6 +8,12 @@ module Citygram
 
       plugin Citygram::Models::Plugins::URLValidation
 
+      dataset_module do
+        def visible
+          where(visible: true)
+        end
+      end
+
       def validate
         super
         validates_presence [:title, :endpoint, :city, :icon]
