@@ -96,10 +96,10 @@ app.hookupSteps = function() {
     });
   };
 
-  var BOUNDING_DISTANCE_IN_KM = 0.5;
   var updateGeometry = function(latlng) {
     var center = new LatLon(latlng[0], latlng[1]);
-    var bbox = center.boundingBox(BOUNDING_DISTANCE_IN_KM);
+    var bboxWidth = parseFloat($('#user-selected-radius').val())
+    var bbox = center.boundingBox(bboxWidth);
     app.state.geom = JSON.stringify({
       type: 'Polygon',
       coordinates: [bbox],
