@@ -60,7 +60,12 @@ strong {
 }
 
 .bigSelect select {
+  text-indent: 0.01px;
+  text-overflow: '';
+  background: url(/img/dropdown-arrow.png) no-repeat;
+  background-position: 560px 23px;
   background-color: #F1F1F2;
+  width: 600px;
 }
 
 input, select {
@@ -74,10 +79,13 @@ input, select {
   background-color: #FFF;
   border: 2px solid #8A949D;
   border-radius: 10px;
+  -moz-border-radius: 10px; 
+  -webkit-border-radius: 10px;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
   transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  -moz-appearance: none;
   -webkit-appearance: none;
 }
 
@@ -254,7 +262,7 @@ section h3 span {
 
 #step2 #geolocate {
   top: 17px;
-  width: 700px;
+  width: 400px;
   margin-right: 7px;
 }
 

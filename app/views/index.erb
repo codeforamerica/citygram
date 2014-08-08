@@ -30,11 +30,13 @@
     <form id="geolocateForm">
       <input type="text" id="geolocate" placeholder="Your address"></input>
       <span class="bigSelect">
-        <select id="geolocate">
-          <option value="addressRadius">1/2-mile radius</option>
-          <option value="addressRadius">1 mile radius</option>
-          <option value="addressRadius">2 mile radius</option>
-          <option value="addressRadius">3 mile radius</option>
+        <select>
+          <option value="addressRadius">Within a 1/4 mile radius (about a 5 min leisurely stroll)<option>
+          <option value="addressRadius">Within a 1/2 mile radius (about an 8 min power walk)</option>
+          <option value="addressRadius">Within a 1 mile radius (about 15 min on horse and buggy)</option>
+          <option value="addressRadius">Within a 2 mile radius (about a 7 min bicycle jaunt)</option>
+          <option value="addressRadius">Within a 3 mile radius (about an 8 min vespa ride)</option>
+          <option value="addressRadius">Within a 4 mile radius (about a 2 day bear crawl)</option>
         </select>
       </span>
       <input type="submit" style="display:none"  />
