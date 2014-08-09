@@ -36,4 +36,9 @@ describe Citygram::Models::Publisher do
     other = build(:publisher, endpoint: publisher.endpoint)
     expect(other).not_to be_valid
   end
+
+  it 'requires a city' do
+    publisher = build(:publisher, city: '')
+    expect(publisher).not_to be_valid
+  end
 end
