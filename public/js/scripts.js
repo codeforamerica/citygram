@@ -83,6 +83,8 @@ app.hookupSteps = function() {
     e.preventDefault();
     var city = $('.publisher.selected').data('publisher-city');
     var address = $('#geolocate').val();
+    var radius = parseFloat($('#user-selected-radius').val());
+    var radiusMeters = radius * 1000;
     app.geocode(address+' '+city, function(latlng) {
       app.map.setView(latlng, 15);
       app.updateEvents();
@@ -92,7 +94,7 @@ app.hookupSteps = function() {
       if (prevCircle) app.map.removeLayer(prevCircle);
 
       prevMarker = L.marker(latlng).addTo(app.map);
-      prevCircle = L.circle(latlng, 500).addTo(app.map);
+      prevCircle = L.circle(latlng, radiusMeters).addTo(app.map);
     });
   };
 
@@ -106,6 +108,7 @@ app.hookupSteps = function() {
     });
   };
 
+  $('#user-selected-radius').on('change', geolocate);
   $('#geolocateForm').on('submit', geolocate);
   $('.geolocateButton').on('click', geolocate);
   $('#geolocate').on('change', geolocate);
