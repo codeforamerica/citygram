@@ -29,8 +29,9 @@ describe Citygram::Routes::Subscriptions do
     end
 
     it 'response with an error message if validations fail' do
+      params[:subscription][:geom] = ''
       error_response = { error: 'geom is not present, geom is an invalid geometry' }.to_json
-      params[:subscription] = params[:subscription].merge(geom: '')
+
       post '/subscriptions', params
       expect(last_response.body).to eq error_response
     end
