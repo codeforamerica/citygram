@@ -108,6 +108,7 @@ app.hookupSteps = function() {
 
   $('#geolocateForm').on('submit', geolocate);
   $('.geolocateButton').on('click', geolocate);
+  $('#geolocate').on('change', geolocate);
 };
 
 app.updateEvents = function() {
