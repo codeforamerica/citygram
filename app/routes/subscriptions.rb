@@ -7,7 +7,11 @@ module Citygram
       format :json
 
       rescue_from Sequel::NoMatchingRow do
-        Rack::Response.new({error: 'not found'}.to_json, 404)
+        Rack::Response.new({error: 'not found'}.to_json, 404).finish
+      end
+
+      rescue_from Sequel::ValidationFailed do |e|
+        Rack::Response.new({error: e.message}.to_json, 422).finish
       end
 
       desc 'Create a new subscription'
