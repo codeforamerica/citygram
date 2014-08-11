@@ -23,7 +23,14 @@ module Citygram
         end
       rescue Twilio::REST::RequestError => e
         Citygram::App.logger.error(e)
-        raise Citygram::Services::Channels::NotificationFailure, e
+
+        if e.code.to_i == Citygram::Services::Channels::SMS::UNSUBSCRIBED_ERROR_CODE
+          # unsubscribe and skip retries if the user has
+          # replied with a filter word
+          subscription.unsubscribe!
+        else
+          raise Citygram::Services::Channels::NotificationFailure, e
+        end
       end
     end
   end

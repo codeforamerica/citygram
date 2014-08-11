@@ -23,7 +23,6 @@ module Citygram
             body: event.title
           )
         rescue Twilio::REST::RequestError => e
-          # TODO: deactivate subscription?
           Citygram::App.logger.error(e)
 
           if e.code.to_i == UNSUBSCRIBED_ERROR_CODE
