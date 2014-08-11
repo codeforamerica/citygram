@@ -26,6 +26,16 @@ describe Citygram::Workers::SubscriptionConfirmation do
       expect(Subscription).to receive(:first!).with(id: subscription.id).and_return(subscription)
       subject.perform(subscription.id)
     end
+
+    it 'logs exceptions from twilio and retries' do
+      error = Twilio::REST::RequestError.new('test failure', 1234)
+      expect(Citygram::App.logger).to receive(:error).with(error)
+      expect(Citygram::Services::Channels::SMS).to receive(:sms).and_raise(error)
+
+      expect {
+        subject.perform(subscription.id)
+      }.to raise_error Citygram::Services::Channels::NotificationFailure, /test failure/
+    end
   end
 
   it 'limits the number of retries' do

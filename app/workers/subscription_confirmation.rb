@@ -23,7 +23,7 @@ module Citygram
         end
       rescue Twilio::REST::RequestError => e
         Citygram::App.logger.error(e)
-        raise NotificationFailure, e
+        raise Citygram::Services::Channels::NotificationFailure, e
       end
     end
   end
