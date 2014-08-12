@@ -11,12 +11,17 @@ body {
   color: #182A4A;
 }
 
-input, select {
+input, select, .leaflet-popup {
   font-family: "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 strong {
   font-weight: 700;
+}
+
+.leaflet-popup {
+  font-family: "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  word-wrap: break-word;
 }
 
 /*********** Form Elements **************/
