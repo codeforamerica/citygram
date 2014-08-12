@@ -105,20 +105,19 @@ app.hookupSteps = function() {
 
       // fit bounds
       app.map.fitBounds(prevCircle.getBounds());
-
-      // Populate events
-      setTimeout(function() {
-        app.updateEvents(app.map.getBounds());
-      }, 500);
     });
   };
 
+  app.map.on('zoomend', function() {
+    app.updateEvents(app.map.getBounds());
+  });
   $('#user-selected-radius').on('change', geolocate);
   $('#geolocateForm').on('submit', geolocate);
   $('.geolocateButton').on('click', geolocate);
   $('#geolocate').on('change', geolocate);
 };
 
+// Populate events
 app.updateEvents = function(bounds) {
   var mapGeometry = {
     type: 'Polygon',
