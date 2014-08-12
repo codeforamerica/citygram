@@ -63,9 +63,9 @@ strong {
   text-indent: 0.01px;
   text-overflow: '';
   background: url(/img/dropdown-arrow.png) no-repeat;
-  background-position: 560px 23px;
+  background-position: 490px 23px;
   background-color: #F1F1F2;
-  width: 600px;
+  width: 530px;
 }
 
 input, select {
@@ -262,7 +262,7 @@ section h3 span {
 
 #step2 #geolocate {
   top: 17px;
-  width: 400px;
+  width: 300px;
   margin-right: 7px;
 }
 
