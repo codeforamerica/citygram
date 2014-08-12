@@ -41,7 +41,7 @@ app.hookupSteps = function() {
     app.scrollToElement($('#step2'));
 
     // update events for the new publisher
-    app.updateEvents();
+    app.updateEvents(app.map.getBounds());
   });
 
   $('.mapButton').on('click', function() {
@@ -83,44 +83,50 @@ app.hookupSteps = function() {
     e.preventDefault();
     var city = $('.publisher.selected').data('publisher-city');
     var address = $('#geolocate').val();
+    var radius = parseFloat($('#user-selected-radius').val());
+    var radiusMeters = radius * 1000;
     app.geocode(address+' '+city, function(latlng) {
-      app.map.setView(latlng, 15);
-      app.updateEvents();
-      updateGeometry(latlng);
+      // Set the new app state
+      var center = new LatLon(latlng[0], latlng[1]);
+      var bboxWidth = parseFloat($('#user-selected-radius').val())
+      var bbox = center.boundingBox(bboxWidth);
+      app.state.geom = JSON.stringify({
+        type: 'Polygon',
+        coordinates: [bbox],
+      });
 
+      // Remove old layers
       if (prevMarker) app.map.removeLayer(prevMarker);
       if (prevCircle) app.map.removeLayer(prevCircle);
 
+      // Preserve references to new layers
       prevMarker = L.marker(latlng).addTo(app.map);
-      prevCircle = L.circle(latlng, 500).addTo(app.map);
+      prevCircle = L.circle(latlng, radiusMeters).addTo(app.map);
+
+      // fit bounds
+      app.map.fitBounds(prevCircle.getBounds());
     });
   };
 
-  var BOUNDING_DISTANCE_IN_KM = 0.5;
-  var updateGeometry = function(latlng) {
-    var center = new LatLon(latlng[0], latlng[1]);
-    var bbox = center.boundingBox(BOUNDING_DISTANCE_IN_KM);
-    app.state.geom = JSON.stringify({
-      type: 'Polygon',
-      coordinates: [bbox],
-    });
-  };
-
+  app.map.on('zoomend', function() {
+    app.updateEvents(app.map.getBounds());
+  });
+  $('#user-selected-radius').on('change', geolocate);
   $('#geolocateForm').on('submit', geolocate);
   $('.geolocateButton').on('click', geolocate);
   $('#geolocate').on('change', geolocate);
 };
 
-app.updateEvents = function() {
-  var mapBounds = app.map.getBounds();
+// Populate events
+app.updateEvents = function(bounds) {
   var mapGeometry = {
     type: 'Polygon',
     coordinates: [[
-      [mapBounds._southWest.lng, mapBounds._northEast.lat],
-      [mapBounds._northEast.lng, mapBounds._northEast.lat],
-      [mapBounds._northEast.lng, mapBounds._southWest.lat],
-      [mapBounds._southWest.lng, mapBounds._southWest.lat],
-      [mapBounds._southWest.lng, mapBounds._northEast.lat]
+      [bounds._southWest.lng, bounds._northEast.lat],
+      [bounds._northEast.lng, bounds._northEast.lat],
+      [bounds._northEast.lng, bounds._southWest.lat],
+      [bounds._southWest.lng, bounds._southWest.lat],
+      [bounds._southWest.lng, bounds._northEast.lat]
     ]]
   }
 
