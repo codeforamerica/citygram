@@ -19,11 +19,6 @@ strong {
   font-weight: 700;
 }
 
-.leaflet-popup {
-  font-family: "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  word-wrap: break-word;
-}
-
 /*********** Form Elements **************/
 
 .bigButton {
@@ -249,6 +244,11 @@ section h3 span {
 }
 
 /*********** Map Section **************/
+
+.leaflet-popup {
+  font-family: "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  word-wrap: break-word;
+}
 
 #step2 .instruction {
   position: relative;
