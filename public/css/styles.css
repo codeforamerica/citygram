@@ -254,6 +254,7 @@ section h3 span {
   width: 100%; 
   border: 1px dashed #D1D5D8;
   position: relative;
+  margin-bottom: 20px;
 }
 
 #step2 #geolocateForm {
@@ -277,7 +278,7 @@ section h3 span {
   min-width: 80%;
   margin: 0 auto;
   display: block;
-  margin-top: 40px;
+  margin-top: 30px;
 }
 
 /*********** Contact Section **************/
