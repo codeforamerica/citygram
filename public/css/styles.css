@@ -11,7 +11,7 @@ body {
   color: #182A4A;
 }
 
-input, select, .leaflet-popup {
+input, select, .leaflet-popup, #map {
   font-family: "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
@@ -284,6 +284,28 @@ section h3 span {
   margin: 0 auto;
   display: block;
   margin-top: 30px;
+}
+
+#map .map-key-panel {
+  position: absolute;
+  margin-top: 10px;
+  margin-left: 48px;
+  color: #5b5b5b;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 3px;
+  z-index: 1001;
+  padding: 10px;
+  font-size: 1.1em;
+}
+
+#map .map-key-panel .map-blue-dot {
+  display: inline-block;
+  margin-right: 5px;
+  border-radius: 50%;
+  width: 11px;
+  height: 11px;
+  background-color: rgba(0,0,255,0.1);
+  border: 2px solid rgba(0,0,255,0.5);
 }
 
 /*********** Contact Section **************/
