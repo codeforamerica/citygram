@@ -65,7 +65,7 @@ strong {
   background: url(/img/dropdown-arrow.png) no-repeat;
   background-position: 490px 23px;
   background-color: #F1F1F2;
-  width: 530px;
+  width: 100%;
 }
 
 input, select {
@@ -121,11 +121,10 @@ header h1 {
   font-weight: 700;
 }
 
-header p {
+header h3 {
   padding-top: 15px;
   text-shadow: 0 2px 15px rgba(0, 0, 0, 0.25);
   color: #FFF;
-  font-size: 1.5em;
   font-weight: 200;
   padding-bottom: 15px;
 }
@@ -259,7 +258,7 @@ section h3 span {
 
 #step2 #geolocate {
   top: 17px;
-  width: 300px;
+  width: 100%;
   margin-right: 7px;
 }
 
