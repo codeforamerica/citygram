@@ -107,7 +107,7 @@ header {
 header .logo {
   background: url(/img/citygram.png) no-repeat;
   background-size: 272px 68px;
-  margin-top: 40px;
+  margin-top: 25px;
   height: 80px;
   width: 320px;
 }
@@ -121,12 +121,12 @@ header h1 {
 }
 
 header p {
-  padding-top: 20px;
+  padding-top: 15px;
   text-shadow: 0 2px 15px rgba(0, 0, 0, 0.25);
   color: #FFF;
   font-size: 1.5em;
   font-weight: 200;
-  padding-bottom: 20px;
+  padding-bottom: 15px;
 }
 
 header .startButton {
