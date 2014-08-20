@@ -11,7 +11,7 @@ module Citygram
         # TODO: get rid of this case statement
         case subscription.channel
         when 'sms'
-          body = "Welcome! You are now subscribed to #{publisher.title} in #{publisher.city}. Woohoo! If you'd like to give feedback, text back with your email. To unsubcribe from all messages, reply STOP."
+          body = "Welcome! You are now subscribed to #{publisher.title} in #{publisher.city}. Woohoo! If you'd like to give feedback, text back with your email. To unsubscribe from all messages, reply STOP."
 
           Citygram::Services::Channels::SMS.sms(
             from: Citygram::Services::Channels::SMS::FROM_NUMBER,
