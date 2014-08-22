@@ -63,9 +63,11 @@ strong {
   text-indent: 0.01px;
   text-overflow: '';
   background: url(/img/dropdown-arrow.png) no-repeat;
-  background-position: 490px 23px;
+  background-position: 275px 23px;
   background-color: #F1F1F2;
-  width: 100%;
+  width: 325px;
+  display: inline;
+  margin: 0px 10px 5px 0px; 
 }
 
 input, select {
@@ -127,10 +129,13 @@ header h3 {
   color: #FFF;
   font-weight: 200;
   padding-bottom: 15px;
+  line-height: 30px;
+
 }
 
 header .startButton {
   width: 240px;
+  margin-left: 15px;
 }
 
 /*********** Sections **************/
@@ -143,7 +148,8 @@ section {
 
 section .instruction {
   padding-bottom: 10px;
-  margin-bottom: 20px;
+  margin-bottom: -5px;
+  margin-left: -11px;
 }
 
 section h2 {
@@ -162,6 +168,9 @@ section h3 {
   /* color: #D1D5D8; */
   font-size: 26px;
   font-weight: 200;
+  line-height: 30px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 section h3 span {
@@ -172,11 +181,12 @@ section h3 span {
 
 #step1 .publishers {
   font-size: 0;
-  margin: -10px;
+  margin-left: 8.33333333%;
+  margin-right: 8.33333333%;
 }
 
 #step1 .publisher {
-  display: inline-block;
+  display: block;
   background: #F1F1F2;
   width: 220px;
   height: 220px;
@@ -185,6 +195,9 @@ section h3 span {
   margin: 10px;
   text-align: center;
   border: 1px solid #E8E8E9;
+  margin-left: auto;
+  margin-right: auto;
+}
 }
 
 #step1 .publisher:not(.soon):hover, #step1 .selected {
@@ -209,10 +222,9 @@ section h3 span {
 }
 
 #step1 .publisher .title {
-  font-size: 36px;
-  padding: 8px;
-  line-height: 36px;
-  padding-top: 20px;
+  font-size: 28px;
+  padding: 20px 24px 14px 24px;
+  line-height: 32px;
   font-weight: 200;
   
 }
@@ -249,24 +261,25 @@ section h3 span {
   width: 100%; 
   border: 1px dashed #D1D5D8;
   position: relative;
-  margin-bottom: 20px;
+  margin: 20px 0px 20px 0px;
 }
 
 #step2 #geolocateForm {
   margin-top: 20px;
+  display: inline;
 }
 
 #step2 #geolocate {
   top: 17px;
-  width: 100%;
-  margin-right: 7px;
+  width: 325px;
+  margin: 0px 0px 5px 0px;
+  display: inline;
 }
 
 #step2 .geolocateButton {
-  padding: 9px;
+  padding: .5px;
   position: relative;
-  top: 6px;
-  margin-left: 6px;
+  top: 7px;
 }
 
 #step2 .mapButton {
@@ -402,4 +415,16 @@ section h3 span {
 footer {
   height: 500px;
   background: #fff;
+}
+
+/*********** Responsive ************/
+
+@media (max-width: @screen-md-max) {
+  section h2 {
+    font-size: 30px;
+  }
+  section h3 {
+    font-size: 20px;
+    line-height: 26px;
+  }
 }
