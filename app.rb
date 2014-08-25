@@ -10,8 +10,6 @@ $: << File.expand_path('../', __FILE__)
 $: << File.expand_path('../lib', __FILE__)
 
 require 'sinatra/base'
-require 'sinatra-sequel'
-
 require 'app/routes'
 
 module Citygram
