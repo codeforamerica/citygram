@@ -3,8 +3,6 @@ module Citygram::Models
     one_to_many :subscriptions
     one_to_many :events
 
-    set_allowed_columns :title, :endpoint, :city, :active, :icon
-
     plugin :url_validation
 
     dataset_module do

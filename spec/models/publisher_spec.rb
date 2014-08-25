@@ -12,7 +12,7 @@ describe Citygram::Models::Publisher do
   end
 
   it 'whitelists mass-assignable columns' do
-    expect(Publisher.allowed_columns.sort).to eq [:title, :endpoint, :city, :active, :icon].sort
+    expect(Publisher.allowed_columns.sort).to eq [].sort
   end
 
   it 'requires a title' do

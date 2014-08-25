@@ -4,8 +4,13 @@ module Citygram::Models
   class Subscription < Sequel::Model
     many_to_one :publisher
 
-    set_allowed_columns :geom, :publisher_id, :channel,
-                        :webhook_url, :phone_number, :email_address
+    set_allowed_columns \
+      :channel,
+      :email_address,
+      :phone_number,
+      :webhook_url,
+      :geom,
+      :publisher_id
 
     plugin :email_validation
     plugin :geometry_validation

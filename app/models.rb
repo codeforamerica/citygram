@@ -1,10 +1,18 @@
 require 'geo_ruby/geojson'
 require 'phone'
 
-# commom model config
 Sequel.default_timezone = :utc
+
+# no mass-assignable columns by default
+Sequel::Model.set_allowed_columns(*[])
+
+# use first!, create!, save! to raise
 Sequel::Model.raise_on_save_failure = false
+
+# sequel's standard pagination
 Sequel::Model.db.extension :pagination
+
+# common model plugins
 Sequel::Model.plugin :attributes_helpers
 Sequel::Model.plugin :json_serializer
 Sequel::Model.plugin :save_helpers
@@ -23,6 +31,7 @@ Sequel::Plugins::Serialization.register_format(:geojson,
 # set default to US for now
 Phoner::Phone.default_country_code = '1'
 
+# normalize phone numbers to 
 Sequel::Plugins::Serialization.register_format(:phone,
   ->(v){ Phoner::Phone.parse(v).to_s },
   ->(v){ v } # identity

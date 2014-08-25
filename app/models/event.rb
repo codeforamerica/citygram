@@ -2,8 +2,6 @@ module Citygram::Models
   class Event < Sequel::Model
     many_to_one :publisher
 
-    set_allowed_columns *[] # disallow mass-assignment
-
     plugin :serialization, :geojson, :geom
     plugin :serialization, :json, :properties
     plugin :geometry_validation
