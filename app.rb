@@ -29,9 +29,8 @@ module Citygram
   end
 end
 
-require 'app/workers'
 require 'app/models'
-include Citygram::Models
+require 'app/workers'
 
 # Log instrumented requests for publisher and subscription connections
 ActiveSupport::Notifications.subscribe(

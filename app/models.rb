@@ -49,3 +49,6 @@ end
 require 'app/models/event'
 require 'app/models/publisher'
 require 'app/models/subscription'
+
+# access model class constants without qualifying namespace
+include Citygram::Models
