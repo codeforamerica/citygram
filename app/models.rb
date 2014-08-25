@@ -1,26 +1,16 @@
 require 'geo_ruby/geojson'
 require 'phone'
 
-require 'app/models/plugins/attributes_helpers'
-require 'app/models/plugins/save_helpers'
-require 'app/models/plugins/email_validation'
-require 'app/models/plugins/geometry_validation'
-require 'app/models/plugins/phone_validation'
-require 'app/models/plugins/url_validation'
-
+# commom model config
 Sequel.default_timezone = :utc
-
 Sequel::Model.raise_on_save_failure = false
-
-Sequel::Model.plugin :timestamps, update_on_create: true
-Sequel::Model.plugin :serialization
-Sequel::Model.plugin :json_serializer
-Sequel::Model.plugin :validation_helpers
-Sequel::Model.plugin Citygram::Models::Plugins::AttributesHelpers
-Sequel::Model.plugin Citygram::Models::Plugins::SaveHelpers
-
-# enable pagination
 Sequel::Model.db.extension :pagination
+Sequel::Model.plugin :attributes_helpers
+Sequel::Model.plugin :json_serializer
+Sequel::Model.plugin :save_helpers
+Sequel::Model.plugin :serialization
+Sequel::Model.plugin :timestamps, update_on_create: true
+Sequel::Model.plugin :validation_helpers
 
 # round trip a geojson geometry through a postgis geometry column
 Sequel::Plugins::Serialization.register_format(:geojson,
@@ -30,7 +20,8 @@ Sequel::Plugins::Serialization.register_format(:geojson,
   ->(v){ GeoRuby::SimpleFeatures::Geometry.from_hex_ewkb(v).to_json }
 )
 
-Phoner::Phone.default_country_code = '1' # set default to US for now
+# set default to US for now
+Phoner::Phone.default_country_code = '1'
 
 Sequel::Plugins::Serialization.register_format(:phone,
   ->(v){ Phoner::Phone.parse(v).to_s },
