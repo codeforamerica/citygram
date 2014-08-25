@@ -1,7 +1,12 @@
 module Citygram::Services::Channels
   class SMS < Base
     FROM_NUMBER = ENV.fetch('TWILIO_FROM_NUMBER')
-    UNSUBSCRIBED_ERROR_CODE = 21610
+
+    UNSUBSCRIBE_ERROR_CODES = [
+      21211, # number cannot exist - https://www.twilio.com/docs/errors/21211
+      21610, # user replied with a stop word - https://www.twilio.com/docs/errors/21610
+      21614, # not a valid mobile number - https://www.twilio.com/docs/errors/21614
+    ].freeze
 
     def self.client
       @client ||= Twilio::REST::Client.new(
@@ -23,9 +28,8 @@ module Citygram::Services::Channels
     rescue Twilio::REST::RequestError => e
       Citygram::App.logger.error(e)
 
-      if e.code.to_i == UNSUBSCRIBED_ERROR_CODE
-        # unsubscribe and skip retries if the user has
-        # replied with a filter word
+      if UNSUBSCRIBE_ERROR_CODES.include?(e.code.to_i)
+        # unsubscribe and skip retries
         subscription.unsubscribe!
       else
         raise NotificationFailure, e

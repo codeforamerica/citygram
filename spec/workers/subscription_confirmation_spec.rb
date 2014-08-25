@@ -39,14 +39,17 @@ describe Citygram::Workers::SubscriptionConfirmation do
       }.to raise_error Citygram::Services::Channels::NotificationFailure, /test failure/
     end
 
-    it 'unsubscribes the number if the user has replied with a filter word' do
-      error = Twilio::REST::RequestError.new('test failure',
-        Citygram::Services::Channels::SMS::UNSUBSCRIBED_ERROR_CODE)
-      expect(Citygram::Services::Channels::SMS).to receive(:sms).and_raise(error)
+    Citygram::Services::Channels::SMS::UNSUBSCRIBE_ERROR_CODES.each do |error_code|
+      context "Twilio Error Code: #{error_code}" do
+        it 'deactivates the subscription' do
+          error = Twilio::REST::RequestError.new('test failure', error_code)
+          expect(Citygram::Services::Channels::SMS).to receive(:sms).and_raise(error)
 
-      expect {
-        subject.perform(subscription.id)
-      }.to change{ subscription.reload.unsubscribed_at.present? }.from(false).to(true)
+          expect {
+            subject.perform(subscription.id)
+          }.to change{ subscription.reload.unsubscribed_at.present? }.from(false).to(true)
+        end
+      end
     end
   end
 
