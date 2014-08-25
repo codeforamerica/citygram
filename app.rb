@@ -10,7 +10,6 @@ $: << File.expand_path('../', __FILE__)
 $: << File.expand_path('../lib', __FILE__)
 
 require 'sinatra/base'
-require 'app/routes'
 
 module Citygram
   class App < Sinatra::Base
@@ -30,6 +29,7 @@ module Citygram
 end
 
 require 'app/models'
+require 'app/routes'
 require 'app/workers'
 
 # Log instrumented requests for publisher and subscription connections
