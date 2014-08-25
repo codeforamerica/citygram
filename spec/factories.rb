@@ -1,3 +1,6 @@
+require 'factory_girl'
+require 'ffaker'
+
 FactoryGirl.define do
   factory :publisher, class: Citygram::Models::Publisher do
     title { Faker::Lorem.words(3).join(' ') }
