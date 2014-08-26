@@ -67,8 +67,8 @@ describe Citygram::Services::Channels::SMS do
     end
     let(:response_body) do
       {
-        'code' => 21211,
-        'message' => "The 'To' number #{subscription.phone_number} is not a valid phone number.",
+        'code' => 21612,
+        'message' => "The 'To' number #{subscription.phone_number} is not currently reachable via SMS.",
         'more_info' => 'https://www.twilio.com/docs/errors/21211',
         'status' => 400
       }.to_json
@@ -86,18 +86,20 @@ describe Citygram::Services::Channels::SMS do
         with(body: request_body, headers: request_headers)).to have_been_made.once
     end
 
-    context 'user has unsubscribed with filter word' do
-      it 'deactivates the subscription if the user has replied with a filter word' do
-        unsubscribed_error = Twilio::REST::RequestError.new('dummy message', Citygram::Services::Channels::SMS::UNSUBSCRIBED_ERROR_CODE)
-        args = { from: from_number, to: subscription.phone_number, body: event.title }
+    Citygram::Services::Channels::SMS::UNSUBSCRIBE_ERROR_CODES.each do |error_code|
+      context "Twilio Error Code: #{error_code}" do
+        it 'deactivates the subscription' do
+          unsubscribed_error = Twilio::REST::RequestError.new('dummy message', error_code)
+          args = { from: from_number, to: subscription.phone_number, body: event.title }
 
-        expect(Citygram::Services::Channels::SMS).to receive(:sms).
-          with(args).
-          and_raise(unsubscribed_error)
+          expect(Citygram::Services::Channels::SMS).to receive(:sms).
+            with(args).
+            and_raise(unsubscribed_error)
 
-        expect {
-          subject.call(subscription, event)
-        }.to change{ subscription.reload.unsubscribed_at.present? }.from(false).to(true)
+          expect {
+            subject.call(subscription, event)
+          }.to change{ subscription.reload.unsubscribed_at.present? }.from(false).to(true)
+        end
       end
     end
   end
