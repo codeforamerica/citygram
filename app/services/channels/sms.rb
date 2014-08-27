@@ -34,6 +34,10 @@ module Citygram::Services::Channels
       else
         raise NotificationFailure, e
       end
+    rescue IOError => e # TODO: is this the cause of the duplicate sms issue?
+      Citygram::App.logger(e)
+      Citygram::App.logger("Check for duplicate sms to #{subscription.phone_number}, with body: #{event.title}.")
+      raise # re-raise while we determine if this is the cause of duplicate sms's
     end
   end
 end
