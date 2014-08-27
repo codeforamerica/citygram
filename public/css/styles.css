@@ -96,7 +96,7 @@ input:focus, select:focus {
 }
 
 header {
-  background: url(/img/background-seattle.jpg);
+  background: url(/img/background.jpg);
   background-size: cover;
   height: 500px;
   position: relative;
@@ -129,7 +129,7 @@ header p {
   line-height: 44px;
   position: absolute;
   left: 100px;
-  top: 380px;
+  top: 370px;
   text-shadow: 0 2px 15px rgba(0, 0, 0, 0.25);
   color: #FFF;
   font-weight: 200;
@@ -219,10 +219,9 @@ section h3 span {
 }
 
 #step1 .publisher .title {
-  font-size: 36px;
-  padding: 8px;
+  font-size: 32px;
+  padding: 20px 16px 10px 16px;
   line-height: 36px;
-  padding-top: 20px;
   font-weight: 200;
   
 }
