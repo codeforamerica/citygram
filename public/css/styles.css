@@ -19,6 +19,24 @@ strong {
   font-weight: 700;
 }
 
+/*********** Text Styles **************/
+
+.green {
+  color: #59b390;
+}
+
+.orange {
+  color: #e47c5d;
+}
+
+.red {
+  color: #e22e41;
+}
+
+.bold {
+  font-weight: 700;
+}
+
 /*********** Form Elements **************/
 
 .bigButton {
@@ -306,6 +324,27 @@ section h3 span {
   height: 11px;
   background-color: rgba(0,0,255,0.1);
   border: 2px solid rgba(0,0,255,0.5);
+}
+
+.frequencyIcon {
+  margin-left: 40px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.frequencyText {
+  margin-left: 30px;
+  display: inline-block;
+  font-weight: 300;
+  font-size: 1.3em;
+  line-height: 1.6;
+  vertical-align: middle;
+}
+
+.frequencyTitle {
+  font-size: 18px;
+  font-weight: 700;
+  text-transform: uppercase;
 }
 
 /*********** Contact Section **************/
