@@ -22,6 +22,8 @@ TODO
 - [Danny Whalen](https://github.com/invisiblefunnel)
 - [Tiffany Chu](https://github.com/tchu88)
 - [Andrew Douglass](https://github.com/ardouglass)
+- [Livien Yin](https://github.com/livienyin)
+- [Sam Hashemi](https://github.com/samhashemi)
 
 ### Setup
 
