@@ -31,12 +31,12 @@
       <input type="text" id="geolocate" placeholder="Your address"></input>
       <span class="bigSelect">
         <select id="user-selected-radius">
-          <option value="0.402336">Within a 1/4 mile (about a 5 min leisurely stroll)</option>
-          <option value="0.804672">Within a 1/2 mile (about an 8 min power walk)</option>
-          <option value="1.60934">Within 1 mile (about 15 min on horse and buggy)</option>
-          <option value="3.21869">Within 2 miles (about a 7 min bicycle jaunt)</option>
-          <option value="4.82803">Within 3 miles (about an 8 min vespa ride)</option>
-          <option value="6.43738">Within 4 miles (about a 2 day bear crawl)</option>
+          <option value="0.25">Within a 1/4 mile (about a 5 min leisurely stroll)</option>
+          <option value="0.5">Within a 1/2 mile (about an 8 min power walk)</option>
+          <option value="1">Within 1 mile (about 15 min on horse and buggy)</option>
+          <option value="2">Within 2 miles (about a 7 min bicycle jaunt)</option>
+          <option value="3">Within 3 miles (about an 8 min vespa ride)</option>
+          <option value="4">Within 4 miles (about a 2 day bear crawl)</option>
         </select>
       </span>
       <input type="submit" style="display:none"  />
@@ -56,7 +56,7 @@
       <span class="frequencyTitle">Estimated Frequency</span>
       <!-- temp using confirmationType class for topic update, separate logic for frequency? -->
       <p>
-        In the last week, there were <span id="freqNum" class="orange bold">12 citygrams</span> for <span id="freqTopic" class="confirmationType navy bold">building permits</span> within <span id="freqRadius" class="green bold">1 mile</span> of <span id="freqAddress" class="red bold">205 Blackburn Avenue</span>.
+        In the last week, there were <span id="freqNum" class="orange bold">___ citygrams</span> for <span id="freqTopic" class="confirmationType navy bold">___</span> within <span id="freqRadius" class="green bold">___ mi</span> of <span id="freqAddress" class="red bold">___</span>.
       </p>
     </div>
   </div>

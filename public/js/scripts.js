@@ -83,8 +83,8 @@ app.hookupSteps = function() {
     e.preventDefault();
     var city = $('.publisher.selected').data('publisher-city');
     var address = $('#geolocate').val();
-    var radius = parseFloat($('#user-selected-radius').val());
-    var radiusMeters = radius * 1000;
+    var radius = $('#user-selected-radius').val();
+    var radiusMeters = parseFloat(radius) * 1609.344;
     app.geocode(address+' '+city, function(latlng) {
       // Set the new app state
       var center = new LatLon(latlng[0], latlng[1]);
@@ -106,8 +106,8 @@ app.hookupSteps = function() {
       // fit bounds
       app.map.fitBounds(prevCircle.getBounds());
 
-      // frequency estimate address and radius
-      $('#freqRadius').html(radius); // radius needs to be converted back to miles
+      // Frequency estimations for selected address and radius
+      $('#freqRadius').html(radius + ' mi'); 
       $('#freqAddress').html(address);
     });
   };
