@@ -2,20 +2,17 @@ module Citygram::Services::Channels
   class SMS < Base
     FROM_NUMBER = ENV.fetch('TWILIO_FROM_NUMBER')
 
+    TWILIO_ACCOUNT_SID = ENV.fetch('TWILIO_ACCOUNT_SID').freeze
+    TWILIO_AUTH_TOKEN  = ENV.fetch('TWILIO_AUTH_TOKEN').freeze
+
     UNSUBSCRIBE_ERROR_CODES = [
       21211, # number cannot exist - https://www.twilio.com/docs/errors/21211
       21610, # user replied with a stop word - https://www.twilio.com/docs/errors/21610
       21614, # not a valid mobile number - https://www.twilio.com/docs/errors/21614
     ].freeze
 
-    def self.client
-      @client ||= Twilio::REST::Client.new(
-        ENV.fetch('TWILIO_ACCOUNT_SID'),
-        ENV.fetch('TWILIO_AUTH_TOKEN')
-      )
-    end
-
     def self.sms(*args)
+      client = Twilio::REST::Client.new(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN)
       client.account.messages.create(*args)
     end
 
