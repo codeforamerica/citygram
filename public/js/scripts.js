@@ -85,6 +85,9 @@ app.hookupSteps = function() {
     var address = $('#geolocate').val();
     var radius = $('#user-selected-radius').val();
     var radiusMeters = parseFloat(radius) * 1609.344;
+    var oneWeekAgo = new Date();
+    oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
+
     app.geocode(address+' '+city, function(latlng) {
       // Set the new app state
       var center = new LatLon(latlng[0], latlng[1]);
@@ -106,9 +109,13 @@ app.hookupSteps = function() {
       // fit bounds
       app.map.fitBounds(prevCircle.getBounds());
 
-      // Frequency estimations for selected address and radius
-      $('#freqRadius').html(radius + ' mi'); 
-      $('#freqAddress').html(address);
+      // Frequency estimate
+      app.getEventsCount(app.state.publisher_id, app.state.geom, oneWeekAgo, function(response) {
+        $('#freqRadius').html(radius + ' mi'); 
+        $('#freqAddress').html(address);
+        $('#freqNum').html(response.events_count + ' citygrams');
+      });
+      
     });
   };
 
@@ -156,6 +163,11 @@ app.displayEventMarker = function(event) {
 app.getEventsForGeometry = function(geometry, callback){
   if (!app.state.publisher_id) return;
   $.getJSON('/publishers/'+app.state.publisher_id+'/events', { geometry: geometry }, callback);
+};
+
+app.getEventsCount = function(publisherId, geometry, since, callback){
+  if (!publisherId) return;
+  $.getJSON('/publishers/'+publisherId+'/events_count', { geometry: geometry, since: since }, callback);
 };
 
 app.scrollToElement = function(el) {
