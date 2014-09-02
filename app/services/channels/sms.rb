@@ -30,8 +30,6 @@ module Citygram::Services::Channels
       else
         raise NotificationFailure, e
       end
-    rescue IOError => e # IOError's the source of duplicate sms's?
-      Citygram::App.logger(e)
     end
   end
 end
