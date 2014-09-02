@@ -105,6 +105,10 @@ app.hookupSteps = function() {
 
       // fit bounds
       app.map.fitBounds(prevCircle.getBounds());
+
+      // frequency estimate address and radius
+      $('#freqRadius').html(radius); // radius needs to be converted back to miles
+      $('#freqAddress').html(address);
     });
   };
 
