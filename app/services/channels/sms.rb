@@ -1,6 +1,9 @@
 module Citygram::Services::Channels
   class SMS < Base
-    FROM_NUMBER = ENV.fetch('TWILIO_FROM_NUMBER')
+    FROM_NUMBER = ENV.fetch('TWILIO_FROM_NUMBER').freeze
+
+    TWILIO_ACCOUNT_SID = ENV.fetch('TWILIO_ACCOUNT_SID').freeze
+    TWILIO_AUTH_TOKEN  = ENV.fetch('TWILIO_AUTH_TOKEN').freeze
 
     UNSUBSCRIBE_ERROR_CODES = [
       21211, # number cannot exist - https://www.twilio.com/docs/errors/21211
@@ -8,14 +11,8 @@ module Citygram::Services::Channels
       21614, # not a valid mobile number - https://www.twilio.com/docs/errors/21614
     ].freeze
 
-    def self.client
-      @client ||= Twilio::REST::Client.new(
-        ENV.fetch('TWILIO_ACCOUNT_SID'),
-        ENV.fetch('TWILIO_AUTH_TOKEN')
-      )
-    end
-
     def self.sms(*args)
+      client = Twilio::REST::Client.new(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN)
       client.account.messages.create(*args)
     end
 
@@ -29,15 +26,10 @@ module Citygram::Services::Channels
       Citygram::App.logger.error(e)
 
       if UNSUBSCRIBE_ERROR_CODES.include?(e.code.to_i)
-        # unsubscribe and skip retries
-        subscription.unsubscribe!
+        subscription.unsubscribe! # and skip retries
       else
         raise NotificationFailure, e
       end
-    rescue IOError => e # TODO: is this the cause of the duplicate sms issue?
-      Citygram::App.logger(e)
-      Citygram::App.logger("Check for duplicate sms to #{subscription.phone_number}, with body: #{event.title}.")
-      raise # re-raise while we determine if this is the cause of duplicate sms's
     end
   end
 end
