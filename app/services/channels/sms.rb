@@ -1,6 +1,6 @@
 module Citygram::Services::Channels
   class SMS < Base
-    FROM_NUMBER = ENV.fetch('TWILIO_FROM_NUMBER')
+    FROM_NUMBER = ENV.fetch('TWILIO_FROM_NUMBER').freeze
 
     TWILIO_ACCOUNT_SID = ENV.fetch('TWILIO_ACCOUNT_SID').freeze
     TWILIO_AUTH_TOKEN  = ENV.fetch('TWILIO_AUTH_TOKEN').freeze
