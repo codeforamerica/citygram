@@ -7,7 +7,7 @@ describe Citygram::Routes::Unsubscribes do
   let(:path) { '/unsubscribes' } # mapped to /protected/unsubscribes in config.ru
 
   context 'invalid authentication' do
-    it 'responds with 401 UNAUTHORIZED give no authentication' do
+    it 'responds with 401 UNAUTHORIZED given no authentication' do
       subscription = create(:subscription, channel: 'sms', phone_number: phone)
       post path, { 'Body' => 'STOP', 'From' => phone }
       expect(last_response.status).to eq 401
@@ -29,25 +29,26 @@ describe Citygram::Routes::Unsubscribes do
     end
 
     Citygram::Routes::Unsubscribes::FILTER_WORDS.each do |word|
-      it "treats #{word} as a stop word" do
-        subscription = create(:subscription, channel: 'sms', phone_number: phone)
-        post path, { 'Body' => word, 'From' => phone }
-        expect(subscription.reload.unsubscribed_at).to be_present
-      end
-
-      it 'responds with 200 OK' do
-        subscription = create(:subscription, channel: 'sms', phone_number: phone)
-        post path, { 'Body' => word, 'From' => phone }
-        expect(last_response.status).to eq 200
-      end
-
-      it 'preserves existing unsubscribe timestamps' do
-        active = create(:subscription, channel: 'sms', phone_number: phone)
-        inactive = create(:subscription, unsubscribed_at: DateTime.now, channel: 'sms', phone_number: phone)
-
-        expect {
+      context "Filter word: #{word}" do
+        it "treats #{word} as a stop word" do
+          subscription = create(:subscription, channel: 'sms', phone_number: phone)
           post path, { 'Body' => word, 'From' => phone }
-        }.not_to change{ inactive.reload.unsubscribed_at }
+          expect(subscription.reload.unsubscribed_at).to be_present
+        end
+
+        it 'responds with 200 OK' do
+          subscription = create(:subscription, channel: 'sms', phone_number: phone)
+          post path, { 'Body' => word, 'From' => phone }
+          expect(last_response.status).to eq 200
+        end
+
+        it 'preserves existing unsubscribe timestamps' do
+          inactive = create(:subscription, unsubscribed_at: DateTime.now, channel: 'sms', phone_number: phone)
+
+          expect {
+            post path, { 'Body' => word, 'From' => phone }
+          }.not_to change{ inactive.reload.unsubscribed_at }
+        end
       end
     end
 
