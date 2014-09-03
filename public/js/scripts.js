@@ -91,7 +91,7 @@ app.hookupSteps = function() {
     app.geocode(address+' '+city, function(latlng) {
       // Set the new app state
       var center = new LatLon(latlng[0], latlng[1]);
-      var bboxWidth = parseFloat($('#user-selected-radius').val())
+      var bboxWidth = 2 * parseFloat($('#user-selected-radius').val())
       var bbox = center.boundingBox(bboxWidth);
       app.state.geom = JSON.stringify({
         type: 'Polygon',
