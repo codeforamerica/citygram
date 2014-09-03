@@ -12,7 +12,7 @@ module Citygram::Routes
     post '/unsubscribes' do
       if FILTER_WORD_REGEXP === params['Body']
         phone_number = Phoner::Phone.parse(params['From']).to_s
-        Subscription.where(phone_number: phone_number).update(unsubscribed_at: DateTime.now)
+        Subscription.where(phone_number: phone_number, unsubscribed_at: nil).update(unsubscribed_at: DateTime.now)
       end
 
       200
