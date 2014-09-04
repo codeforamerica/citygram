@@ -80,7 +80,7 @@ app.hookupSteps = function() {
 
   var prevMarker, prevCircle;
   var geolocate = function(e) {
-    e.preventDefault();
+    e && e.preventDefault();
     var city = $('.publisher.selected').data('publisher-city');
     var address = $('#geolocate').val();
     var radius = $('#user-selected-radius').val();
@@ -121,6 +121,9 @@ app.hookupSteps = function() {
 
   app.map.on('zoomend', function() {
     app.updateEvents(app.map.getBounds());
+  });
+  $('.publisher:not(.soon)').on('click', function(e) {
+    if ($('#geolocate').val().trim() !== '') geolocate();
   });
   $('#user-selected-radius').on('change', geolocate);
   $('#geolocateForm').on('submit', geolocate);
