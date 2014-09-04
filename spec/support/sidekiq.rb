@@ -6,6 +6,6 @@ RSpec.configure do |config|
   end
 
   config.around(:each) do |example|
-    Sidekiq::Testing.fake! { example.run }
+    Sidekiq::Testing.fake!(&example)
   end
 end

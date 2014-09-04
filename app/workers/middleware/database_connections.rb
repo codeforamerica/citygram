@@ -1,16 +1,14 @@
-module Citygram
-  module Workers
-    module Middleware
-      class DatabaseConnections
-        def initialize(database)
-          @database = database
-        end
+module Citygram::Workers
+  module Middleware
+    class DatabaseConnections
+      def initialize(database)
+        @database = database
+      end
 
-        def call(*args)
-          yield
-        ensure
-          @database.disconnect
-        end
+      def call(*args)
+        yield
+      ensure
+        @database.disconnect
       end
     end
   end

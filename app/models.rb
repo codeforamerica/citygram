@@ -1,26 +1,28 @@
 require 'geo_ruby/geojson'
 require 'phone'
+require 'sequel'
 
-require 'app/models/plugins/attributes_helpers'
-require 'app/models/plugins/save_helpers'
-require 'app/models/plugins/email_validation'
-require 'app/models/plugins/geometry_validation'
-require 'app/models/plugins/phone_validation'
-require 'app/models/plugins/url_validation'
+ENV['DATABASE_URL'] ||= "postgres://localhost/citygram_#{Citygram::App.environment}"
+Sequel.connect(ENV['DATABASE_URL'])
 
 Sequel.default_timezone = :utc
 
+# no mass-assignable columns by default
+Sequel::Model.set_allowed_columns(*[])
+
+# use first!, create!, save! to raise
 Sequel::Model.raise_on_save_failure = false
 
-Sequel::Model.plugin :timestamps, update_on_create: true
-Sequel::Model.plugin :serialization
-Sequel::Model.plugin :json_serializer
-Sequel::Model.plugin :validation_helpers
-Sequel::Model.plugin Citygram::Models::Plugins::AttributesHelpers
-Sequel::Model.plugin Citygram::Models::Plugins::SaveHelpers
-
-# enable pagination
+# sequel's standard pagination
 Sequel::Model.db.extension :pagination
+
+# common model plugins
+Sequel::Model.plugin :attributes_helpers
+Sequel::Model.plugin :json_serializer
+Sequel::Model.plugin :save_helpers
+Sequel::Model.plugin :serialization
+Sequel::Model.plugin :timestamps, update_on_create: true
+Sequel::Model.plugin :validation_helpers
 
 # round trip a geojson geometry through a postgis geometry column
 Sequel::Plugins::Serialization.register_format(:geojson,
@@ -30,8 +32,10 @@ Sequel::Plugins::Serialization.register_format(:geojson,
   ->(v){ GeoRuby::SimpleFeatures::Geometry.from_hex_ewkb(v).to_json }
 )
 
-Phoner::Phone.default_country_code = '1' # set default to US for now
+# set default to US for now
+Phoner::Phone.default_country_code = '1'
 
+# normalize phone numbers to 
 Sequel::Plugins::Serialization.register_format(:phone,
   ->(v){ Phoner::Phone.parse(v).to_s },
   ->(v){ v } # identity
@@ -45,3 +49,6 @@ end
 require 'app/models/event'
 require 'app/models/publisher'
 require 'app/models/subscription'
+
+# access model class constants without qualifying namespace
+include Citygram::Models

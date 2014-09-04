@@ -8,16 +8,18 @@ describe Citygram::Workers::SubscriptionConfirmation do
     let!(:subscription) { create(:subscription, channel: 'sms', phone_number: '212-555-1234') }
 
     before do
+      body = "Welcome! You are now subscribed to #{publisher.title} in #{publisher.city}. Woohoo! If you'd like to give feedback, text back with your email. To unsubscribe from all messages, reply STOP."
+
       stub_request(:post, "https://dev-account-sid:dev-auth-token@api.twilio.com/2010-04-01/Accounts/dev-account-sid/Messages.json").
         with(body: {
-          "Body"=>"Welcome! You are now subscribed to #{publisher.title} in #{publisher.city}. Woohoo! If you'd like to give feedback, text back with your email. To unsubcribe from all messages, reply STOP.",
+          "Body" => body,
           "From"=>"15555555555",
           "To"=>"212-555-1234"}).
         to_return(status: 200, body: {
           'sid' => 'SM10ea1dce707f4bedb44204c9fbc02e39',
           'to' => subscription.phone_number,
           'from' => '15555555555',
-          'body' => "You are now subscribed to #{subscription.publisher.title} in #{subscription.publisher.city}. Woohoo! If you'd like to give feedback, text back with your email. To unsubcribe from all messages, reply STOP.",
+          'body' => body,
           'status' => 'queued'
         }.to_json)
     end
@@ -37,14 +39,17 @@ describe Citygram::Workers::SubscriptionConfirmation do
       }.to raise_error Citygram::Services::Channels::NotificationFailure, /test failure/
     end
 
-    it 'unsubscribes the number if the user has replied with a filter word' do
-      error = Twilio::REST::RequestError.new('test failure',
-        Citygram::Services::Channels::SMS::UNSUBSCRIBED_ERROR_CODE)
-      expect(Citygram::Services::Channels::SMS).to receive(:sms).and_raise(error)
+    Citygram::Services::Channels::SMS::UNSUBSCRIBE_ERROR_CODES.each do |error_code|
+      context "Twilio Error Code: #{error_code}" do
+        it 'deactivates the subscription' do
+          error = Twilio::REST::RequestError.new('test failure', error_code)
+          expect(Citygram::Services::Channels::SMS).to receive(:sms).and_raise(error)
 
-      expect {
-        subject.perform(subscription.id)
-      }.to change{ subscription.reload.unsubscribed_at.present? }.from(false).to(true)
+          expect {
+            subject.perform(subscription.id)
+          }.to change{ subscription.reload.unsubscribed_at.present? }.from(false).to(true)
+        end
+      end
     end
   end
 

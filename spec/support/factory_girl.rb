@@ -1,6 +1,3 @@
-require 'factory_girl'
-require 'ffaker'
-
 require 'spec/factories'
 
 # setup factory girl shortcuts

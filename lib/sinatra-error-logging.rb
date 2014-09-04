@@ -1,3 +1,5 @@
+require 'sidekiq'
+
 module Sinatra
   module ErrorLoggingExtension
     def self.registered(app)
@@ -9,6 +11,13 @@ module Sinatra
         config.host    = ENV['ERROR_LOG_HOST']
         config.port    = ENV['ERROR_LOG_PORT'] || 443
         config.secure  = config.port == 443
+      end
+
+      # https://github.com/airbrake/airbrake/issues/269#issuecomment-53260596
+      Sidekiq.configure_server do |config|
+        config.error_handlers << lambda do |exception, context|
+          Airbrake.notify_or_ignore(exception, parameters: context)
+        end
       end
 
       app.use Airbrake::Sinatra

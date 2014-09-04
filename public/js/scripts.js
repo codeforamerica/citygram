@@ -44,9 +44,10 @@ app.hookupSteps = function() {
     app.updateEvents(app.map.getBounds());
   });
 
-  $('.mapButton').on('click', function() {
-    app.scrollToElement($('#step3'));
-  });
+  // Comment out to test necessity of button
+  // $('.mapButton').on('click', function() {
+  //   app.scrollToElement($('#step3'));
+  // });
 
   $('.smsButton').on('click', function(event) {
     $(event.target).addClass('selected');
@@ -80,16 +81,20 @@ app.hookupSteps = function() {
 
   var prevMarker, prevCircle;
   var geolocate = function(e) {
-    e.preventDefault();
+    e && e.preventDefault();
     var city = $('.publisher.selected').data('publisher-city');
     var address = $('#geolocate').val();
-    var radius = parseFloat($('#user-selected-radius').val());
-    var radiusMeters = radius * 1000;
+    var radiusMiles = parseFloat($('#user-selected-radius').val());
+    var radiusKm =radiusMiles * 1.60934
+    var radiusMeters = radiusKm * 1000;
+    var oneWeekAgo = new Date();
+    oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
+
     app.geocode(address+' '+city, function(latlng) {
       // Set the new app state
       var center = new LatLon(latlng[0], latlng[1]);
-      var bboxWidth = parseFloat($('#user-selected-radius').val())
-      var bbox = center.boundingBox(bboxWidth);
+      var bboxDistance = radiusKm;
+      var bbox = center.boundingBox(bboxDistance);
       app.state.geom = JSON.stringify({
         type: 'Polygon',
         coordinates: [bbox],
@@ -105,16 +110,28 @@ app.hookupSteps = function() {
 
       // fit bounds
       app.map.fitBounds(prevCircle.getBounds());
+
+      // Frequency estimate
+      app.getEventsCount(app.state.publisher_id, app.state.geom, oneWeekAgo, function(response) {
+        $('#freqRadius').html(radiusMiles + ' mi'); 
+        $('#freqAddress').html(address);
+        $('#freqNum').html(response.events_count + ' citygrams');
+      });
+      
     });
   };
 
   app.map.on('zoomend', function() {
     app.updateEvents(app.map.getBounds());
   });
+  $('.publisher:not(.soon)').on('click', function(e) {
+    if ($('#geolocate').val().trim() !== '') geolocate();
+  });
   $('#user-selected-radius').on('change', geolocate);
   $('#geolocateForm').on('submit', geolocate);
-  $('.geolocateButton').on('click', geolocate);
   $('#geolocate').on('change', geolocate);
+
+  // Comment out for testing necessity of button $('.geolocateButton').on('click', geolocate);
 };
 
 // Populate events
@@ -152,6 +169,11 @@ app.displayEventMarker = function(event) {
 app.getEventsForGeometry = function(geometry, callback){
   if (!app.state.publisher_id) return;
   $.getJSON('/publishers/'+app.state.publisher_id+'/events', { geometry: geometry }, callback);
+};
+
+app.getEventsCount = function(publisherId, geometry, since, callback){
+  if (!publisherId) return;
+  $.getJSON('/publishers/'+publisherId+'/events_count', { geometry: geometry, since: since }, callback);
 };
 
 app.scrollToElement = function(el) {
