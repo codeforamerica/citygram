@@ -83,15 +83,15 @@ app.hookupSteps = function() {
     e && e.preventDefault();
     var city = $('.publisher.selected').data('publisher-city');
     var address = $('#geolocate').val();
-    var radius = $('#user-selected-radius').val();
-    var radiusMeters = parseFloat(radius) * 1609.344;
+    var radiusMiles = parseFloat($('#user-selected-radius').val());
+    var radiusMeters = radiusMiles * 1609.344;
     var oneWeekAgo = new Date();
     oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
 
     app.geocode(address+' '+city, function(latlng) {
       // Set the new app state
       var center = new LatLon(latlng[0], latlng[1]);
-      var bboxWidth = 2 * parseFloat($('#user-selected-radius').val())
+      var bboxWidth = 2 * radiusMiles;
       var bbox = center.boundingBox(bboxWidth);
       app.state.geom = JSON.stringify({
         type: 'Polygon',
@@ -111,7 +111,7 @@ app.hookupSteps = function() {
 
       // Frequency estimate
       app.getEventsCount(app.state.publisher_id, app.state.geom, oneWeekAgo, function(response) {
-        $('#freqRadius').html(radius + ' mi'); 
+        $('#freqRadius').html(radiusMiles + ' mi'); 
         $('#freqAddress').html(address);
         $('#freqNum').html(response.events_count + ' citygrams');
       });
