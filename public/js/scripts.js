@@ -44,9 +44,10 @@ app.hookupSteps = function() {
     app.updateEvents(app.map.getBounds());
   });
 
-  $('.mapButton').on('click', function() {
-    app.scrollToElement($('#step3'));
-  });
+  // Comment out to test necessity of button
+  // $('.mapButton').on('click', function() {
+  //   app.scrollToElement($('#step3'));
+  // });
 
   $('.smsButton').on('click', function(event) {
     $(event.target).addClass('selected');
@@ -127,8 +128,9 @@ app.hookupSteps = function() {
   });
   $('#user-selected-radius').on('change', geolocate);
   $('#geolocateForm').on('submit', geolocate);
-  $('.geolocateButton').on('click', geolocate);
   $('#geolocate').on('change', geolocate);
+
+  // Comment out for testing necessity of button $('.geolocateButton').on('click', geolocate);
 };
 
 // Populate events

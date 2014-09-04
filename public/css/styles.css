@@ -286,10 +286,12 @@ section h3 span {
 
 #step2 #geolocate {
   top: 17px;
-  width: 300px;
+  width: 500px;
   margin-right: 7px;
 }
 
+/*
+Comment out to test necessity of buttons
 #step2 .geolocateButton {
   padding: 9px;
   position: relative;
@@ -303,6 +305,7 @@ section h3 span {
   display: block;
   margin-top: 30px;
 }
+*/
 
 #map .map-key-panel {
   position: absolute;
