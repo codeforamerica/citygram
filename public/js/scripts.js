@@ -85,15 +85,16 @@ app.hookupSteps = function() {
     var city = $('.publisher.selected').data('publisher-city');
     var address = $('#geolocate').val();
     var radiusMiles = parseFloat($('#user-selected-radius').val());
-    var radiusMeters = radiusMiles * 1609.344;
+    var radiusKm =radiusMiles * 1.60934
+    var radiusMeters = radiusKm * 1000;
     var oneWeekAgo = new Date();
     oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
 
     app.geocode(address+' '+city, function(latlng) {
       // Set the new app state
       var center = new LatLon(latlng[0], latlng[1]);
-      var bboxWidth = 2 * radiusMiles;
-      var bbox = center.boundingBox(bboxWidth);
+      var bboxDistance = radiusKm;
+      var bbox = center.boundingBox(bboxDistance);
       app.state.geom = JSON.stringify({
         type: 'Polygon',
         coordinates: [bbox],
