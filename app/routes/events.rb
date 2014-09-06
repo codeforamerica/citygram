@@ -41,7 +41,9 @@ module Citygram::Routes
 
     get 'publishers/:publisher_id/events' do
       geom = GeoRuby::GeojsonParser.new.parse(params[:geometry])
-      results = Event.dataset.with_sql(<<-SQL, params[:publisher_id], 7.days.ago, geom.as_ewkt).all
+      after_date = params[:after_date] || 7.days.ago
+
+      results = Event.dataset.with_sql(<<-SQL, params[:publisher_id], after_date, geom.as_ewkt).all
         SELECT events.geom, events.title
         FROM events
         WHERE events.publisher_id = ?
