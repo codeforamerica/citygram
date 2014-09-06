@@ -80,7 +80,7 @@ strong {
 .bigSelect select {
   text-indent: 0.01px;
   text-overflow: '';
-  background: url(/img/dropdown-arrow.png) no-repeat;
+  background: url(<%= asset_path 'dropdown-arrow.png' %>) no-repeat;
   background-position: 490px 23px;
   background-color: #F1F1F2;
   width: 530px;
@@ -114,7 +114,7 @@ input:focus, select:focus {
 }
 
 header {
-  background: url(/img/background-seattle.jpg);
+  background: url(<%= asset_path 'background-seattle.jpg' %>);
   background-size: cover;
   height: 500px;
   position: relative;
@@ -123,7 +123,7 @@ header {
 /*********** Header **************/
 
 header .logo {
-  background: url(/img/citygram.png) no-repeat;
+  background: url(<%= asset_path 'citygram.png' %>) no-repeat;
   background-size: 272px 68px;
   position: absolute;
   left: 100px;
@@ -255,7 +255,7 @@ section h3 span {
   position: absolute;
   bottom: 0;
   right: 0;
-  background: url(/img/icons/coming-soon.png);
+  background: url(<%= asset_path 'icons/coming-soon.png' %>);
   background-size: 120px 120px;
   width: 120px;
   height: 120px;
@@ -374,19 +374,19 @@ Comment out to test necessity of buttons
   position: absolute;
   left: -60px;
   top: -2px;
-  background: url(/img/icons/text.png) no-repeat;
+  background: url(<%= asset_path 'icons/text.png' %>) no-repeat;
   background-size: 50px 50px;
   width: 50px;
   height: 50px;
 }
 
 #step3 .smsButton:hover span::after, #step3 .smsButton.selected span::after {
-  background: url(/img/icons/sms-inverted.png) no-repeat;
+  background: url(<%= asset_path 'icons/sms-inverted.png' %>) no-repeat;
   background-size: 50px 50px;
 }
 
 #step3 .emailButton span::after {
-  background: url(/img/icons/email.png) no-repeat;
+  background: url(<%= asset_path 'icons/email.png' %>) no-repeat;
   background-size: 50px 50px;
   top: -5px;
 }
@@ -402,7 +402,7 @@ Comment out to test necessity of buttons
   position: absolute;
   right: 0;
   bottom: 0;
-  background: url(/img/icons/email-coming-soon.png);
+  background: url(<%= asset_path 'icons/email-coming-soon.png' %>);
   background-size: 160px 67px;
   width: 160px;
   height: 67px;
@@ -434,7 +434,7 @@ Comment out to test necessity of buttons
 
 #confirmation {
   padding-top: 240px;
-  background: url(/img/icons/success.png)center 60px no-repeat;
+  background: url(<%= asset_path 'icons/success.png' %>) center 60px no-repeat;
   background-size: 150px 150px;
 }
 
