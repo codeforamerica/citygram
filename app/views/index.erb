@@ -16,7 +16,7 @@
     <div class="publisher <%= 'soon' unless publisher.active %>" data-publisher-id="<%= publisher.id %>" data-publisher-title="<%= publisher.title %>" data-publisher-city="<%= publisher.city %>">
       <!-- <div class="city"><%= publisher.city %></div> -->
       <div class="title"><%= publisher.title %></div>
-      <img src="/img/icons/<%= publisher.icon %>">
+      <img src="<%= asset_path "icons/#{publisher.icon}" %>">
     </div>
     <% end %>
   </div>
@@ -54,7 +54,7 @@
   </div>
 
   <div class="frequencyContainer">
-    <img src="/img/icons/frequency.png" class="frequencyIcon">
+    <img src="<%= asset_path 'icons/frequency.png' %>" class="frequencyIcon">
     <div class="frequencyText">
       <span class="frequencyTitle">Estimated Frequency</span>
       <p>
