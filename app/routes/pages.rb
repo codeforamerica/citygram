@@ -38,9 +38,5 @@ module Citygram::Routes
       @publishers = Publisher.visible
       erb :index
     end
-
-    get '/research' do
-      erb :research, layout: false
-    end
   end
 end
