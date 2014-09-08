@@ -1,11 +1,13 @@
 module Citygram::Routes
   class Digests < Citygram::App
-    get '/digests' do
-      geom = GeoRuby::GeojsonParser.new.parse(params[:geometry])
+    get '/digests/:subscription_id/events' do
+      subscription = Subscription[params[:subscription_id]]
       after_date = params[:after_date] || 7.days.ago
-      before_date = params[:before_date] || Date.tomorrow
-      @dummy = params[:dummy]
-      @results = Event.dataset.with_sql(<<-SQL, params[:publisher_id], after_date, before_date, geom.as_ewkt).all
+      before_date = params[:before_date] || 2.days.from_now
+
+      geom = GeoRuby::GeojsonParser.new.parse(subscription.geom).as_ewkt
+
+      @results = Event.dataset.with_sql(<<-SQL, subscription.publisher_id, after_date, before_date, geom).all
         SELECT events.geom, events.title
         FROM events
         WHERE events.publisher_id = ?
