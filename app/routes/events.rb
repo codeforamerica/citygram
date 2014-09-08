@@ -10,7 +10,10 @@ module Citygram::Routes
     helpers do
       def hyperlink(str)
         # extract an array of urls
-        urls = URI.extract(str)
+        urls = URI.extract(str).select do |url|
+          # handle edge cases like `more:`, which is extracted as by URI.extract
+          URI(url) rescue false
+        end
 
         # create 'a' tags from urls
         # TODO: move this to a template and cleanup inline styling
