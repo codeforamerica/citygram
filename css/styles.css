@@ -1,0 +1,78 @@
+body {
+	font-family: "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	color: #182A4A;
+	font-weight: 300;
+}
+
+h1 {
+	font-size: 48px;
+	margin-bottom: 30px;
+}
+
+h3 {
+	font-weight: 300;
+	margin-top: 15px;
+}
+
+.topic {
+	font-weight: 700;
+}
+
+.phone {
+	font-weight: 700;
+	color: #8a949d;
+	opacity: .7;
+}
+
+.logo {
+	margin-bottom: 10px;
+}
+
+.container {
+	margin-top: 30px;
+}
+
+.subscription-box {
+	background-color: #F3F5F5;
+	border-radius: 10px;
+	border-style: solid;
+	border-width: 1px;
+	border-color: #e7e8ea;
+	padding: 10px;
+}
+
+.icon {
+	width: 50px;
+	padding-top: 15px;
+	margin-left: 28%;
+}
+
+.orange {
+	color: #e57d5e;
+	font-weight: 700;
+}
+
+.red {
+	color: #e22e41;
+	font-weight: 700;
+}
+
+.navy {
+	font-weight: 700;
+}
+
+.green {
+	color: #59b390;
+	font-weight: 700;
+}
+
+.table {
+	margin-top: 40px;
+	font-size: 16px;
+	height: 100%;
+}
+
+.table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td, .table>tbody>tr>td, .table>tfoot>tr>td {
+	line-height: 1.6;
+	vertical-align: middle;
+}
