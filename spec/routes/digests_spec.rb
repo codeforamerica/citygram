@@ -12,11 +12,8 @@ describe Citygram::Routes::Digests do
 
     it 'shows digest of events' do
       publisher = create(:publisher)
-      polygon = '{"type":"Polygon","coordinates":[[[100.0,20.0],[101.0,20.0],[101.0,21.0],[100.0,21.0],[100.0,20.0]]]}'
-      included_point = '{"type":"Point","coordinates":[100.5,20.5]}'
-
-      subscription = create(:subscription, publisher: publisher, geom: polygon)
-      event = create(:event, publisher: publisher, geom: included_point)
+      subscription = create(:subscription, publisher: publisher, geom: FixtureHelpers::POINT_IN_POLYGON.polygon)
+      event = create(:event, publisher: publisher, geom: FixtureHelpers::POINT_IN_POLYGON.point)
 
       get "/digests/#{subscription.id}/events"
       expect(last_response.body).to match(event.title)

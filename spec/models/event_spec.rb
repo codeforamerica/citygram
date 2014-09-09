@@ -41,8 +41,8 @@ describe Citygram::Models::Event do
   end
 
   describe 'selecting events' do
-    let(:polygon){'{"type":"Polygon","coordinates":[[[100.0,20.0],[101.0,20.0],[101.0,21.0],[100.0,21.0],[100.0,20.0]]]}'}
-    let(:included_point) { '{"type":"Point","coordinates":[100.5,20.5]}' }
+    let(:polygon) { FixtureHelpers::POINT_IN_POLYGON.polygon }
+    let(:included_point) { FixtureHelpers::POINT_IN_POLYGON.point }
 
     it 'returns events created after a given date' do
       publisher = create(:publisher)
