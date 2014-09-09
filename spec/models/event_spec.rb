@@ -39,4 +39,39 @@ describe Citygram::Models::Event do
     duplicate = build(:event, publisher_id: publisher.id, feature_id: feature_id)
     expect(duplicate).not_to be_valid
   end
+
+  describe 'selecting events' do
+    let(:polygon){'{"type":"Polygon","coordinates":[[[100.0,20.0],[101.0,20.0],[101.0,21.0],[100.0,21.0],[100.0,20.0]]]}'}
+    let(:included_point) { '{"type":"Point","coordinates":[100.5,20.5]}' }
+
+    it 'returns events created after a given date' do
+      publisher = create(:publisher)
+      perfect = create(:event, publisher: publisher, created_at: 1.day.ago, geom: included_point)
+      too_old = create(:event, publisher: publisher, created_at: 3.days.ago, geom: included_point)
+
+      geom = GeoRuby::GeojsonParser.new.parse(polygon).as_ewkt
+      events = Event.from_geom(geom, {
+        publisher_id: publisher.id,
+        after_date: 2.days.ago,
+      })
+
+      expect(events.first.title).to eq perfect.title
+      expect(events.count).to eq 1
+    end
+
+    it 'returns events created before a given date' do
+      publisher = create(:publisher)
+      too_new = create(:event, publisher: publisher, created_at: 1.day.ago, geom: included_point)
+      perfect = create(:event, publisher: publisher, created_at: 3.days.ago, geom: included_point)
+      geom = GeoRuby::GeojsonParser.new.parse(polygon).as_ewkt
+
+      events = Event.from_geom(geom, {
+        publisher_id: publisher.id,
+        before_date: 2.days.ago,
+      })
+
+      expect(events.first.title).to eq perfect.title
+      expect(events.count).to eq 1
+    end
+  end
 end

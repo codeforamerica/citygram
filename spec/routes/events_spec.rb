@@ -18,27 +18,5 @@ describe Citygram::Routes::Events do
         { geom: events[0].geom, title: events[0].title }
       ].to_json
     end
-
-    it 'returns events created after a given date' do
-      publisher = create(:publisher)
-      perfect = create(:event, publisher: publisher, created_at: 1.day.ago, geom: included_point)
-      too_old = create(:event, publisher: publisher, created_at: 3.days.ago, geom: included_point)
-
-      get "/publishers/#{publisher.id}/events", after_date: 2.days.ago, geometry: polygon
-      expect(last_response.body).to eq [
-        { geom: perfect.geom, title: perfect.title }
-      ].to_json
-    end
-
-    it 'returns events created before a given date' do
-      publisher = create(:publisher)
-      too_new = create(:event, publisher: publisher, created_at: 1.day.ago, geom: included_point)
-      perfect = create(:event, publisher: publisher, created_at: 3.days.ago, geom: included_point)
-
-      get "/publishers/#{publisher.id}/events", before_date: 2.days.ago, geometry: polygon
-      expect(last_response.body).to eq [
-        { geom: perfect.geom, title: perfect.title }
-      ].to_json
-    end
   end
 end
