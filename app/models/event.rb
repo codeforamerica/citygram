@@ -9,7 +9,7 @@ module Citygram::Models
     def self.from_geom(geom_ewkt, params)
       after_date = params[:after_date] || 7.days.ago
       before_date = params[:before_date] || 2.days.from_now
-      dataset.with_sql(<<-SQL, params[:publisher_id], after_date, before_date, geom_ewkt).all
+      dataset.with_sql(<<-SQL, params.fetch(:publisher_id), after_date, before_date, geom_ewkt).all
         SELECT events.geom, events.title
         FROM events
         WHERE events.publisher_id = ?
