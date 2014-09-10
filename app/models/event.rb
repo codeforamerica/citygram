@@ -8,7 +8,7 @@ module Citygram::Models
 
     def self.from_geom(geom_ewkt, params)
       after_date = params[:after_date] || 7.days.ago
-      before_date = params[:before_date] || 2.days.from_now
+      before_date = params[:before_date] || Time.current
       dataset.with_sql(<<-SQL, params.fetch(:publisher_id), after_date, before_date, geom_ewkt).all
         SELECT events.geom, events.title
         FROM events
