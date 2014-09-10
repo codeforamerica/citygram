@@ -6,6 +6,12 @@ module Citygram::Models
     plugin :serialization, :json, :properties
     plugin :geometry_validation
 
+    def self.from_subscription(subscription, params)
+      geom = GeoRuby::GeojsonParser.new.parse(subscription.geom).as_ewkt
+      params[:publisher_id] = subscription.publisher_id
+      from_geom(geom, params)
+    end
+
     def self.from_geom(geom_ewkt, params)
       after_date = params[:after_date] || 7.days.ago
       before_date = params[:before_date] || Time.current

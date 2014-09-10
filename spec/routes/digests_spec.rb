@@ -11,9 +11,8 @@ describe Citygram::Routes::Digests do
     end
 
     it 'shows digest of events' do
-      publisher = create(:publisher)
-      subscription = create(:subscription, publisher: publisher, geom: FixtureHelpers::POINT_IN_POLYGON.polygon)
-      event = create(:event, publisher: publisher, geom: FixtureHelpers::POINT_IN_POLYGON.point)
+      subscription = create(:subscription, geom: FixtureHelpers::POINT_IN_POLYGON.polygon)
+      event = create(:event, publisher: subscription.publisher, geom: FixtureHelpers::POINT_IN_POLYGON.point)
 
       get "/digests/#{subscription.id}/events"
       expect(last_response.body).to match(event.title)
