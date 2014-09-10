@@ -6,26 +6,31 @@
     <h1 id="title" class="col-xs-offset-1 col-md-offset-1 col-md-10">Subscribe to your city.</h1>
   </div>
   <div class="row">
-    <h3 class="col-xs-offset-1 col-md-offset-1 col-md-5">Get updates on the topics and areas you care about in Seattle.</h3>
+    <h3 class="col-xs-offset-1 col-xs-10 col-md-offset-1 col-md-5">Get updates on the topics and areas you care about in Seattle.</h3>
     <div id="start" class="hidden-xs hidden-sm col-md-offset-3 bigButton startButton">Get started</div>
   </div>
 </header>
 
-<section id="step1">
-  <div class="instruction">
-    <h2>1. Select a topic.</h2>
-    <h3>Choose one to start, and you can add more later.</h3>
+<section id="step1" class="container-fluid">
+  <div class="instruction row">
+    <div class="col-xs-offset-1 col-md-offset-1 col-md-11">
+      <h2>1. Select a topic.</h2>
+      <h3>Choose one to start, and you can add more later.</h3>
+    </div>
   </div>
 
-  <div class="publishers">
-    <% @publishers.each do |publisher| %>
-    <div class="publisher <%= 'soon' unless publisher.active %>" data-publisher-id="<%= publisher.id %>" data-publisher-title="<%= publisher.title %>" data-publisher-city="<%= publisher.city %>">
-      <!-- <div class="city"><%= publisher.city %></div> -->
-      <div class="title"><%= publisher.title %></div>
-      <img src="<%= asset_path "icons/#{publisher.icon}" %>">
+  <div class="row">
+    <div class="publishers col-xs-offset-1 col-md-offset-1 col-md-11">
+      <% @publishers.each do |publisher| %>
+        <div class="publisher <%= 'soon' unless publisher.active %>" data-publisher-id="<%= publisher.id %>" data-publisher-title="<%= publisher.title %>" data-publisher-city="<%= publisher.city %>">
+          <!-- <div class="city"><%= publisher.city %></div> -->
+          <div class="title"><%= publisher.title %></div>
+          <img src="<%= asset_path "icons/#{publisher.icon}" %>">
+        </div>
+      <% end %>
     </div>
-    <% end %>
   </div>
+
 </section>
 
 <section id="step2">
