@@ -4,7 +4,8 @@ unprotected_routes = [
   Citygram::Routes::Events,
   Citygram::Routes::Publishers,
   Citygram::Routes::Subscriptions,
-  Citygram::Routes::Pages
+  Citygram::Routes::Pages,
+  Citygram::Routes::Digests
 ]
 
 protected_routes = [
