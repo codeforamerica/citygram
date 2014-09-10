@@ -26,6 +26,15 @@ describe Citygram::Services::Channels::Email do
     it { is_expected.to have_sent_email.from(from_email_address) }
     it { is_expected.to have_sent_email.to(to_email_address) }
     it { is_expected.to have_sent_email.with_subject("Citygram #{subscription.publisher.title} notifications") }
+
+  end
+
+  context 'rendering digest' do
+    it 'renders the events for the subscription' do
+      subscription = create(:subscription, geom: FixtureHelpers::POINT_IN_POLYGON.polygon)
+      event = create(:event, publisher: subscription.publisher, geom: FixtureHelpers::POINT_IN_POLYGON.point)
+      expect(subject.body(subscription)).to match(event.title)
+    end
   end
 
   context 'failure' do
