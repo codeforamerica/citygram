@@ -5,6 +5,7 @@ end
 
 require 'app/routes/validations/max'
 
+require 'app/routes/digests'
 require 'app/routes/events'
 require 'app/routes/pages'
 require 'app/routes/publishers'
