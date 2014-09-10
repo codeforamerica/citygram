@@ -24,16 +24,18 @@
   <%= yield %>
 
   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-  <script src="js/vendor/jquery.fittext.js"></script>
-  <script>
-    $("#title").fitText(1, { minFontSize: '40px', maxFontSize: '80px' });
-  </script>
+
   <script src="//api.tiles.mapbox.com/mapbox.js/v1.6.4/mapbox.js"></script>
+
   <!-- Latest compiled and minified JavaScript -->
   <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
   <!-- the highest quality javascripts -->
   <script type="text/javascript" src="<%= asset_path 'application.js' %>"></script>
   <%= erb :'layouts/analytics' %>
+
+  <script>
+    $("#title").fitText(1, { minFontSize: '40px', maxFontSize: '76px' });
+  </script>
 </body>
 </html>
