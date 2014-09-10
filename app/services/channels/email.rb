@@ -19,7 +19,7 @@ module Citygram::Services::Channels
     def call
       Pony.mail(
         to: subscription.email_address,
-        subject: event.title
+        subject: "Citygram #{subscription.publisher.title} notifications"
       )
     end
   end
