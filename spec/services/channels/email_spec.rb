@@ -25,7 +25,7 @@ describe Citygram::Services::Channels::Email do
 
     it { is_expected.to have_sent_email.from(from_email_address) }
     it { is_expected.to have_sent_email.to(to_email_address) }
-    it { is_expected.to have_sent_email.with_subject(event.title) }
+    it { is_expected.to have_sent_email.with_subject("Citygram #{subscription.publisher.title} notifications") }
   end
 
   context 'failure' do
