@@ -10,7 +10,10 @@ module Citygram::Routes
     helpers do
       def hyperlink(str)
         # extract an array of urls
-        urls = URI.extract(str)
+        urls = URI.extract(str).select do |url|
+          # handle edge cases like `more:`, which is extracted as by URI.extract
+          URI(url) rescue false
+        end
 
         # create 'a' tags from urls
         # TODO: move this to a template and cleanup inline styling
@@ -37,15 +40,8 @@ module Citygram::Routes
     end
 
     get 'publishers/:publisher_id/events' do
-      geom = GeoRuby::GeojsonParser.new.parse(params[:geometry])
-      results = Event.dataset.with_sql(<<-SQL, params[:publisher_id], 7.days.ago, geom.as_ewkt).all
-        SELECT events.geom, events.title
-        FROM events
-        WHERE events.publisher_id = ?
-          AND events.created_at > ?
-          AND ST_Intersects(events.geom, ?::geometry)
-        ORDER BY events.created_at DESC
-      SQL
+      geom = GeoRuby::GeojsonParser.new.parse(params[:geometry]).as_ewkt
+      results = Event.from_geom(geom, params)
 
       results.map do |result|
         result[:title] = hyperlink(result[:title])

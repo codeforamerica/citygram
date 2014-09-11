@@ -6,11 +6,10 @@ describe Citygram::Routes::Events do
   describe 'GET subscriptions/:id/events' do
     it 'returns events for a given description' do
       publisher = create(:publisher)
-      events = create_list(:event, 2, publisher: publisher, geom: '{"type":"Point","coordinates":[-80.898822,35.22454]}')
-      create(:event, publisher: publisher, geom: '{"type":"Point","coordinates":[0.0,0.0]}')
+      events = create_list(:event, 2, publisher: publisher, geom: FixtureHelpers::POINT_IN_POLYGON.point)
+      create(:event, publisher: publisher, geom: FixtureHelpers::POINT_IN_POLYGON.excluded_point)
 
-      get "/publishers/#{publisher.id}/events", geometry: '{"type":"Polygon","coordinates":[[[-80.93490600585938,35.263561862152095],[-80.69320678710938,35.32745068492882],[-80.60531616210938,35.14124815600257],[-80.83328247070312,35.06597313798418],[-80.93490600585938,35.263561862152095]]]}'
-
+      get "/publishers/#{publisher.id}/events", geometry: FixtureHelpers::POINT_IN_POLYGON.polygon
       expect(last_response.body).to eq [
         { geom: events[1].geom, title: events[1].title },
         { geom: events[0].geom, title: events[0].title }

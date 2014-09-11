@@ -4,7 +4,8 @@ unprotected_routes = [
   Citygram::Routes::Events,
   Citygram::Routes::Publishers,
   Citygram::Routes::Subscriptions,
-  Citygram::Routes::Pages
+  Citygram::Routes::Pages,
+  Citygram::Routes::Digests
 ]
 
 protected_routes = [
@@ -13,5 +14,6 @@ protected_routes = [
 
 run Rack::URLMap.new(
   '/' => Rack::Cascade.new(unprotected_routes),
-  '/protected' => Rack::Cascade.new(protected_routes)
+  '/assets' => Citygram::App.assets,
+  '/protected' => Rack::Cascade.new(protected_routes),
 )

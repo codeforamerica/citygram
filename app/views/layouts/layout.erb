@@ -13,17 +13,31 @@
 
   <link rel="stylesheet" href="//api.tiles.mapbox.com/mapbox.js/v1.6.4/mapbox.css" />
 
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
   <!-- the freshest styles -->
-  <%= css :app %>
+  <link rel="stylesheet" type="text/css" href="<%= asset_path 'application.css' %>">
+
 </head>
 <body>
   <%= yield %>
 
   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
   <script src="//api.tiles.mapbox.com/mapbox.js/v1.6.4/mapbox.js"></script>
 
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
   <!-- the highest quality javascripts -->
-  <%= js :app %>
+  <script type="text/javascript" src="<%= asset_path 'application.js' %>"></script>
   <%= erb :'layouts/analytics' %>
+
+  <script>
+    $("#title").fitText(1, { minFontSize: '40px', maxFontSize: '76px' });
+    $(".fit-h2").fitText(1, { minFontSize: '24px', maxFontSize: '40px' });
+    $(".fit-h3").fitText(1, { minFontSize: '16px', maxFontSize: '26px' });
+  </script>
 </body>
 </html>

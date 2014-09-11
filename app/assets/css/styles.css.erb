@@ -46,7 +46,7 @@ strong {
   border-radius: 15px;
   padding: 20px;
   font-size: 35px;
-  width: 200px;
+  width: 100%;
   display: inline-block;
   font-weight: 700;
 }
@@ -78,16 +78,13 @@ strong {
 }
 
 .bigSelect select {
-  text-indent: 0.01px;
-  text-overflow: '';
-  background: url(/img/dropdown-arrow.png) no-repeat;
-  background-position: 490px 23px;
+  /*background: url(<%= asset_path 'dropdown-arrow.png' %>) no-repeat;*/
   background-color: #F1F1F2;
-  width: 530px;
+  width: 100%;
 }
 
 input, select {
-  margin: 0;
+  margin-bottom: 10px;
   height: 60px;
   padding: 10px 16px;
   font-size: 20px;
@@ -116,48 +113,38 @@ input:focus, select:focus {
 header {
   background: url(/img/background-lexington.png);
   background-size: cover;
-  height: 500px;
+  min-height: 450px;
   position: relative;
 }
 
 /*********** Header **************/
 
+header .row {
+  padding: 30px 0px 40px 0px;
+}
+
 header .logo {
-  background: url(/img/citygram.png) no-repeat;
+  background: url(<%= asset_path 'citygram.png' %>) no-repeat;
   background-size: 272px 68px;
-  position: absolute;
-  left: 100px;
-  top: 40px;
   height: 80px;
   width: 320px;
 }
 
 header h1 {
-  font-size: 80px;
-  position: absolute;
-  left: 100px;
-  top: 200px;
   text-shadow: 0 2px 15px rgba(0, 0, 0, 0.25);
   color: #fff;
   font-weight: 700;
 }
 
-header p {
-  font-size: 36px;
-  line-height: 44px;
-  position: absolute;
-  left: 100px;
-  top: 380px;
+header h3 {
   text-shadow: 0 2px 15px rgba(0, 0, 0, 0.25);
   color: #FFF;
   font-weight: 200;
-  max-width: 550px;
+  line-height: 1.2em;
+  font-size: 2em;
 }
 
 header .startButton {
-  position: absolute;
-  right: 100px;
-  top: 375px;
   width: 240px;
 }
 
@@ -175,32 +162,19 @@ section .instruction {
 }
 
 section h2 {
-  font-size: 44px;
   font-weight: 800;
-  margin-bottom: 13px;
-}
-
-section h2 span {
-  font-size: 38px;
-  font-weight: 200;
+  margin-bottom: 12px;
 }
 
 section h3 {
   color: #8A949D;
-  /* color: #D1D5D8; */
-  font-size: 26px;
   font-weight: 200;
-}
-
-section h3 span {
-  font-weight: 500;
 }
 
 /*********** Publisher Section **************/
 
 #step1 .publishers {
-  font-size: 0;
-  margin: -10px;
+  padding-left: 5px;
 }
 
 #step1 .publisher {
@@ -237,7 +211,7 @@ section h3 span {
 }
 
 #step1 .publisher .title {
-  font-size: 36px;
+  font-size: 32px;
   padding: 8px;
   line-height: 36px;
   padding-top: 20px;
@@ -255,7 +229,7 @@ section h3 span {
   position: absolute;
   bottom: 0;
   right: 0;
-  background: url(/img/icons/coming-soon.png);
+  background: url(<%= asset_path 'icons/coming-soon.png' %>);
   background-size: 120px 120px;
   width: 120px;
   height: 120px;
@@ -277,17 +251,12 @@ section h3 span {
   width: 100%; 
   border: 1px dashed #D1D5D8;
   position: relative;
+  margin-top: 20px;
   margin-bottom: 20px;
 }
 
-#step2 #geolocateForm {
-  margin-top: 20px;
-}
-
 #step2 #geolocate {
-  top: 17px;
-  width: 500px;
-  margin-right: 7px;
+  width: 100%;
 }
 
 /*
@@ -354,11 +323,12 @@ Comment out to test necessity of buttons
 
 #step3 .contactButtons {
   text-align: center;
+  margin-bottom: 10px;
 }
 
 #step3 .smsButton, #step3 .emailButton {
-  min-width: 40%;
   margin-right: 1%;
+  margin-bottom: 15px;
   position: relative;
 }
 
@@ -374,19 +344,19 @@ Comment out to test necessity of buttons
   position: absolute;
   left: -60px;
   top: -2px;
-  background: url(/img/icons/text.png) no-repeat;
+  background: url(<%= asset_path 'icons/text.png' %>) no-repeat;
   background-size: 50px 50px;
   width: 50px;
   height: 50px;
 }
 
 #step3 .smsButton:hover span::after, #step3 .smsButton.selected span::after {
-  background: url(/img/icons/sms-inverted.png) no-repeat;
+  background: url(<%= asset_path 'icons/sms-inverted.png' %>) no-repeat;
   background-size: 50px 50px;
 }
 
 #step3 .emailButton span::after {
-  background: url(/img/icons/email.png) no-repeat;
+  background: url(<%= asset_path 'icons/email.png' %>) no-repeat;
   background-size: 50px 50px;
   top: -5px;
 }
@@ -402,18 +372,10 @@ Comment out to test necessity of buttons
   position: absolute;
   right: 0;
   bottom: 0;
-  background: url(/img/icons/email-coming-soon.png);
+  background: url(<%= asset_path 'icons/email-coming-soon.png' %>);
   background-size: 160px 67px;
   width: 160px;
   height: 67px;
-}
-
-#step3 .extraInfo {
-  width: 82%;
-  margin: 0 auto;
-  padding-right: 190px;
-  position: relative;
-  margin-top: 20px;
 }
 
 #step3 .phoneNumber {
@@ -423,18 +385,14 @@ Comment out to test necessity of buttons
 
 #step3 .subscribeButton {
   font-size: 23px;
-  padding: 14px;
-  width: 180px;
-  position: absolute;
-  right: 0;
-  bottom: -1px;
+  padding: 13px;
 }
 
 /*********** Confirmation Section **************/
 
 #confirmation {
   padding-top: 240px;
-  background: url(/img/icons/success.png)center 60px no-repeat;
+  background: url(<%= asset_path 'icons/success.png' %>) center 60px no-repeat;
   background-size: 150px 150px;
 }
 
@@ -452,6 +410,6 @@ Comment out to test necessity of buttons
 /*********** Footer **************/
 
 footer {
-  height: 500px;
+  height: 90px;
   background: #fff;
 }
