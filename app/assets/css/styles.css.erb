@@ -94,7 +94,7 @@ input, select {
   background-color: #FFF;
   border: 2px solid #8A949D;
   border-radius: 10px;
-  -moz-border-radius: 10px; 
+  -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
@@ -216,7 +216,7 @@ section h3 {
   line-height: 36px;
   padding-top: 20px;
   font-weight: 200;
-  
+
 }
 
 #step1 .publisher.soon {
@@ -248,7 +248,7 @@ section h3 {
 
 #step2 #map {
   height: 400px;
-  width: 100%; 
+  width: 100%;
   border: 1px dashed #D1D5D8;
   position: relative;
   margin-top: 20px;
@@ -361,10 +361,9 @@ Comment out to test necessity of buttons
   top: -5px;
 }
 
-#step3 .emailButton:hover {
-  background: white;
-  color: #59B390;
-  cursor: auto;
+#step3 .emailButton:hover span::after, #step3 .emailButton.selected span::after {
+  background: url(<%= asset_path 'icons/sms-inverted.png' %>) no-repeat;
+  background-size: 50px 50px;
 }
 
 #step3 .emailButton:after {
@@ -372,13 +371,20 @@ Comment out to test necessity of buttons
   position: absolute;
   right: 0;
   bottom: 0;
-  background: url(<%= asset_path 'icons/email-coming-soon.png' %>);
   background-size: 160px 67px;
   width: 160px;
   height: 67px;
 }
 
-#step3 .phoneNumber {
+#step3 .extraInfo {
+  width: 82%;
+  margin: 0 auto;
+  padding-right: 190px;
+  position: relative;
+  margin-top: 20px;
+}
+
+#step3 .phoneNumber, #step3 .emailAddress {
   width: 100%;
   display: inline-block
 }

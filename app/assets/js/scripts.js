@@ -49,10 +49,23 @@ app.hookupSteps = function() {
   //   app.scrollToElement($('#step3'));
   // });
 
-  $('.smsButton').on('click', function(event) {
-    $(event.target).addClass('selected');
+  app.handleChannelClick = function(channel, channelBtn) {
+    $('.contactButtons .selected').removeClass('selected');
+    channelBtn.addClass('selected');
+    $('.channel-inputs :visible').hide();
+    $('.channel-inputs .js-channel-' + channel).show();
+    app.state.channel = channel;
     $('.extraInfo').slideDown();
+  }
+
+  $('.emailButton').on('click', function(event) {
+    app.handleChannelClick('email', $(event.target));
   });
+
+  $('.smsButton').on('click', function(event) {
+    app.handleChannelClick('sms', $(event.target));
+  });
+
 
   var finishSubscribe = function(e) {
     // TODO: animate the done checkmark at the same time
@@ -60,6 +73,7 @@ app.hookupSteps = function() {
 
     // TODO: handle email and webhooks also
     app.state.phone_number = $('.phoneNumber').val();
+    app.state.email_address = $('.emailAddress').val();
 
     app.submitSubscription(function() {
       $('#confirmation').slideDown();
@@ -113,11 +127,11 @@ app.hookupSteps = function() {
 
       // Frequency estimate
       app.getEventsCount(app.state.publisher_id, app.state.geom, oneWeekAgo, function(response) {
-        $('#freqRadius').html(radiusMiles + ' mi'); 
+        $('#freqRadius').html(radiusMiles + ' mi');
         $('#freqAddress').html(address);
         $('#freqNum').html(response.events_count + ' citygrams');
       });
-      
+
     });
   };
 
@@ -205,5 +219,5 @@ app.resetState = function() {
 };
 
 app.submitSubscription = function(callback) {
-  $.post('/subscriptions', { subscription: app.state }, callback); 
+  $.post('/subscriptions', { subscription: app.state }, callback);
 };
