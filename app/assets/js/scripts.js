@@ -50,7 +50,20 @@ app.hookupSteps = function() {
   // });
 
   $('.smsButton').on('click', function(event) {
+    $(event.target).siblings().removeClass('selected');
     $(event.target).addClass('selected');
+    $('.channel-inputs .emailAddress').hide();
+    $('.channel-inputs .phoneNumber').show();
+    app.state.channel = 'sms';
+    $('.extraInfo').slideDown();
+  });
+
+  $('.emailButton').on('click', function(event) {
+    $(event.target).siblings().removeClass('selected');
+    $(event.target).addClass('selected');
+    $('.channel-inputs .phoneNumber').hide();
+    $('.channel-inputs .emailAddress').show();
+    app.state.channel = 'email';
     $('.extraInfo').slideDown();
   });
 
@@ -60,6 +73,7 @@ app.hookupSteps = function() {
 
     // TODO: handle email and webhooks also
     app.state.phone_number = $('.phoneNumber').val();
+    app.state.email_address = $('.emailAddress').val();
 
     app.submitSubscription(function() {
       $('#confirmation').slideDown();

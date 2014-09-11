@@ -391,10 +391,9 @@ Comment out to test necessity of buttons
   top: -5px;
 }
 
-#step3 .emailButton:hover {
-  background: white;
-  color: #59B390;
-  cursor: auto;
+#step3 .emailButton:hover span::after, #step3 .emailButton.selected span::after {
+  background: url(<%= asset_path 'icons/sms-inverted.png' %>) no-repeat;
+  background-size: 50px 50px;
 }
 
 #step3 .emailButton:after {
@@ -402,7 +401,6 @@ Comment out to test necessity of buttons
   position: absolute;
   right: 0;
   bottom: 0;
-  background: url(<%= asset_path 'icons/email-coming-soon.png' %>);
   background-size: 160px 67px;
   width: 160px;
   height: 67px;
@@ -416,7 +414,7 @@ Comment out to test necessity of buttons
   margin-top: 20px;
 }
 
-#step3 .phoneNumber {
+#step3 .phoneNumber, .emailAddress {
   width: 100%;
   display: inline-block
 }
