@@ -1,5 +1,6 @@
 require 'sinatra/base'
 require 'sprockets'
+require 'bootstrap-sass'
 
 module Sinatra
   module AssetsExtension
@@ -30,10 +31,15 @@ module Sinatra
         assets.js_compressor  = :uglify
       end
 
-      # setup asset paths
+      # setup app asset paths
       assets.append_path('app/assets/css')
       assets.append_path('app/assets/img')
       assets.append_path('app/assets/js')
+
+      # setup bootstrap-sass asset paths
+      assets.append_path Bootstrap.stylesheets_path
+      assets.append_path Bootstrap.fonts_path
+      assets.append_path Bootstrap.javascripts_path
 
       # mixin helper methods to application
       app.helpers Sinatra::AssetsExtension::Helpers

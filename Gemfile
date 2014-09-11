@@ -8,6 +8,7 @@ end
 
 gem 'activesupport'
 gem 'airbrake', require: false
+gem 'bootstrap-sass', '3.2.0.2'
 gem 'dedent'
 gem 'dotenv', '~> 0.11'
 gem 'faraday', '~> 0.9'
