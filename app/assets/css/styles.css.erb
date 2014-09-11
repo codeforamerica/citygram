@@ -94,7 +94,7 @@ input, select {
   background-color: #FFF;
   border: 2px solid #8A949D;
   border-radius: 10px;
-  -moz-border-radius: 10px; 
+  -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
@@ -111,7 +111,7 @@ input:focus, select:focus {
 }
 
 header {
-  background: url(/img/background-lexington.png);
+  background: url(<%= asset_path 'background-lexington.png' %>);
   background-size: cover;
   min-height: 450px;
   position: relative;
@@ -216,7 +216,7 @@ section h3 {
   line-height: 36px;
   padding-top: 20px;
   font-weight: 200;
-  
+
 }
 
 #step1 .publisher.soon {
@@ -248,7 +248,7 @@ section h3 {
 
 #step2 #map {
   height: 400px;
-  width: 100%; 
+  width: 100%;
   border: 1px dashed #D1D5D8;
   position: relative;
   margin-top: 20px;
