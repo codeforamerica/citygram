@@ -1,65 +1,89 @@
-<header>
-  <div class="logo"></div>
-  <h1>Subscribe to your city.</h1>
-  <p>Get updates on the topics and areas you care about in Seattle.<p>
-  <div id="start" class="bigButton startButton">Get started</div>
+<header class="container-fluid">
+  <div class="row">
+    <div class="col-xs-offset-1 col-md-offset-1 logo"></div>
+  </div>
+  <div class="row">
+    <h1 id="title" class="col-xs-offset-1 col-md-offset-1 col-md-10">Subscribe to your city.</h1>
+  </div>
+  <div class="row">
+    <h3 class="col-xs-offset-1 col-xs-10 col-md-offset-1 col-md-5">Get updates on the topics and areas you care about in Seattle.</h3>
+    <div id="start" class="hidden-xs hidden-sm col-md-offset-3 bigButton startButton">Get started</div>
+  </div>
 </header>
 
-<section id="step1">
-  <div class="instruction">
-    <h2>1. Select a topic.</h2>
-    <h3>Choose one to start, and you can add more later.</h3>
+<section id="step1" class="container-fluid">
+  <div class="instruction row">
+    <div class="col-xs-offset-1 col-md-offset-1 col-md-11">
+      <h2 class="fit-h2">1. Select a topic.</h2>
+      <h3 class="fit-h3">Choose one to start, and you can add more later.</h3>
+    </div>
   </div>
 
-  <div class="publishers">
-    <% @publishers.each do |publisher| %>
-    <div class="publisher <%= 'soon' unless publisher.active %>" data-publisher-id="<%= publisher.id %>" data-publisher-title="<%= publisher.title %>" data-publisher-city="<%= publisher.city %>">
-      <!-- <div class="city"><%= publisher.city %></div> -->
-      <div class="title"><%= publisher.title %></div>
-      <img src="<%= asset_path "icons/#{publisher.icon}" %>">
+  <div class="row">
+    <div class="publishers col-xs-offset-1 col-md-offset-1 col-md-11">
+      <% @publishers.each do |publisher| %>
+        <div class="publisher <%= 'soon' unless publisher.active %>" data-publisher-id="<%= publisher.id %>" data-publisher-title="<%= publisher.title %>" data-publisher-city="<%= publisher.city %>">
+          <!-- <div class="city"><%= publisher.city %></div> -->
+          <div class="title"><%= publisher.title %></div>
+          <img src="<%= asset_path "icons/#{publisher.icon}" %>">
+        </div>
+      <% end %>
     </div>
-    <% end %>
   </div>
 </section>
 
-<section id="step2">
-  <div class="instruction">
-    <h2>2. What's your address?</h2>
-    <h3>Your home, your work, or wherever's important to you.</h3>
-    <!-- <h3>We'll show you a 1/2 mile radius around your address.</h3> -->
-    <form id="geolocateForm">
-      <input type="text" id="geolocate" placeholder="Your address"></input>
-      <span class="bigSelect">
-        <select id="user-selected-radius">
-          <option value="0.25">Within a 1/4 mile (about a 5 min leisurely stroll)</option>
-          <option value="0.5">Within a 1/2 mile (about an 8 min power walk)</option>
-          <option value="1">Within 1 mile (about 15 min on horse and buggy)</option>
-          <option value="2">Within 2 miles (about a 7 min bicycle jaunt)</option>
-          <option value="3">Within 3 miles (about an 8 min vespa ride)</option>
-          <option value="4">Within 4 miles (about a 2 day bear crawl)</option>
-        </select>
-      </span>
-
-      <!-- Commented out to test necessity of button.
-      <input type="submit" style="display:none"  />
-      <div class="bigButton greenButton geolocateButton">Find me</div> -->
-
-    </form>
-  </div>
-
-  <div id="map">
-    <div class="map-key-panel">
-      <span class="map-blue-dot"></span>Events from last week. Click for details.
+<section id="step2" class="container-fluid">
+  <div class="instruction row">
+    <div class="col-xs-offset-1 col-xs-10 col-md-offset-1 col-md-10">
+      <h2 class="fit-h2">2. What's your address?</h2>
+      <h3 class="fit-h3">Your home, your work, or wherever's important to you.</h3>
     </div>
   </div>
 
-  <div class="frequencyContainer">
-    <img src="<%= asset_path 'icons/frequency.png' %>" class="frequencyIcon">
-    <div class="frequencyText">
-      <span class="frequencyTitle">Estimated Frequency</span>
-      <p>
-        In the last week, there were about <span id="freqNum" class="orange bold">___ citygrams</span> for <span class="confirmationType navy bold">___</span> within <span id="freqRadius" class="green bold">___ mi</span> of <span id="freqAddress" class="red bold">___</span>.
-      </p>
+  <div class="row">
+      <form id="geolocateForm" role="form">
+        <div class="col-xs-offset-1 col-xs-10 col-md-offset-1 col-md-5">
+          <input type="text" id="geolocate" placeholder="Your address"></input>
+        </div>
+
+        <div class="col-xs-offset-1 col-md-offset-0 col-xs-10 col-md-5">
+          <span class="bigSelect">
+            <select id="user-selected-radius">
+              <option value="0.25">Within a 1/4 mile (about a 5 min leisurely stroll)</option>
+              <option value="0.5">Within a 1/2 mile (about an 8 min power walk)</option>
+              <option value="1">Within 1 mile (about 15 min on horse and buggy)</option>
+              <option value="2">Within 2 miles (about a 7 min bicycle jaunt)</option>
+              <option value="3">Within 3 miles (about an 8 min vespa ride)</option>
+              <option value="4">Within 4 miles (about a 2 day bear crawl)</option>
+              <span class="caret"></span>
+            </select>
+          </span>
+        </div>
+
+        <!-- Commented out to test necessity of button.
+        <input type="submit" style="display:none"  />
+        <div class="bigButton greenButton geolocateButton">Find me</div> -->
+
+      </form>
+  </div>
+
+  <div class="row">
+    <div class="col-md-offset-1 col-md-10">
+      <div id="map">
+        <div class="map-key-panel">
+          <span class="map-blue-dot"></span>Events from last week. Click for details.
+        </div>
+      </div>
+
+      <div class="frequencyContainer">
+        <img src="<%= asset_path 'icons/frequency.png' %>" class="frequencyIcon">
+        <div class="frequencyText">
+          <span class="frequencyTitle">Estimated Frequency</span>
+          <p>
+            In the last week, there were about <span id="freqNum" class="orange bold">___ citygrams</span> for <span class="confirmationType navy bold">___</span> within <span id="freqRadius" class="green bold">___ mi</span> of <span id="freqAddress" class="red bold">___</span>.
+          </p>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -67,30 +91,44 @@
   <div class="bigButton orangeButton mapButton">Get citygrams near you</div> -->
 </section>
 
-<section id="step3">
-  <div class="instruction">
-    <h2>3. How do you want to be notified?</h2>
-    <h3>Only text for now, but we're expanding to email soon.</h3>
+<section id="step3" class="container-fluid">
+  <div class="instruction row">
+    <div class="col-xs-offset-1 col-xs-10 col-md-offset-1 col-md-10">
+      <h2 class="fit-h2">3. How do you want to be notified?</h2>
+      <h3 class="fit-h3">Only text for now, but we're expanding to email soon.</h3>
+    </div>
   </div>
 
-  <div class="contactButtons">
-    <div class="bigButton orangeButton smsButton"><span>text</span></div>
-    <div class="bigButton greenButton emailButton"><span>email</span></div>
+  <div class="contactButtons row">
+    <div class="col-xs-offset-1 col-xs-10 col-md-offset-1 col-md-5">
+      <div class="bigButton orangeButton smsButton"><span>text</span></div>
+    </div>
+    <div class="col-xs-offset-1 col-xs-10 col-md-offset-0 col-md-5">
+      <div class="bigButton greenButton emailButton"><span>email</span></div>
+    </div>
   </div>
 
-  <div class="extraInfo" style="display:none">
+  <div class="extraInfo row" style="display:none">
     <form id="subscribeForm">
-      <input type="text" class="phoneNumber" placeholder="phone number"></input>
-      <input type="submit" style="display:none"  />
+      <div class="col-xs-offset-1 col-xs-10 col-md-7">
+        <input type="text" class="phoneNumber" placeholder="phone number"></input>
+      </div>
+      <input type="submit" style="display:none"/>
     </form>
-    <div class="bigButton orangeButton subscribeButton">subscribe</div>
+    <div class="col-xs-offset-1 col-xs-10 col-md-offset-0 col-md-3">
+      <div class="bigButton orangeButton subscribeButton">subscribe</div>
+    </div>
   <div>
 </section>
 
-<section id="confirmation" style="display:none">
-  <p>You're subscribed to <strong class="confirmationType">traffic incidents</strong> in your area!</p>
-  <p>Look out for your confirmation text shortly.</p>
-  <div class="bigButton greenButton resetButton">sign up for another topic</div>
+<section id="confirmation" class="container-fluid" style="display:none">
+  <div class="row">
+    <div class="col-xs-offset-1 col-xs-10 col-md-offset-1 col-md-10">
+      <p>You're subscribed to <strong class="confirmationType">traffic incidents</strong> in your area!</p>
+      <p>Look out for your confirmation text shortly.</p>
+      <div class="bigButton greenButton resetButton">sign up for another topic</div>
+    </div>
+  </div>
 </section>
 
 <footer></footer>
