@@ -12,9 +12,16 @@ module Citygram::Models
       from_geom(geom, params)
     end
 
+    def self.date_defaults
+      {
+        after_date:  7.days.ago,
+        before_date: Time.current
+      }
+    end
+
     def self.from_geom(geom_ewkt, params)
-      after_date = params[:after_date] || 7.days.ago
-      before_date = params[:before_date] || Time.current
+      after_date = params[:after_date] || date_defaults[:after_date]
+      before_date = params[:before_date] || date_defaults[:before_date]
       dataset.with_sql(<<-SQL, params.fetch(:publisher_id), after_date, before_date, geom_ewkt).all
         SELECT events.*
         FROM events

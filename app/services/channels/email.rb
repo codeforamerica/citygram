@@ -17,8 +17,7 @@ module Citygram::Services::Channels
     }
 
     def self.body(subscription)
-      params = {}
-      @events = Event.from_subscription(subscription, params)
+      @events = Event.from_subscription(subscription, Event.date_defaults)
       context = binding
       ERB.new(File.read(File.join(Citygram::App.root, '/app/views/_digest_events.erb'))).result(context)
     end
