@@ -17,16 +17,17 @@ module Citygram::Services::Channels
     }
 
     def self.body(subscription)
-      @events = Event.from_subscription(subscription, Event.date_defaults)
+      @subscription = subscription
+      @events = Event.from_subscription(@subscription, Event.date_defaults)
       context = binding
-      ERB.new(File.read(File.join(Citygram::App.root, '/app/views/_digest_events.erb'))).result(context)
+      ERB.new(File.read(File.join(Citygram::App.root, '/app/views/email.erb'))).result(context)
     end
 
     def call
       Pony.mail(
         to: subscription.email_address,
         subject: "Citygram #{subscription.publisher.title} notifications",
-        body: self.class.body(subscription),
+        html_body: self.class.body(subscription),
       )
     end
   end
