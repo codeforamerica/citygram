@@ -7,7 +7,7 @@
     </tr>
     <% @events.each do |event| %>
       <tr>
-        <td><%= event.created_at %></td>
+        <td><%= event.created_at.strftime('%d %b %Y at %I:%m%P') %></td>
         <td><%= event.title %></td>
       </tr>
     <% end %>
