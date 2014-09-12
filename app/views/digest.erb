@@ -1,6 +1,7 @@
 <div class="container">
   <img src="<%= asset_path 'citygram-logo-color.png' %>" width="150" class="logo">
-  <h1>Latest <span class="topic">Building Permits</span> for <span class="phone">9082401489</span></h1>
+  <h1>Latest <span class="topic"><%= @subscription.publisher.title %></span>
+    for <span class="phone"><%= @subscription.email_address || @subscription.phone_number %></span></h1>
 
   <div class="subscription-box">
     <div class="row">
@@ -9,7 +10,9 @@
       </div>
       <div class="col-sm-11">
         <h5>YOUR SUBSCRIPTION FOR THE LAST WEEK:</h5>
-        <h3>There were <span class="orange">7 citygrams</span> for <span class="navy">Building Permits</span> within <span class="green">2 miles</span> of <span class="red">125 9th Street, Seattle.</span></h3>
+        <% single = @events.count == 1 %>
+        <!-- <h3>There <%=  single ? 'was' : 'were' %> <span class="orange"><%= @events.count %> citygram<%= single ? '' : 's' %></span> for <span class="navy"><%= @subscription.publisher.title %></span> within <span class="green">2 miles</span> of <span class="red">125 9th Street, Seattle.</span></h3> -->
+        <h3>There <%=  single ? 'was' : 'were' %> <span class="orange"><%= @events.count %> citygram<%= single ? '' : 's' %></span> for <span class="navy"><%= @subscription.publisher.title %></span> in your interest area</h3>
       </div>
     </div>
   </div>
