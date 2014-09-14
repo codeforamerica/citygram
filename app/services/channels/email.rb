@@ -16,11 +16,13 @@ module Citygram::Services::Channels
       }
     }
 
+    BODY_TEMPLATE = ERB.new(File.read(File.join(Citygram::App.root, '/app/views/email.erb')))
+
     def self.body(subscription)
       @subscription = subscription
       @events = Event.from_subscription(@subscription, Event.date_defaults)
       context = binding
-      ERB.new(File.read(File.join(Citygram::App.root, '/app/views/email.erb'))).result(context)
+      BODY_TEMPLATE.result(context)
     end
 
     def call
