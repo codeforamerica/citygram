@@ -41,6 +41,8 @@ module Sinatra
       app.configure :development do
         require 'sprockets/cache/file_store'
         assets.cache = Sprockets::Cache::FileStore.new('./tmp')
+
+        Pony.override_options = { :to => ENV['DEV_EMAIL_RECIPIENT'] }
       end
     end
   end
