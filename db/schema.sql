@@ -92,7 +92,8 @@ CREATE TABLE publishers (
     active boolean,
     city text,
     icon text,
-    visible boolean DEFAULT true
+    visible boolean DEFAULT true,
+    state text
 );
 
 
