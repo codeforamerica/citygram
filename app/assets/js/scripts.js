@@ -49,10 +49,23 @@ app.hookupSteps = function() {
   //   app.scrollToElement($('#step3'));
   // });
 
-  $('.smsButton').on('click', function(event) {
-    $(event.target).addClass('selected');
+  app.handleChannelClick = function(channel, channelBtn) {
+    $('.contactButtons .selected').removeClass('selected');
+    channelBtn.addClass('selected');
+    $('.channel-inputs :visible').hide();
+    $('.channel-inputs .js-channel-' + channel).show();
+    app.state.channel = channel;
     $('.extraInfo').slideDown();
+  }
+
+  $('.emailButton').on('click', function(event) {
+    app.handleChannelClick('email', $(event.target));
   });
+
+  $('.smsButton').on('click', function(event) {
+    app.handleChannelClick('sms', $(event.target));
+  });
+
 
   var finishSubscribe = function(e) {
     // TODO: animate the done checkmark at the same time
@@ -60,6 +73,7 @@ app.hookupSteps = function() {
 
     // TODO: handle email and webhooks also
     app.state.phone_number = $('.phoneNumber').val();
+    app.state.email_address = $('.emailAddress').val();
 
     app.submitSubscription(function() {
       $('#confirmation').slideDown();
@@ -83,6 +97,7 @@ app.hookupSteps = function() {
   var geolocate = function(e) {
     e && e.preventDefault();
     var city = $('.publisher.selected').data('publisher-city');
+    var state = $('.publisher.selected').data('publisher-state');
     var address = $('#geolocate').val();
     var radiusMiles = parseFloat($('#user-selected-radius').val());
     var radiusKm =radiusMiles * 1.60934
@@ -90,7 +105,7 @@ app.hookupSteps = function() {
     var oneWeekAgo = new Date();
     oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
 
-    app.geocode(address+' '+city, function(latlng) {
+    app.geocode(address, city, state, function(latlng) {
       // Set the new app state
       var center = new LatLon(latlng[0], latlng[1]);
       var bboxDistance = radiusKm;
@@ -113,11 +128,11 @@ app.hookupSteps = function() {
 
       // Frequency estimate
       app.getEventsCount(app.state.publisher_id, app.state.geom, oneWeekAgo, function(response) {
-        $('#freqRadius').html(radiusMiles + ' mi'); 
+        $('#freqRadius').html(radiusMiles + ' mi');
         $('#freqAddress').html(address);
         $('#freqNum').html(response.events_count + ' citygrams');
       });
-      
+
     });
   };
 
@@ -182,8 +197,10 @@ app.scrollToElement = function(el) {
   }, 800);
 };
 
-app.geocode = function(city, callback, context) {
-  var url = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + encodeURIComponent(city);
+app.geocode = function(address, city, state, callback, context) {
+  var url = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + encodeURIComponent(address);
+      url += '&components=locality:' + encodeURIComponent(city);
+      url += '|administrative_area:' + encodeURIComponent(state);
 
   $.getJSON(url, function(response) {
     if (response.error || response.results.length === 0) {
@@ -205,5 +222,5 @@ app.resetState = function() {
 };
 
 app.submitSubscription = function(callback) {
-  $.post('/subscriptions', { subscription: app.state }, callback); 
+  $.post('/subscriptions', { subscription: app.state }, callback);
 };

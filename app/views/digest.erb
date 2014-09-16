@@ -1,3 +1,21 @@
-<% @results.each do |result| %>
-  <div><%= result.title %></div>
-<% end %>
+<div class="container">
+  <img src="<%= asset_path 'citygram-logo-color.png' %>" width="150" class="logo">
+  <h1>Latest <span class="topic"><%= @subscription.publisher.title %></span>
+    for <span class="phone"><%= @subscription.email_address || @subscription.phone_number %></span></h1>
+
+  <div class="subscription-box">
+    <div class="row">
+      <div class="col-sm-1">
+        <img src="<%= asset_path 'building-permits.png' %>" class="icon">
+      </div>
+      <div class="col-sm-11">
+        <h5>YOUR SUBSCRIPTION FOR THE LAST WEEK:</h5>
+        <% single = @events.count == 1 %>
+        <!-- <h3>There <%=  single ? 'was' : 'were' %> <span class="orange"><%= @events.count %> citygram<%= single ? '' : 's' %></span> for <span class="navy"><%= @subscription.publisher.title %></span> within <span class="green">2 miles</span> of <span class="red">125 9th Street, Seattle.</span></h3> -->
+        <h3>There <%=  single ? 'was' : 'were' %> <span class="orange"><%= @events.count %> citygram<%= single ? '' : 's' %></span> for <span class="navy"><%= @subscription.publisher.title %></span> in your interest area</h3>
+      </div>
+    </div>
+  </div>
+
+  <%= erb '_digest_events'.to_sym %>
+</div>

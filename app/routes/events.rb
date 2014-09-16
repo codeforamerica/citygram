@@ -44,8 +44,10 @@ module Citygram::Routes
       results = Event.from_geom(geom, params)
 
       results.map do |result|
-        result[:title] = hyperlink(result[:title])
-        result
+        {
+          geom: result.geom,
+          title: hyperlink(result.title),
+        }
       end
     end
   end

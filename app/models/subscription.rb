@@ -19,6 +19,12 @@ module Citygram::Models
     plugin :serialization, :phone, :phone_number
     plugin :url_validation
 
+    dataset_module do
+      def active
+        where(unsubscribed_at: nil)
+      end
+    end
+
     def unsubscribe!
       self.unsubscribed_at = DateTime.now
       save!

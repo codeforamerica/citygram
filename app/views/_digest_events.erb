@@ -1,0 +1,16 @@
+<div class="table-responsive">
+  <table class="table table-hover">
+    <colgroup span="2" class="columns"></colgroup>
+    <tr>
+      <th class="col-sm-3">date</th>
+      <th class="col-sm-9">citygram</th>
+    </tr>
+    <% @events.each do |event| %>
+      <tr>
+        <td><%= event.created_at.strftime('%d %b %Y at %I:%m%P') %></td>
+        <td><%= event.title %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
+
