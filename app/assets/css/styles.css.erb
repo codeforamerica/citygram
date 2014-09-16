@@ -259,6 +259,87 @@ section h3 {
   width: 100%;
 }
 
+
+/********************* digest *******************/
+body {
+  font-weight: 300;
+}
+
+h1 {
+  font-size: 48px;
+  margin-bottom: 30px;
+}
+
+h3 {
+  font-weight: 300;
+  margin-top: 15px;
+}
+
+.topic {
+  font-weight: 700;
+}
+
+.phone {
+  font-weight: 700;
+  color: #8a949d;
+  opacity: .7;
+}
+
+.logo {
+  margin-bottom: 10px;
+}
+
+.container {
+  margin-top: 30px;
+}
+
+.subscription-box {
+  background-color: #F3F5F5;
+  border-radius: 10px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #e7e8ea;
+  padding: 10px;
+}
+
+.icon {
+  width: 50px;
+  padding-top: 15px;
+  margin-left: 28%;
+}
+
+.orange {
+  color: #e57d5e;
+  font-weight: 700;
+}
+
+.red {
+  color: #e22e41;
+  font-weight: 700;
+}
+
+.navy {
+  font-weight: 700;
+}
+
+.green {
+  color: #59b390;
+  font-weight: 700;
+}
+
+.table {
+  margin-top: 40px;
+  font-size: 16px;
+  height: 100%;
+}
+
+.table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td, .table>tbody>tr>td, .table>tfoot>tr>td {
+  line-height: 1.6;
+  vertical-align: middle;
+}
+
+/*********************** end digest ***************/
+
 /*
 Comment out to test necessity of buttons
 #step2 .geolocateButton {
@@ -361,10 +442,9 @@ Comment out to test necessity of buttons
   top: -5px;
 }
 
-#step3 .emailButton:hover {
-  background: white;
-  color: #59B390;
-  cursor: auto;
+#step3 .emailButton:hover span::after, #step3 .emailButton.selected span::after {
+  background: url(<%= asset_path 'icons/sms-inverted.png' %>) no-repeat;
+  background-size: 50px 50px;
 }
 
 #step3 .emailButton:after {
@@ -372,13 +452,20 @@ Comment out to test necessity of buttons
   position: absolute;
   right: 0;
   bottom: 0;
-  background: url(<%= asset_path 'icons/email-coming-soon.png' %>);
   background-size: 160px 67px;
   width: 160px;
   height: 67px;
 }
 
-#step3 .phoneNumber {
+#step3 .extraInfo {
+  width: 82%;
+  margin: 0 auto;
+  padding-right: 190px;
+  position: relative;
+  margin-top: 20px;
+}
+
+#step3 .phoneNumber, #step3 .emailAddress {
   width: 100%;
   display: inline-block
 }
