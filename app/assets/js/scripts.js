@@ -97,6 +97,7 @@ app.hookupSteps = function() {
   var geolocate = function(e) {
     e && e.preventDefault();
     var city = $('.publisher.selected').data('publisher-city');
+    var state = $('.publisher.selected').data('publisher-state');
     var address = $('#geolocate').val();
     var radiusMiles = parseFloat($('#user-selected-radius').val());
     var radiusKm =radiusMiles * 1.60934
@@ -104,7 +105,7 @@ app.hookupSteps = function() {
     var oneWeekAgo = new Date();
     oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
 
-    app.geocode(address+' '+city, function(latlng) {
+    app.geocode(address, city, state, function(latlng) {
       // Set the new app state
       var center = new LatLon(latlng[0], latlng[1]);
       var bboxDistance = radiusKm;
@@ -196,8 +197,10 @@ app.scrollToElement = function(el) {
   }, 800);
 };
 
-app.geocode = function(city, callback, context) {
-  var url = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + encodeURIComponent(city);
+app.geocode = function(address, city, state, callback, context) {
+  var url = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + encodeURIComponent(address);
+      url += '&components=locality:' + encodeURIComponent(city);
+      url += '|administrative_area:' + encodeURIComponent(state);
 
   $.getJSON(url, function(response) {
     if (response.error || response.results.length === 0) {
