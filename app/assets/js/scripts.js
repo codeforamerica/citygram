@@ -56,6 +56,8 @@ app.hookupSteps = function() {
     $('.channel-inputs .js-channel-' + channel).show();
     app.state.channel = channel;
     $('.extraInfo').slideDown();
+    $('.js-confirm-channel').hide();
+    $('.js-confirm-' + channel).show();
   }
 
   $('.emailButton').on('click', function(event) {
