@@ -13,3 +13,9 @@ I want Citygram in [blank]. My name is [blank], and my email address is [blank].
 ### On submit
 
 Thanks for your interest! We are currently testing Citygram with a few pilot cities and will be ready for more in a few months. We'll be sure to let you know! For more info, email us: [citygram@codeforamerica.org](mailto:citygram@codeforamerica.org).
+
+
+
+## Alternate Description:
+
+Citygram is a text message and email notifications platform for subscribing to your city. It uses the power of open data to inform you of the things you care about, where you care about them.
