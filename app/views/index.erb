@@ -125,8 +125,14 @@
 <section id="confirmation" class="container-fluid" style="display:none">
   <div class="row">
     <div class="col-xs-offset-1 col-xs-10 col-md-offset-1 col-md-10">
-      <p>You're subscribed to <strong class="confirmationType">traffic incidents</strong> in your area!</p>
-      <p>Look out for your confirmation text shortly.</p>
+      <div class="js-confirm-channel js-confirm-sms" style="display:none">
+        <p>You're subscribed to <strong class="confirmationType">traffic incidents</strong> in your area!</p>
+        <p>Look out for your confirmation text shortly.</p>
+      </div>
+      <div class="js-confirm-channel js-confirm-email" style="display:none">
+        <p>You're subscribed to <strong class="confirmationType">traffic incidents</strong> in your area!</p>
+        <p>Look out for the Citygram email digest on <strong>Tuesdays</strong></p>
+      </div>
       <div class="bigButton greenButton resetButton">sign up for another topic</div>
     </div>
   </div>
