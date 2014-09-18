@@ -17,6 +17,7 @@ module Citygram
             ON ST_Intersects(subscriptions.geom, events.geom)
             AND subscriptions.publisher_id = events.publisher_id
             AND subscriptions.unsubscribed_at IS NULL
+            AND channel <> 'email'
           WHERE events.id in ?
         SQL
 
