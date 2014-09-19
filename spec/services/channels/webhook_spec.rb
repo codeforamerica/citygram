@@ -8,11 +8,11 @@ describe Citygram::Services::Channels::Webhook do
 
   let(:headers) { {'Content-Type'=>'application/json'} }
   let(:body) do
-    {
+    JSON.pretty_generate(
       event: event.attributes,
       subscription: subscription.attributes,
       publisher: event.publisher.attributes
-    }.to_json
+    )
   end
 
   context 'success' do

@@ -4,7 +4,7 @@ module Citygram::Services::Channels
   class Webhook < Base
     def call
       response = connection.post do |conn|
-        conn.body = body
+        conn.body = JSON.pretty_generate(body)
       end
 
       handle_response(response)
@@ -19,7 +19,7 @@ module Citygram::Services::Channels
         event: event.attributes,
         subscription: subscription.attributes,
         publisher: event.publisher.attributes
-      }.to_json
+      }
     end
 
     def handle_response(response)
