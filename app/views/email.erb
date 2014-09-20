@@ -1,19 +1,47 @@
-<div class="table-responsive">
-  <table class="table table-hover">
-    <colgroup span="2" class="columns"></colgroup>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Your Citygram Digest for the Week</title>
+  <style media="all" type="text/css"></style>
+  <style type="text/css"><%= Citygram::App.assets['application.css'].source %></style>
+</head>
+
+<body class="digest-email">
+  <table cellspacing="0" cellpadding="0" border="0" width="100%">
     <tr>
-      <th class="col-sm-3">date</th>
-      <th class="col-sm-9">citygram</th>
+      <td bgcolor="#FFFFFF" align="center">
+        <table width="700px" cellspacing="0" cellpadding="0" class="emailContainer">
+          <tr>
+            <td>
+              <img src="<%= asset_path 'citygram-logo-color.png' %>" width="150" class="logo">
+              <h1>Latest <span class="topic"><%= @subscription.publisher.title %></span>
+                for <span class="phone"><%= @subscription.email_address || @subscription.phone_number %></span></h1>
+
+              <% single = @events.count == 1 %>
+              <h5>In the last week, there <%=  single ? 'was' : 'were' %> <span class="orange"><%= @events.count %> citygram<%= single ? '' : 's' %></span> for <span class="green"><%= @subscription.publisher.title %></span> in the area you selected.</h5>
+              <h5>Here they are below, or view them <a href="<%= "https:///digests/#{@subscription.id}/events" %>" class="red">in a browser</a>.</h5>
+              <br><br>
+
+              <table style="width:100%; font-size:11pt" bgcolor="#F8F9F9">
+                <col width="20%">
+                <col width="80%">
+                <tr>
+                  <th style="border:3px solid white; padding:10px; line-height:150%;"><h5>DATE</h5></th>
+                  <th style="border:3px solid white; padding:10px; line-height:150%;"><h5>CITYGRAM</h5></th>
+                </tr>
+              <% @events.each do |event| %>
+                <tr>
+                  <td style="border:3px solid white; padding:10px; line-height:150%;"><%= event.created_at.strftime('%d %b %Y at %I:%m%P') %></td>
+                  <td style="border:3px solid white; padding:10px; line-height:150%;"><%= event.title %></td>
+                </tr>
+                <% end %>
+              </table>               
+            </td>
+            <br><br>
+          </tr>
+        </table>
+      </td>
     </tr>
-    <% @events.each do |event| %>
-      <tr>
-        <td><%= event.created_at.strftime('%d %b %Y at %I:%m%P') %></td>
-        <td><%= event.title %></td>
-      </tr>
-    <% end %>
   </table>
-</div>
-
-
-<a href="<%= "https:///digests/#{@subscription.id}/events" %>
-">View Citygrams</a> in a browser
+</body>
+</html>
