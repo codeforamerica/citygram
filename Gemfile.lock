@@ -20,16 +20,9 @@ GEM
       timers (~> 1.1.0)
     coercible (1.0.0)
       descendants_tracker (~> 0.0.1)
-    columnize (0.8.9)
     connection_pool (2.0.0)
     crack (0.4.2)
       safe_yaml (~> 1.0.0)
-    debugger (1.6.8)
-      columnize (>= 0.3.1)
-      debugger-linecache (~> 1.2.0)
-      debugger-ruby_core_source (~> 1.3.5)
-    debugger-linecache (1.2.0)
-    debugger-ruby_core_source (1.3.5)
     dedent (1.0.1)
     descendants_tracker (0.0.4)
       thread_safe (~> 0.3, >= 0.3.1)
@@ -157,7 +150,6 @@ PLATFORMS
 DEPENDENCIES
   activesupport
   airbrake
-  debugger
   dedent
   dotenv (~> 0.11)
   factory_girl
