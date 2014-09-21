@@ -13,13 +13,13 @@
         <table width="700px" cellspacing="0" cellpadding="0" class="emailContainer">
           <tr>
             <td>
-              <img src="<%= asset_path 'citygram-logo-color.png' %>" width="150" class="logo">
+              <img src="<%# Citygram::App.assets['citygram-logo-color.png'] %>" width="150" class="logo">
               <h1>Latest <span class="topic"><%= @subscription.publisher.title %></span>
                 for <span class="phone"><%= @subscription.email_address || @subscription.phone_number %></span></h1>
 
               <% single = @events.count == 1 %>
               <h5>In the last week, there <%=  single ? 'was' : 'were' %> <span class="orange"><%= @events.count %> citygram<%= single ? '' : 's' %></span> for <span class="green"><%= @subscription.publisher.title %></span> in the area you selected.</h5>
-              <h5>Here they are below, or view them <a href="<%= "https:///digests/#{@subscription.id}/events" %>" class="red">in a browser</a>.</h5>
+              <h5>Here they are below, or view them <a href="<%= "#{ENV['BASE_URL']}/digests/#{@subscription.id}/events" %>" class="red">in a browser</a>.</h5>
               <br><br>
 
               <table style="width:100%; font-size:11pt" bgcolor="#F8F9F9">
