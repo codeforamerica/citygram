@@ -19,6 +19,7 @@ module Citygram
     register Sinatra::ErrorLoggingExtension
 
     configure do
+      set :application_url, ENV.fetch('APPLICATION_URL')
       set :root, File.expand_path('../', __FILE__)
       set :logger, Logger.new(test? ? nil : STDOUT)
       set :map_id, ENV.fetch('MAP_ID') { 'codeforamerica.inb9loae' }

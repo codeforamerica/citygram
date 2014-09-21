@@ -23,5 +23,14 @@ module Citygram::Routes
 
       str
     end
+
+    def build_url(base, path, params = {})
+      url = URI(base)
+      url.path = path if path
+      url.query = Rack::Utils.build_query(params) if params.any?
+      url.to_s
+    end
+
+    module_function :hyperlink, :build_url
   end
 end

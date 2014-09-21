@@ -15,5 +15,5 @@
 </div>
 
 
-<a href="<%= "https:///digests/#{@subscription.id}/events" %>
+<a href="<%= Citygram::Routes::Helpers.build_url(Citygram::App.application_url, "/digests/#{@subscription.id}/events") %>
 ">View Citygrams</a> in a browser
