@@ -7,11 +7,5 @@ module Citygram::Routes
       @events = Event.from_subscription(@subscription, params)
       erb :digest
     end
-
-    get '/events/email' do
-      @subscription = Subscription.where(channel: 'email').last
-      @events = Event.from_subscription(@subscription, Event.date_defaults)
-      erb :email, layout: false
-    end
   end
 end
