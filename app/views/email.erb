@@ -14,12 +14,12 @@
           <tr>
             <td>
               <img src="<%= Citygram::Routes::Helpers.build_url(Citygram::App.application_url, "/assets/#{Citygram::App.assets['citygram-logo-color.png'].digest_path}") %>" width="150" class="logo">
-              <h1>Latest <span class="topic"><%= @subscription.publisher.title %></span>
-                for <span class="phone"><%= @subscription.email_address || @subscription.phone_number %></span></h1>
+              <h1>Latest <span class="topic"><%= subscription.publisher.title %></span>
+                for <span class="phone"><%= subscription.email_address || subscription.phone_number %></span></h1>
 
-              <% single = @events.count == 1 %>
-              <h5>In the last week, there <%=  single ? 'was' : 'were' %> <span class="orange"><%= @events.count %> citygram<%= single ? '' : 's' %></span> for <span class="green"><%= @subscription.publisher.title %></span> in the area you selected.</h5>
-              <h5>Here they are below, or view them <a href="<%= Citygram::Routes::Helpers.build_url(Citygram::App.application_url, "/digests/#{@subscription.id}/events") %>" class="red">in a browser</a>.</h5>
+              <% single = events.count == 1 %>
+              <h5>In the last week, there <%=  single ? 'was' : 'were' %> <span class="orange"><%= events.count %> citygram<%= single ? '' : 's' %></span> for <span class="green"><%= subscription.publisher.title %></span> in the area you selected.</h5>
+              <h5>Here they are below, or view them <a href="<%= Citygram::Routes::Helpers.build_url(Citygram::App.application_url, "/digests/#{subscription.id}/events") %>" class="red">in a browser</a>.</h5>
               <br><br>
 
               <table style="width:100%; font-size:11pt" bgcolor="#F8F9F9">
@@ -29,7 +29,7 @@
                   <th style="border:3px solid white; padding:10px; line-height:150%;"><h5>DATE</h5></th>
                   <th style="border:3px solid white; padding:10px; line-height:150%;"><h5>CITYGRAM</h5></th>
                 </tr>
-              <% @events.each do |event| %>
+              <% events.each do |event| %>
                 <tr>
                   <td style="border:3px solid white; padding:10px; line-height:150%;"><%= event.created_at.strftime('%d %b %Y at %I:%m%P') %></td>
                   <td style="border:3px solid white; padding:10px; line-height:150%;"><%= event.title %></td>

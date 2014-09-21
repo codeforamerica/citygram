@@ -6,7 +6,6 @@ describe Citygram::Services::Channels::Email do
   include Mail::Matchers
 
   let(:subscription) { create(:subscription, channel: 'email', email_address: to_email_address) }
-  let(:event) { create(:event) }
 
   let(:to_email_address) { Faker::Internet.email }
   let(:from_email_address) { ENV.fetch('SMTP_FROM_ADDRESS') }
@@ -20,7 +19,7 @@ describe Citygram::Services::Channels::Email do
 
   context 'success' do
     before do
-      subject.call(subscription, event)
+      subject.call(subscription, nil)
     end
 
     it { is_expected.to have_sent_email.from(from_email_address) }
@@ -33,7 +32,7 @@ describe Citygram::Services::Channels::Email do
     it 'renders the events for the subscription' do
       subscription = create(:subscription, geom: FixtureHelpers::POINT_IN_POLYGON.polygon)
       event = create(:event, publisher: subscription.publisher, geom: FixtureHelpers::POINT_IN_POLYGON.point)
-      expect(subject.body(subscription)).to match(event.title)
+      expect(subject.new(subscription).body).to match(event.title)
     end
   end
 
