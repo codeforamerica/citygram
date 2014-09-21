@@ -18,7 +18,11 @@ module Citygram::Workers
           body: body
         )
       when 'email'
-        # TODO
+        Citygram::Services::Channels::Email.mail(
+          to: subscription.email_address,
+          subject: "Citygram: You're subscribed to #{publisher.city} #{publisher.title} notifications",
+          html_body: "<p>Thank you for subscribing!</p>",
+        )
       end
     rescue Twilio::REST::RequestError => e
       Citygram::App.logger.error(e)
