@@ -31,7 +31,7 @@ describe Citygram::Workers::SubscriptionConfirmation do
 
       it { is_expected.to have_sent_email.from(from_email_address) }
       it { is_expected.to have_sent_email.to(to_email_address) }
-      it { is_expected.to have_sent_email.with_subject("Citygram: You're subscribed to #{publisher.city} #{publisher.title} notifications") }
+      it { is_expected.to have_sent_email.with_subject("Citygram: You're subscribed to #{publisher.city} #{publisher.title}") }
       # it { is_expected.to have_sent_email.with_html_body("<p>Thank you for subscribing!</p>") }
     end
   end

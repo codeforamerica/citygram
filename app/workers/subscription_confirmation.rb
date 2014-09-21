@@ -20,7 +20,7 @@ module Citygram::Workers
       when 'email'
         Citygram::Services::Channels::Email.mail(
           to: subscription.email_address,
-          subject: "Citygram: You're subscribed to #{publisher.city} #{publisher.title} notifications",
+          subject: "Citygram: You're subscribed to #{publisher.city} #{publisher.title}",
           html_body: "<p>Thank you for subscribing!</p>",
         )
       end
