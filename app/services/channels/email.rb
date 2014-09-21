@@ -25,8 +25,12 @@ module Citygram::Services::Channels
       BODY_TEMPLATE.result(context)
     end
 
+    def self.mail(opts)
+      Pony.mail(opts)
+    end
+
     def call
-      Pony.mail(
+      self.class.mail(
         to: subscription.email_address,
         subject: "Citygram #{subscription.publisher.title} notifications",
         html_body: self.class.body(subscription),
