@@ -94,6 +94,26 @@ ALTER SEQUENCE events_id_seq OWNED BY events.id;
 
 
 --
+-- Name: http_requests; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE http_requests (
+    id uuid DEFAULT uuid_generate_v4() NOT NULL,
+    scheme character varying(255),
+    userinfo text,
+    host text,
+    port integer,
+    path text,
+    query text,
+    fragment text,
+    method character varying(255),
+    response_status integer,
+    duration integer,
+    started_at timestamp without time zone
+);
+
+
+--
 -- Name: publishers; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -203,6 +223,14 @@ ALTER TABLE ONLY subscriptions ALTER COLUMN id SET DEFAULT nextval('subscription
 
 ALTER TABLE ONLY events
     ADD CONSTRAINT events_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: http_requests_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY http_requests
+    ADD CONSTRAINT http_requests_pkey PRIMARY KEY (id);
 
 
 --
