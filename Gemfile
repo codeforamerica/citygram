@@ -33,7 +33,6 @@ group :production do
 end
 
 group :development do
-  gem 'debugger'
   gem 'foreman'
 end
 

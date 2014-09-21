@@ -8,9 +8,8 @@
     <% @events.each do |event| %>
       <tr>
         <td><%= event.created_at.strftime('%d %b %Y at %I:%m%P') %></td>
-        <td><%= event.title %></td>
+        <td><%= hyperlink(event.title) %></td>
       </tr>
     <% end %>
   </table>
 </div>
-
