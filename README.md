@@ -33,19 +33,19 @@ Citygram is a web application written in Ruby.
 In the command line, run the following:
 
 ```
-git clone https://github.com/codeforamerica/citygram.git
-cd citygram
-cp .env.sample .env
-gem install bundler
-bundle install
-rake db:create db:migrate
-rake db:create db:migrate DATABASE_URL=postgres://localhost/citygram_test
-rake # run the test suite
-bundle exec rackup
+$ git clone https://github.com/codeforamerica/citygram.git
+$ cd citygram
+$ cp .env.sample .env
+$ gem install bundler
+$ bundle install
+$ rake db:create db:migrate
+$ rake db:create db:migrate DATABASE_URL=postgres://localhost/citygram_test
+$ rake # run the test suite
+$ bundle exec rackup
 ```
 
 To boot up the complete application and run background jobs in development:
 
 ```
-bundle exec foreman start -f Procfile.dev
+$ bundle exec foreman start -f Procfile.dev
 ```
