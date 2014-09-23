@@ -4,7 +4,7 @@
 [gemnasium]: https://gemnasium.com/codeforamerica/citygram
 [codeclimate]: https://codeclimate.com/github/codeforamerica/citygram
 
-__Citygram__ is a geographic notification platform designed to work with open government data. It allows residents to designate area(s) of a city they are interested in and subscribe to one or more topics. When an event for a desired topic occurs in the subscribers area of interest, a notification (email, sms, [webhook](http://en.wikipedia.org/wiki/Webhook)) is delivered. Citygram is a [Code for America](https://github.com/codeforamerica) project by the [Charlotte](http://team-charlotte.tumblr.com/) and [Lexington](http://teambiglex.tumblr.com/) teams for the [2014 fellowship](http://www.codeforamerica.org/geeks/our-geeks/2014-fellows/).
+__Citygram__ is a geographic notification platform designed to work with open government data. It allows residents to designate area(s) of a city they are interested in and subscribe to one or more topics. When an event for a desired topic occurs in the subscriber's area of interest, a notification (email, SMS,or  [webhook](http://en.wikipedia.org/wiki/Webhook)) is delivered. Citygram is a [Code for America](https://github.com/codeforamerica) project by the [Charlotte](http://team-charlotte.tumblr.com/) and [Lexington](http://teambiglex.tumblr.com/) teams for the [2014 fellowship](http://www.codeforamerica.org/geeks/our-geeks/2014-fellows/).
 
 ### Why are we doing this?
 
@@ -29,6 +29,8 @@ Citygram is a web application written in Ruby.
 * Install Redis - `brew install redis`
 * [Install PostgreSQL](https://github.com/codeforamerica/howto/blob/master/PostgreSQL.md)
 * [Install Ruby](https://github.com/codeforamerica/howto/blob/master/Ruby.md)
+
+In the command line, run the following:
 
 ```
 git clone https://github.com/codeforamerica/citygram.git
