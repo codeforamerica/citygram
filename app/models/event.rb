@@ -7,20 +7,15 @@ module Citygram::Models
     plugin :geometry_validation
 
     dataset_module do
-      def date_defaults
-        { after_date:  7.days.ago,
-          before_date: DateTime.now }
-      end
-
-      def from_subscription(subscription, params)
+      def from_subscription(subscription, params = {})
         geom = GeoRuby::GeojsonParser.new.parse(subscription.geom).as_ewkt
         params[:publisher_id] = subscription.publisher_id
         from_geom(geom, params)
       end
 
       def from_geom(geom_ewkt, params)
-        after_date = params[:after_date] || date_defaults[:after_date]
-        before_date = params[:before_date] || date_defaults[:before_date]
+        after_date = params[:after_date] || 7.days.ago
+        before_date = params[:before_date] || DateTime.now
 
         with_sql(<<-SQL, params.fetch(:publisher_id), after_date, before_date, geom_ewkt).all
           SELECT events.*

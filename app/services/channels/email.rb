@@ -23,7 +23,7 @@ module Citygram::Services::Channels
     end
 
     def body
-      events = Event.from_subscription(subscription, Event.date_defaults)
+      events = Event.from_subscription(subscription)
       ERB.new(BODY_TEMPLATE).result(binding)
     end
 
