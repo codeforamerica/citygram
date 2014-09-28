@@ -1,10 +1,10 @@
 require 'factory_girl'
-require 'ffaker'
+require 'spec/support/fixture_helpers'
 
 FactoryGirl.define do
   factory :publisher, class: Citygram::Models::Publisher do
-    title { Faker::Lorem.words(3).join(' ') }
-    endpoint { Faker::Internet.uri('https') }
+    sequence(:title) { |n| "Title-#{n}"  }
+    sequence(:endpoint) { |n| "https://www.example.com/path-#{n}" }
     sequence(:city) { |n| "City-#{n}" }
     icon 'balloons.png'
     active true
@@ -12,26 +12,16 @@ FactoryGirl.define do
 
   factory :event, class: Citygram::Models::Event do
     publisher
-    title { Faker::Lorem.words(3) }
-    description { Faker::Lorem.paragraph(2) }
+    sequence(:title) { |n| "Event-#{n}"  }
+    description { |event| "An event description for: #{event.title}" }
     feature_id { SecureRandom.hex(10) }
-    geom do
-      JSON.generate({
-        "type"=>"Point",
-        "coordinates"=>[Faker::Geolocation.lat,Faker::Geolocation.lng]
-      })
-    end
+    geom FixtureHelpers.fixture('disjoint-geom.geojson')
   end
 
   factory :subscription, class: Citygram::Models::Subscription do
     publisher
-    webhook_url { Faker::Internet.uri('https') }
+    sequence(:webhook_url) { |n| "https://www.example.com/path-#{n}" }
     channel 'webhook'
-    geom do
-      JSON.generate({
-        "type"=>"Polygon",
-        "coordinates"=>[[[100.0, 0.0],[101.0, 0.0],[101.0, 1.0],[100.0,1.0],[100.0,0.0]]]
-      })
-    end
+    geom FixtureHelpers.fixture('subject-geom.geojson')
   end
 end

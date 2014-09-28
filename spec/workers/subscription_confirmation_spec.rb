@@ -6,7 +6,7 @@ describe Citygram::Workers::SubscriptionConfirmation do
   context 'email' do
     include Mail::Matchers
 
-    let(:to_email_address) { Faker::Internet.email }
+    let(:to_email_address) { 'human@example.com' }
     let(:from_email_address) { ENV.fetch('SMTP_FROM_ADDRESS') }
 
     let(:publisher) { subscription.publisher }

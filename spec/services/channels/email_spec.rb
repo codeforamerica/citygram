@@ -7,7 +7,7 @@ describe Citygram::Services::Channels::Email do
 
   let(:subscription) { create(:subscription, channel: 'email', email_address: to_email_address) }
 
-  let(:to_email_address) { Faker::Internet.email }
+  let(:to_email_address) { 'human@example.com' }
   let(:from_email_address) { ENV.fetch('SMTP_FROM_ADDRESS') }
 
   around do |example|

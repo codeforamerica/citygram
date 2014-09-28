@@ -11,5 +11,6 @@ require_relative '../app'
 Dir['spec/support/**/*.rb'].each { |f| require File.absolute_path(f) }
 
 RSpec.configure do |config|
+  config.include FixtureHelpers
   config.order = 'random'
 end

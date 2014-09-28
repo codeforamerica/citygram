@@ -12,14 +12,14 @@ describe Citygram::Models::Subscription do
   end
 
   it 'round trip a geojson geometry through a postgis geometry column' do
-    geojson = '{"type":"LineString","coordinates":[[102.0,0.0],[103.0,1.0],[104.0,0.0],[105.0,1.0]]}'
+    geojson = fixture('subject-geom.geojson')
     subscription_id = create(:subscription, geom: geojson).id
     subscription = Subscription.first!(id: subscription_id)
     expect(subscription.geom).to eq geojson
   end
 
   it 'requires a valid GeoJSON feature geometry' do
-    subscription = build(:subscription, geom: '{"type":"Feature","coordinates":[[[100.0,0.0],[101.0,0.0],[101.0,1.0],[100.0,1.0],[100.0,0.0]]]}')
+    subscription = build(:subscription, geom: fixture('invalid-geom.geojson'))
     expect(subscription).not_to be_valid
   end
 
@@ -31,7 +31,7 @@ describe Citygram::Models::Subscription do
   describe 'contact channel validations' do
     context 'webhook' do
       it 'requires the contact to be a valid url' do
-        subscription = build(:subscription, channel: 'webhook', webhook_url: Faker::Internet.email)
+        subscription = build(:subscription, channel: 'webhook', webhook_url: 'human@example.com')
         expect(subscription).not_to be_valid
       end
     end
@@ -45,7 +45,7 @@ describe Citygram::Models::Subscription do
 
     context 'email' do
       it 'requires the contact to be a valid email address' do
-        subscription = build(:subscription, channel: 'email', email_address: Faker::PhoneNumber.short_phone_number)
+        subscription = build(:subscription, channel: 'email', email_address: '+16024100680')
         expect(subscription).not_to be_valid
       end
     end

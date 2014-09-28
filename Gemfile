@@ -38,7 +38,6 @@ end
 
 group :test do
   gem 'factory_girl'
-  gem 'ffaker'
   gem 'rack-test'
   gem 'rspec', '~> 3.0'
   gem 'webmock'

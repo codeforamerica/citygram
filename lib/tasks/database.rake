@@ -2,7 +2,7 @@ require_relative '../database_helper'
 
 desc 'Run an interactive REPL session'
 task :console do
-  Citygram::DatabaseHelper.console
+  Citygram::DatabaseHelper.console(self)
 end
 
 namespace :db do
