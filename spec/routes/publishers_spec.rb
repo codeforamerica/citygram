@@ -20,16 +20,16 @@ describe Citygram::Routes::Publishers do
 
   describe 'GET /publishers/:publisher_id/events_count' do
     let(:params) {{ since: since, geometry: geometry }}
-    let(:geometry) { FixtureHelpers::POINT_IN_POLYGON.polygon }
+    let(:geometry) { fixture('subject-geom.geojson') }
     let(:since) { 7.days.ago.iso8601 }
     let(:publisher) { create(:publisher) }
 
     it 'counts events by the publisher since a given date, intersecting a given geometry' do
-      create(:event, publisher_id: publisher.id, geom: FixtureHelpers::POINT_IN_POLYGON.point)
-      create(:event, publisher_id: publisher.id, geom: FixtureHelpers::POINT_IN_POLYGON.excluded_point)
+      create(:event, publisher_id: publisher.id, geom: fixture('intersecting-geom.geojson'))
+      create(:event, publisher_id: publisher.id, geom: fixture('disjoint-geom.geojson'))
 
-      create(:event, publisher_id: publisher.id, created_at: 2.weeks.ago, geom: FixtureHelpers::POINT_IN_POLYGON.point)
-      create(:event, publisher_id: publisher.id, created_at: 2.weeks.ago, geom: FixtureHelpers::POINT_IN_POLYGON.excluded_point)
+      create(:event, publisher_id: publisher.id, created_at: 2.weeks.ago, geom: fixture('intersecting-geom.geojson'))
+      create(:event, publisher_id: publisher.id, created_at: 2.weeks.ago, geom: fixture('disjoint-geom.geojson'))
 
       get "/publishers/#{ publisher.id }/events_count", params
 

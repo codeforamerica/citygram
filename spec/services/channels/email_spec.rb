@@ -30,8 +30,8 @@ describe Citygram::Services::Channels::Email do
 
   context 'rendering digest' do
     it 'renders the events for the subscription' do
-      subscription = create(:subscription, geom: FixtureHelpers::POINT_IN_POLYGON.polygon)
-      event = create(:event, publisher: subscription.publisher, geom: FixtureHelpers::POINT_IN_POLYGON.point)
+      subscription = create(:subscription, geom: fixture('subject-geom.geojson'))
+      event = create(:event, publisher: subscription.publisher, geom: fixture('intersecting-geom.geojson'))
       expect(subject.new(subscription).body).to match(event.title)
     end
   end
