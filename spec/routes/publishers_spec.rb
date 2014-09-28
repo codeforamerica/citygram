@@ -20,16 +20,16 @@ describe Citygram::Routes::Publishers do
 
   describe 'GET /publishers/:publisher_id/events_count' do
     let(:params) {{ since: since, geometry: geometry }}
-    let(:geometry) { '{"type":"Polygon","coordinates":[[[-80.93490600585938,35.263561862152095],[-80.69320678710938,35.32745068492882],[-80.60531616210938,35.14124815600257],[-80.83328247070312,35.06597313798418],[-80.93490600585938,35.263561862152095]]]}' }
+    let(:geometry) { FixtureHelpers::POINT_IN_POLYGON.polygon }
     let(:since) { 7.days.ago.iso8601 }
     let(:publisher) { create(:publisher) }
 
     it 'counts events by the publisher since a given date, intersecting a given geometry' do
-      create(:event, publisher_id: publisher.id, geom: '{"type":"Point","coordinates":[-80.898822,35.22454]}')
-      create(:event, publisher_id: publisher.id, geom: '{"type":"Point","coordinates":[0.0,0.0]}')
+      create(:event, publisher_id: publisher.id, geom: FixtureHelpers::POINT_IN_POLYGON.point)
+      create(:event, publisher_id: publisher.id, geom: FixtureHelpers::POINT_IN_POLYGON.excluded_point)
 
-      create(:event, publisher_id: publisher.id, created_at: 2.weeks.ago, geom: '{"type":"Point","coordinates":[-80.898822,35.22454]}')
-      create(:event, publisher_id: publisher.id, created_at: 2.weeks.ago, geom: '{"type":"Point","coordinates":[0.0,0.0]}')
+      create(:event, publisher_id: publisher.id, created_at: 2.weeks.ago, geom: FixtureHelpers::POINT_IN_POLYGON.point)
+      create(:event, publisher_id: publisher.id, created_at: 2.weeks.ago, geom: FixtureHelpers::POINT_IN_POLYGON.excluded_point)
 
       get "/publishers/#{ publisher.id }/events_count", params
 
