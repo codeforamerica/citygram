@@ -24,8 +24,15 @@
       <% @publishers.each do |publisher| %>
         <div class="publisher <%= 'soon' unless publisher.active %>" data-publisher-id="<%= publisher.id %>" data-publisher-title="<%= publisher.title %>" data-publisher-city="<%= publisher.city %>" data-publisher-state="<%= publisher.state %>">
           <!-- <div class="city"><%= publisher.city %></div> -->
-          <div class="title"><%= publisher.title %></div>
-          <img src="<%= asset_path "icons/#{publisher.icon}" %>">
+          <div class="publisher-topic">
+            <div class="title"><%= publisher.title %></div>
+            <img src="<%= asset_path "icons/#{publisher.icon}" %>">
+          </div>
+          <div class="publisher-description">
+            <div class="definition"><%= publisher.description %></div>
+            <br>
+            <button type="button" class="publisher-btn btn btn-info btn-lg">choose</button>
+          </div>
         </div>
       <% end %>
     </div>
