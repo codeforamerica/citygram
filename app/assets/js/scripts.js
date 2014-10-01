@@ -29,25 +29,29 @@ app.hookupSteps = function() {
   });
 
   $('.publisher:not(.soon)').on('click', function(event) {
-    $('.publisher').removeClass('selected');
+    $('.publisher')
+      .removeClass('selected')
+      .removeClass('is-active');
+
 
     var $publisher = $(event.currentTarget);
-    app.state.publisher_id = $publisher.data('publisher-id');
-    $publisher.addClass('selected');
+    $publisher
+      .addClass('selected')
+      .addClass('is-active');
+  });
+
+  $('.publisher:not(.soon) .publisher-btn').on('click', function(event) {
+    var $publisher = $(this).parents('.publisher:not(.soon)');
 
     // Update the confirmation section with the name
+    app.state.publisher_id = $publisher.data('publisher-id');
     $('.confirmationType').html($publisher.data('publisher-title'));
-
-    app.scrollToElement($('#step2'));
 
     // update events for the new publisher
     app.updateEvents(app.map.getBounds());
-  });
 
-  // Comment out to test necessity of button
-  // $('.mapButton').on('click', function() {
-  //   app.scrollToElement($('#step3'));
-  // });
+    app.scrollToElement($('#step2'));
+  });
 
   app.handleChannelClick = function(channel, channelBtn) {
     $('.contactButtons .selected').removeClass('selected');
@@ -125,8 +129,10 @@ app.hookupSteps = function() {
       prevMarker = L.marker(latlng).addTo(app.map);
       prevCircle = L.circle(latlng, radiusMeters).addTo(app.map);
 
+
       // fit bounds
       app.map.fitBounds(prevCircle.getBounds());
+      app.map.setView(latlng);
 
       // Frequency estimate
       app.getEventsCount(app.state.publisher_id, app.state.geom, oneWeekAgo, function(response) {
