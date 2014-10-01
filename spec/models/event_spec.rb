@@ -11,7 +11,7 @@ describe Citygram::Models::Event do
   end
 
   it 'round trip a geojson geometry through a postgis geometry column' do
-    geometry = '{"type":"Polygon","coordinates":[[[100.0,0.0],[101.0,0.0],[101.0,1.0],[100.0,1.0],[100.0,0.0]]]}'
+    geometry = fixture('subject-geom.geojson')
     event_id = create(:event, geom: geometry).id
     event = Event.first!(id: event_id)
     expect(event.geom).to eq geometry
@@ -23,7 +23,7 @@ describe Citygram::Models::Event do
   end
 
   it 'requires a valid GeoJSON feature geometry' do
-    event = build(:event, geom: '{"type":"Feature","coordinates":[[[100.0,0.0],[101.0,0.0],[101.0,1.0],[100.0,1.0],[100.0,0.0]]]}')
+    event = build(:event, geom: fixture('invalid-geom.geojson'))
     expect(event).not_to be_valid
   end
 
@@ -41,13 +41,13 @@ describe Citygram::Models::Event do
   end
 
   describe 'selecting events' do
-    let(:polygon) { FixtureHelpers::POINT_IN_POLYGON.polygon }
-    let(:included_point) { FixtureHelpers::POINT_IN_POLYGON.point }
+    let(:polygon) { fixture('subject-geom.geojson') }
+    let(:intersecting_point) { fixture('intersecting-geom.geojson') }
 
     it 'returns events created after a given date' do
       publisher = create(:publisher)
-      perfect = create(:event, publisher: publisher, created_at: 1.day.ago, geom: included_point)
-      too_old = create(:event, publisher: publisher, created_at: 3.days.ago, geom: included_point)
+      perfect = create(:event, publisher: publisher, created_at: 1.day.ago, geom: intersecting_point)
+      too_old = create(:event, publisher: publisher, created_at: 3.days.ago, geom: intersecting_point)
 
       geom = GeoRuby::GeojsonParser.new.parse(polygon).as_ewkt
       events = Event.from_geom(geom, {
@@ -61,8 +61,8 @@ describe Citygram::Models::Event do
 
     it 'returns events created before a given date' do
       publisher = create(:publisher)
-      too_new = create(:event, publisher: publisher, created_at: 1.day.ago, geom: included_point)
-      perfect = create(:event, publisher: publisher, created_at: 3.days.ago, geom: included_point)
+      too_new = create(:event, publisher: publisher, created_at: 1.day.ago, geom: intersecting_point)
+      perfect = create(:event, publisher: publisher, created_at: 3.days.ago, geom: intersecting_point)
       geom = GeoRuby::GeojsonParser.new.parse(polygon).as_ewkt
 
       events = Event.from_geom(geom, {

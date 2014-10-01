@@ -178,6 +178,7 @@ section h3 {
 }
 
 #step1 .publisher {
+  position: relative;
   display: inline-block;
   background: #F1F1F2;
   width: 220px;
@@ -187,13 +188,35 @@ section h3 {
   margin: 10px;
   text-align: center;
   border: 1px solid #E8E8E9;
+  cursor: pointer;
 }
 
-#step1 .publisher:not(.soon):hover, #step1 .selected {
-  background: #8b969e;
-  border: 1px solid #8b969e;
+#step1 .publisher .publisher-topic {
+  opacity: 1;
+}
+
+#step1 .publisher .publisher-description {
+  background-color: #8b969e;
   color: #fff;
-  cursor: pointer;
+  border-radius: 15px;
+  padding: 20px 15px;
+  line-height: 1.2;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity:0;
+  transition: opacity .2s linear;
+}
+
+#step1 .publisher .publisher-description .definition {
+  height: 65%;
+  overflow: scroll;
+}
+
+#step1 .publisher.is-active .publisher-description {
+  opacity: 1;
 }
 
 #step1 .publisher .city {
@@ -267,12 +290,18 @@ body {
 
 h1 {
   font-size: 48px;
+  line-height: 54px;
   margin-bottom: 30px;
 }
 
 h3 {
   font-weight: 300;
   margin-top: 15px;
+}
+
+h5 {
+  font-weight: 700;
+  margin-top: 7px;
 }
 
 .topic {
@@ -286,7 +315,7 @@ h3 {
 }
 
 .logo {
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 .container {
@@ -304,7 +333,6 @@ h3 {
 
 .icon {
   width: 50px;
-  padding-top: 15px;
   margin-left: 28%;
 }
 

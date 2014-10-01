@@ -3,7 +3,7 @@ require 'phone'
 require 'sequel'
 
 ENV['DATABASE_URL'] ||= "postgres://localhost/citygram_#{Citygram::App.environment}"
-Sequel.connect(ENV['DATABASE_URL'])
+DB = Sequel.connect(ENV['DATABASE_URL'])
 
 Sequel.default_timezone = :utc
 
@@ -35,7 +35,7 @@ Sequel::Plugins::Serialization.register_format(:geojson,
 # set default to US for now
 Phoner::Phone.default_country_code = '1'
 
-# normalize phone numbers to 
+# normalize phone numbers to E.164
 Sequel::Plugins::Serialization.register_format(:phone,
   ->(v){ Phoner::Phone.parse(v).to_s },
   ->(v){ v } # identity

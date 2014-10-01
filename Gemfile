@@ -33,13 +33,11 @@ group :production do
 end
 
 group :development do
-  gem 'debugger'
   gem 'foreman'
 end
 
 group :test do
   gem 'factory_girl'
-  gem 'ffaker'
   gem 'rack-test'
   gem 'rspec', '~> 3.0'
   gem 'webmock'

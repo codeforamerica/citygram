@@ -18,7 +18,17 @@ module Citygram::Workers
           body: body
         )
       when 'email'
-        # TODO
+        url = Citygram::Routes::Helpers.build_url(Citygram::App.application_url, "/digests/#{subscription.id}/events")
+
+        body = <<-BODY.dedent
+          <p>Thank you for subscribing! <a href="#{url}">View Citygrams</a> in a browser.</p>
+        BODY
+
+        Citygram::Services::Channels::Email.mail(
+          to: subscription.email_address,
+          subject: "Citygram: You're subscribed to #{publisher.city} #{publisher.title}",
+          html_body: body,
+        )
       end
     rescue Twilio::REST::RequestError => e
       Citygram::App.logger.error(e)

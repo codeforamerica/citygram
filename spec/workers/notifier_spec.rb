@@ -4,7 +4,7 @@ describe Citygram::Workers::Notifier do
   subject { Citygram::Workers::Notifier.new }
 
   context 'notification per event' do
-    let(:subscription) { create(:subscription, channel: 'webhook', webhook_url: Faker::Internet.uri('https')) }
+    let(:subscription) { create(:subscription, channel: 'webhook', webhook_url: 'https://example.com/path') }
     let(:event) { create(:event) }
 
     describe '#perform' do
