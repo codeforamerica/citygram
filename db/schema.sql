@@ -127,7 +127,8 @@ CREATE TABLE publishers (
     city text,
     icon text,
     visible boolean DEFAULT true,
-    state text
+    state text,
+    description text
 );
 
 
