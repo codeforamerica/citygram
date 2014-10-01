@@ -35,7 +35,7 @@ Sequel::Plugins::Serialization.register_format(:geojson,
 # set default to US for now
 Phoner::Phone.default_country_code = '1'
 
-# normalize phone numbers to 
+# normalize phone numbers to E.164
 Sequel::Plugins::Serialization.register_format(:phone,
   ->(v){ Phoner::Phone.parse(v).to_s },
   ->(v){ v } # identity
