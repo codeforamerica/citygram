@@ -9,6 +9,10 @@ module Citygram::Models
       def visible
         where(visible: true)
       end
+
+      def active
+        where(active: true)
+      end
     end
 
     def validate
