@@ -14,8 +14,8 @@ app.eventMarkers = new L.FeatureGroup();
 
 app.hookupMap = function() {
   var options = {
-    zoom: 13,
-    center: [47.604432, -122.336014],
+    zoom: 11,
+    center: [40.7127, -74.0059],
     tileLayer: { detectRetina: true },
     scrollWheelZoom: false,
   };
