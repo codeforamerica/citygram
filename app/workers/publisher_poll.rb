@@ -6,9 +6,9 @@ module Citygram::Workers
     include Sidekiq::Worker
     sidekiq_options retry: 5
 
-    def perform(publisher_id)
+    def perform(publisher_id, endpoint)
       publisher = Publisher.first!(id: publisher_id)
-      connection = Citygram::Services::ConnectionBuilder.json("request.publisher.#{publisher.id}", url: publisher.endpoint)
+      connection = Citygram::Services::ConnectionBuilder.json("request.publisher.#{publisher.id}", url: endpoint)
       feature_collection = connection.get.body
       Citygram::Services::PublisherUpdate.call(feature_collection.fetch('features'), publisher)
     end

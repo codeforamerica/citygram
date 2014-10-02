@@ -14,13 +14,13 @@ describe Citygram::Workers::PublisherPoll do
     end
 
     it 'retrieves the latest events from the publishers endpoint' do
-      subject.perform(publisher.id)
+      subject.perform(publisher.id, publisher.endpoint)
       expect(a_request(:get, publisher.endpoint)).to have_been_made
     end
 
     it 'passes the retrieved features to PublisherUpdate' do
       expect(Citygram::Services::PublisherUpdate).to receive(:call).with(features, publisher)
-      subject.perform(publisher.id)
+      subject.perform(publisher.id, publisher.endpoint)
     end
   end
 
