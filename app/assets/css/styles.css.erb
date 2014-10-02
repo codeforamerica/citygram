@@ -77,12 +77,6 @@ strong {
   color: #fff;
 }
 
-.disabledButton, .disabledButton:hover, .disabledButton.selected {
-  border-color: #d1d5d8;
-  background: #d1d5d8;
-  color: #fff;
-}
-
 .bigSelect select {
   background-color: #F1F1F2;
   width: 100%;
@@ -399,17 +393,17 @@ Comment out to test necessity of buttons
   border-radius: 3px;
   z-index: 1001;
   padding: 10px;
-  font-size: 1.2em;
+  font-size: 1.1em;
 }
 
-#map .map-key-panel .map-event-dot {
+#map .map-key-panel .map-blue-dot {
   display: inline-block;
   margin-right: 5px;
   border-radius: 50%;
   width: 11px;
   height: 11px;
-  background-color: rgba(252,68,42,0.1);
-  border: 2px solid rgba(252,68,42,0.5);
+  background-color: rgba(0,0,255,0.1);
+  border: 2px solid rgba(0,0,255,0.5);
 }
 
 .frequencyIcon {
@@ -435,7 +429,7 @@ Comment out to test necessity of buttons
 
 /*********** Contact Section **************/
 
-#step3 .channelButtons {
+#step3 .contactButtons {
   text-align: center;
   margin-bottom: 10px;
 }
@@ -464,7 +458,7 @@ Comment out to test necessity of buttons
   height: 50px;
 }
 
-#step3 .smsButton:hover span::after, #step3 .smsButton.selected span::after, #step3 .smsButton.disabledButton span::after {
+#step3 .smsButton:hover span::after, #step3 .smsButton.selected span::after {
   background: url(<%= asset_path 'icons/sms-inverted.png' %>) no-repeat;
   background-size: 50px 50px;
 }
@@ -475,13 +469,9 @@ Comment out to test necessity of buttons
   top: -5px;
 }
 
-#step3 .emailButton:hover span::after, #step3 .emailButton.selected span::after, #step3 .emailButton.disabledButton span::after {
+#step3 .emailButton:hover span::after, #step3 .emailButton.selected span::after {
   background: url(<%= asset_path 'icons/email-inverted.png' %>) no-repeat;
   background-size: 50px 50px;
-}
-
-#step3 .emailButton.disabledButton, #step3 .smsButton.disabledButton {
-  cursor: default;
 }
 
 #step3 .emailButton:after {
@@ -494,11 +484,7 @@ Comment out to test necessity of buttons
   height: 67px;
 }
 
-#step3 .disabledInfo {
-  font-size: 2em;
-}
-
-#step3 .extraInfo, #step3 .disabledInfo {
+#step3 .extraInfo {
   margin: 0 auto;
   position: relative;
   margin-top: 20px;
