@@ -36,8 +36,7 @@ describe Citygram::Services::Channels::Webhook do
         with(body: body, headers: headers).
         to_return(status: failed_status)
 
-      expect{ subject.call(subscription, event) }.
-        to raise_error Citygram::Services::Channels::NotificationFailure, /HTTP status code: #{failed_status}/
+      expect{ subject.call(subscription, event) }.to raise_error
 
       expect(a_request(:post, subscription.webhook_url).
         with(body: body, headers: headers)).to have_been_made.once
