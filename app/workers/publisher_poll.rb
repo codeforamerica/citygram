@@ -6,11 +6,42 @@ module Citygram::Workers
     include Sidekiq::Worker
     sidekiq_options retry: 5
 
+    NEXT_PAGE_HEADER = 'Next-Page'.freeze
+
     def perform(publisher_id, endpoint)
+      # fetch publisher record or raise
       publisher = Publisher.first!(id: publisher_id)
+
+      # prepare a connection for the given url,
+      # or the publisher endpoint if no url is given
       connection = Citygram::Services::ConnectionBuilder.json("request.publisher.#{publisher.id}", url: endpoint)
-      feature_collection = connection.get.body
+
+      # execute the request or raise
+      response = connection.get
+
+      # save any new events
+      feature_collection = response.body
       Citygram::Services::PublisherUpdate.call(feature_collection.fetch('features'), publisher)
+
+      # OPTIONAL PAGINATION:
+      #
+      # iff successful to this point, and a next page is given
+      # queue up a job to retrieve the next page
+      #
+      next_page = response.headers[NEXT_PAGE_HEADER]
+      if next_page.present? && valid_next_page?(next_page, endpoint)
+        self.class.perform_async(publisher_id, next_page)
+      end
+    end
+
+    private
+
+    def valid_next_page?(next_page, current_page)
+      next_page = URI.parse(next_page)
+      current_page = URI.parse(current_page)
+
+      next_page.host == current_page.host &&
+        next_page != current_page
     end
   end
 end
