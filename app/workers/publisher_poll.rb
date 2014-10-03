@@ -29,7 +29,7 @@ module Citygram::Workers
       # queue up a job to retrieve the next page
       #
       next_page = response.headers[NEXT_PAGE_HEADER]
-      if next_page.present? && valid_next_page?(next_page, url) && page_number < MAX_PAGE_NUMBER
+      if valid_next_page?(next_page, url) && page_number < MAX_PAGE_NUMBER
         self.class.perform_async(publisher_id, next_page, page_number + 1)
       end
     end
@@ -37,11 +37,12 @@ module Citygram::Workers
     private
 
     def valid_next_page?(next_page, current_page)
+      return false unless next_page.present?
+
       next_page = URI.parse(next_page)
       current_page = URI.parse(current_page)
 
-      next_page.host == current_page.host &&
-        next_page != current_page
+      next_page.host == current_page.host
     end
   end
 end

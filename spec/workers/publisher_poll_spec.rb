@@ -57,15 +57,6 @@ describe Citygram::Workers::PublisherPoll do
     end
 
     context 'failure' do
-      context 'infinite loop' do
-        let(:next_page) { publisher.endpoint }
-
-        it 'does not create a new publisher poll job' do
-          expect(Citygram::Workers::PublisherPoll).not_to receive(:perform_async).with(publisher.id, next_page)
-          subject.perform(publisher.id, publisher.endpoint)
-        end
-      end
-
       context 'empty header value' do
         let(:next_page) { ' ' }
 
