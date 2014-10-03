@@ -6,9 +6,10 @@ module Citygram::Workers
     include Sidekiq::Worker
     sidekiq_options retry: 5
 
+    MAX_PAGE_NUMBER = 10
     NEXT_PAGE_HEADER = 'Next-Page'.freeze
 
-    def perform(publisher_id, endpoint)
+    def perform(publisher_id, endpoint, page_number = 1)
       # fetch publisher record or raise
       publisher = Publisher.first!(id: publisher_id)
 
@@ -29,8 +30,8 @@ module Citygram::Workers
       # queue up a job to retrieve the next page
       #
       next_page = response.headers[NEXT_PAGE_HEADER]
-      if next_page.present? && valid_next_page?(next_page, endpoint)
-        self.class.perform_async(publisher_id, next_page)
+      if next_page.present? && valid_next_page?(next_page, endpoint) && page_number < MAX_PAGE_NUMBER
+        self.class.perform_async(publisher_id, next_page, page_number + 1)
       end
     end
 
