@@ -9,6 +9,7 @@ module Citygram
           conn.options.timeout = 10
           conn.headers['Content-Type'] = 'application/json'
           conn.response :json
+          conn.response :raise_error
           conn.use :instrumentation, name: name
           conn.adapter Faraday.default_adapter
         end
