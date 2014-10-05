@@ -14,7 +14,7 @@ Sequel::Model.set_allowed_columns(*[])
 Sequel::Model.raise_on_save_failure = false
 
 # sequel's standard pagination
-Sequel::Model.db.extension :pagination
+DB.extension :pagination
 
 # common model plugins
 Sequel::Model.plugin :attributes_helpers
