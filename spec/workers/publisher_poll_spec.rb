@@ -3,14 +3,15 @@ require 'spec_helper'
 describe Citygram::Workers::PublisherPoll do
   subject { Citygram::Workers::PublisherPoll.new }
   let(:publisher) { create(:publisher) }
-  let(:features) { JSON.parse(geojson)['features'] }
-  let(:geojson) { fixture('cmpd-traffic-incidents.geojson') }
+  let(:features) { JSON.parse(body)['features'] }
+  let(:body) { fixture('cmpd-traffic-incidents.geojson') }
+  let(:new_events) { double('new events', any?: true) }
 
   describe '#perform' do
     before do
       stub_request(:get, publisher.endpoint).
         with(headers: {'Content-Type'=>'application/json'}).
-        to_return(status: 200, body: geojson)
+        to_return(status: 200, body: body)
     end
 
     it 'retrieves the latest events from the publishers endpoint' do
@@ -19,7 +20,8 @@ describe Citygram::Workers::PublisherPoll do
     end
 
     it 'passes the retrieved features to PublisherUpdate' do
-      expect(Citygram::Services::PublisherUpdate).to receive(:call).with(features, publisher)
+      expect(Citygram::Services::PublisherUpdate).
+        to receive(:call).with(features, publisher).and_return(new_events)
       subject.perform(publisher.id, publisher.endpoint)
     end
   end
@@ -36,7 +38,7 @@ describe Citygram::Workers::PublisherPoll do
     before do
       stub_request(:get, publisher.endpoint).
         with(headers: { 'Content-Type' => 'application/json' }).
-        to_return(status: 200, headers: { 'Next-Page' => next_page }, body: geojson)
+        to_return(status: 200, headers: { 'Next-Page' => next_page }, body: body)
     end
 
     context 'success' do
@@ -46,13 +48,18 @@ describe Citygram::Workers::PublisherPoll do
       end
 
       it 'passes the retrieved features to PublisherUpdate' do
-        expect(Citygram::Services::PublisherUpdate).to receive(:call).with(features, publisher)
+        expect(Citygram::Services::PublisherUpdate).
+          to receive(:call).with(features, publisher).and_return(new_events)
         subject.perform(publisher.id, publisher.endpoint)
       end
 
       it 'creates a publisher poll job for the next page' do
-        expect(Citygram::Workers::PublisherPoll).to receive(:perform_async).with(publisher.id, next_page, 2)
-        subject.perform(publisher.id, publisher.endpoint)
+        expect {
+          subject.perform(publisher.id, publisher.endpoint)
+        }.to change{ Citygram::Workers::PublisherPoll.jobs.count }.by(+1)
+
+        last_job = Citygram::Workers::PublisherPoll.jobs.last
+        expect(last_job['args']).to eq [publisher.id, next_page, 2]
       end
     end
 
@@ -61,8 +68,9 @@ describe Citygram::Workers::PublisherPoll do
         let(:next_page) { ' ' }
 
         it 'does not create a new publisher poll job' do
-          expect(Citygram::Workers::PublisherPoll).not_to receive(:perform_async).with(publisher.id, next_page)
-          subject.perform(publisher.id, publisher.endpoint)
+          expect {
+            subject.perform(publisher.id, publisher.endpoint)
+          }.not_to change{ Citygram::Workers::PublisherPoll.jobs.count }
         end
       end
 
@@ -79,15 +87,27 @@ describe Citygram::Workers::PublisherPoll do
         end
 
         it 'does not create a new publisher poll job' do
-          expect(Citygram::Workers::PublisherPoll).not_to receive(:perform_async).with(publisher.id, next_page)
-          subject.perform(publisher.id, publisher.endpoint)
+          expect {
+            subject.perform(publisher.id, publisher.endpoint)
+          }.not_to change{ Citygram::Workers::PublisherPoll.jobs.count }
         end
       end
 
       context 'max page number reached' do
         it 'does not create a new publisher poll job' do
-          expect(Citygram::Workers::PublisherPoll).not_to receive(:perform_async).with(publisher.id, next_page)
-          subject.perform(publisher.id, publisher.endpoint, Citygram::Workers::PublisherPoll::MAX_PAGE_NUMBER)
+          expect {
+            subject.perform(publisher.id, publisher.endpoint, Citygram::Workers::PublisherPoll::MAX_PAGE_NUMBER)
+          }.not_to change{ Citygram::Workers::PublisherPoll.jobs.count }
+        end
+      end
+
+      context 'no new records returned' do
+        let(:body) { fixture('empty-feature-collection.geojson') }
+
+        it 'does not create a new publisher poll job' do
+          expect {
+            subject.perform(publisher.id, publisher.endpoint)
+          }.not_to change{ Citygram::Workers::PublisherPoll.jobs.count }
         end
       end
     end

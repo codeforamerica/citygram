@@ -21,7 +21,7 @@ module Citygram::Workers
 
       # save any new events
       feature_collection = response.body
-      Citygram::Services::PublisherUpdate.call(feature_collection.fetch('features'), publisher)
+      new_events = Citygram::Services::PublisherUpdate.call(feature_collection.fetch('features'), publisher)
 
       # OPTIONAL PAGINATION:
       #
@@ -29,7 +29,7 @@ module Citygram::Workers
       # queue up a job to retrieve the next page
       #
       next_page = response.headers[NEXT_PAGE_HEADER]
-      if valid_next_page?(next_page, url) && page_number < MAX_PAGE_NUMBER
+      if new_events.any? && valid_next_page?(next_page, url) && page_number < MAX_PAGE_NUMBER
         self.class.perform_async(publisher_id, next_page, page_number + 1)
       end
     end
