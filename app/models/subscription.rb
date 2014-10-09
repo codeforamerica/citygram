@@ -23,6 +23,10 @@ module Citygram::Models
       def active
         where(unsubscribed_at: nil)
       end
+
+      def unsubscribe!
+        update(unsubscribed_at: DateTime.now)
+      end
     end
 
     def unsubscribe!
