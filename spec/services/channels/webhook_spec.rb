@@ -6,7 +6,7 @@ describe Citygram::Services::Channels::Webhook do
   let(:subscription) { create(:subscription, channel: 'webhook') }
   let(:event) { create(:event) }
 
-  let(:headers) { {'Content-Type'=>'application/json'} }
+  let(:headers) { {'Accept'=>'application/json'} }
   let(:body) do
     JSON.pretty_generate(
       event: event.attributes,

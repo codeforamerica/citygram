@@ -10,7 +10,7 @@ describe Citygram::Workers::PublisherPoll do
   describe '#perform' do
     before do
       stub_request(:get, publisher.endpoint).
-        with(headers: {'Content-Type'=>'application/json'}).
+        with(headers: {'Accept'=>'application/json'}).
         to_return(status: 200, body: body)
     end
 
@@ -37,7 +37,7 @@ describe Citygram::Workers::PublisherPoll do
 
     before do
       stub_request(:get, publisher.endpoint).
-        with(headers: { 'Content-Type' => 'application/json' }).
+        with(headers: { 'Accept' => 'application/json' }).
         to_return(status: 200, headers: { 'Next-Page' => next_page }, body: body)
     end
 

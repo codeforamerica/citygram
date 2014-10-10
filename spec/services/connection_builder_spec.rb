@@ -14,7 +14,7 @@ describe Citygram::Services::ConnectionBuilder do
 
   it 'parses the response as JSON' do
     stub_request(:get, url).
-      with(headers: {'Content-Type'=>'application/json'}).
+      with(headers: {'Accept'=>'application/json'}).
       to_return(status: 200, body: fixture('cmpd-traffic-incidents.geojson'))
 
     body = subject.get.body
