@@ -6,7 +6,7 @@ module Citygram::Workers
     sidekiq_options retry: 5
 
     def perform(subscription_id, event_id)
-      subscription = Subscription.first!(id: subscription_id)
+      subscription = Subscription.active.first!(id: subscription_id)
       event = subscription.channel == 'email' ? nil : Event.first!(id: event_id)
       Citygram::Services::Channels[subscription.channel].call(subscription, event)
     end
