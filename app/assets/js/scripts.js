@@ -112,6 +112,7 @@ app.hookupSteps = function() {
     oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
 
     app.geocode(address, city, state, function(latlng) {
+
       // Set the new app state
       var center = new LatLon(latlng[0], latlng[1]);
       var bboxDistance = radiusKm;
@@ -127,7 +128,7 @@ app.hookupSteps = function() {
 
       // Preserve references to new layers
       prevMarker = L.marker(latlng).addTo(app.map);
-      prevCircle = L.circle(latlng, radiusMeters).addTo(app.map);
+      prevCircle = L.circle(latlng, radiusMeters, { color:'#0B377F' }).addTo(app.map);
 
 
       // fit bounds
@@ -180,7 +181,7 @@ app.updateEvents = function(bounds) {
 app.displayEventMarker = function(event) {
   var geometry = JSON.parse(event.geom);
   var html = "<p>"+event.title+"</p>"
-  var marker = L.circleMarker([geometry.coordinates[1], geometry.coordinates[0]], { radius: 6 })
+  var marker = L.circleMarker([geometry.coordinates[1], geometry.coordinates[0]], { radius: 5, color:'#FC6A3F' })
                  .addTo(app.map)
                  .bindPopup(html);
 
