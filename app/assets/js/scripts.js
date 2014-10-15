@@ -156,6 +156,8 @@ app.hookupSteps = function() {
 
 };
 
+app.hyperlink = Autolinker.link;
+
 // Populate events
 app.updateEvents = function(bounds) {
   var mapGeometry = {
@@ -179,7 +181,7 @@ app.updateEvents = function(bounds) {
 
 app.displayEventMarker = function(event) {
   var geometry = JSON.parse(event.geom);
-  var html = "<p>"+event.title+"</p>"
+  var html = "<p>"+app.hyperlink(event.title)+"</p>"
   var marker = L.circleMarker([geometry.coordinates[1], geometry.coordinates[0]], { radius: 6 })
                  .addTo(app.map)
                  .bindPopup(html);
