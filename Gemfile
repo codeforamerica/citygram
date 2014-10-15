@@ -9,7 +9,7 @@ end
 gem 'activesupport'
 gem 'airbrake', require: false
 gem 'dedent'
-gem 'dotenv', '~> 0.11'
+gem 'dotenv', '~> 1.0'
 gem 'faraday', '~> 0.9'
 gem 'faraday_middleware', '~> 0.9'
 gem 'georuby', '~> 2.1'
