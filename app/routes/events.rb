@@ -20,14 +20,7 @@ module Citygram::Routes
 
     get 'publishers/:publisher_id/events' do
       geom = GeoRuby::GeojsonParser.new.parse(params[:geometry]).as_ewkt
-      results = Event.from_geom(geom, params)
-
-      results.map do |result|
-        {
-          geom: result.geom,
-          title: hyperlink(result.title),
-        }
-      end
+      Event.from_geom(geom, params)
     end
   end
 end
