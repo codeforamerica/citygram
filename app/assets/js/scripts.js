@@ -132,7 +132,6 @@ app.hookupSteps = function() {
 
       // fit bounds
       app.map.fitBounds(prevCircle.getBounds());
-      app.map.setView(latlng);
 
       // Frequency estimate
       app.getEventsCount(app.state.publisher_id, app.state.geom, oneWeekAgo, function(response) {
@@ -151,8 +150,8 @@ app.hookupSteps = function() {
     if ($('#geolocate').val().trim() !== '') geolocate();
   });
   $('#user-selected-radius').on('change', geolocate);
-  $('#geolocateForm').on('submit', geolocate);
   $('#geolocate').on('change', geolocate);
+  $('#geolocateForm').on('submit', function(){ return false });
 
 };
 
