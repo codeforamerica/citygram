@@ -3,7 +3,7 @@ module Citygram::Models
     many_to_one :publisher
 
     plugin :serialization, :geojson, :geom
-    plugin :serialization, :json, :properties
+    plugin :serialization, :pg_json, :properties
     plugin :geometry_validation
 
     dataset_module do

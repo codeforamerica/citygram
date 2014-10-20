@@ -16,6 +16,8 @@ Sequel::Model.raise_on_save_failure = false
 # sequel's standard pagination
 DB.extension :pagination
 
+DB.extension :pg_json
+
 # common model plugins
 Sequel::Model.plugin :attributes_helpers
 Sequel::Model.plugin :json_serializer
@@ -23,6 +25,24 @@ Sequel::Model.plugin :save_helpers
 Sequel::Model.plugin :serialization
 Sequel::Model.plugin :timestamps, update_on_create: true
 Sequel::Model.plugin :validation_helpers
+
+# roundtrip a `Hash` or `Array` through a native postgres json column
+Sequel::Plugins::Serialization.register_format(:pg_json,
+  ->(v){ Sequel.pg_json(v) },
+  ->(v){
+    # TODO: does sequel expose an interface for this case handling?
+    case v
+    when Sequel::Postgres::JSONHash
+      v.to_h
+    when Sequel::Postgres::JSONArray
+      v.to_a
+    when String
+      Sequel.parse_json(v)
+    else
+      raise Sequel::InvalidValue, "invalid value for json: #{v.inspect}"
+    end
+  }
+)
 
 # round trip a geojson geometry through a postgis geometry column
 Sequel::Plugins::Serialization.register_format(:geojson,
