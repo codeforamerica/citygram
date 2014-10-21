@@ -11,6 +11,7 @@ matrix:
     - rvm: ruby-head
     - rvm: 2.1.2
 script:
+  - psql -V
   - cp .env.sample .env
   - bundle exec rake db:create db:migrate DATABASE_URL=postgres://localhost/citygram_test
   - bundle exec rake

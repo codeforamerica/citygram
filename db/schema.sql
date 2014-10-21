@@ -142,7 +142,8 @@ CREATE TABLE publishers (
     icon text,
     visible boolean DEFAULT true,
     state text,
-    description text
+    description text,
+    tags text[] DEFAULT '{}'::text[] NOT NULL
 );
 
 
