@@ -4,6 +4,7 @@ module Citygram::Models
     one_to_many :events
 
     plugin :url_validation
+    plugin :serialization, :pg_array, :tags
 
     dataset_module do
       def visible
