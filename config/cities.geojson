@@ -1,0 +1,50 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "id": "charlotte",
+      "type": "Feature",
+      "properties": {
+        "title": "Charlotte",
+        "zoom": 13
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.2261539,
+          -80.8388393
+        ]
+      }
+    },
+    {
+      "id": "lexington",
+      "type": "Feature",
+      "properties": {
+        "title": "Lexington",
+        "zoom": 13
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.048610,
+          -84.498344
+        ]
+      }
+    },
+    {
+      "id": "new-york",
+      "type": "Feature",
+      "properties": {
+        "title": "New York",
+        "zoom": 11
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          40.7127,
+          -74.0059
+        ]
+      }
+    }
+  ]
+}

@@ -1,12 +1,13 @@
 module Citygram::Routes
   class Pages < Citygram::App
     get '/' do
-      @cities = []
+      @cities = City.all
       erb :index, layout: :'splash-layout'
     end
 
     get '/:tag' do
-      @publishers = Publisher.active.visible.tagged(params[:tag])
+      @city = City.find(params[:tag])
+      @publishers = Publisher.active.visible.tagged(@city.tag)
       erb :show
     end
   end
