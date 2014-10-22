@@ -8,7 +8,7 @@
     <h1 id="title" class="col-xs-offset-1 col-md-offset-1 col-md-10" style="text-shadow: 2px 2px 6px #000;">Subscribe to NYC.</h1>
   </div>
   <div class="row">
-    <h3 class="col-xs-offset-1 col-xs-10 col-md-offset-1 col-md-5" style = "text-shadow: 2px 2px 2px #000;">Get updates on the topics and areas you care about in New York City. <span class = "aboutLink">Learn More.</span></h3>
+    <h3 class="col-xs-offset-1 col-xs-10 col-md-offset-1 col-md-5" style="text-shadow: 2px 2px 2px #000;">Get updates on the topics and areas you care about in New York City. <span class="aboutLink">Learn More.</span></h3>
     <div id="start" class="hidden-xs hidden-sm col-md-offset-3 bigButton startButton">Get started</div>
   </div>
 </header>
@@ -24,18 +24,18 @@
     <div class="publishers col-xs-offset-1 col-md-offset-1 col-md-11">
       <% @publishers.each do |publisher| %>
         <div class="publisher <%= 'soon' unless publisher.active %>" data-publisher-id="<%= publisher.id %>" data-publisher-title="<%= publisher.title %>" data-publisher-city="<%= publisher.city %>" data-publisher-state="<%= publisher.state %>">
-          <!-- <div class="city"><%= publisher.city %></div> -->
-          <div class="publisher-topic">
-            <div class="title"><%= publisher.title %></div>
-            <img src="<%= asset_path "icons/#{publisher.icon}" %>">
-          </div>
-          <div class="publisher-description">
-            <div class="definition"><%= publisher.description %></div>
-            <br>
-            <button type="button" class="publisher-btn btn btn-info btn-lg">choose</button>
-          </div>
+        <!-- <div class="city"><%= publisher.city %></div> -->
+        <div class="publisher-topic">
+          <div class="title"><%= publisher.title %></div>
+          <img src="<%= asset_path "icons/#{publisher.icon}" %>">
         </div>
-      <% end %>
+        <div class="publisher-description">
+          <div class="definition"><%= publisher.description %></div>
+          <br>
+          <button type="button" class="publisher-btn btn btn-info btn-lg">choose</button>
+        </div>
+      </div>
+    <% end %>
     </div>
   </div>
 </section>
@@ -68,6 +68,10 @@
           </select>
         </span>
       </div>
+
+      <!-- Commented out to test necessity of button.
+        <input type="submit" style="display:none"  />
+        <div class="bigButton greenButton geolocateButton">Find me</div> -->
     </form>
   </div>
 
@@ -84,13 +88,15 @@
         <div class="frequencyText">
           <span class="frequencyTitle">Estimated Frequency</span>
           <p>
-            In the last week, there were about <span id="freqNum" class="orange bold">___ citygrams</span> for <span class="confirmationType navy bold">___</span> within <span id="freqRadius" class="green bold">___ mi</span> of <span id="freqAddress" class="red bold">___</span>.
+          In the last week, there were about <span id="freqNum" class="orange bold">___ citygrams</span> for <span class="confirmationType navy bold">___</span> within <span id="freqRadius" class="green bold">___ mi</span> of <span id="freqAddress" class="red bold">___</span>.
           </p>
         </div>
       </div>
     </div>
   </div>
 
+  <!-- Commented out to test necessity of button.
+  <div class="bigButton orangeButton mapButton">Get citygrams near you</div> -->
 </section>
 
 <section id="step3" class="container-fluid">
@@ -115,16 +121,15 @@
       <div class="col-xs-offset-1 col-xs-10 col-md-7 channel-inputs">
         <input type="text" style="display:none" class="js-channel-sms phoneNumber" placeholder="phone number">
         <input type="email" style="display:none" class="js-channel-email emailAddress" placeholder="email">
-        <div class = "js-channel-sms" style="display:none">SMS updates are sent daily at 8:00 am - We suggest using the 1/10 mile radius for SMS alerts | <span class = "js-channel-sms privacyLink link">Privacy Policy</span></div>
-        <div class = "js-channel-email" style="display:none">Email digests are sent weekly on Wednesday mornings | <span class = "js-channel-email privacyLink link">Privacy Policy</span></div>
-
+        <div class="js-channel-sms" style="display:none">SMS updates are sent daily at 8:00 am - We suggest using the 1/10 mile radius for SMS alerts | <span class="js-channel-sms privacyLink link">Privacy Policy</span></div>
+        <div class="js-channel-email" style="display:none">Email digests are sent weekly on Wednesday mornings | <span class="js-channel-email privacyLink link">Privacy Policy</span></div>
       </div>
       <input type="submit" style="display:none"/>
     </form>
     <div class="col-xs-offset-1 col-xs-10 col-md-offset-0 col-md-3">
       <div class="bigButton orangeButton subscribeButton">subscribe</div>
     </div>
-  <div>
+  </div>
 </section>
 
 <section id="confirmation" class="container-fluid" style="display:none">
@@ -143,67 +148,52 @@
   </div>
 
 </section>
-  <div class = "popup privacy">
-  <div class = "close">&#10006;</div>
+<div class="popup privacy">
+  <div class="close">&#10006;</div>
   <h2>Citygram.nyc Privacy Policy</h2>
   <p>This privacy policy has been compiled to better serve those who are concerned with how their 'Personally identifiable information' (PII) is being used online. PII, as used in US privacy law and information security, is information that can be used on its own or with other information to identify, contact, or locate a single person, or to identify an individual in context.</p>
-
   <p>When you subscribe to Citygram, you must provide your name, email address, phone number or other details in order to receive notifications.</p>
-
   <p>We may use the information we collect from you when you register and use other site features in the following ways:
-
-<br/>
-    -To personalize your user experience and to allow us to deliver the type of content in which you are most interested.
-    <br/>
-    -To send periodic emails and text messages.
-  
-
+  <br/>
+  <p>-To personalize your user experience and to allow us to deliver the type of content in which you are most interested.</p>
+  <br/>
+  <p>-To send periodic emails and text messages.</p>
   <p>We do not sell, trade, or otherwise transfer to outside parties your personally identifiable information.</p>
-
   <h3>COPPA (Children Online Privacy Protection Act)</h3>
-
   <p>When it comes to the collection of personal information from children under 13, the Children's Online Privacy Protection Act (COPPA) puts parents in control. The Federal Trade Commission, the nation's consumer protection agency, enforces the COPPA Rule, which spells out what operators of websites and online services must do to protect children's privacy and safety online. We do not specifically market to children under 13.</p>
-
   <h3>Contacting Us</h3>
-
-  <p>If there are any questions regarding this privacy policy you may contact us at hello@citygram.nyc</p>  
-
+  <p>If there are any questions regarding this privacy policy you may contact us at hello@citygram.nyc</p>
   <p>Updated on 2014-10-24</p>
 </div>
-<div class = "popup about">
-  <div class = "close">&#10006;</div>
+
+<div class="popup about">
+  <div class="close">&#10006;</div>
   <h1>About Citygram.nyc</h1>
   <p>Citygram is a geographic notification platform designed to work with open government data. It allows residents to designate area(s) of a city they are interested in and subscribe to one or more topics. When an event for a desired topic occurs in the subscriber's area of interest, a notification (email or SMS) is delivered. Citygram is a <a href="http://www.codeforamerica.org">Code for America </a>  project by the <a href="http://team-charlotte.tumblr.com/">Charlotte</a> and <a href="http://teambiglex.tumblr.com/">Lexington</a> teams for the <a href="http://www.codeforamerica.org/geeks/our-geeks/2014-fellows/">2014 fellowship</a>.</p>
-
-<p>Citygram.nyc is a version of Citygram managed by <a href="http://www.beta.nyc">BetaNYC</a> using New York City open data.</p>
-
-<p>You can find the main Citygram source code repository on the <a href="https://github.com/codeforamerica/citygram">Code for America Github Page</a>. <a href="http://www.beta.nyc">BetaNYC</a> forked this project to create <a href="https://github.com/BetaNYC/citygram-nyc">Citygram.nyc </a>.</p> 
-
-<p>You can get in touch with Citygram.nyc by emailing <a href="mailto:hello@citygram.nyc">hello@citygram.nyc</a>.</p>
-
-<p>Citygram.nyc is brought to you by <a href = "http://www.betanyc.us"><img src="<%= asset_path "betanyc_blue.png" %>" style = "position: relative; top: 28px; left: 13px;"></a></p>
-
+  <p>Citygram.nyc is a version of Citygram managed by <a href="http://www.beta.nyc">BetaNYC</a> using New York City open data.</p>
+  <p>You can find the main Citygram source code repository on the <a href="https://github.com/codeforamerica/citygram">Code for America Github Page</a>. <a href="http://www.beta.nyc">BetaNYC</a> forked this project to create <a href="https://github.com/BetaNYC/citygram-nyc">Citygram.nyc </a>.</p>
+  <p>You can get in touch with Citygram.nyc by emailing <a href="mailto:hello@citygram.nyc">hello@citygram.nyc</a>.</p>
+  <p>Citygram.nyc is brought to you by <a href = "http://www.betanyc.us"><img src="<%= asset_path "betanyc_blue.png" %>" style="position: relative; top: 28px; left: 13px;"></a></p>
 </div>
-<div class = "mask"></div>
+
+<div class="mask"></div>
+
 <footer>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-2 col-sm-12"><p>a project of</p></div>
-        <div class="col-md-8 col-sm-12">
-          <a href="http://www.codeforamerica.org/"><img src="http://www.citygram.org/img/cfa-icon.png"></a>
-          <img src="http://www.citygram.org/img/plus-1-icon.png">
-          <a href="http://charmeck.org/Pages/default.aspx"><img src="http://www.citygram.org/img/charlotte-icon.png"></a>
-          <img src="http://www.citygram.org/img/plus-1-icon.png">
-          <a href="http://www.lexingtonky.gov/"><img src="http://www.citygram.org/img/lexington-icon.png"></a>
-          <img src="http://www.citygram.org/img/plus-1-icon.png">
-          <a href="http://beta.nyc"><img src="/assets/betanyc_white.png" style = "margin: 0 0 8px 20px;"></a>
-
-
-
-        </div>
-        <div class="col-md-2 pull-right hidden-xs">
-          <a href="https://github.com/codeforamerica/citygram"><img class="pull-right" src="http://www.citygram.org/img/github-icon.png"></a>
-        </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-2"><p>a project of</p></div>
+      <div class="col-xs-12 col-sm-12 col-md-8">
+        <a href="http://www.codeforamerica.org/"><img src="<%= asset_path 'icons/cfa.png' %>" /></a>
+        <img src="<%= asset_path 'icons/plus-1.png' %>">
+        <a href="http://charmeck.org/Pages/default.aspx"><img src="<%= asset_path 'icons/charlotte.png' %>" /></a>
+        <img src="<%= asset_path 'icons/plus-1.png' %>">
+        <a href="http://www.lexingtonky.gov/"><img src="<%= asset_path 'icons/lexington.png' %>" /></a>
+        <img src="<%= asset_path 'icons/plus-1.png' %>">
+        <a href="http://beta.nyc"><img src="<%= asset_path 'icons/betanyc.png' %>" /></a>
+      </div>
+      <div class="col-xs-12 col-md-2 pull-right hidden-xs">
+        <a href="https://github.com/codeforamerica/citygram"><img class="pull-right" src="<%= asset_path 'icons/github.png' %>"></a>
       </div>
     </div>
-  </footer>
+  </div>
+</footer>
