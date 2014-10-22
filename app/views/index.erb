@@ -1,142 +1,105 @@
-<header class="container-fluid">
-  <div class="row">
-    <div class="col-xs-offset-1 col-md-offset-1 logo"></div>
-  </div>
-  <div class="row">
-    <h1 id="title" class="col-xs-offset-1 col-md-offset-1 col-md-10">Subscribe to your city.</h1>
-  </div>
-  <div class="row">
-    <h3 class="col-xs-offset-1 col-xs-10 col-md-offset-1 col-md-5">Get updates on the topics and areas you care about in Seattle.</h3>
-    <div id="start" class="hidden-xs hidden-sm col-md-offset-3 bigButton startButton">Get started</div>
-  </div>
-</header>
-
-<section id="step1" class="container-fluid">
-  <div class="instruction row">
-    <div class="col-xs-offset-1 col-md-offset-1 col-md-11">
-      <h2 class="fit-h2">1. Select a topic.</h2>
-      <h3 class="fit-h3">Choose one to start, and you can add more later.</h3>
+<div class="jumbotron">
+  <div class="container">
+    <div class="row">
+      <div class="logo"></div>
     </div>
-  </div>
-
-  <div class="row">
-    <div class="publishers col-xs-offset-1 col-md-offset-1 col-md-11">
-      <% @publishers.each do |publisher| %>
-        <div class="publisher <%= 'soon' unless publisher.active %>" data-publisher-id="<%= publisher.id %>" data-publisher-title="<%= publisher.title %>" data-publisher-city="<%= publisher.city %>" data-publisher-state="<%= publisher.state %>">
-          <!-- <div class="city"><%= publisher.city %></div> -->
-          <div class="publisher-topic">
-            <div class="title"><%= publisher.title %></div>
-            <img src="<%= asset_path "icons/#{publisher.icon}" %>">
-          </div>
-          <div class="publisher-description">
-            <div class="definition"><%= publisher.description %></div>
-            <br>
-            <button type="button" class="publisher-btn btn btn-info btn-lg">choose</button>
-          </div>
-        </div>
-      <% end %>
-    </div>
-  </div>
-</section>
-
-<section id="step2" class="container-fluid">
-  <div class="instruction row">
-    <div class="col-xs-offset-1 col-xs-10 col-md-offset-1 col-md-10">
-      <h2 class="fit-h2">2. What's your address?</h2>
-      <h3 class="fit-h3">Your home, your work, or wherever's important to you.</h3>
-    </div>
-  </div>
-
-  <div class="row">
-    <form id="geolocateForm" role="form">
-      <div class="col-xs-offset-1 col-xs-10 col-md-offset-1 col-md-5">
-        <input type="text" id="geolocate" placeholder="Your address"></input>
-      </div>
-
-      <div class="col-xs-offset-1 col-md-offset-0 col-xs-10 col-md-5">
-        <span class="bigSelect">
-          <select id="user-selected-radius">
-            <option value="0.1">Within a 1/10 mile (about a stone's throw)</option>
-            <option value="0.25">Within a 1/4 mile (about a 5 min leisurely stroll)</option>
-            <option value="0.5">Within a 1/2 mile (about an 8 min power walk)</option>
-            <option value="1">Within 1 mile (about 15 min on horse and buggy)</option>
-            <option value="2">Within 2 miles (about a 7 min bicycle jaunt)</option>
-            <option value="3">Within 3 miles (about an 8 min vespa ride)</option>
-            <option value="4">Within 4 miles (about a 2 day bear crawl)</option>
-            <span class="caret"></span>
+    <div class="row subscribe">
+      <h1 class="col-md-12">Subscribe to
+        <span class="dropdown">
+          <select id="select-city">
+            <option value="your-city"><span id="your-city">your city</span></option>
+            <option value="your-city">add my city</option>
+            <option value="https://citygram-staging.herokuapp.com/">Charlotte</option>
+            <option value="https://seattlegram.herokuapp.com/">Seattle</option>
+            <option value="https://lexgram.herokuapp.com/">Lexington</option>
           </select>
         </span>
-      </div>
-    </form>
-  </div>
-
-  <div class="row">
-    <div class="col-md-offset-1 col-md-10">
-      <div id="map">
-        <div class="map-key-panel">
-          <span class="map-blue-dot"></span>Events from last week. Click for details.
-        </div>
-      </div>
-
-      <div class="frequencyContainer">
-        <img src="<%= asset_path 'icons/frequency.png' %>" class="frequencyIcon">
-        <div class="frequencyText">
-          <span class="frequencyTitle">Estimated Frequency</span>
-          <p>
-            In the last week, there were about <span id="freqNum" class="orange bold">___ citygrams</span> for <span class="confirmationType navy bold">___</span> within <span id="freqRadius" class="green bold">___ mi</span> of <span id="freqAddress" class="red bold">___</span>.
-          </p>
-        </div>
-      </div>
+      </h1>
+    </div>
+    <div class="row">
+      <h2 class="col-md-4">Get updates on the topics and areas you care about</h2>
     </div>
   </div>
+</div>
 
-</section>
-
-<section id="step3" class="container-fluid">
-  <div class="instruction row">
-    <div class="col-xs-offset-1 col-xs-10 col-md-offset-1 col-md-10">
-      <h2 class="fit-h2">3. How do you want to be notified?</h2>
-      <h3 class="fit-h3">Get text messages as each event is posted, or get a weekly email digest.</h3>
+<section id="intro">
+  <div class="container">
+    <div class="row">
+      <span class="intro-q">Curious about the construction on your street?</span>
+      <span class="intro-q">How about the new restaurant going in down the block?</span>
+      <span class="intro-q">Want to know when there's a code violation in your area?</span>
     </div>
-  </div>
-
-  <div class="contactButtons row">
-    <div class="col-xs-offset-1 col-xs-10 col-md-offset-1 col-md-5">
-      <div class="bigButton orangeButton smsButton"><span>text</span></div>
-    </div>
-    <div class="col-xs-offset-1 col-xs-10 col-md-offset-0 col-md-5">
-      <div class="bigButton greenButton emailButton"><span>email</span></div>
-    </div>
-  </div>
-
-  <div class="extraInfo row" style="display:none">
-    <form id="subscribeForm">
-      <div class="col-xs-offset-1 col-xs-10 col-md-7 channel-inputs">
-        <input type="text" style="display:none" class="js-channel-sms phoneNumber" placeholder="phone number">
-        <input type="email" style="display:none" class="js-channel-email emailAddress" placeholder="email">
+    <div class="row">
+      <div class="col-md-6">
+        <h3>Introducing Citygram</h3>
+        <p>Citygram is a notifications platform for subscribing to your city, whether it's foreclosures in your area or building permits along your commute. Sign up to find out about the things that matter to you where they matter to you.</p>
       </div>
-      <input type="submit" style="display:none"/>
-    </form>
-    <div class="col-xs-offset-1 col-xs-10 col-md-offset-0 col-md-3">
-      <div class="bigButton orangeButton subscribeButton">subscribe</div>
-    </div>
-  <div>
-</section>
-
-<section id="confirmation" class="container-fluid" style="display:none">
-  <div class="row">
-    <div class="col-xs-offset-1 col-xs-10 col-md-offset-1 col-md-10">
-      <div class="js-confirm-channel js-confirm-sms" style="display:none">
-        <p>You're subscribed to <strong class="confirmationType">traffic incidents</strong> in your area!</p>
-        <p>Look out for your confirmation text shortly.</p>
+      <div class="col-md-6">
+        <h3>How it works</h3>
+        <p>Citygram is a web application that can be hooked up to your city's open data platform. To create the notifications, the application regularly checks for new data and transforms it into human speak according to a template you define.</p>
       </div>
-      <div class="js-confirm-channel js-confirm-email" style="display:none">
-        <p>You're subscribed to <strong class="confirmationType">traffic incidents</strong> in your area!</p>
-        <p>Look out for the Citygram email digest on <strong>Wednesdays.</strong></p>
-      </div>
-      <div class="bigButton greenButton resetButton">sign up for another topic</div>
     </div>
   </div>
 </section>
 
-<footer></footer>
+<section id="contact">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-2 text-bubble">
+        <img src="<%= asset_path 'text-bubble.png' %>">
+      </div>
+      <div class="col-md-10 contact-form">
+        <form action="https://docs.google.com/a/codeforamerica.org/forms/d/1JB1rrofsW3H310KSbmWXRiLjUbVKU06dUiGvratQRfw/formResponse" method="POST" id="ss-form" target="_self" onsubmit=""><ol role="list" class="ss-question-list" style="padding-left: 0">
+          <p>I want a Citygram in <span class="city">
+            <input name="entry.2092787615" placeholder="MY CITY" type="text"></span> . My name is <span class="name">
+            <input name="entry.310801395" placeholder="FULL NAME" type="text"></span> and my email is <span class="email">
+             <input name="entry.1324690126" placeholder="YOU@EMAIL" type="text"></span>. Some topics I'd want: <span class="ideas">
+             <input name="entry.311709427" placeholder="ANY IDEAS HERE" type="text"></span>.</p>
+          <div class="submit-btn" onclick="$('#ss-form').submit()">Submit</div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-2 col-sm-12"><p>a project of</p></div>
+      <div class="col-md-6 col-sm-12">
+        <a href="http://www.codeforamerica.org/"><img src="<%= asset_path 'cfa-icon.png' %>"></a>
+        <img src="<%= asset_path 'plus-1-icon.png' %>">
+        <a href="http://charmeck.org/Pages/default.aspx"><img src="<%= asset_path 'charlotte-icon.png' %>"></a>
+        <img src="<%= asset_path 'plus-2-icon.png' %>">
+        <a href="http://www.lexingtonky.gov/"><img src="<%= asset_path 'lexington-icon.png' %>"></a>
+      </div>
+      <div class="col-md-2 pull-right hidden-xs">
+        <a href="https://github.com/codeforamerica/citygram"><img class="pull-right" src="<%= asset_path 'github-icon.png' %>"></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+<!-- take me to my city! -->
+<script>
+
+var app = {};
+app.scrollToElement = function(el) {
+  $('html,body').animate({
+    scrollTop: el.offset().top
+  }, 800);
+};
+
+$("#select-city").change(function(e) {
+  var value = $(e.target).val();
+  if (value === "your-city") {
+    app.scrollToElement($("#ss-form"));
+  } else {
+    window.location.href = value;
+  }
+});
+</script>
