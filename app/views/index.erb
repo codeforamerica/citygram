@@ -7,11 +7,9 @@
       <h1 class="col-md-12">Subscribe to
         <span class="dropdown">
           <select id="select-city">
-            <option value="your-city"><span id="your-city">your city</span></option>
-            <option value="your-city">add my city</option>
-            <option value="https://citygram-staging.herokuapp.com/">Charlotte</option>
-            <option value="https://seattlegram.herokuapp.com/">Seattle</option>
-            <option value="https://lexgram.herokuapp.com/">Lexington</option>
+            <% @cities.each do |city| %>
+              <option value="/<%= city.id %>"><%= city.title %></option>
+            <% end %>
           </select>
         </span>
       </h1>
