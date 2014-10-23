@@ -23,7 +23,7 @@ gem 'sass', '~> 3.4'
 gem 'sequel', '4.12'
 gem 'sidekiq', '~> 3.0'
 gem 'sinatra', '~> 1.4'
-gem 'sinatra-contrib'
+gem 'sinatra-contrib', require: false
 gem 'sprockets', '~> 2.12'
 gem 'twilio-ruby', '~> 3.11'
 gem 'uglifier'

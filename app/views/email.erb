@@ -13,7 +13,7 @@
         <table width="700px" cellspacing="0" cellpadding="0" class="emailContainer">
           <tr>
             <td>
-              <img src="<%= Citygram::Routes::Helpers.build_url(Citygram::App.application_url, "/assets/#{Citygram::App.assets['citygram-logo-color.png'].digest_path}") %>" width="150" class="logo">
+              <img src="<%= Citygram::Routes::Helpers.build_url(Citygram::App.application_url, "/assets/#{Citygram::App.assets['icons/citygram-logo-color.png'].digest_path}") %>" width="150" class="logo">
               <h1>Latest <span class="topic"><%= subscription.publisher.title %></span>
                 for <span class="phone"><%= subscription.email_address || subscription.phone_number %></span></h1>
 
