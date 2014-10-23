@@ -7,6 +7,7 @@
       <h1 class="col-md-12">Subscribe to
         <span class="dropdown">
           <select id="select-city">
+            <option>your city</option>
             <% @cities.each do |city| %>
               <option value="/<%= city.id %>"><%= city.title %></option>
             <% end %>
