@@ -2,16 +2,17 @@ require 'json'
 
 module Citygram
   module Models
-    class City < Struct.new(:tag, :title, :center, :zoom)
+    class City < Struct.new(:id, :title, :background, :center, :zoom)
       NotFound = Class.new(StandardError)
 
       def self.all
         @all ||= begin
-          collection = JSON.parse(File.read(File.join(Citygram::App.root, 'config', 'cities.geojson')))
-          cities = collection['features'].map { |feature|
+          geojson = JSON.parse(File.read(File.join(Citygram::App.root, 'config', 'cities.geojson')))
+          cities = geojson['features'].map { |feature|
             Citygram::Models::City.new(
               feature['id'],
               feature['properties']['title'],
+              feature['properties']['background'],
               feature['geometry']['coordinates'],
               feature['properties']['zoom']
             )
@@ -21,8 +22,8 @@ module Citygram
         end
       end
 
-      def self.find(tag)
-        all.find{ |city| city.tag == tag } || raise(NotFound, tag)
+      def self.find(id)
+        all.find{ |city| city.id == id } || raise(NotFound, id)
       end
 
       self.all # load cities, fail fast

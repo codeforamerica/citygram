@@ -2,10 +2,27 @@
   "type": "FeatureCollection",
   "features": [
     {
+      "id": "seattle",
+      "type": "Feature",
+      "properties": {
+        "title": "Seattle",
+        "background": "seattle.jpg",
+        "zoom": 13
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          47.604432,
+          -122.336014
+        ]
+      }
+    },
+    {
       "id": "charlotte",
       "type": "Feature",
       "properties": {
         "title": "Charlotte",
+        "background": "charlotte.jpg",
         "zoom": 13
       },
       "geometry": {
@@ -21,6 +38,7 @@
       "type": "Feature",
       "properties": {
         "title": "Lexington",
+        "background": "lexington.jpg",
         "zoom": 13
       },
       "geometry": {
@@ -36,6 +54,7 @@
       "type": "Feature",
       "properties": {
         "title": "New York",
+        "background": "new-york.jpg",
         "zoom": 11
       },
       "geometry": {
