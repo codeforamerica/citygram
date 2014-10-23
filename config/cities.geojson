@@ -38,7 +38,7 @@
       "type": "Feature",
       "properties": {
         "title": "Lexington",
-        "background": "lexington.jpg",
+        "background": "lexington.png",
         "zoom": 13
       },
       "geometry": {
