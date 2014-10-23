@@ -1,8 +1,8 @@
-<% content_for(:city_center) do %><%= @city.center.to_json %><% end %>
-<% content_for(:city_background) do %>
-<style type="text/css">
-  header { background: url(<%= asset_path "cities/backgrounds/#{@city.background}" %>); }
-</style>
+<% content_for(:head) do %>
+  <meta name="mapCenter" content="<%= @city.center.to_json %>">
+  <style type="text/css">
+    header { background: url(<%= asset_path "cities/backgrounds/#{@city.background}" %>); }
+  </style>
 <% end %>
 
 <header class="container-fluid">
