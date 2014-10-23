@@ -10,6 +10,7 @@ $: << File.expand_path('../', __FILE__)
 $: << File.expand_path('../lib', __FILE__)
 
 require 'sinatra/base'
+require 'sinatra/content_for'
 require 'sinatra/assets_extension'
 require 'sinatra/error_logging_extension'
 
@@ -17,6 +18,8 @@ module Citygram
   class App < Sinatra::Base
     register Sinatra::AssetsExtension
     register Sinatra::ErrorLoggingExtension
+
+    helpers Sinatra::ContentFor
 
     configure do
       set :application_url, ENV.fetch('APPLICATION_URL')
