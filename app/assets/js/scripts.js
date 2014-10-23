@@ -13,9 +13,10 @@ app.state = {
 app.eventMarkers = new L.FeatureGroup();
 
 app.hookupMap = function() {
+  var center = JSON.parse($('meta[name=mapCenter]').attr('content'));
   var options = {
     zoom: 13,
-    center: [47.604432, -122.336014],
+    center: center,
     tileLayer: { detectRetina: true },
     scrollWheelZoom: false,
   };
