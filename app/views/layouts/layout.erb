@@ -5,7 +5,6 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="mapId" content="<%= Citygram::App.map_id %>">
-  <meta name="mapCenter" content="<%= yield_content :city_center %>">
   <title>Citygram</title>
 
   <!-- typekit -->
@@ -20,7 +19,7 @@
   <!-- the freshest styles -->
   <link rel="stylesheet" type="text/css" href="<%= asset_path 'application.css' %>">
 
-  <%= yield_content :city_background %>
+  <%= yield_content :head %>
 </head>
 <body>
   <%= yield %>
