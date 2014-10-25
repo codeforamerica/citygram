@@ -111,11 +111,10 @@ input:focus, select:focus {
 }
 
 header {
-  background: url(<%= asset_path 'nycPano.jpg' %>);
+  background: url(<%= asset_path 'citygram_nycskyline2.png' %>);
   background-size: cover;
   min-height: 450px;
   position: relative;
-  opacity: .8;
 }
 
 /*********** Header **************/
@@ -523,7 +522,92 @@ Comment out to test necessity of buttons
 
 /*********** Footer **************/
 
+
+
 footer {
-  height: 90px;
-  background: #fff;
+  color: white;
+  background-color: #182a4a;
+  padding: 40px 0 50px 0;
+  font-family: "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
+
+footer p {
+  font-style: italic;
+  font-size: 2em;
+  font-weight: 200;
+  padding-top: 25px;
+  margin: 0;
+}
+
+
+/* Popups */
+
+.popup {
+  top: 20%;
+  width: 75%;
+  position: fixed;
+  left: 50%;
+  margin: 0 0 0 -37.5%;
+  z-index: 9999;
+  background: #fff;
+  min-height: 300px;
+  border-radius: 16px;
+  padding: 35px;
+  display:none;
+}
+
+.popup h2 {
+  font-size: 30px;
+  padding-bottom: 24px;
+}
+
+.popup p {
+  line-height: 22px;
+  margin-bottom:10px;
+}
+
+.popup h3 {
+  font-weight:bold;
+  margin-bottom:15px;
+}
+
+.popup .close {
+  position: absolute;
+  right: 30px;
+  top: 30px;
+  font-size: 24px;
+}
+
+.link {
+  cursor:pointer;
+  color: #038CC4;
+}
+
+.link:hover {
+  color: #004967;
+  text-decoration: underline
+}
+
+.aboutLink {
+  background: none;
+  border-color: #fff;
+  border-width: 3px;
+  border-radius: 8px;
+}
+
+.aboutLink:hover {
+  background:#fff;
+  color:#E47C5D;
+}
+
+.mask {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background: rgba(51,51,51,0.7);
+  z-index: 10;
+  display:none;
+}
+

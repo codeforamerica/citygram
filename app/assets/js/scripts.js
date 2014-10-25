@@ -73,6 +73,28 @@ app.hookupSteps = function() {
   });
 
 
+  //NYC popup events
+
+  app.showPopup = function(popupType) {
+    $('.mask').fadeIn();
+    $('.' + popupType).fadeIn();
+  }
+
+  $('.privacyLink').on('click',function(e){
+    app.showPopup('privacy');
+  });
+
+  $('.aboutLink').on('click',function(e){
+    app.showPopup('about');
+  });
+
+  $('.close').on('click',function(e){
+    $('.mask').fadeOut();
+    $('.popup').fadeOut();
+  });
+
+
+
   var finishSubscribe = function(e) {
     // TODO: animate the done checkmark at the same time
     e.preventDefault();
