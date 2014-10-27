@@ -7,5 +7,12 @@ module Citygram::Routes
       @events = Event.from_subscription(@subscription, params)
       erb :digest
     end
+
+    get '/unsubscribe/:subscription_id' do
+      @subscription = Subscription[params[:subscription_id]]
+      @subscription.unsubscribe!
+      erb :unsubscribe
+    end
+
   end
 end
