@@ -13,6 +13,5 @@ module Citygram::Routes
       @subscription.unsubscribe!
       erb :unsubscribe
     end
-
   end
 end
