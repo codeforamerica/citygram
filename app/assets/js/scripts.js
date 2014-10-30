@@ -45,16 +45,7 @@ app.hookupSteps = function() {
 
     // Update the confirmation section with the name
     app.state.publisher_id = $publisher.data('publisher-id');
-    app.eventsArePolygons = $publisher.data('publisher-title').match(/Leaf Collection/);
-    $('.js-dot-legend').css('visibility', app.eventsArePolygons ? 'hidden' : 'visible');
-
     $('.confirmationType').html($publisher.data('publisher-title'));
-
-    // Remove disabled state styling from subscribe buttons
-    $('.smsButton, .emailButton').removeClass('disabledButton');
-
-    // Hide disabled subscribe message
-    $('.disabledInfo').hide();
 
     // update events for the new publisher
     app.updateEvents(app.map.getBounds());
@@ -63,15 +54,7 @@ app.hookupSteps = function() {
   });
 
   app.handleChannelClick = function(channel, channelBtn) {
-    if (channelBtn.hasClass('disabledButton')) {
-      $('.disabledInfo').slideDown();
-    } else {
-      app.setChannel(channel, channelBtn);
-    };
-  }
-
-  app.setChannel = function(channel, channelBtn) {
-    $('.channelButtons .selected').removeClass('selected');
+    $('.contactButtons .selected').removeClass('selected');
     channelBtn.addClass('selected');
     $('.channel-inputs :visible').hide();
     $('.channel-inputs .js-channel-' + channel).show();
@@ -81,13 +64,36 @@ app.hookupSteps = function() {
     $('.js-confirm-' + channel).show();
   }
 
+  $('.emailButton').on('click', function(event) {
+    app.handleChannelClick('email', $(event.target));
+  });
+
   $('.smsButton').on('click', function(event) {
     app.handleChannelClick('sms', $(event.target));
   });
 
-  $('.emailButton').on('click', function(event) {
-    app.handleChannelClick('email', $(event.target));
+
+  //NYC popup events
+
+  app.showPopup = function(popupType) {
+    $('.mask').fadeIn();
+    $('.' + popupType).fadeIn();
+  }
+
+  $('.privacyLink').on('click',function(e){
+    app.showPopup('privacy');
   });
+
+  $('.aboutLink').on('click',function(e){
+    app.showPopup('about');
+  });
+
+  $('.close').on('click',function(e){
+    $('.mask').fadeOut();
+    $('.popup').fadeOut();
+  });
+
+
 
   var finishSubscribe = function(e) {
     // TODO: animate the done checkmark at the same time
@@ -97,10 +103,9 @@ app.hookupSteps = function() {
     app.state.phone_number = $('.phoneNumber').val();
     app.state.email_address = $('.emailAddress').val();
 
-    app.submitSubscription(function(subscription) {
+    app.submitSubscription(function() {
       $('#confirmation').slideDown();
       app.scrollToElement($('#confirmation'));
-      $('#view-subscription').attr('href', '/digests/'+subscription.id+'/events')
     });
   };
   $('.subscribeButton').on('click', finishSubscribe);
@@ -117,13 +122,11 @@ app.hookupSteps = function() {
   });
 
   var prevMarker, prevCircle;
-  app.geolocate = function(e) {
+  var geolocate = function(e) {
     e && e.preventDefault();
-    var address = $('#geolocate').val();
-    if (! address) { return }
-
     var city = $('.publisher.selected').data('publisher-city');
     var state = $('.publisher.selected').data('publisher-state');
+    var address = $('#geolocate').val();
     var radiusMiles = parseFloat($('#user-selected-radius').val());
     var radiusKm =radiusMiles * 1.60934
     var radiusMeters = radiusKm * 1000;
@@ -146,18 +149,12 @@ app.hookupSteps = function() {
 
       // Preserve references to new layers
       prevMarker = L.marker(latlng).addTo(app.map);
-      prevCircle = L.circle(latlng, radiusMeters, { color:'#0B377F' }).addTo(app.map);
+      prevCircle = L.circle(latlng, radiusMeters).addTo(app.map);
 
-
-      if (app.eventsArePolygons) {
-        // copy title from the surrounding event polygon to the address marker
-        app.updateEventsForGeometry(app.state.geom, function(events) {
-          prevMarker.bindPopup("<p>"+app.hyperlink(events[0]['title'])+"</p>").openPopup();
-        });
-      }
 
       // fit bounds
       app.map.fitBounds(prevCircle.getBounds());
+      app.map.setView(latlng);
 
       // Frequency estimate
       app.getEventsCount(app.state.publisher_id, app.state.geom, oneWeekAgo, function(response) {
@@ -173,15 +170,14 @@ app.hookupSteps = function() {
     app.updateEvents(app.map.getBounds());
   });
   $('.publisher:not(.soon)').on('click', function(e) {
-    if ($('#geolocate').val().trim() !== '') app.geolocate();
+    if ($('#geolocate').val().trim() !== '') geolocate();
   });
-  $('#user-selected-radius').on('change', app.geolocate);
-  $('#geolocate').on('change', app.geolocate);
-  $('#geolocateForm').on('submit', function(){ return false });
+  $('#user-selected-radius').on('change', geolocate);
+  $('#geolocateForm').on('submit', geolocate);
+  $('#geolocate').on('change', geolocate);
 
+  // Comment out for testing necessity of button $('.geolocateButton').on('click', geolocate);
 };
-
-app.hyperlink = Autolinker.link;
 
 // Populate events
 app.updateEvents = function(bounds) {
@@ -196,50 +192,26 @@ app.updateEvents = function(bounds) {
     ]]
   }
 
-  app.updateEventsForGeometry(JSON.stringify(mapGeometry), function(events) {
+  app.getEventsForGeometry(JSON.stringify(mapGeometry), function(events) {
     app.eventMarkers.eachLayer(function(layer) {
       app.map.removeLayer(layer);
     });
-
-    // tiny radius mimics an address point inside event polygon
-    if (app.eventsArePolygons) { app.selectTinyRadius(); }
-
-    events.forEach(function(event, index) {
-      var marker = app.displayEventMarker(event);
-
-      if (index == 0 && ! app.eventsArePolygons) {
-        marker.openPopup();
-      }
-    });
+    events.forEach(app.displayEventMarker);
   });
 };
 
-app.selectTinyRadius = function() {
-  var tinyRadius = '.001'
-  var $select = $('#user-selected-radius');
-  if ($select.find('option[value="' + tinyRadius + '"]').length === 0) {
-    $select.prepend('<option value="' + tinyRadius + '">Within 1/100 mile (only the address)</option>');
-  }
-  $select.val(tinyRadius);
-  app.geolocate();
-}
-
 app.displayEventMarker = function(event) {
   var geometry = JSON.parse(event.geom);
-  var marker;
-  var html = "<p>"+app.hyperlink(event.title)+"</p>"
-  if (app.eventsArePolygons) {
-    marker = L.geoJson({"type": "Feature", "geometry": geometry});
-  } else {
-    marker = L.circleMarker([geometry.coordinates[1], geometry.coordinates[0]], { radius: 6, color: '#FC442A' })
-  }
-  marker.addTo(app.map).bindPopup(html);
+  var html = "<p>"+event.title+"</p>"
+  var marker = L.circleMarker([geometry.coordinates[1], geometry.coordinates[0]], { radius: 6 })
+                 .addTo(app.map)
+                 .bindPopup(html);
 
   app.eventMarkers.addLayer(marker);
   return marker;
 }
 
-app.updateEventsForGeometry = function(geometry, callback){
+app.getEventsForGeometry = function(geometry, callback){
   if (!app.state.publisher_id) return;
   $.getJSON('/publishers/'+app.state.publisher_id+'/events', { geometry: geometry }, callback);
 };
