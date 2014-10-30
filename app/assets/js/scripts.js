@@ -47,6 +47,9 @@ app.hookupSteps = function() {
     app.state.publisher_id = $publisher.data('publisher-id');
     $('.confirmationType').html($publisher.data('publisher-title'));
 
+    // Remove disabled state styling from subscribe buttons
+    $('.smsButton, .emailButton').removeClass('disabledButton');
+
     // update events for the new publisher
     app.updateEvents(app.map.getBounds());
 
@@ -64,11 +67,11 @@ app.hookupSteps = function() {
     $('.js-confirm-' + channel).show();
   }
 
-  $('.emailButton').on('click', function(event) {
+  $('.emailButton:not(.disabledButton)').on('click', function(event) {
     app.handleChannelClick('email', $(event.target));
   });
 
-  $('.smsButton').on('click', function(event) {
+  $('.smsButton:not(.disabledButton)').on('click', function(event) {
     app.handleChannelClick('sms', $(event.target));
   });
 
