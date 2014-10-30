@@ -77,6 +77,12 @@ strong {
   color: #fff;
 }
 
+.disabledButton, .disabledButton:hover, .disabledButton.selected {
+  border-color: #9DA8B2;
+  background: #9DA8B2;
+  color: #fff;
+}
+
 .bigSelect select {
   background-color: #F1F1F2;
   width: 100%;
@@ -458,7 +464,7 @@ Comment out to test necessity of buttons
   height: 50px;
 }
 
-#step3 .smsButton:hover span::after, #step3 .smsButton.selected span::after {
+#step3 .smsButton:hover span::after, #step3 .smsButton.selected span::after, #step3 .smsButton.disabledButton span::after {
   background: url(<%= asset_path 'icons/sms-inverted.png' %>) no-repeat;
   background-size: 50px 50px;
 }
@@ -469,9 +475,13 @@ Comment out to test necessity of buttons
   top: -5px;
 }
 
-#step3 .emailButton:hover span::after, #step3 .emailButton.selected span::after {
+#step3 .emailButton:hover span::after, #step3 .emailButton.selected span::after, #step3 .emailButton.disabledButton span::after {
   background: url(<%= asset_path 'icons/email-inverted.png' %>) no-repeat;
   background-size: 50px 50px;
+}
+
+#step3 .emailButton.disabledButton, #step3 .smsButton.disabledButton {
+  cursor: default;
 }
 
 #step3 .emailButton:after {
