@@ -49,6 +49,7 @@ app.hookupSteps = function() {
 
     // Remove disabled state styling from subscribe buttons
     $('.smsButton, .emailButton').removeClass('disabledButton');
+    $('.disabledInfo').hide();
 
     // update events for the new publisher
     app.updateEvents(app.map.getBounds());
@@ -73,6 +74,10 @@ app.hookupSteps = function() {
 
   $('.smsButton:not(.disabledButton)').on('click', function(event) {
     app.handleChannelClick('sms', $(event.target));
+  });
+
+  $('.emailButton.disabledButton, .smsButton.disabledButton').on('click', function(event) {
+    $('.disabledInfo').slideDown();
   });
 
 
