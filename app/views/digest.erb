@@ -16,6 +16,24 @@
       </div>
     </div>
   </div>
+  <script>
+    $(document).ready(function() {
+      var events = [];
+      <% @events.each do |event| %>
+        events.push(<%= event.to_json %>);
+      <% end %>
+      app.hookupMap();
+      events.forEach(app.displayEventMarker);
+      console.log(<%= @subscription.geom %>);
+      //Zoom to fit all markers
+      app.map.fitBounds(app.eventMarkers.getBounds());
+    });
 
+
+
+    
+  </script>
+  <div id = 'map' style = 'height: 400px; margin-top: 28px;'>
+  </div>
   <%= erb :_digest_events %>
 </div>
