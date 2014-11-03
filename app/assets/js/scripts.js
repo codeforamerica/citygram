@@ -49,6 +49,8 @@ app.hookupSteps = function() {
 
     // Remove disabled state styling from subscribe buttons
     $('.smsButton, .emailButton').removeClass('disabledButton');
+
+    // Hide disabled subscribe message
     $('.disabledInfo').hide();
 
     // update events for the new publisher
