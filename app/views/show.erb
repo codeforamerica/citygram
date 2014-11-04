@@ -35,7 +35,7 @@
             <img src="<%= asset_path "publishers/icons/#{publisher.icon}" %>">
           </div>
           <div class="publisher-description">
-            <div class="definition"><%= publisher.description %></div>
+            <div class="definition"><strong><%= publisher.title %>:</strong> <%= publisher.description %></div>
             <br>
             <button type="button" class="publisher-btn btn btn-info btn-lg">choose</button>
           </div>
@@ -80,7 +80,7 @@
     <div class="col-md-offset-1 col-md-10">
       <div id="map">
         <div class="map-key-panel">
-          <span class="map-blue-dot"></span>Events from last week. Click for details.
+          <span class="map-event-dot"></span>Click to see notification
         </div>
       </div>
 
@@ -106,12 +106,18 @@
     </div>
   </div>
 
-  <div class="contactButtons row">
+  <div class="channelButtons row">
     <div class="col-xs-offset-1 col-xs-10 col-md-offset-1 col-md-5">
-      <div class="bigButton orangeButton smsButton"><span>text</span></div>
+      <div class="bigButton orangeButton smsButton disabledButton"><span>text</span></div>
     </div>
     <div class="col-xs-offset-1 col-xs-10 col-md-offset-0 col-md-5">
-      <div class="bigButton greenButton emailButton"><span>email</span></div>
+      <div class="bigButton greenButton emailButton disabledButton"><span>email</span></div>
+    </div>
+  </div>
+
+  <div class="disabledInfo row" style="display:none">
+    <div class="col-xs-offset-1 col-xs-10 col-md-offset-1 col-md-10">
+      <h2 class="orange">Oops! Select a topic and an area first.</h2>
     </div>
   </div>
 
