@@ -60,7 +60,15 @@ app.hookupSteps = function() {
   });
 
   app.handleChannelClick = function(channel, channelBtn) {
-    $('.contactButtons .selected').removeClass('selected');
+    if (channelBtn.hasClass('disabledButton')) {
+      $('.disabledInfo').slideDown();
+    } else {
+      app.setChannel(channel, channelBtn);
+    };
+  }
+
+  app.setChannel = function(channel, channelBtn) {
+    $('.channelButtons .selected').removeClass('selected');
     channelBtn.addClass('selected');
     $('.channel-inputs :visible').hide();
     $('.channel-inputs .js-channel-' + channel).show();
@@ -70,18 +78,13 @@ app.hookupSteps = function() {
     $('.js-confirm-' + channel).show();
   }
 
-  $('.emailButton:not(.disabledButton)').on('click', function(event) {
-    app.handleChannelClick('email', $(event.target));
-  });
-
-  $('.smsButton:not(.disabledButton)').on('click', function(event) {
+  $('.smsButton').on('click', function(event) {
     app.handleChannelClick('sms', $(event.target));
   });
 
-  $('.emailButton.disabledButton, .smsButton.disabledButton').on('click', function(event) {
-    $('.disabledInfo').slideDown();
+  $('.emailButton').on('click', function(event) {
+    app.handleChannelClick('email', $(event.target));
   });
-
 
   var finishSubscribe = function(e) {
     // TODO: animate the done checkmark at the same time
