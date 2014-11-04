@@ -16,7 +16,7 @@
       </h1>
     </div>
     <div class="row">
-      <h2 class="col-md-4">Get updates on the topics and areas you care about</h2>
+      <h2 class="col-md-5">Get updates on the topics and areas you care about.</h2>
     </div>
   </div>
 </div>
@@ -30,12 +30,30 @@
     </div>
     <div class="row">
       <div class="col-md-6">
-        <h3>Introducing Citygram</h3>
-        <p>Citygram is a notifications platform for subscribing to your city, whether it's foreclosures in your area or building permits along your commute. Sign up to find out about the things that matter to you where they matter to you.</p>
+        <div class="row">
+          <div class="col-md-1">
+            <div class="parachute"></div>
+          </div>
+          <div class="col-md-11">
+            <h3>Introducing Citygram</h3>
+          </div>
+          <div class="col-md-12">
+            <p>Citygram is a notifications platform for subscribing to your city, whether it's foreclosures in your area or building permits along your commute. Sign up to find out about the things that matter to you where they matter to you.</p>
+          </div>
+        </div>
       </div>
       <div class="col-md-6">
-        <h3>How it works</h3>
-        <p>Citygram is a web application that can be hooked up to your city's open data platform. To create the notifications, the application regularly checks for new data and transforms it into human speak according to a template you define.</p>
+         <div class="row">
+          <div class="col-md-1">
+            <div class="gears"></div>
+          </div>
+          <div class="col-md-11">
+            <h3>How it works</h3>
+          </div>
+          <div class="col-md-12">
+            <p>Citygram is a web application that can be hooked up to your city's open data platform. To create the notifications, the application regularly checks for new data and transforms it into human speak according to a template you define.</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -45,11 +63,10 @@
   <div class="container">
     <div class="row">
       <div class="col-md-2 text-bubble">
-        <img src="<%= asset_path 'splash/text-bubble.png' %>">
       </div>
-      <div class="col-md-10 contact-form">
+      <div class="col-md-9 contact-form">
         <form action="https://docs.google.com/a/codeforamerica.org/forms/d/1JB1rrofsW3H310KSbmWXRiLjUbVKU06dUiGvratQRfw/formResponse" method="POST" id="ss-form" target="_self" onsubmit=""><ol role="list" class="ss-question-list" style="padding-left: 0">
-          <p>I want a Citygram in <span class="city">
+          <p>I want Citygram in <span class="city">
             <input name="entry.2092787615" placeholder="MY CITY" type="text"></span> . My name is <span class="name">
             <input name="entry.310801395" placeholder="FULL NAME" type="text"></span> and my email is <span class="email">
              <input name="entry.1324690126" placeholder="YOU@EMAIL" type="text"></span>. Some topics I'd want: <span class="ideas">

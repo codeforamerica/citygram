@@ -2,7 +2,7 @@
 
 .jumbotron {
   background: url(<%= asset_path 'splash/background-lg.jpg' %>) no-repeat center center;
-  height: 650px;
+  height: 500px;
   color: white;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -15,6 +15,7 @@
   background-size: 272px 68px;
   height: 80px;
   width: 320px;
+  margin-left: 10px;
 }
 
 .jumbotron .subscribe {
@@ -25,13 +26,18 @@
   font-weight: 700;
   font-size: 5em;
   text-shadow: 0 2px 15px rgba(0, 0, 0, 0.25);
-  padding: 50px 0;
+  padding: 50px 0 0 13px;
 }
 
 .jumbotron h2 {
   position: absolute;
-  top: 500px;
+  top: 376px;
   font-weight: 200;
+}
+
+.col-md-6 {
+  padding-right: 30px;
+  padding-left: 30px;
 }
 
 /*custom styles*/
@@ -97,15 +103,15 @@ select {
 }
 
 #intro .row {
-  padding-top: 30px;
-  padding-bottom: 60px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 #intro .intro-q {
   display: block;
   text-align: center;
-  font-size: 3em;
-  font-weight: 200;
+  font-size: 30px;
+  font-weight: 300;
 }
 
 #intro h3 {
@@ -113,26 +119,43 @@ select {
   font-weight: 700;
 }
 
+#intro .parachute {
+  background: url(<%= asset_path 'splash/parachute-indigo.png' %>) no-repeat;
+  background-size: 30px 33px;
+  height: 33px;
+  width: 30px;
+  margin-top: 10px;
+
+}
+
+#intro .gears {
+  background: url(<%= asset_path 'splash/how-it-works.png' %>) no-repeat;
+  background-size: 30px 33px;
+  height: 33px;
+  width: 30px;
+  margin-top: 10px;
+}
+
 #intro p {
-  font-weight: 200;
-  font-size: 1.7em;
+  font-weight: 300;
+  font-size: 1.3em;
 }
 
 #contact {
-  background-color: #00CE99;
+  background-color: #59B390;
   color: white;
   font-weight: 200;
-  font-size: 2.3em;
+  font-size: 1.95em;
   padding: 50px 0;
 }
 
 #contact .contact-form {
-  padding-left: 7%;
+  padding-left: 9%;
 }
 
 #contact input {
   color: #fff;
-  background-color: #00CE99;
+  background-color: #59B390;
   border: 2px dashed #fff;
   border-radius: 0;
   border-top-width: 0px;
@@ -143,8 +166,13 @@ select {
 }
 
 #contact .text-bubble {
+  background: url(<%= asset_path 'splash/text-bubble.png' %>) no-repeat;
+  background-size: 200px 174px;
+  height: 174px;
+  width: 200px;
   padding-top: 20px;
   padding-bottom: 30px;
+  margin: 10px 0 0 25px;
 }
 
 #contact .city ::-webkit-input-placeholder {
@@ -246,6 +274,21 @@ select {
     padding: 0 20px 15px 20px;
   }
 
+  #contact {
+    font-weight: 200;
+    font-size: 1.6em;
+    padding: 50px 0;
+  }
+
+  #contact .text-bubble {
+    background: url(<%= asset_path 'splash/text-bubble.png' %>) no-repeat;
+    background-size: 150px 130px;
+    height: 130px;
+    width: 150px;
+    padding-top: 20px;
+    padding-bottom: 30px;
+  }
+
 }
 
 @media (max-width: 600px) {
@@ -261,7 +304,8 @@ select {
 
   .jumbotron h2 {
     font-weight: 200;
-    font-size: 2em;
+    font-size: 1.8em;
+    top: 405px;
   }
 
   #intro span.intro-q {
