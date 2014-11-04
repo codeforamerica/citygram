@@ -196,7 +196,12 @@ app.updateEvents = function(bounds) {
     app.eventMarkers.eachLayer(function(layer) {
       app.map.removeLayer(layer);
     });
-    events.forEach(app.displayEventMarker);
+    events.forEach(function(event, index) {
+      var marker = app.displayEventMarker(event);
+      if (index == 0) {
+        marker.openPopup();
+      }
+    });
   });
 };
 
