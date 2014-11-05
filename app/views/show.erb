@@ -1,4 +1,4 @@
-<meta name="mapCenter" content="<%= @city.center.to_json %>">
+<meta name="mapCenter" content="<%= @city.center.reverse.to_json %>">
 <style type="text/css">
   header { background: url(<%= asset_path "cities/backgrounds/#{@city.background}" %>); }
 </style>
