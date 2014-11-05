@@ -1,5 +1,7 @@
 <div class="container">
-  <img src="<%= asset_path 'icons/citygram-logo-color.png' %>" width="150" class="logo">
+  <a href='/'>
+    <img src="<%= asset_path 'icons/citygram-logo-color.png' %>" width="150" class="logo">
+  </a>
   <h1>Latest <span class="topic"><%= @subscription.publisher.title %></span>
     for <span class="phone"><%= @subscription.email_address || @subscription.phone_number %></span></h1>
 

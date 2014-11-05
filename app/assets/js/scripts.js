@@ -95,9 +95,10 @@ app.hookupSteps = function() {
     app.state.phone_number = $('.phoneNumber').val();
     app.state.email_address = $('.emailAddress').val();
 
-    app.submitSubscription(function() {
+    app.submitSubscription(function(subscription) {
       $('#confirmation').slideDown();
       app.scrollToElement($('#confirmation'));
+      $('#view-subscription').attr('href', '/digests/'+subscription.id+'/events')
     });
   };
   $('.subscribeButton').on('click', finishSubscribe);
