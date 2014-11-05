@@ -103,10 +103,9 @@ app.hookupSteps = function() {
     app.state.phone_number = $('.phoneNumber').val();
     app.state.email_address = $('.emailAddress').val();
 
-    app.submitSubscription(function(subscription) {
+    app.submitSubscription(function() {
       $('#confirmation').slideDown();
       app.scrollToElement($('#confirmation'));
-      $('#view-subscription').attr('href', '/digests/'+subscription.id+'/events')
     });
   };
   $('.subscribeButton').on('click', finishSubscribe);
