@@ -2,7 +2,7 @@ module Citygram::Routes
   class Pages < Citygram::App
     get '/' do
       @cities = City.all
-      erb :index, layout: :'splash-layout'
+      erb :index, layout: false
     end
 
     get '/:tag' do
