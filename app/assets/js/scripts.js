@@ -45,6 +45,12 @@ app.hookupSteps = function() {
 
     // Update the confirmation section with the name
     app.state.publisher_id = $publisher.data('publisher-id');
+    if ($publisher.data('publisher-title') === 'Leaf Collection') {
+      app.state.eventsArePolygons = true;
+    } else {
+      app.state.eventsArePolygons = false;
+    }
+
     $('.confirmationType').html($publisher.data('publisher-title'));
 
     // update events for the new publisher
@@ -100,11 +106,13 @@ app.hookupSteps = function() {
   });
 
   var prevMarker, prevCircle;
-  var geolocate = function(e) {
+  app.geolocate = function(e) {
     e && e.preventDefault();
+    var address = $('#geolocate').val();
+    if (! address) { return }
+
     var city = $('.publisher.selected').data('publisher-city');
     var state = $('.publisher.selected').data('publisher-state');
-    var address = $('#geolocate').val();
     var radiusMiles = parseFloat($('#user-selected-radius').val());
     var radiusKm =radiusMiles * 1.60934
     var radiusMeters = radiusKm * 1000;
@@ -130,6 +138,12 @@ app.hookupSteps = function() {
       prevCircle = L.circle(latlng, radiusMeters).addTo(app.map);
 
 
+      if (app.state.eventsArePolygons) {
+        app.updateEventsForGeometry(app.state.geom, function(events) {
+          prevMarker.bindPopup(events[0]['title']).openPopup();
+        });
+      }
+
       // fit bounds
       app.map.fitBounds(prevCircle.getBounds());
       app.map.setView(latlng);
@@ -148,11 +162,11 @@ app.hookupSteps = function() {
     app.updateEvents(app.map.getBounds());
   });
   $('.publisher:not(.soon)').on('click', function(e) {
-    if ($('#geolocate').val().trim() !== '') geolocate();
+    if ($('#geolocate').val().trim() !== '') app.geolocate();
   });
-  $('#user-selected-radius').on('change', geolocate);
-  $('#geolocateForm').on('submit', geolocate);
-  $('#geolocate').on('change', geolocate);
+  $('#user-selected-radius').on('change', app.geolocate);
+  $('#geolocate').on('change', app.geolocate);
+  $('#geolocateForm').on('submit', function(){ return false });
 
   // Comment out for testing necessity of button $('.geolocateButton').on('click', geolocate);
 };
@@ -170,30 +184,47 @@ app.updateEvents = function(bounds) {
     ]]
   }
 
-  app.getEventsForGeometry(JSON.stringify(mapGeometry), function(events) {
+  app.updateEventsForGeometry(JSON.stringify(mapGeometry), function(events) {
     app.eventMarkers.eachLayer(function(layer) {
       app.map.removeLayer(layer);
     });
-    events.forEach(app.displayEventMarker);
+
+    if (app.state.eventsArePolygons) {
+      var tinyRadius = '.001'
+      var $select = $('#user-selected-radius');
+      if ($select.find('option[value="' + tinyRadius + '"]').length === 0) {
+        $select.prepend('<option value="' + tinyRadius + '">Within 1/100 mile (only the address)</option>');
+      }
+      $select.val(tinyRadius);
+      app.geolocate();
+    }
+
+    events.forEach(function(event, index) {
+      var marker = app.displayEventMarker(event);
+
+      if (index == 0 && ! app.state.eventsArePolygons) {
+        marker.openPopup();
+      }
+    });
   });
 };
 
 app.displayEventMarker = function(event) {
   var marker;
   var geometry = JSON.parse(event.geom);
+  var html = "<p>"+app.hyperlink(event.title)+"</p>"
   if (geometry.type === "Point") {
-    marker = L.circleMarker([geometry.coordinates[1], geometry.coordinates[0]], { radius: 6 })
+    marker = L.circleMarker([geometry.coordinates[1], geometry.coordinates[0]], { radius: 6, color: '#FC442A' })
   } else {
     marker = L.geoJson({"type": "Feature", "geometry": geometry});
   }
-  var html = "<p>"+event.title+"</p>"
   marker.addTo(app.map).bindPopup(html);
 
   app.eventMarkers.addLayer(marker);
   return marker;
 }
 
-app.getEventsForGeometry = function(geometry, callback){
+app.updateEventsForGeometry = function(geometry, callback){
   if (!app.state.publisher_id) return;
   $.getJSON('/publishers/'+app.state.publisher_id+'/events', { geometry: geometry }, callback);
 };
