@@ -1,6 +1,6 @@
 module Citygram::Routes
   class Unsubscribes < Sinatra::Base
-    FILTER_WORDS = %w(CANCEL QUIT STOP STOPALL UNSUBSCRIBE)
+    FILTER_WORDS = %w(CANCEL QUIT STOP STOPALL UNSUBSCRIBE REMOVE)
     FILTER_WORD_REGEXP = Regexp.union(FILTER_WORDS.map{|w| /^#{w}/i })
 
     username = ENV.fetch('BASIC_AUTH_USERNAME')
