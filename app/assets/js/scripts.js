@@ -179,11 +179,15 @@ app.updateEvents = function(bounds) {
 };
 
 app.displayEventMarker = function(event) {
+  var marker;
   var geometry = JSON.parse(event.geom);
+  if (geometry.type === "Point") {
+    marker = L.circleMarker([geometry.coordinates[1], geometry.coordinates[0]], { radius: 6 })
+  } else {
+    marker = L.geoJson({"type": "Feature", "geometry": geometry});
+  }
   var html = "<p>"+event.title+"</p>"
-  var marker = L.circleMarker([geometry.coordinates[1], geometry.coordinates[0]], { radius: 6 })
-                 .addTo(app.map)
-                 .bindPopup(html);
+  marker.addTo(app.map).bindPopup(html);
 
   app.eventMarkers.addLayer(marker);
   return marker;
