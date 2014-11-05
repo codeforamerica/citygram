@@ -17,7 +17,7 @@ module Citygram::Models
         after_date = params[:after_date] || 7.days.ago
         before_date = params[:before_date] || DateTime.now
 
-        with_sql(<<-SQL, params.fetch(:publisher_id), after_date, before_date, geom_ewkt).all
+        with_sql(<<-SQL, params.fetch(:publisher_id), after_date, before_date, geom_ewkt)
           SELECT events.*
           FROM events
           WHERE events.publisher_id = ?
