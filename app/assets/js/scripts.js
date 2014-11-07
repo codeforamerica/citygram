@@ -13,9 +13,10 @@ app.state = {
 app.eventMarkers = new L.FeatureGroup();
 
 app.hookupMap = function() {
+  var center = JSON.parse($('meta[name=mapCenter]').attr('content'));
   var options = {
     zoom: 13,
-    center: [47.604432, -122.336014],
+    center: center,
     tileLayer: { detectRetina: true },
     scrollWheelZoom: false,
   };
@@ -47,6 +48,12 @@ app.hookupSteps = function() {
     app.state.publisher_id = $publisher.data('publisher-id');
     $('.confirmationType').html($publisher.data('publisher-title'));
 
+    // Remove disabled state styling from subscribe buttons
+    $('.smsButton, .emailButton').removeClass('disabledButton');
+
+    // Hide disabled subscribe message
+    $('.disabledInfo').hide();
+
     // update events for the new publisher
     app.updateEvents(app.map.getBounds());
 
@@ -54,7 +61,15 @@ app.hookupSteps = function() {
   });
 
   app.handleChannelClick = function(channel, channelBtn) {
-    $('.contactButtons .selected').removeClass('selected');
+    if (channelBtn.hasClass('disabledButton')) {
+      $('.disabledInfo').slideDown();
+    } else {
+      app.setChannel(channel, channelBtn);
+    };
+  }
+
+  app.setChannel = function(channel, channelBtn) {
+    $('.channelButtons .selected').removeClass('selected');
     channelBtn.addClass('selected');
     $('.channel-inputs :visible').hide();
     $('.channel-inputs .js-channel-' + channel).show();
@@ -64,14 +79,13 @@ app.hookupSteps = function() {
     $('.js-confirm-' + channel).show();
   }
 
-  $('.emailButton').on('click', function(event) {
-    app.handleChannelClick('email', $(event.target));
-  });
-
   $('.smsButton').on('click', function(event) {
     app.handleChannelClick('sms', $(event.target));
   });
 
+  $('.emailButton').on('click', function(event) {
+    app.handleChannelClick('email', $(event.target));
+  });
 
   var finishSubscribe = function(e) {
     // TODO: animate the done checkmark at the same time
@@ -81,9 +95,10 @@ app.hookupSteps = function() {
     app.state.phone_number = $('.phoneNumber').val();
     app.state.email_address = $('.emailAddress').val();
 
-    app.submitSubscription(function() {
+    app.submitSubscription(function(subscription) {
       $('#confirmation').slideDown();
       app.scrollToElement($('#confirmation'));
+      $('#view-subscription').attr('href', '/digests/'+subscription.id+'/events')
     });
   };
   $('.subscribeButton').on('click', finishSubscribe);
@@ -127,7 +142,7 @@ app.hookupSteps = function() {
 
       // Preserve references to new layers
       prevMarker = L.marker(latlng).addTo(app.map);
-      prevCircle = L.circle(latlng, radiusMeters).addTo(app.map);
+      prevCircle = L.circle(latlng, radiusMeters, { color:'#0B377F' }).addTo(app.map);
 
 
       // fit bounds
@@ -174,14 +189,19 @@ app.updateEvents = function(bounds) {
     app.eventMarkers.eachLayer(function(layer) {
       app.map.removeLayer(layer);
     });
-    events.forEach(app.displayEventMarker);
+    events.forEach(function(event, index) {
+      var marker = app.displayEventMarker(event);
+      if (index == 0) {
+        marker.openPopup();
+      }
+    });
   });
 };
 
 app.displayEventMarker = function(event) {
   var geometry = JSON.parse(event.geom);
   var html = "<p>"+app.hyperlink(event.title)+"</p>"
-  var marker = L.circleMarker([geometry.coordinates[1], geometry.coordinates[0]], { radius: 6 })
+  var marker = L.circleMarker([geometry.coordinates[1], geometry.coordinates[0]], { radius: 6, color: '#FC442A' })
                  .addTo(app.map)
                  .bindPopup(html);
 

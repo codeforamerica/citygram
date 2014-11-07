@@ -7,6 +7,10 @@ module Citygram::Models
     plugin :serialization, :pg_array, :tags
 
     dataset_module do
+      def tagged(tag)
+        where('? = ANY (tags)', tag)
+      end
+
       def visible
         where(visible: true)
       end

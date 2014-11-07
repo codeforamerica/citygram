@@ -80,6 +80,7 @@ module Citygram
   end
 end
 
+require 'app/models/city'
 require 'app/models/event'
 require 'app/models/publisher'
 require 'app/models/subscription'

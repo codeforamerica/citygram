@@ -1,0 +1,69 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "id": "seattle",
+      "type": "Feature",
+      "properties": {
+        "title": "Seattle",
+        "background": "seattle.jpg",
+        "zoom": 13
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.336014,
+          47.604432
+        ]
+      }
+    },
+    {
+      "id": "charlotte",
+      "type": "Feature",
+      "properties": {
+        "title": "Charlotte",
+        "background": "charlotte.jpg",
+        "zoom": 13
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.8388393,
+          35.2261539
+        ]
+      }
+    },
+    {
+      "id": "lexington",
+      "type": "Feature",
+      "properties": {
+        "title": "Lexington",
+        "background": "lexington.png",
+        "zoom": 13
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -84.498344,
+          38.048610
+        ]
+      }
+    },
+    {
+      "id": "new-york",
+      "type": "Feature",
+      "properties": {
+        "title": "New York",
+        "background": "new-york.jpg",
+        "zoom": 11
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.0059,
+          40.7127
+        ]
+      }
+    }
+  ]
+}

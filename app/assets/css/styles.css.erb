@@ -77,8 +77,13 @@ strong {
   color: #fff;
 }
 
+.disabledButton, .disabledButton:hover, .disabledButton.selected {
+  border-color: #d1d5d8;
+  background: #d1d5d8;
+  color: #fff;
+}
+
 .bigSelect select {
-  /*background: url(<%= asset_path 'dropdown-arrow.png' %>) no-repeat;*/
   background-color: #F1F1F2;
   width: 100%;
 }
@@ -111,7 +116,7 @@ input:focus, select:focus {
 }
 
 header {
-  background: url(<%= asset_path 'background-seattle.jpg' %>);
+  background: url(<%= asset_path 'cities/backgrounds/seattle.jpg' %>);
   background-size: cover;
   min-height: 450px;
   position: relative;
@@ -124,7 +129,7 @@ header .row {
 }
 
 header .logo {
-  background: url(<%= asset_path 'citygram.png' %>) no-repeat;
+  background: url(<%= asset_path 'icons/citygram-logo-white.png' %>) no-repeat;
   background-size: 272px 68px;
   height: 80px;
   width: 320px;
@@ -394,17 +399,17 @@ Comment out to test necessity of buttons
   border-radius: 3px;
   z-index: 1001;
   padding: 10px;
-  font-size: 1.1em;
+  font-size: 1.2em;
 }
 
-#map .map-key-panel .map-blue-dot {
+#map .map-key-panel .map-event-dot {
   display: inline-block;
   margin-right: 5px;
   border-radius: 50%;
   width: 11px;
   height: 11px;
-  background-color: rgba(0,0,255,0.1);
-  border: 2px solid rgba(0,0,255,0.5);
+  background-color: rgba(252,68,42,0.1);
+  border: 2px solid rgba(252,68,42,0.5);
 }
 
 .frequencyIcon {
@@ -430,7 +435,7 @@ Comment out to test necessity of buttons
 
 /*********** Contact Section **************/
 
-#step3 .contactButtons {
+#step3 .channelButtons {
   text-align: center;
   margin-bottom: 10px;
 }
@@ -453,13 +458,13 @@ Comment out to test necessity of buttons
   position: absolute;
   left: -60px;
   top: -2px;
-  background: url(<%= asset_path 'icons/text.png' %>) no-repeat;
+  background: url(<%= asset_path 'icons/sms.png' %>) no-repeat;
   background-size: 50px 50px;
   width: 50px;
   height: 50px;
 }
 
-#step3 .smsButton:hover span::after, #step3 .smsButton.selected span::after {
+#step3 .smsButton:hover span::after, #step3 .smsButton.selected span::after, #step3 .smsButton.disabledButton span::after {
   background: url(<%= asset_path 'icons/sms-inverted.png' %>) no-repeat;
   background-size: 50px 50px;
 }
@@ -470,9 +475,13 @@ Comment out to test necessity of buttons
   top: -5px;
 }
 
-#step3 .emailButton:hover span::after, #step3 .emailButton.selected span::after {
+#step3 .emailButton:hover span::after, #step3 .emailButton.selected span::after, #step3 .emailButton.disabledButton span::after {
   background: url(<%= asset_path 'icons/email-inverted.png' %>) no-repeat;
   background-size: 50px 50px;
+}
+
+#step3 .emailButton.disabledButton, #step3 .smsButton.disabledButton {
+  cursor: default;
 }
 
 #step3 .emailButton:after {
@@ -485,7 +494,11 @@ Comment out to test necessity of buttons
   height: 67px;
 }
 
-#step3 .extraInfo {
+#step3 .disabledInfo {
+  font-size: 2em;
+}
+
+#step3 .extraInfo, #step3 .disabledInfo {
   margin: 0 auto;
   position: relative;
   margin-top: 20px;
