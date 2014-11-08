@@ -24,7 +24,6 @@ module Citygram::Models
       super
       validates_presence [:title, :endpoint, :city, :icon]
       validates_url :endpoint
-      validates_unique :title
       validates_unique :endpoint
     end
   end
