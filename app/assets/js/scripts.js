@@ -46,11 +46,7 @@ app.hookupSteps = function() {
 
     // Update the confirmation section with the name
     app.state.publisher_id = $publisher.data('publisher-id');
-    if ($publisher.data('publisher-title') === 'Leaf Collection') {
-      app.state.eventsArePolygons = true;
-    } else {
-      app.state.eventsArePolygons = false;
-    }
+    app.state.eventsArePolygons = ($publisher.data('publisher-title') === 'Leaf Collection')
 
     $('.confirmationType').html($publisher.data('publisher-title'));
 
@@ -154,6 +150,7 @@ app.hookupSteps = function() {
 
 
       if (app.state.eventsArePolygons) {
+        // copy title from the surrounding event polygon to the address marker
         app.updateEventsForGeometry(app.state.geom, function(events) {
           prevMarker.bindPopup(events[0]['title']).openPopup();
         });
@@ -204,15 +201,8 @@ app.updateEvents = function(bounds) {
       app.map.removeLayer(layer);
     });
 
-    if (app.state.eventsArePolygons) {
-      var tinyRadius = '.001'
-      var $select = $('#user-selected-radius');
-      if ($select.find('option[value="' + tinyRadius + '"]').length === 0) {
-        $select.prepend('<option value="' + tinyRadius + '">Within 1/100 mile (only the address)</option>');
-      }
-      $select.val(tinyRadius);
-      app.geolocate();
-    }
+    // tiny radius mimics an address point inside event polygon
+    if (app.state.eventsArePolygons) { app.selectTinyRadius(); }
 
     events.forEach(function(event, index) {
       var marker = app.displayEventMarker(event);
@@ -224,14 +214,24 @@ app.updateEvents = function(bounds) {
   });
 };
 
+app.selectTinyRadius = function() {
+  var tinyRadius = '.001'
+  var $select = $('#user-selected-radius');
+  if ($select.find('option[value="' + tinyRadius + '"]').length === 0) {
+    $select.prepend('<option value="' + tinyRadius + '">Within 1/100 mile (only the address)</option>');
+  }
+  $select.val(tinyRadius);
+  app.geolocate();
+}
+
 app.displayEventMarker = function(event) {
   var geometry = JSON.parse(event.geom);
   var marker;
   var html = "<p>"+app.hyperlink(event.title)+"</p>"
-  if (geometry.type === "Point") {
-    marker = L.circleMarker([geometry.coordinates[1], geometry.coordinates[0]], { radius: 6, color: '#FC442A' })
-  } else {
+  if (app.state.eventsArePolygons) {
     marker = L.geoJson({"type": "Feature", "geometry": geometry});
+  } else {
+    marker = L.circleMarker([geometry.coordinates[1], geometry.coordinates[0]], { radius: 6, color: '#FC442A' })
   }
   marker.addTo(app.map).bindPopup(html);
 
