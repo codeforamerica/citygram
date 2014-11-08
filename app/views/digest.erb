@@ -15,6 +15,7 @@
         <% single = @events.count == 1 %>
         <!-- <h3>There <%=  single ? 'was' : 'were' %> <span class="orange"><%= @events.count %> citygram<%= single ? '' : 's' %></span> for <span class="navy"><%= @subscription.publisher.title %></span> within <span class="green">2 miles</span> of <span class="red">125 9th Street, Seattle.</span></h3> -->
         <h3>There <%=  single ? 'was' : 'were' %> <span class="orange"><%= @events.count %> citygram<%= single ? '' : 's' %></span> for <span class="green"><%= @subscription.publisher.title %></span> in the area you selected.</h3>
+         <a href = "/unsubscribe/<%= @subscription.id %>">One-click Unsubscribe</a>
       </div>
     </div>
   </div>
