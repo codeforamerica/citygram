@@ -261,13 +261,6 @@ CREATE UNIQUE INDEX publishers_endpoint_index ON publishers USING btree (endpoin
 
 
 --
--- Name: publishers_title_index; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE UNIQUE INDEX publishers_title_index ON publishers USING btree (title);
-
-
---
 -- Name: subscriptions_geom_gist; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
