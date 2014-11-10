@@ -152,7 +152,7 @@ app.hookupSteps = function() {
       if (app.state.eventsArePolygons) {
         // copy title from the surrounding event polygon to the address marker
         app.updateEventsForGeometry(app.state.geom, function(events) {
-          prevMarker.bindPopup(events[0]['title']).openPopup();
+          prevMarker.bindPopup("<p>"+app.hyperlink(events[0]['title'])+"</p>").openPopup();
         });
       }
 
