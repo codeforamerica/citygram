@@ -46,7 +46,7 @@ app.hookupSteps = function() {
 
     // Update the confirmation section with the name
     app.state.publisher_id = $publisher.data('publisher-id');
-    app.state.eventsArePolygons = ($publisher.data('publisher-title') === 'Leaf Collection')
+    app.eventsArePolygons = ($publisher.data('publisher-title').match(/Leaf Collection/))
 
     $('.confirmationType').html($publisher.data('publisher-title'));
 
@@ -149,7 +149,7 @@ app.hookupSteps = function() {
       prevCircle = L.circle(latlng, radiusMeters, { color:'#0B377F' }).addTo(app.map);
 
 
-      if (app.state.eventsArePolygons) {
+      if (app.eventsArePolygons) {
         // copy title from the surrounding event polygon to the address marker
         app.updateEventsForGeometry(app.state.geom, function(events) {
           prevMarker.bindPopup("<p>"+app.hyperlink(events[0]['title'])+"</p>").openPopup();
@@ -202,12 +202,12 @@ app.updateEvents = function(bounds) {
     });
 
     // tiny radius mimics an address point inside event polygon
-    if (app.state.eventsArePolygons) { app.selectTinyRadius(); }
+    if (app.eventsArePolygons) { app.selectTinyRadius(); }
 
     events.forEach(function(event, index) {
       var marker = app.displayEventMarker(event);
 
-      if (index == 0 && ! app.state.eventsArePolygons) {
+      if (index == 0 && ! app.eventsArePolygons) {
         marker.openPopup();
       }
     });
@@ -228,7 +228,7 @@ app.displayEventMarker = function(event) {
   var geometry = JSON.parse(event.geom);
   var marker;
   var html = "<p>"+app.hyperlink(event.title)+"</p>"
-  if (app.state.eventsArePolygons) {
+  if (app.eventsArePolygons) {
     marker = L.geoJson({"type": "Feature", "geometry": geometry});
   } else {
     marker = L.circleMarker([geometry.coordinates[1], geometry.coordinates[0]], { radius: 6, color: '#FC442A' })
