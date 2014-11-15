@@ -1,5 +1,5 @@
 db:
-  image: postgres
+  image: mdillon/postgis
   ports:
     - "5432"
 web:
