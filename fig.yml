@@ -5,6 +5,9 @@ db:
 web:
   build: .
   command: bundle exec rackup -p 3000
+  environment:
+    RACK_ENV: development
+    DATABASE_URL: postgres://postgres@db:5432/citygram_development
   volumes:
     - .:/myapp
   ports:
@@ -15,5 +18,8 @@ test:
   build: .
   volumes:
     - .:/myapp
+  environment:
+    RACK_ENV: test
+    DATABASE_URL: postgres://postgres@db:5432/citygram_test
   links:
     - db
