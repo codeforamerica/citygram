@@ -46,7 +46,8 @@ app.hookupSteps = function() {
 
     // Update the confirmation section with the name
     app.state.publisher_id = $publisher.data('publisher-id');
-    app.eventsArePolygons = ($publisher.data('publisher-title').match(/Leaf Collection/))
+    app.eventsArePolygons = $publisher.data('publisher-title').match(/Leaf Collection/);
+    $('.js-dot-legend').css('visibility', app.eventsArePolygons ? 'hidden' : 'visible');
 
     $('.confirmationType').html($publisher.data('publisher-title'));
 
