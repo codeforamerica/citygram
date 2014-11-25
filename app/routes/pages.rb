@@ -1,8 +1,7 @@
 module Citygram::Routes
   class Pages < Citygram::App
-    get '/' do
-      @publishers = Publisher.visible
-      erb :index
+    get '/*' do
+      redirect 'https://www.citygram.org/lexington'
     end
   end
 end
