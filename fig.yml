@@ -14,8 +14,12 @@ web:
     - "3000:3000"
   links:
     - db
+    - redis
+redis:
+  image: redis
 test:
   build: .
+  command: rake
   volumes:
     - .:/myapp
   environment:
