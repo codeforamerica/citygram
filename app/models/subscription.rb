@@ -20,6 +20,10 @@ module Citygram::Models
     plugin :url_validation
 
     dataset_module do
+      def notifiables
+        active.where(:publisher => Publisher.active)
+      end
+
       def active
         where(unsubscribed_at: nil)
       end
