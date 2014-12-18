@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 if ENV['CI']
   ruby RUBY_VERSION
 else
-  ruby '2.1.4'
+  ruby '2.1.5'
 end
 
 gem 'activesupport'
