@@ -28,26 +28,39 @@ describe Citygram::Models::Subscription do
     expect(subscription).not_to be_valid
   end
 
-  it 'includes notifiables that are not unsubscribed' do
-    subscription = create(:subscription, unsubscribed_at: nil)
-    expect(Subscription.notifiables.all).to eq [subscription]
+  it 'has_events? is false when subscription has no events' do
+    subscription = create(:subscription)
+    expect(subscription).to_not have_events
   end
 
-  it 'excludes notifiables that are unsubscribed' do
-    subscription = create(:subscription, unsubscribed_at: Date.today)
-    expect(Subscription.notifiables.all).to be_empty
+  it 'has_events? is true when subscription has events' do
+    subscription = create(:subscription)
+    create(:event, publisher: subscription.publisher, geom: subscription.geom)
+    expect(subscription).to have_events
   end
 
-  it 'includes notifiables with active publishers' do
-    publisher = create(:publisher, active: true)
-    subscription = create(:subscription, publisher: publisher).reload
-    expect(Subscription.notifiables.all).to eq [subscription]
-  end
+  describe 'determining notifiables' do
+    it 'includes subscriptions that are not unsubscribed' do
+      subscription = create(:subscription, unsubscribed_at: nil)
+      expect(Subscription.notifiables.all).to eq [subscription]
+    end
 
-  it 'excludes notifiables with inactive publishers' do
-    publisher = create(:publisher, active: false)
-    create(:subscription, publisher: publisher)
-    expect(Subscription.notifiables.all).to be_empty
+    it 'excludes subscriptions that are unsubscribed' do
+      subscription = create(:subscription, unsubscribed_at: Date.today)
+      expect(Subscription.notifiables.all).to be_empty
+    end
+
+    it 'includes subscriptions with active publishers' do
+      publisher = create(:publisher, active: true)
+      subscription = create(:subscription, publisher: publisher).reload
+      expect(Subscription.notifiables.all).to eq [subscription]
+    end
+
+    it 'excludes subscriptions with inactive publishers' do
+      publisher = create(:publisher, active: false)
+      create(:subscription, publisher: publisher)
+      expect(Subscription.notifiables.all).to be_empty
+    end
   end
 
   describe 'contact channel validations' do
