@@ -21,6 +21,7 @@ module Citygram::Models
 
     dataset_module do
       def notifiables
+        # should enforce has_events but the spatial join is hairy
         active.where(:publisher => Publisher.active)
       end
 
@@ -31,6 +32,10 @@ module Citygram::Models
       def unsubscribe!
         update(unsubscribed_at: DateTime.now)
       end
+    end
+
+    def has_events?
+      Event.from_subscription(self).count > 0
     end
 
     def unsubscribe!
