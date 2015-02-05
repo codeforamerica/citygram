@@ -4,10 +4,7 @@
 [gemnasium]: https://gemnasium.com/codeforamerica/citygram
 [codeclimate]: https://codeclimate.com/github/codeforamerica/citygram
 
-__Citygram__ is a geographic notification platform designed to work with open government data.
-It allows residents to designate area(s) of a city they are interested in and subscribe to one or more topics.
-When an event for a desired topic occurs in the subscriber's area of interest, a notification (email, SMS, or [webhook]) is delivered.
-Citygram is a [Code for America] project by the [Charlotte] and [Lexington] teams for the [2014 fellowship].
+__Citygram__ is a geographic notification platform designed to work with open government data. It allows residents to designate area(s) of a city they are interested in and subscribe to one or more topics. When an event for a desired topic occurs in the subscriber's area of interest, a notification (email, SMS, or [webhook]) is delivered. Citygram is a [Code for America] project by the [Charlotte] and [Lexington] teams for the [2014 fellowship].
 
 [webhook]: http://en.wikipedia.org/wiki/Webhook
 [Code for America]: https://github.com/codeforamerica
@@ -17,10 +14,7 @@ Citygram is a [Code for America] project by the [Charlotte] and [Lexington] team
 
 ### Why are we doing this?
 
-We believe that there is an opportunity to help residents better understand what’s going on in their area,
-when it’s going to happen, and why. By providing timely information to residents in areas that are relevant to them,
-the city can be proactive instead of reactive, build trust through transparency, and increase civic engagement
-across the board.
+We believe that there is an opportunity to help residents better understand what’s going on in their area, when it’s going to happen, and why. By providing timely information to residents in areas that are relevant to them, the city can be proactive instead of reactive, build trust through transparency, and increase civic engagement across the board.
 
 ### Who is this made by?
 
