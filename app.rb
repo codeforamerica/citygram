@@ -39,6 +39,7 @@ end
 require 'app/models'
 require 'app/routes'
 require 'app/workers'
+require 'active_support'
 
 # Log instrumented requests for publisher and subscription connections
 ActiveSupport::Notifications.subscribe(
