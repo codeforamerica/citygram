@@ -103,9 +103,6 @@ module Citygram
 
     def self.console(ctx = self)
       require File.expand_path('../../app', __FILE__)
-      require 'factory_girl'
-      require File.join(app_root, 'spec/factories')
-      ctx.send :include, FactoryGirl::Syntax::Methods
       require 'irb'
       ARGV.clear
       IRB.start
