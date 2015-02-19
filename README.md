@@ -1,12 +1,10 @@
-# Citygram NYC [![Build Status](http://img.shields.io/travis/codeforamerica/citygram.svg)][travis] [![Dependency Status](http://img.shields.io/gemnasium/codeforamerica/citygram.svg)][gemnasium] [![Code Climate](http://img.shields.io/codeclimate/github/codeforamerica/citygram.svg)][codeclimate]
+# Citygram [![Build Status](http://img.shields.io/travis/BetaNYC/citygram-nyc.svg)][travis] [![Dependency Status](http://img.shields.io/gemnasium/BetaNYC/citygram-nyc.svg)][gemnasium] [![Code Climate](http://img.shields.io/codeclimate/github/BetaNYC/citygram-nyc.svg)][codeclimate]
 
-[travis]: https://travis-ci.org/codeforamerica/citygram
-[gemnasium]: https://gemnasium.com/codeforamerica/citygram
-[codeclimate]: https://codeclimate.com/github/codeforamerica/citygram
+[travis]: https://travis-ci.org/BetaNYC/citygram-nyc
+[gemnasium]: https://gemnasium.com/BetaNYC/citygram-nyc
+[codeclimate]: https://codeclimate.com/github/BetaNYC/citygram-nyc
 
-This is fork of Citygram for New York City. You can receive alerts for 311 requests and vehicle collisions in your neighborhood! _Visit [Citygram.nyc](http://www.citygram.nyc)_
-
-__Citygram__ is a geographic notification platform designed to work with open government data. It allows residents to designate area(s) of a city they are interested in and subscribe to one or more topics. When an event for a desired topic occurs in the subscriber's area of interest, a notification (email, SMS,or  [webhook](http://en.wikipedia.org/wiki/Webhook)) is delivered. Citygram is a [Code for America](https://github.com/codeforamerica) project by the [Charlotte](http://team-charlotte.tumblr.com/) and [Lexington](http://teambiglex.tumblr.com/) teams for the [2014 fellowship](http://www.codeforamerica.org/geeks/our-geeks/2014-fellows/).
+__Citygram__ is a geographic notification platform designed to work with open government data. It allows residents to designate area(s) of a city they are interested in and subscribe to one or more topics. When an event for a desired topic occurs in the subscriber's area of interest, a notification (email, SMS, or  [webhook](http://en.wikipedia.org/wiki/Webhook)) is delivered. Citygram is a [Code for America](https://github.com/codeforamerica) project by the [Charlotte](http://team-charlotte.tumblr.com/) and [Lexington](http://teambiglex.tumblr.com/) teams for the [2014 fellowship](http://www.codeforamerica.org/geeks/our-geeks/2014-fellows/).
 
 ### Why are we doing this?
 
@@ -18,7 +16,7 @@ We believe that there is an opportunity to help residents better understand what
 
 ### Who is this made by?
 
-See the [contributors list](https://github.com/codeforamerica/citygram/graphs/contributors).
+See the [contributors list](https://github.com/betanyc/citygram-nyc/graphs/contributors).
 
 ### Technical Overview
 
