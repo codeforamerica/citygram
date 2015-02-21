@@ -22,7 +22,7 @@ We believe that there is an opportunity to help residents better understand what
 
 ### Who is this made by?
 
-See the [contributors list](https://github.com/codeforamerica/citygram/graphs/contributors).
+See the [contributors list](https://github.com/betanyc/citygram-nyc/graphs/contributors).
 
 ### Technical Overview
 
