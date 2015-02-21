@@ -64,6 +64,23 @@
           40.7127
         ]
       }
+    },
+    {
+      "id": "san-francisco",
+      "type": "Feature",
+      "properties": {
+        "title": "San Francisco",
+        "background": "san-francisco.jpg",
+        "zoom": 11
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4194155,
+          37.7749295
+        ]
+      }
     }
+
   ]
 }
