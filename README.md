@@ -4,7 +4,13 @@
 [gemnasium]: https://gemnasium.com/BetaNYC/citygram-nyc
 [codeclimate]: https://codeclimate.com/github/BetaNYC/citygram-nyc
 
-__Citygram__ is a geographic notification platform designed to work with open government data. It allows residents to designate area(s) of a city they are interested in and subscribe to one or more topics. When an event for a desired topic occurs in the subscriber's area of interest, a notification (email, SMS, or  [webhook](http://en.wikipedia.org/wiki/Webhook)) is delivered. Citygram is a [Code for America](https://github.com/codeforamerica) project by the [Charlotte](http://team-charlotte.tumblr.com/) and [Lexington](http://teambiglex.tumblr.com/) teams for the [2014 fellowship](http://www.codeforamerica.org/geeks/our-geeks/2014-fellows/).
+__Citygram__ is a geographic notification platform designed to work with open government data. It allows residents to designate area(s) of a city they are interested in and subscribe to one or more topics. When an event for a desired topic occurs in the subscriber's area of interest, a notification (email, SMS, or [webhook]) is delivered. Citygram is a [Code for America] project by the [Charlotte] and [Lexington] teams for the [2014 fellowship].
+
+[webhook]: http://en.wikipedia.org/wiki/Webhook
+[Code for America]: https://github.com/codeforamerica
+[Charlotte]: http://team-charlotte.tumblr.com/
+[Lexington]: http://teambiglex.tumblr.com/
+[2014 fellowship]: http://www.codeforamerica.org/geeks/our-geeks/2014-fellows/
 
 ### Why are we doing this?
 
@@ -36,20 +42,40 @@ Citygram is a web application written in Ruby.
 
 In the command line, run the following:
 
+#### Install Dependencies
+
 ```
 git clone https://github.com/codeforamerica/citygram.git
 cd citygram
-cp .env.sample .env
+rbenv install local
+brew install postgresql postgis
 gem install bundler
 bundle install
+```
+
+#### Configure Environment
+
+```
+cp .env.sample .env
 rake db:create db:migrate
 rake db:create db:migrate DATABASE_URL=postgres://localhost/citygram_test
-rake # run the test suite
-bundle exec rackup
 ```
+
+### Developing
 
 To boot up the complete application and run background jobs in development:
 
 ```
 bundle exec foreman start -f Procfile.dev
+open http://localhost:9292/
+```
+
+You can now see your site at
+
+### Testing
+
+Run all tests in the `spec/` directory.
+
+```
+rake
 ```
