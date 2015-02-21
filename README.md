@@ -63,7 +63,7 @@ To boot up the complete application and run background jobs in development:
 
 ```
 bundle exec foreman start -f Procfile.dev
-open http://localhost:9292/new-york
+open http://localhost:9292/
 ```
 
 You can now see your site at
