@@ -16,6 +16,10 @@ __Citygram__ is a geographic notification platform designed to work with open go
 
 We believe that there is an opportunity to help residents better understand what’s going on in their area, when it’s going to happen, and why. By providing timely information to residents in areas that are relevant to them, the city can be proactive instead of reactive, build trust through transparency, and increase civic engagement across the board.
 
+### How to contribute
+* You can file an [issue](https://github.com/BetaNYC/citygram-nyc/issues/new)
+* Join in a conversation at [talk.beta.nyc/citygram](https://talk.beta.nyc/c/working-groups/citygram)
+
 ### Who is this made by?
 
 See the [contributors list](https://github.com/codeforamerica/citygram/graphs/contributors).
