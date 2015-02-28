@@ -75,3 +75,90 @@ Run all tests in the `spec/` directory.
 ```
 rake
 ```
+
+
+## Developing with Vagrant
+
+[Vagrant](https://www.vagrantup.com/) is a great tool for spinning up lightweight, reproducible, and portable development environments. It makes it easy to configure a dev environment without worring about conflicts between shared components (i.e. you are developing on two different projects that depend on different versions/configurations of say, a database server).
+
+Once you have installed Vagrant, go to the command line, `cd path/to/citygram` and run `vagrant up`.
+
+### Setting up the vagrant box for the first time
+
+The first time you run `vagrant up`, it might take a while as it will have to download and install Ubuntu on the vagrant box.
+
+Once it finished, "ssh" into your new dev server with `vagrant ssh`.  This will log you into your fresh Ubuntu install as the "vagrant" user. The citygram folder will be mounted at `/vagrant`.
+
+Since this is a fresh install we need to install the software mentioned above: Redis, PostgreSQL/PostGIS, Ruby (and all their dependencies).
+
+First we do all the server-level libraries:
+
+```
+$ sudo apt-get -y update
+$ sudo apt-get -y install build-essential zlib1g-dev libssl-dev libreadline-dev libyaml-dev libcurl4-openssl-dev curl git-core python-software-properties libxslt1-dev libxml2-dev libmysqlclient-dev libsqlite3-dev libpq-dev nodejs redis-server 
+
+```
+
+Then we install rbenv (to then install Ruby):
+
+```
+$ curl https://raw.githubusercontent.com/fesplugas/rbenv-installer/master/bin/rbenv-installer | bash
+```
+
+After rbenv is installed, it tells you to add the following to the end of your `~/.bashrc` file:
+
+```
+export RBENV_ROOT="${HOME}/.rbenv"
+
+if [ -d "${RBENV_ROOT}" ]; then
+  export PATH="${RBENV_ROOT}/bin:${PATH}"
+  eval "$(rbenv init -)"
+fi
+```
+
+Install Ruby:
+
+```
+$ rbenv install `cat .ruby-version`
+```
+
+Install PostgreSQL/PostGIS [[1](http://trac.osgeo.org/postgis/wiki/UsersWikiPostGIS21UbuntuPGSQL93Apt)]:
+
+```
+$ sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt trusty-pgdg main" >> /etc/apt/sources.list'
+$ wget --quiet -O - http://apt.postgresql.org/pub/repos/apt/ACCC4CF8.asc | sudo apt-key add -
+$ sudo apt-get -y update
+$ sudo apt-get -y install postgresql-9.4-postgis-2.1 postgresql-contrib
+```
+
+Install Bundler and the project's bundle:
+
+```
+$ cd /vagrant
+$ gem install bundler
+$ bundle install
+```
+
+Setup your PostgreSQL user:
+
+```
+$ cd /vagrant
+$ sudo su postrges
+$ psql
+=# CREATE USER vagrant WITH PASSWORD 'vagrant';
+=# ALTER ROLE vagrant SUPERUSER CREATEROLE CREATEDB REPLICATION;
+=# CREATE EXTENSION postgis;
+=# \q
+$ exit
+$ echo "DATABASE_URL=postgres://vagrant:vagrant@localhost/citygram_development" >> .env
+$ bundle exec rake db:create db:migrate
+```
+
+### Starting up the app on the vagrant box
+
+After going through the setup above, to get the app running:
+
+1. login to the vagrant box (`vagrant ssh`)
+2. change into the vagrant folder (`cd /vagrant`)
+3. start up foreman (`bundle exec foreman start -f Procfile.vagrant`)
+4. Open a web browser and go to [http://localhost:9292](http://localhost:9292)
