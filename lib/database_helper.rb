@@ -103,8 +103,10 @@ module Citygram
 
     def self.console(ctx = self)
       require File.expand_path('../../app', __FILE__)
-      require 'factory_girl'
-      require File.join(app_root, 'spec/factories')
+      if ENV['RACK_ENV'] == 'test'
+        require 'factory_girl'
+        require File.join(app_root, 'spec/factories')
+      end
       ctx.send :include, FactoryGirl::Syntax::Methods
       require 'irb'
       ARGV.clear
