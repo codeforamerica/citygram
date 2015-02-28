@@ -54,7 +54,7 @@
       "type": "Feature",
       "properties": {
         "title": "New York",
-        "background": "new-york.jpg",
+        "background": "new-york.png",
         "zoom": 11
       },
       "geometry": {
