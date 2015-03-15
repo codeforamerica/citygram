@@ -15,6 +15,7 @@
 
   <!-- the freshest styles -->
   <link rel="stylesheet" type="text/css" href="<%= asset_path 'splash.css' %>">
+  <link rel="stylesheet" type="text/css" href="<%= asset_path 'footer.css' %>">
 
 </head>
 <body>
@@ -97,23 +98,7 @@
   </div>
 </section>
 
-<footer>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-2 col-sm-12"><p>a project of</p></div>
-      <div class="col-md-6 col-sm-12">
-        <a href="http://www.codeforamerica.org/"><img src="<%= asset_path 'splash/cfa-icon.png' %>"></a>
-        <img src="<%= asset_path 'splash/plus-1-icon.png' %>">
-        <a href="http://charmeck.org/Pages/default.aspx"><img src="<%= asset_path 'splash/charlotte-icon.png' %>"></a>
-        <img src="<%= asset_path 'splash/plus-2-icon.png' %>">
-        <a href="http://www.lexingtonky.gov/"><img src="<%= asset_path 'splash/lexington-icon.png' %>"></a>
-      </div>
-      <div class="col-md-2 pull-right hidden-xs">
-        <a href="https://github.com/codeforamerica/citygram"><img class="pull-right" src="<%= asset_path 'splash/github-icon.png' %>"></a>
-      </div>
-    </div>
-  </div>
-</footer>
+<%= erb :'layouts/footer' %>
 
 <!-- Latest compiled and minified JavaScript -->
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
