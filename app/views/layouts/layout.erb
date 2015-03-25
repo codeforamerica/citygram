@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="mapId" content="<%= Citygram::App.map_id %>">
-  <title>Citygram</title>
+  <title>Citygram <%= @city.title if @city %></title>
 
   <!-- typekit -->
   <script type="text/javascript" src="//use.typekit.net/olg1fvr.js"></script>
