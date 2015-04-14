@@ -57,6 +57,15 @@ rake db:create db:migrate
 rake db:create db:migrate DATABASE_URL=postgres://localhost/citygram_test
 ```
 
+##### Single City
+
+If you only need to support a single city you can specify the <kbd>ROOT_CITY_TAG</kbd>
+to bypass the index.
+
+```
+ROOT_CITY_TAG=new-york
+```
+
 ### Developing
 
 To boot up the complete application and run background jobs in development:
