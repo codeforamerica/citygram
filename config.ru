@@ -4,9 +4,14 @@ unprotected_routes = [
   Citygram::Routes::Events,
   Citygram::Routes::Publishers,
   Citygram::Routes::Subscriptions,
-  Citygram::Routes::Pages,
   Citygram::Routes::Digests
 ]
+
+unprotected_routes << if ENV.fetch('ROOT_CITY_TAG', false)
+  Citygram::Routes::Page
+else
+  Citygram::Routes::Pages
+end
 
 protected_routes = [
   Citygram::Routes::Unsubscribes
