@@ -9,6 +9,7 @@ require 'app/routes/helpers'
 
 require 'app/routes/digests'
 require 'app/routes/events'
+require 'app/routes/page'
 require 'app/routes/pages'
 require 'app/routes/publishers'
 require 'app/routes/subscriptions'
