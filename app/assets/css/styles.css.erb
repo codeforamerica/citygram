@@ -37,6 +37,10 @@ strong {
   font-weight: 700;
 }
 
+.no-wrap {
+  white-space: nowrap;
+}
+
 /*********** Form Elements **************/
 
 .bigButton {
@@ -77,8 +81,13 @@ strong {
   color: #fff;
 }
 
+.disabledButton, .disabledButton:hover, .disabledButton.selected {
+  border-color: #d1d5d8;
+  background: #d1d5d8;
+  color: #fff;
+}
+
 .bigSelect select {
-  /*background: url(<%= asset_path 'dropdown-arrow.png' %>) no-repeat;*/
   background-color: #F1F1F2;
   width: 100%;
 }
@@ -89,7 +98,7 @@ input, select {
   padding: 10px 16px;
   font-size: 20px;
   line-height: 1.428571429;
-  color: #8A949D;
+  color: #717B84;
   vertical-align: middle;
   background-color: #FFF;
   border: 2px solid #8A949D;
@@ -111,7 +120,7 @@ input:focus, select:focus {
 }
 
 header {
-  background: url(<%= asset_path 'citygram_nycskyline2.png' %>);
+  background: url(<%= asset_path 'cities/backgrounds/seattle.jpg' %>);
   background-size: cover;
   min-height: 450px;
   position: relative;
@@ -124,7 +133,7 @@ header .row {
 }
 
 header .logo {
-  background: url(<%= asset_path 'citygram.png' %>) no-repeat;
+  background: url(<%= asset_path 'icons/citygram-logo-white.png' %>) no-repeat;
   background-size: 272px 68px;
   height: 80px;
   width: 320px;
@@ -134,6 +143,7 @@ header h1 {
   text-shadow: 0 2px 15px rgba(0, 0, 0, 0.25);
   color: #fff;
   font-weight: 700;
+  line-height: 1em;
 }
 
 header h3 {
@@ -167,7 +177,7 @@ section h2 {
 }
 
 section h3 {
-  color: #8A949D;
+  color: #717B84;
   font-weight: 200;
 }
 
@@ -394,17 +404,17 @@ Comment out to test necessity of buttons
   border-radius: 3px;
   z-index: 1001;
   padding: 10px;
-  font-size: 1.1em;
+  font-size: 1.2em;
 }
 
-#map .map-key-panel .map-blue-dot {
+#map .map-key-panel .map-event-dot {
   display: inline-block;
   margin-right: 5px;
   border-radius: 50%;
   width: 11px;
   height: 11px;
-  background-color: rgba(0,0,255,0.1);
-  border: 2px solid rgba(0,0,255,0.5);
+  background-color: rgba(252,68,42,0.1);
+  border: 2px solid rgba(252,68,42,0.5);
 }
 
 .frequencyIcon {
@@ -417,20 +427,20 @@ Comment out to test necessity of buttons
   margin-left: 30px;
   display: inline-block;
   font-weight: 300;
-  font-size: 1.3em;
+  font-size: 1.5em;
   line-height: 1.6;
   vertical-align: middle;
 }
 
 .frequencyTitle {
-  font-size: 18px;
+  font-size: 0.9em;
   font-weight: 700;
   text-transform: uppercase;
 }
 
 /*********** Contact Section **************/
 
-#step3 .contactButtons {
+#step3 .channelButtons {
   text-align: center;
   margin-bottom: 10px;
 }
@@ -453,13 +463,13 @@ Comment out to test necessity of buttons
   position: absolute;
   left: -60px;
   top: -2px;
-  background: url(<%= asset_path 'icons/text.png' %>) no-repeat;
+  background: url(<%= asset_path 'icons/sms.png' %>) no-repeat;
   background-size: 50px 50px;
   width: 50px;
   height: 50px;
 }
 
-#step3 .smsButton:hover span::after, #step3 .smsButton.selected span::after {
+#step3 .smsButton:hover span::after, #step3 .smsButton.selected span::after, #step3 .smsButton.disabledButton span::after {
   background: url(<%= asset_path 'icons/sms-inverted.png' %>) no-repeat;
   background-size: 50px 50px;
 }
@@ -470,9 +480,13 @@ Comment out to test necessity of buttons
   top: -5px;
 }
 
-#step3 .emailButton:hover span::after, #step3 .emailButton.selected span::after {
+#step3 .emailButton:hover span::after, #step3 .emailButton.selected span::after, #step3 .emailButton.disabledButton span::after {
   background: url(<%= asset_path 'icons/email-inverted.png' %>) no-repeat;
   background-size: 50px 50px;
+}
+
+#step3 .emailButton.disabledButton, #step3 .smsButton.disabledButton {
+  cursor: default;
 }
 
 #step3 .emailButton:after {
@@ -485,7 +499,11 @@ Comment out to test necessity of buttons
   height: 67px;
 }
 
-#step3 .extraInfo {
+#step3 .disabledInfo {
+  font-size: 2em;
+}
+
+#step3 .extraInfo, #step3 .disabledInfo {
   margin: 0 auto;
   position: relative;
   margin-top: 20px;
@@ -519,97 +537,3 @@ Comment out to test necessity of buttons
   line-height: 50px;
   text-align: center;
 }
-
-/*********** Footer **************/
-
-
-
-footer {
-  color: white;
-  background-color: #182a4a;
-  padding: 40px 0 50px 0;
-  font-family: "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
-
-footer p {
-  font-style: italic;
-  font-size: 2em;
-  font-weight: 200;
-  padding-top: 25px;
-  margin: 0;
-}
-
-
-/* Popups */
-
-.popup {
-  top: 20%;
-  width: 75%;
-  position: fixed;
-  left: 50%;
-  margin: 0 0 0 -37.5%;
-  z-index: 9999;
-  background: #fff;
-  min-height: 300px;
-  border-radius: 16px;
-  padding: 35px;
-  display:none;
-}
-
-.popup h2 {
-  font-size: 30px;
-  padding-bottom: 24px;
-}
-
-.popup p {
-  line-height: 22px;
-  margin-bottom:10px;
-}
-
-.popup h3 {
-  font-weight:bold;
-  margin-bottom:15px;
-}
-
-.popup .close {
-  position: absolute;
-  right: 30px;
-  top: 30px;
-  font-size: 24px;
-}
-
-.link {
-  cursor:pointer;
-  color: #038CC4;
-}
-
-.link:hover {
-  color: #004967;
-  text-decoration: underline
-}
-
-.aboutLink {
-  background: none;
-  border-color: #fff;
-  border-width: 3px;
-  border-radius: 8px;
-  text-decoration: underline;
-}
-
-.aboutLink:hover {
-  color: #E47C5D;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.mask {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  left: 0;
-  top: 0;
-  background: rgba(51,51,51,0.7);
-  z-index: 10;
-  display:none;
-}
-

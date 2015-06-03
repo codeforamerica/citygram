@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Citygram::Models::Subscription do
   it 'belongs to a publisher' do
     publisher = create(:publisher)
-    subscription = create(:subscription, publisher: publisher).reload 
+    subscription = create(:subscription, publisher: publisher).reload
     expect(subscription.publisher).to eq publisher
   end
 
@@ -26,6 +26,41 @@ describe Citygram::Models::Subscription do
   it 'requires an available channel' do
     subscription = build(:subscription, channel: 'missing')
     expect(subscription).not_to be_valid
+  end
+
+  it 'has_events? is false when subscription has no events' do
+    subscription = create(:subscription)
+    expect(subscription).to_not have_events
+  end
+
+  it 'has_events? is true when subscription has events' do
+    subscription = create(:subscription)
+    create(:event, publisher: subscription.publisher, geom: subscription.geom)
+    expect(subscription).to have_events
+  end
+
+  describe 'determining notifiables' do
+    it 'includes subscriptions that are not unsubscribed' do
+      subscription = create(:subscription, unsubscribed_at: nil)
+      expect(Subscription.notifiables.all).to eq [subscription]
+    end
+
+    it 'excludes subscriptions that are unsubscribed' do
+      subscription = create(:subscription, unsubscribed_at: Date.today)
+      expect(Subscription.notifiables.all).to be_empty
+    end
+
+    it 'includes subscriptions with active publishers' do
+      publisher = create(:publisher, active: true)
+      subscription = create(:subscription, publisher: publisher).reload
+      expect(Subscription.notifiables.all).to eq [subscription]
+    end
+
+    it 'excludes subscriptions with inactive publishers' do
+      publisher = create(:publisher, active: false)
+      create(:subscription, publisher: publisher)
+      expect(Subscription.notifiables.all).to be_empty
+    end
   end
 
   describe 'contact channel validations' do

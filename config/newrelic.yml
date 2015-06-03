@@ -18,6 +18,7 @@ common: &default_settings
     enabled: true
     capture_source: true
     ignore_errors: "ActionController::RoutingError,Sinatra::NotFound"
+
 development:
   <<: *default_settings
   monitor_mode: false

@@ -4,8 +4,13 @@ module Citygram::Models
     one_to_many :events
 
     plugin :url_validation
+    plugin :serialization, :pg_array, :tags
 
     dataset_module do
+      def tagged(tag)
+        where('? = ANY (tags)', tag)
+      end
+
       def visible
         where(visible: true)
       end
@@ -19,7 +24,6 @@ module Citygram::Models
       super
       validates_presence [:title, :endpoint, :city, :icon]
       validates_url :endpoint
-      validates_unique :title
       validates_unique :endpoint
     end
   end

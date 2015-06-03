@@ -61,13 +61,20 @@ rake db:create db:migrate
 rake db:create db:migrate DATABASE_URL=postgres://localhost/citygram_test
 ```
 
-### Developing
+=======
+##### Single City Installation
 
-To boot up the complete application and run background jobs in development:
+If you only need to support a single city you can specify the <kbd>ROOT_CITY_TAG</kbd> to bypass the index and load one city.
+
+For example, https://www.citygram.nyc/ is a single city installation with the following environment variable
 
 ```
-bundle exec foreman start -f Procfile.dev
-open http://localhost:9292/
+ROOT_CITY_TAG=new-york
+```
+
+```
+bundle exec foreman start
+open http://localhost:5000/
 ```
 
 You can now see your site at

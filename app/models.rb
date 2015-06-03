@@ -16,6 +16,8 @@ Sequel::Model.raise_on_save_failure = false
 # sequel's standard pagination
 DB.extension :pagination
 
+DB.extension :pg_json, :pg_array
+
 # common model plugins
 Sequel::Model.plugin :attributes_helpers
 Sequel::Model.plugin :json_serializer
@@ -23,6 +25,38 @@ Sequel::Model.plugin :save_helpers
 Sequel::Model.plugin :serialization
 Sequel::Model.plugin :timestamps, update_on_create: true
 Sequel::Model.plugin :validation_helpers
+
+Sequel::Plugins::Serialization.register_format(:pg_array,
+  ->(v){ Sequel.pg_array(v) },
+  ->(v){
+    case v
+    when Sequel::Postgres::PGArray
+      v.to_a
+    when String
+      Sequel::Postgres::PGArray::Parser.new(v).parse
+    else
+      raise Sequel::InvalidValue, "invalid value for array: #{v.inspect}"
+    end
+  }
+)
+
+# roundtrip a `Hash` or `Array` through a native postgres json column
+Sequel::Plugins::Serialization.register_format(:pg_json,
+  ->(v){ Sequel.pg_json(v) },
+  ->(v){
+    # TODO: does sequel expose an interface for this case handling?
+    case v
+    when Sequel::Postgres::JSONHash
+      v.to_h
+    when Sequel::Postgres::JSONArray
+      v.to_a
+    when String
+      Sequel.parse_json(v)
+    else
+      raise Sequel::InvalidValue, "invalid value for json: #{v.inspect}"
+    end
+  }
+)
 
 # round trip a geojson geometry through a postgis geometry column
 Sequel::Plugins::Serialization.register_format(:geojson,
@@ -46,6 +80,7 @@ module Citygram
   end
 end
 
+require 'app/models/city'
 require 'app/models/event'
 require 'app/models/publisher'
 require 'app/models/subscription'

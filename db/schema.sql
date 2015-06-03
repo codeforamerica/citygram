@@ -24,6 +24,20 @@ COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
 
 
 --
+-- Name: pg_stat_statements; Type: EXTENSION; Schema: -; Owner: -
+--
+
+CREATE EXTENSION IF NOT EXISTS pg_stat_statements WITH SCHEMA public;
+
+
+--
+-- Name: EXTENSION pg_stat_statements; Type: COMMENT; Schema: -; Owner: -
+--
+
+COMMENT ON EXTENSION pg_stat_statements IS 'track execution statistics of all SQL statements executed';
+
+
+--
 -- Name: postgis; Type: EXTENSION; Schema: -; Owner: -
 --
 
@@ -69,8 +83,8 @@ CREATE TABLE events (
     updated_at timestamp without time zone,
     created_at timestamp without time zone,
     publisher_id integer,
-    properties text DEFAULT '{}'::text,
-    feature_id text
+    feature_id text,
+    properties json DEFAULT '{}'::json
 );
 
 
@@ -128,7 +142,8 @@ CREATE TABLE publishers (
     icon text,
     visible boolean DEFAULT true,
     state text,
-    description text
+    description text,
+    tags text[] DEFAULT '{}'::text[] NOT NULL
 );
 
 
@@ -243,13 +258,6 @@ CREATE UNIQUE INDEX events_publisher_id_feature_id_index ON events USING btree (
 --
 
 CREATE UNIQUE INDEX publishers_endpoint_index ON publishers USING btree (endpoint);
-
-
---
--- Name: publishers_title_index; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE UNIQUE INDEX publishers_title_index ON publishers USING btree (title);
 
 
 --

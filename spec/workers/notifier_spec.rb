@@ -18,7 +18,9 @@ describe Citygram::Workers::Notifier do
       end
 
       it 'retrieves the subscription of interest' do
-        expect(Subscription).to receive(:first!).with(id: subscription.id).and_return(subscription)
+        active_dataset = Subscription.active
+        expect(Subscription).to receive(:active).and_return(active_dataset)
+        expect(active_dataset).to receive(:first!).with(id: subscription.id).and_return(subscription)
         subject.perform(subscription.id, event.id)
       end
     end

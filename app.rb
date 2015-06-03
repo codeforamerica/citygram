@@ -31,7 +31,7 @@ module Citygram
     configure :production do
       require 'newrelic_rpm'
       require 'rack/ssl'
-      use Rack::SSL
+      use Rack::SSL unless ENV['NO_SSL'] == 'true'
     end
   end
 end

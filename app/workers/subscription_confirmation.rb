@@ -3,6 +3,10 @@ module Citygram::Workers
     include Sidekiq::Worker
     sidekiq_options retry: 5
 
+    def digest_url(subscription)
+      Citygram::Routes::Helpers.build_url(Citygram::App.application_url, "/digests/#{subscription.id}/events")
+    end
+
     def perform(subscription_id)
       subscription = Subscription.first!(id: subscription_id)
       publisher = subscription.publisher
@@ -10,7 +14,7 @@ module Citygram::Workers
       # TODO: get rid of this case statement
       case subscription.channel
       when 'sms'
-        body = "Welcome! You are now subscribed to #{publisher.title} in #{publisher.city}. Woohoo! If you'd like to give feedback, text back with your email. To unsubscribe from all messages, reply STOP."
+        body = "Welcome! You are now subscribed to #{publisher.title} in #{publisher.city}. To see current Citygrams please visit #{digest_url(subscription)}. To unsubscribe from all messages, reply REMOVE."
 
         Citygram::Services::Channels::SMS.sms(
           from: Citygram::Services::Channels::SMS::FROM_NUMBER,
@@ -18,10 +22,8 @@ module Citygram::Workers
           body: body
         )
       when 'email'
-        url = Citygram::Routes::Helpers.build_url(Citygram::App.application_url, "/digests/#{subscription.id}/events")
-
         body = <<-BODY.dedent
-          <p>Thank you for subscribing! <a href="#{url}">View Citygrams</a> in a browser.</p>
+          <p>Thank you for subscribing! <a href="#{digest_url(subscription)}">View Citygrams</a> in a browser.</p>
         BODY
 
         Citygram::Services::Channels::Email.mail(
