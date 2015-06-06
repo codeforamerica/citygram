@@ -1,0 +1,3305 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "id": "2015-00199164",
+      "type": "Feature",
+      "properties": {
+        "isgeocoded": true,
+        "referenceid": "2015-00199164",
+        "processedtodw": true,
+        "location": "639 W Central Blvd",
+        "description": "Battery",
+        "zipcode": "32801",
+        "geopoint": "0xE6100000010CFEFFFF1FD65854C005000080EC8A3C40",
+        "tweet": "NULL",
+        "calltime": "2015-05-15T08:25:00",
+        "location_1": {
+          "needs_recoding": false,
+          "longitude": "-81.388069152832",
+          "latitude": "28.5426712036133",
+          "human_address": "{\"address\":\"639 W Central Blvd\",\"city\":\"Orlando\",\"state\":\"FL\",\"zip\":\"32801\"}"
+        },
+        "district": "F4",
+        "errored": "0",
+        "title": "A Battery has occurred at 639 W Central Blvd on 2015-05-15T08:25:00."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          {
+            "longitude": -81.388069152832,
+            "latitude": 28.5426712036133
+          }
+        ]
+      }
+    },
+    {
+      "id": "2015-00199155",
+      "type": "Feature",
+      "properties": {
+        "isgeocoded": true,
+        "referenceid": "2015-00199155",
+        "processedtodw": true,
+        "location": "55 Church St W",
+        "description": "Vehicle B&E",
+        "zipcode": "32801",
+        "geopoint": "0xE6100000010CFFFFFFDF565854C0FBFFFF7F638A3C40",
+        "tweet": "NULL",
+        "calltime": "2015-05-15T08:24:00",
+        "location_1": {
+          "needs_recoding": false,
+          "longitude": "-81.3803024291992",
+          "latitude": "28.5405807495117",
+          "human_address": "{\"address\":\"55 Church St W\",\"city\":\"Orlando\",\"state\":\"FL\",\"zip\":\"32801\"}"
+        },
+        "district": "D3",
+        "errored": "0",
+        "title": "A Vehicle B&E has occurred at 55 Church St W on 2015-05-15T08:24:00."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          {
+            "longitude": -81.3803024291992,
+            "latitude": 28.5405807495117
+          }
+        ]
+      }
+    },
+    {
+      "id": "2015-00199152",
+      "type": "Feature",
+      "properties": {
+        "isgeocoded": true,
+        "referenceid": "2015-00199152",
+        "processedtodw": true,
+        "location": "9350 Airport Blvd",
+        "description": "Designated Patrol Area - available",
+        "zipcode": "32827",
+        "geopoint": "0xE6100000010CFFFF4F56885354C0FBFFBF35616E3C40",
+        "tweet": "NULL",
+        "calltime": "2015-05-15T08:06:00",
+        "location_1": {
+          "needs_recoding": false,
+          "longitude": "-81.3051963597536",
+          "latitude": "28.4311708062887",
+          "human_address": "{\"address\":\"9350 Airport Blvd\",\"city\":\"Orlando\",\"state\":\"FL\",\"zip\":\"32827\"}"
+        },
+        "district": "88",
+        "errored": "0",
+        "title": "A Designated Patrol Area - available has occurred at 9350 Airport Blvd on 2015-05-15T08:06:00."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          {
+            "longitude": -81.3051963597536,
+            "latitude": 28.4311708062887
+          }
+        ]
+      }
+    },
+    {
+      "id": "2015-00199149",
+      "type": "Feature",
+      "properties": {
+        "isgeocoded": true,
+        "referenceid": "2015-00199149",
+        "processedtodw": true,
+        "location": "3562 Shallot Dr",
+        "description": "Residential alarm",
+        "zipcode": "32835",
+        "geopoint": "0xE6100000010CFDFFFF5F155E54C00D0000E0C2813C40",
+        "tweet": "NULL",
+        "calltime": "2015-05-15T08:17:00",
+        "location_1": {
+          "needs_recoding": false,
+          "longitude": "-81.4700546264648",
+          "latitude": "28.5068798065186",
+          "human_address": "{\"address\":\"3562 Shallot Dr\",\"city\":\"Orlando\",\"state\":\"FL\",\"zip\":\"32835\"}"
+        },
+        "district": "E3",
+        "errored": "0",
+        "title": "A Residential alarm has occurred at 3562 Shallot Dr on 2015-05-15T08:17:00."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          {
+            "longitude": -81.4700546264648,
+            "latitude": 28.5068798065186
+          }
+        ]
+      }
+    },
+    {
+      "id": "2015-00199146",
+      "type": "Feature",
+      "properties": {
+        "isgeocoded": true,
+        "referenceid": "2015-00199146",
+        "processedtodw": true,
+        "location": "10790 Leevista Blvd",
+        "description": "House/business check",
+        "zipcode": "32829",
+        "geopoint": "0xE6100000010C020000E0CF4E54C0FDFFFF5F0D7A3C40",
+        "tweet": "NULL",
+        "calltime": "2015-05-15T08:01:00",
+        "location_1": {
+          "needs_recoding": false,
+          "longitude": "-81.2314376831055",
+          "latitude": "28.4767665863037",
+          "human_address": "{\"address\":\"10790 Leevista Blvd\",\"city\":\"Orlando\",\"state\":\"FL\",\"zip\":\"32829\"}"
+        },
+        "district": "K5",
+        "errored": "0",
+        "title": "A House/business check has occurred at 10790 Leevista Blvd on 2015-05-15T08:01:00."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          {
+            "longitude": -81.2314376831055,
+            "latitude": 28.4767665863037
+          }
+        ]
+      }
+    },
+    {
+      "id": "2015-00199143",
+      "type": "Feature",
+      "properties": {
+        "isgeocoded": true,
+        "referenceid": "2015-00199143",
+        "processedtodw": true,
+        "location": "4041 Kaluga Park St",
+        "description": "Unknown trouble",
+        "zipcode": "32808",
+        "geopoint": "0xE6100000010CFFFFFF3F7D5B54C004000000D38E3C40",
+        "tweet": "NULL",
+        "calltime": "2015-05-15T08:05:00",
+        "location_1": {
+          "needs_recoding": false,
+          "longitude": "-81.4295196533203",
+          "latitude": "28.5579071044922",
+          "human_address": "{\"address\":\"4041 Kaluga Park St\",\"city\":\"Orlando\",\"state\":\"FL\",\"zip\":\"32808\"}"
+        },
+        "district": "B3",
+        "errored": "0",
+        "title": "A Unknown trouble has occurred at 4041 Kaluga Park St on 2015-05-15T08:05:00."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          {
+            "longitude": -81.4295196533203,
+            "latitude": 28.5579071044922
+          }
+        ]
+      }
+    },
+    {
+      "id": "2015-00199141",
+      "type": "Feature",
+      "properties": {
+        "isgeocoded": true,
+        "referenceid": "2015-00199141",
+        "processedtodw": true,
+        "location": "9321 Airport Blvd",
+        "description": "General investigation",
+        "zipcode": "32827",
+        "geopoint": "0xE6100000010C0100F006EC5354C0FAFFFFC96E6E3C40",
+        "tweet": "NULL",
+        "calltime": "2015-05-15T07:56:00",
+        "location_1": {
+          "needs_recoding": false,
+          "longitude": "-81.3112809509039",
+          "latitude": "28.4313780069351",
+          "human_address": "{\"address\":\"9321 Airport Blvd\",\"city\":\"Orlando\",\"state\":\"FL\",\"zip\":\"32827\"}"
+        },
+        "district": "87",
+        "errored": "0",
+        "title": "A General investigation has occurred at 9321 Airport Blvd on 2015-05-15T07:56:00."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          {
+            "longitude": -81.3112809509039,
+            "latitude": 28.4313780069351
+          }
+        ]
+      }
+    },
+    {
+      "id": "2015-00199137",
+      "type": "Feature",
+      "properties": {
+        "isgeocoded": true,
+        "referenceid": "2015-00199137",
+        "processedtodw": true,
+        "location": "4751 Raleigh St",
+        "description": "Drug violation",
+        "zipcode": "32811",
+        "geopoint": "0xE6100000010C0200B0F94E5C54C0F3FF3F8221873C40",
+        "tweet": "NULL",
+        "calltime": "2015-05-15T07:53:00",
+        "location_1": {
+          "needs_recoding": false,
+          "longitude": "-81.4423202723265",
+          "latitude": "28.527855053544",
+          "human_address": "{\"address\":\"4751 Raleigh St\",\"city\":\"Orlando\",\"state\":\"FL\",\"zip\":\"32811\"}"
+        },
+        "district": "G6",
+        "errored": "0",
+        "title": "A Drug violation has occurred at 4751 Raleigh St on 2015-05-15T07:53:00."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          {
+            "longitude": -81.4423202723265,
+            "latitude": 28.527855053544
+          }
+        ]
+      }
+    },
+    {
+      "id": "2015-00199131",
+      "type": "Feature",
+      "properties": {
+        "isgeocoded": true,
+        "referenceid": "2015-00199131",
+        "processedtodw": true,
+        "location": "Lake Underhill Rd & Conway Rd S",
+        "description": "Accident (minor)",
+        "zipcode": "32807",
+        "geopoint": "0xE6100000010CFDFF6F8A325554C0020080F598893C40",
+        "tweet": "NULL",
+        "calltime": "2015-05-15T08:06:00",
+        "location_1": {
+          "needs_recoding": false,
+          "longitude": "-81.3312097638845",
+          "latitude": "28.5374902188778",
+          "human_address": "{\"address\":\"Lake Underhill Rd &amp; Conway Rd S\",\"city\":\"Orlando\",\"state\":\"FL\",\"zip\":\"32807\"}"
+        },
+        "district": "I2",
+        "errored": "0",
+        "title": "A Accident (minor) has occurred at Lake Underhill Rd & Conway Rd S on 2015-05-15T08:06:00."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          {
+            "longitude": -81.3312097638845,
+            "latitude": 28.5374902188778
+          }
+        ]
+      }
+    },
+    {
+      "id": "2015-00199125",
+      "type": "Feature",
+      "properties": {
+        "isgeocoded": true,
+        "referenceid": "2015-00199125",
+        "processedtodw": true,
+        "location": "9350 Airport Blvd",
+        "description": "Designated Patrol Area - available",
+        "zipcode": "32827",
+        "geopoint": "0xE6100000010CFFFF4F56885354C0FBFFBF35616E3C40",
+        "tweet": "NULL",
+        "calltime": "2015-05-15T07:39:00",
+        "location_1": {
+          "needs_recoding": false,
+          "longitude": "-81.3051963597536",
+          "latitude": "28.4311708062887",
+          "human_address": "{\"address\":\"9350 Airport Blvd\",\"city\":\"Orlando\",\"state\":\"FL\",\"zip\":\"32827\"}"
+        },
+        "district": "88",
+        "errored": "0",
+        "title": "A Designated Patrol Area - available has occurred at 9350 Airport Blvd on 2015-05-15T07:39:00."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          {
+            "longitude": -81.3051963597536,
+            "latitude": 28.4311708062887
+          }
+        ]
+      }
+    },
+    {
+      "id": "2015-00199124",
+      "type": "Feature",
+      "properties": {
+        "isgeocoded": true,
+        "referenceid": "2015-00199124",
+        "processedtodw": true,
+        "location": "Delaney Ave & Michigan St E",
+        "description": "Trespasser",
+        "zipcode": "32806",
+        "geopoint": "0xE6100000010C0100C01FD25754C00700404355833C40",
+        "tweet": "NULL",
+        "calltime": "2015-05-15T07:51:00",
+        "location_1": {
+          "needs_recoding": false,
+          "longitude": "-81.3721999526024",
+          "latitude": "28.5130197554827",
+          "human_address": "{\"address\":\"Delaney Ave &amp; Michigan St E\",\"city\":\"Orlando\",\"state\":\"FL\",\"zip\":\"32806\"}"
+        },
+        "district": "I4",
+        "errored": "0",
+        "title": "A Trespasser has occurred at Delaney Ave & Michigan St E on 2015-05-15T07:51:00."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          {
+            "longitude": -81.3721999526024,
+            "latitude": 28.5130197554827
+          }
+        ]
+      }
+    },
+    {
+      "id": "2015-00199121",
+      "type": "Feature",
+      "properties": {
+        "isgeocoded": true,
+        "referenceid": "2015-00199121",
+        "processedtodw": true,
+        "location": "Narcoossee Rd & Northlake Pkwy",
+        "description": "School zone crossing",
+        "zipcode": "32827",
+        "geopoint": "0xE6100000010C00002049505054C0F5FF3FA7706D3C40",
+        "tweet": "NULL",
+        "calltime": "2015-05-15T07:36:00",
+        "location_1": {
+          "needs_recoding": false,
+          "longitude": "-81.2549002468586",
+          "latitude": "28.4275002032518",
+          "human_address": "{\"address\":\"Narcoossee Rd &amp; Northlake Pkwy\",\"city\":\"Orlando\",\"state\":\"FL\",\"zip\":\"32827\"}"
+        },
+        "district": "K7",
+        "errored": "0",
+        "title": "A School zone crossing has occurred at Narcoossee Rd & Northlake Pkwy on 2015-05-15T07:36:00."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          {
+            "longitude": -81.2549002468586,
+            "latitude": 28.4275002032518
+          }
+        ]
+      }
+    },
+    {
+      "id": "2015-00199120",
+      "type": "Feature",
+      "properties": {
+        "isgeocoded": true,
+        "referenceid": "2015-00199120",
+        "processedtodw": true,
+        "location": "E Robinson St & N Rosalind Ave",
+        "description": "Unknown trouble",
+        "zipcode": "32801",
+        "geopoint": "0xE6100000010C0300E0670F5854C0FCFFBFA9B18B3C40",
+        "tweet": "NULL",
+        "calltime": "2015-05-15T07:36:00",
+        "location_1": {
+          "needs_recoding": false,
+          "longitude": "-81.3759402930737",
+          "latitude": "28.5456796735525",
+          "human_address": "{\"address\":\"E Robinson St &amp; N Rosalind Ave\",\"city\":\"Orlando\",\"state\":\"FL\",\"zip\":\"32801\"}"
+        },
+        "district": "D1",
+        "errored": "0",
+        "title": "A Unknown trouble has occurred at E Robinson St & N Rosalind Ave on 2015-05-15T07:36:00."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          {
+            "longitude": -81.3759402930737,
+            "latitude": 28.5456796735525
+          }
+        ]
+      }
+    },
+    {
+      "id": "2015-00199118",
+      "type": "Feature",
+      "properties": {
+        "isgeocoded": true,
+        "referenceid": "2015-00199118",
+        "processedtodw": true,
+        "location": "716 Cornelia Ct",
+        "description": "General disturbance - armed",
+        "zipcode": "32811",
+        "geopoint": "0xE6100000010CFEFFFF1F465C54C0070000006E883C40",
+        "tweet": "NULL",
+        "calltime": "2015-05-15T07:40:00",
+        "location_1": {
+          "needs_recoding": false,
+          "longitude": "-81.441780090332",
+          "latitude": "28.5329284667969",
+          "human_address": "{\"address\":\"716 Cornelia Ct\",\"city\":\"Orlando\",\"state\":\"FL\",\"zip\":\"32811\"}"
+        },
+        "district": "G6",
+        "errored": "0",
+        "title": "A General disturbance - armed has occurred at 716 Cornelia Ct on 2015-05-15T07:40:00."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          {
+            "longitude": -81.441780090332,
+            "latitude": 28.5329284667969
+          }
+        ]
+      }
+    },
+    {
+      "id": "2015-00199114",
+      "type": "Feature",
+      "properties": {
+        "isgeocoded": true,
+        "referenceid": "2015-00199114",
+        "processedtodw": true,
+        "location": "3838 Semoran Blvd S",
+        "description": "Accident (minor)",
+        "zipcode": "32822",
+        "geopoint": "0xE6100000010C000000A0FD5354C0040000C04B813C40",
+        "tweet": "NULL",
+        "calltime": "2015-05-15T08:17:00",
+        "location_1": {
+          "needs_recoding": false,
+          "longitude": "-81.3123550415039",
+          "latitude": "28.5050621032715",
+          "human_address": "{\"address\":\"3838 Semoran Blvd S\",\"city\":\"Orlando\",\"state\":\"FL\",\"zip\":\"32822\"}"
+        },
+        "district": "K1",
+        "errored": "0",
+        "title": "A Accident (minor) has occurred at 3838 Semoran Blvd S on 2015-05-15T08:17:00."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          {
+            "longitude": -81.3123550415039,
+            "latitude": 28.5050621032715
+          }
+        ]
+      }
+    },
+    {
+      "id": "2015-00199110",
+      "type": "Feature",
+      "properties": {
+        "isgeocoded": true,
+        "referenceid": "2015-00199110",
+        "processedtodw": true,
+        "location": "92 W Miller St",
+        "description": "General disturbance",
+        "zipcode": "32806",
+        "geopoint": "0xE6100000010CFFFF3F044F5854C00700800E1A863C40",
+        "tweet": "NULL",
+        "calltime": "2015-05-15T08:29:00",
+        "location_1": {
+          "needs_recoding": false,
+          "longitude": "-81.3798227906227",
+          "latitude": "28.523835092783",
+          "human_address": "{\"address\":\"92 W Miller St\",\"city\":\"Orlando\",\"state\":\"FL\",\"zip\":\"32806\"}"
+        },
+        "district": "I4",
+        "errored": "0",
+        "title": "A General disturbance has occurred at 92 W Miller St on 2015-05-15T08:29:00."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          {
+            "longitude": -81.3798227906227,
+            "latitude": 28.523835092783
+          }
+        ]
+      }
+    },
+    {
+      "id": "2015-00199107",
+      "type": "Feature",
+      "properties": {
+        "isgeocoded": true,
+        "referenceid": "2015-00199107",
+        "processedtodw": true,
+        "location": "2425 Hiawassee Rd S",
+        "description": "Commercial alarm",
+        "zipcode": "32835",
+        "geopoint": "0xE6100000010C0200D017FF5E54C0FDFFBF8339843C40",
+        "tweet": "NULL",
+        "calltime": "2015-05-15T07:30:00",
+        "location_1": {
+          "needs_recoding": false,
+          "longitude": "-81.4843196421862",
+          "latitude": "28.5165026038885",
+          "human_address": "{\"address\":\"2425 Hiawassee Rd S\",\"city\":\"Orlando\",\"state\":\"FL\",\"zip\":\"32835\"}"
+        },
+        "district": "E3",
+        "errored": "0",
+        "title": "A Commercial alarm has occurred at 2425 Hiawassee Rd S on 2015-05-15T07:30:00."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          {
+            "longitude": -81.4843196421862,
+            "latitude": 28.5165026038885
+          }
+        ]
+      }
+    },
+    {
+      "id": "2015-00199104",
+      "type": "Feature",
+      "properties": {
+        "isgeocoded": true,
+        "referenceid": "2015-00199104",
+        "processedtodw": true,
+        "location": "2211 Hillcrest St",
+        "description": "Commercial alarm",
+        "zipcode": "32803",
+        "geopoint": "0xE6100000010C03000040A25654C00C000080728D3C40",
+        "tweet": "NULL",
+        "calltime": "2015-05-15T07:53:00",
+        "location_1": {
+          "needs_recoding": false,
+          "longitude": "-81.3536529541016",
+          "latitude": "28.5525283813477",
+          "human_address": "{\"address\":\"2211 Hillcrest St\",\"city\":\"Orlando\",\"state\":\"FL\",\"zip\":\"32803\"}"
+        },
+        "district": "C5",
+        "errored": "0",
+        "title": "A Commercial alarm has occurred at 2211 Hillcrest St on 2015-05-15T07:53:00."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          {
+            "longitude": -81.3536529541016,
+            "latitude": 28.5525283813477
+          }
+        ]
+      }
+    },
+    {
+      "id": "2015-00199090",
+      "type": "Feature",
+      "properties": {
+        "isgeocoded": true,
+        "referenceid": "2015-00199090",
+        "processedtodw": true,
+        "location": "Kaley St E & S Fern Creek Ave",
+        "description": "School zone crossing",
+        "zipcode": "32806",
+        "geopoint": "0xE6100000010C030070EE085754C0F5FF3F9B37853C40",
+        "tweet": "NULL",
+        "calltime": "2015-05-15T07:44:00",
+        "location_1": {
+          "needs_recoding": false,
+          "longitude": "-81.35992012918",
+          "latitude": "28.5203797370195",
+          "human_address": "{\"address\":\"Kaley St E &amp; S Fern Creek Ave\",\"city\":\"Orlando\",\"state\":\"FL\",\"zip\":\"32806\"}"
+        },
+        "district": "I5",
+        "errored": "0",
+        "title": "A School zone crossing has occurred at Kaley St E & S Fern Creek Ave on 2015-05-15T07:44:00."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          {
+            "longitude": -81.35992012918,
+            "latitude": 28.5203797370195
+          }
+        ]
+      }
+    },
+    {
+      "id": "2015-00199089",
+      "type": "Feature",
+      "properties": {
+        "isgeocoded": true,
+        "referenceid": "2015-00199089",
+        "processedtodw": true,
+        "location": "1916 Conway Rd S",
+        "description": "Suspicious incident",
+        "zipcode": "32812",
+        "geopoint": "0xE6100000010C00000060345554C0F9FFFF5FFA843C40",
+        "tweet": "NULL",
+        "calltime": "2015-05-15T07:21:00",
+        "location_1": {
+          "needs_recoding": false,
+          "longitude": "-81.3313217163086",
+          "latitude": "28.5194454193115",
+          "human_address": "{\"address\":\"1916 Conway Rd S\",\"city\":\"Orlando\",\"state\":\"FL\",\"zip\":\"32812\"}"
+        },
+        "district": "I6",
+        "errored": "0",
+        "title": "A Suspicious incident has occurred at 1916 Conway Rd S on 2015-05-15T07:21:00."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          {
+            "longitude": -81.3313217163086,
+            "latitude": 28.5194454193115
+          }
+        ]
+      }
+    },
+    {
+      "id": "2015-00199082",
+      "type": "Feature",
+      "properties": {
+        "isgeocoded": true,
+        "referenceid": "2015-00199082",
+        "processedtodw": true,
+        "location": "734 Cordova Dr",
+        "description": "Suspicious person",
+        "zipcode": "32804",
+        "geopoint": "0xE6100000010CFFFFFF3F155954C0FCFFFF3FE48D3C40",
+        "tweet": "NULL",
+        "calltime": "2015-05-15T07:17:00",
+        "location_1": {
+          "needs_recoding": false,
+          "longitude": "-81.3919219970703",
+          "latitude": "28.5542640686035",
+          "human_address": "{\"address\":\"734 Cordova Dr\",\"city\":\"Orlando\",\"state\":\"FL\",\"zip\":\"32804\"}"
+        },
+        "district": "C3",
+        "errored": "0",
+        "title": "A Suspicious person has occurred at 734 Cordova Dr on 2015-05-15T07:17:00."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          {
+            "longitude": -81.3919219970703,
+            "latitude": 28.5542640686035
+          }
+        ]
+      }
+    },
+    {
+      "id": "2015-00199080",
+      "type": "Feature",
+      "properties": {
+        "isgeocoded": true,
+        "referenceid": "2015-00199080",
+        "processedtodw": true,
+        "location": "10910 Leevista Blvd",
+        "description": "House/business check",
+        "zipcode": "32829",
+        "geopoint": "0xE6100000010C04000000AD4E54C0090000E0B77A3C40",
+        "tweet": "NULL",
+        "calltime": "2015-05-15T07:07:00",
+        "location_1": {
+          "needs_recoding": false,
+          "longitude": "-81.2293090820313",
+          "latitude": "28.4793682098389",
+          "human_address": "{\"address\":\"10910 Leevista Blvd\",\"city\":\"Orlando\",\"state\":\"FL\",\"zip\":\"32829\"}"
+        },
+        "district": "K5",
+        "errored": "0",
+        "title": "A House/business check has occurred at 10910 Leevista Blvd on 2015-05-15T07:07:00."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          {
+            "longitude": -81.2293090820313,
+            "latitude": 28.4793682098389
+          }
+        ]
+      }
+    },
+    {
+      "id": "2015-00199079",
+      "type": "Feature",
+      "properties": {
+        "isgeocoded": true,
+        "referenceid": "2015-00199079",
+        "processedtodw": true,
+        "location": "101 N Rosalind Ave",
+        "description": "Designated Patrol Area - available",
+        "zipcode": "32801",
+        "geopoint": "0xE6100000010C000050350E5854C00600805A328B3C40",
+        "tweet": "NULL",
+        "calltime": "2015-05-15T07:06:00",
+        "location_1": {
+          "needs_recoding": false,
+          "longitude": "-81.375867202878",
+          "latitude": "28.5437370836735",
+          "human_address": "{\"address\":\"101 N Rosalind Ave\",\"city\":\"Orlando\",\"state\":\"FL\",\"zip\":\"32801\"}"
+        },
+        "district": "D1",
+        "errored": "0",
+        "title": "A Designated Patrol Area - available has occurred at 101 N Rosalind Ave on 2015-05-15T07:06:00."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          {
+            "longitude": -81.375867202878,
+            "latitude": 28.5437370836735
+          }
+        ]
+      }
+    },
+    {
+      "id": "2015-00199078",
+      "type": "Feature",
+      "properties": {
+        "isgeocoded": true,
+        "referenceid": "2015-00199078",
+        "processedtodw": true,
+        "location": "1000 Kaley St E",
+        "description": "Suspicious person",
+        "zipcode": "32806",
+        "geopoint": "0xE6100000010C010000206B5754C0F8FFFFDF98843C40",
+        "tweet": "NULL",
+        "calltime": "2015-05-15T07:05:00",
+        "location_1": {
+          "needs_recoding": false,
+          "longitude": "-81.3659133911133",
+          "latitude": "28.5179576873779",
+          "human_address": "{\"address\":\"1000 Kaley St E\",\"city\":\"Orlando\",\"state\":\"FL\",\"zip\":\"32806\"}"
+        },
+        "district": "I5",
+        "errored": "0",
+        "title": "A Suspicious person has occurred at 1000 Kaley St E on 2015-05-15T07:05:00."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          {
+            "longitude": -81.3659133911133,
+            "latitude": 28.5179576873779
+          }
+        ]
+      }
+    },
+    {
+      "id": "2015-00199072",
+      "type": "Feature",
+      "properties": {
+        "isgeocoded": true,
+        "referenceid": "2015-00199072",
+        "processedtodw": true,
+        "location": "Lake Underhill Rd & Semoran Blvd S",
+        "description": "Accident (minor)",
+        "zipcode": "32807",
+        "geopoint": "0xE6100000010CFDFFCFE8DE5354C0F8FFFF89FC893C40",
+        "tweet": "NULL",
+        "calltime": "2015-05-15T07:36:00",
+        "location_1": {
+          "needs_recoding": false,
+          "longitude": "-81.3104803115129",
+          "latitude": "28.5390096902847",
+          "human_address": "{\"address\":\"Lake Underhill Rd &amp; Semoran Blvd S\",\"city\":\"Orlando\",\"state\":\"FL\",\"zip\":\"32807\"}"
+        },
+        "district": "I8",
+        "errored": "0",
+        "title": "A Accident (minor) has occurred at Lake Underhill Rd & Semoran Blvd S on 2015-05-15T07:36:00."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          {
+            "longitude": -81.3104803115129,
+            "latitude": 28.5390096902847
+          }
+        ]
+      }
+    },
+    {
+      "id": "2015-00199070",
+      "type": "Feature",
+      "properties": {
+        "isgeocoded": true,
+        "referenceid": "2015-00199070",
+        "processedtodw": true,
+        "location": "S Kirkman Rd & International Dr",
+        "description": "Unknown trouble",
+        "zipcode": "32819",
+        "geopoint": "0xE6100000010C0200E0235D5D54C0F4FF7F2063763C40",
+        "tweet": "NULL",
+        "calltime": "2015-05-15T06:52:00",
+        "location_1": {
+          "needs_recoding": false,
+          "longitude": "-81.4588098227978",
+          "latitude": "28.4624500572681",
+          "human_address": "{\"address\":\"S Kirkman Rd &amp; International Dr\",\"city\":\"Orlando\",\"state\":\"FL\",\"zip\":\"32819\"}"
+        },
+        "district": "E8",
+        "errored": "0",
+        "title": "A Unknown trouble has occurred at S Kirkman Rd & International Dr on 2015-05-15T06:52:00."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          {
+            "longitude": -81.4588098227978,
+            "latitude": 28.4624500572681
+          }
+        ]
+      }
+    },
+    {
+      "id": "2015-00199069",
+      "type": "Feature",
+      "properties": {
+        "isgeocoded": true,
+        "referenceid": "2015-00199069",
+        "processedtodw": true,
+        "location": "Sligh Blvd & Sturtevant St",
+        "description": "Hit and run (minor)",
+        "zipcode": "32806",
+        "geopoint": "0xE6100000010CFDFF9FB9665854C0FCFF3F2363863C40",
+        "tweet": "NULL",
+        "calltime": "2015-05-15T07:19:00",
+        "location_1": {
+          "needs_recoding": false,
+          "longitude": "-81.3812698423862",
+          "latitude": "28.5249502211809",
+          "human_address": "{\"address\":\"Sligh Blvd &amp; Sturtevant St\",\"city\":\"Orlando\",\"state\":\"FL\",\"zip\":\"32806\"}"
+        },
+        "district": "I3",
+        "errored": "0",
+        "title": "A Hit and run (minor) has occurred at Sligh Blvd & Sturtevant St on 2015-05-15T07:19:00."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          {
+            "longitude": -81.3812698423862,
+            "latitude": 28.5249502211809
+          }
+        ]
+      }
+    },
+    {
+      "id": "2015-00199068",
+      "type": "Feature",
+      "properties": {
+        "isgeocoded": true,
+        "referenceid": "2015-00199068",
+        "processedtodw": true,
+        "location": "4730 S Hampton Dr",
+        "description": "Weapons/armed",
+        "zipcode": "32812",
+        "geopoint": "0xE6100000010CFFFF9F48EA5454C00A0080917C823C40",
+        "tweet": "NULL",
+        "calltime": "2015-05-15T06:52:00",
+        "location_1": {
+          "needs_recoding": false,
+          "longitude": "-81.3267995417118",
+          "latitude": "28.5097132623196",
+          "human_address": "{\"address\":\"4730 S Hampton Dr\",\"city\":\"Orlando\",\"state\":\"FL\",\"zip\":\"32812\"}"
+        },
+        "district": "I7",
+        "errored": "0",
+        "title": "A Weapons/armed has occurred at 4730 S Hampton Dr on 2015-05-15T06:52:00."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          {
+            "longitude": -81.3267995417118,
+            "latitude": 28.5097132623196
+          }
+        ]
+      }
+    },
+    {
+      "id": "2015-00199061",
+      "type": "Feature",
+      "properties": {
+        "isgeocoded": true,
+        "referenceid": "2015-00199061",
+        "processedtodw": true,
+        "location": "Curry Ford Rd & Semoran Blvd S",
+        "description": "Drug violation",
+        "zipcode": "32822",
+        "geopoint": "0xE6100000010C000040F4DB5354C0FAFFBFDAFE853C40",
+        "tweet": "NULL",
+        "calltime": "2015-05-15T06:56:00",
+        "location_1": {
+          "needs_recoding": false,
+          "longitude": "-81.3102999329567",
+          "latitude": "28.5234200209379",
+          "human_address": "{\"address\":\"Curry Ford Rd &amp; Semoran Blvd S\",\"city\":\"Orlando\",\"state\":\"FL\",\"zip\":\"32822\"}"
+        },
+        "district": "K2",
+        "errored": "0",
+        "title": "A Drug violation has occurred at Curry Ford Rd & Semoran Blvd S on 2015-05-15T06:56:00."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          {
+            "longitude": -81.3102999329567,
+            "latitude": 28.5234200209379
+          }
+        ]
+      }
+    },
+    {
+      "id": "2015-00199060",
+      "type": "Feature",
+      "properties": {
+        "isgeocoded": true,
+        "referenceid": "2015-00199060",
+        "processedtodw": true,
+        "location": "5210 Curry Ford Rd",
+        "description": "Suspicious person",
+        "zipcode": "32812",
+        "geopoint": "0xE6100000010C040000007F5454C0030000A0FA853C40",
+        "tweet": "NULL",
+        "calltime": "2015-05-15T07:00:00",
+        "location_1": {
+          "needs_recoding": false,
+          "longitude": "-81.3202514648438",
+          "latitude": "28.5233554840088",
+          "human_address": "{\"address\":\"5210 Curry Ford Rd\",\"city\":\"Orlando\",\"state\":\"FL\",\"zip\":\"32812\"}"
+        },
+        "district": "I7",
+        "errored": "0",
+        "title": "A Suspicious person has occurred at 5210 Curry Ford Rd on 2015-05-15T07:00:00."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          {
+            "longitude": -81.3202514648438,
+            "latitude": 28.5233554840088
+          }
+        ]
+      }
+    },
+    {
+      "id": "2015-00199058",
+      "type": "Feature",
+      "properties": {
+        "isgeocoded": true,
+        "referenceid": "2015-00199058",
+        "processedtodw": true,
+        "location": "1835 E Colonial Dr",
+        "description": "Accident (minor)",
+        "zipcode": "32803",
+        "geopoint": "0xE6100000010C010000C0E05654C0F3FFFF1FAD8D3C40",
+        "tweet": "NULL",
+        "calltime": "2015-05-15T07:08:00",
+        "location_1": {
+          "needs_recoding": false,
+          "longitude": "-81.3574676513672",
+          "latitude": "28.5534229278564",
+          "human_address": "{\"address\":\"1835 E Colonial Dr\",\"city\":\"Orlando\",\"state\":\"FL\",\"zip\":\"32803\"}"
+        },
+        "district": "C6",
+        "errored": "0",
+        "title": "A Accident (minor) has occurred at 1835 E Colonial Dr on 2015-05-15T07:08:00."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          {
+            "longitude": -81.3574676513672,
+            "latitude": 28.5534229278564
+          }
+        ]
+      }
+    },
+    {
+      "id": "2015-00199056",
+      "type": "Feature",
+      "properties": {
+        "isgeocoded": true,
+        "referenceid": "2015-00199056",
+        "processedtodw": true,
+        "location": "W Gore St & S Parramore Ave",
+        "description": "School zone crossing",
+        "zipcode": "32805",
+        "geopoint": "0xE6100000010C030010BDE35854C0FDFFFF28F6873C40",
+        "tweet": "NULL",
+        "calltime": "2015-05-15T07:19:00",
+        "location_1": {
+          "needs_recoding": false,
+          "longitude": "-81.3889000564814",
+          "latitude": "28.5310998558998",
+          "human_address": "{\"address\":\"W Gore St &amp; S Parramore Ave\",\"city\":\"Orlando\",\"state\":\"FL\",\"zip\":\"32805\"}"
+        },
+        "district": "F6",
+        "errored": "0",
+        "title": "A School zone crossing has occurred at W Gore St & S Parramore Ave on 2015-05-15T07:19:00."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          {
+            "longitude": -81.3889000564814,
+            "latitude": 28.5310998558998
+          }
+        ]
+      }
+    },
+    {
+      "id": "2015-00199051",
+      "type": "Feature",
+      "properties": {
+        "isgeocoded": true,
+        "referenceid": "2015-00199051",
+        "processedtodw": true,
+        "location": "817 E South St",
+        "description": "Stolen vehicle",
+        "zipcode": "32801",
+        "geopoint": "0xE6100000010C0000802D7D5754C0FAFF7FEBDE893C40",
+        "tweet": "NULL",
+        "calltime": "2015-05-15T06:56:00",
+        "location_1": {
+          "needs_recoding": false,
+          "longitude": "-81.3670152425766",
+          "latitude": "28.5385577380657",
+          "human_address": "{\"address\":\"817 E South St\",\"city\":\"Orlando\",\"state\":\"FL\",\"zip\":\"32801\"}"
+        },
+        "district": "C5",
+        "errored": "0",
+        "title": "A Stolen vehicle has occurred at 817 E South St on 2015-05-15T06:56:00."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          {
+            "longitude": -81.3670152425766,
+            "latitude": 28.5385577380657
+          }
+        ]
+      }
+    },
+    {
+      "id": "2015-00199048",
+      "type": "Feature",
+      "properties": {
+        "isgeocoded": true,
+        "referenceid": "2015-00199048",
+        "processedtodw": true,
+        "location": "5249 Wellington Park Circle",
+        "description": "General disturbance",
+        "zipcode": "32839",
+        "geopoint": "0xE6100000010C010000C0A45A54C0FAFFFFBFC27D3C40",
+        "tweet": "NULL",
+        "calltime": "2015-05-15T06:31:00",
+        "location_1": {
+          "needs_recoding": false,
+          "longitude": "-81.4163055419922",
+          "latitude": "28.4912528991699",
+          "human_address": "{\"address\":\"5249 Wellington Park Circle\",\"city\":\"Orlando\",\"state\":\"FL\",\"zip\":\"32839\"}"
+        },
+        "district": "E6",
+        "errored": "0",
+        "title": "A General disturbance has occurred at 5249 Wellington Park Circle on 2015-05-15T06:31:00."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          {
+            "longitude": -81.4163055419922,
+            "latitude": 28.4912528991699
+          }
+        ]
+      }
+    },
+    {
+      "id": "2015-00199045",
+      "type": "Feature",
+      "properties": {
+        "isgeocoded": true,
+        "referenceid": "2015-00199045",
+        "processedtodw": true,
+        "location": "6557 Hazeltine National Dr",
+        "description": "Commercial alarm",
+        "zipcode": "32822",
+        "geopoint": "0xE6100000010C3883BF5FCC5254C00C2252D32E763C40",
+        "tweet": "NULL",
+        "calltime": "2015-05-15T06:56:00",
+        "location_1": {
+          "needs_recoding": false,
+          "longitude": "-81.293724",
+          "latitude": "28.461652",
+          "human_address": "{\"address\":\"6557 Hazeltine National Dr\",\"city\":\"Orlando\",\"state\":\"FL\",\"zip\":\"32822\"}"
+        },
+        "district": "K4",
+        "errored": "0",
+        "title": "A Commercial alarm has occurred at 6557 Hazeltine National Dr on 2015-05-15T06:56:00."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          {
+            "longitude": -81.293724,
+            "latitude": 28.461652
+          }
+        ]
+      }
+    },
+    {
+      "id": "2015-00199038",
+      "type": "Feature",
+      "properties": {
+        "isgeocoded": true,
+        "referenceid": "2015-00199038",
+        "processedtodw": true,
+        "location": "S Kirkman Rd & LB McLeod Rd",
+        "description": "Nuisance animal",
+        "zipcode": "32811",
+        "geopoint": "0xE6100000010CFEFF5F755E5D54C00000C0BC30813C40",
+        "tweet": "NULL",
+        "calltime": "2015-05-15T06:31:00",
+        "location_1": {
+          "needs_recoding": false,
+          "longitude": "-81.4588902890682",
+          "latitude": "28.5046499222517",
+          "human_address": "{\"address\":\"S Kirkman Rd &amp; LB McLeod Rd\",\"city\":\"Orlando\",\"state\":\"FL\",\"zip\":\"32811\"}"
+        },
+        "district": "E5",
+        "errored": "0",
+        "title": "A Nuisance animal has occurred at S Kirkman Rd & LB McLeod Rd on 2015-05-15T06:31:00."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          {
+            "longitude": -81.4588902890682,
+            "latitude": 28.5046499222517
+          }
+        ]
+      }
+    },
+    {
+      "id": "2015-00199035",
+      "type": "Feature",
+      "properties": {
+        "isgeocoded": true,
+        "referenceid": "2015-00199035",
+        "processedtodw": true,
+        "location": "6530 Swissco Dr",
+        "description": "General disturbance",
+        "zipcode": "32822",
+        "geopoint": "0xE6100000010CFDFFFF5F4B5354C0F3FFFFBF2C783C40",
+        "tweet": "NULL",
+        "calltime": "2015-05-15T06:28:00",
+        "location_1": {
+          "needs_recoding": false,
+          "longitude": "-81.3014755249023",
+          "latitude": "28.4694328308105",
+          "human_address": "{\"address\":\"6530 Swissco Dr\",\"city\":\"Orlando\",\"state\":\"FL\",\"zip\":\"32822\"}"
+        },
+        "district": "K4",
+        "errored": "0",
+        "title": "A General disturbance has occurred at 6530 Swissco Dr on 2015-05-15T06:28:00."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          {
+            "longitude": -81.3014755249023,
+            "latitude": 28.4694328308105
+          }
+        ]
+      }
+    },
+    {
+      "id": "2015-00199032",
+      "type": "Feature",
+      "properties": {
+        "isgeocoded": true,
+        "referenceid": "2015-00199032",
+        "processedtodw": true,
+        "location": "5341 Bamboo Ct",
+        "description": "Noise ordinance violation",
+        "zipcode": "32811",
+        "geopoint": "0xE6100000010C04000000ED5C54C0050000802C7F3C40",
+        "tweet": "NULL",
+        "calltime": "2015-05-15T07:51:00",
+        "location_1": {
+          "needs_recoding": false,
+          "longitude": "-81.4519653320313",
+          "latitude": "28.4967727661133",
+          "human_address": "{\"address\":\"5341 Bamboo Ct\",\"city\":\"Orlando\",\"state\":\"FL\",\"zip\":\"32811\"}"
+        },
+        "district": "E5",
+        "errored": "0",
+        "title": "A Noise ordinance violation has occurred at 5341 Bamboo Ct on 2015-05-15T07:51:00."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          {
+            "longitude": -81.4519653320313,
+            "latitude": 28.4967727661133
+          }
+        ]
+      }
+    },
+    {
+      "id": "2015-00199027",
+      "type": "Feature",
+      "properties": {
+        "isgeocoded": true,
+        "referenceid": "2015-00199027",
+        "processedtodw": true,
+        "location": "2837 LB McLeod Rd",
+        "description": "911 hang up",
+        "zipcode": "32805",
+        "geopoint": "0xE6100000010C0000209F685A54C00D00C0B78E823C40",
+        "tweet": "NULL",
+        "calltime": "2015-05-15T06:31:00",
+        "location_1": {
+          "needs_recoding": false,
+          "longitude": "-81.4126355946064",
+          "latitude": "28.5099902004004",
+          "human_address": "{\"address\":\"2837 LB McLeod Rd\",\"city\":\"Orlando\",\"state\":\"FL\",\"zip\":\"32805\"}"
+        },
+        "district": "G8",
+        "errored": "0",
+        "title": "A 911 hang up has occurred at 2837 LB McLeod Rd on 2015-05-15T06:31:00."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          {
+            "longitude": -81.4126355946064,
+            "latitude": 28.5099902004004
+          }
+        ]
+      }
+    },
+    {
+      "id": "2015-00199025",
+      "type": "Feature",
+      "properties": {
+        "isgeocoded": true,
+        "referenceid": "2015-00199025",
+        "processedtodw": true,
+        "location": "2222 Lake Sunset Dr",
+        "description": "Suspicious vehicle",
+        "zipcode": "32805",
+        "geopoint": "0xE6100000010CFDFFFF5F435A54C000000000C8883C40",
+        "tweet": "NULL",
+        "calltime": "2015-05-15T06:19:00",
+        "location_1": {
+          "needs_recoding": false,
+          "longitude": "-81.4103622436523",
+          "latitude": "28.5343017578125",
+          "human_address": "{\"address\":\"2222 Lake Sunset Dr\",\"city\":\"Orlando\",\"state\":\"FL\",\"zip\":\"32805\"}"
+        },
+        "district": "G4",
+        "errored": "0",
+        "title": "A Suspicious vehicle has occurred at 2222 Lake Sunset Dr on 2015-05-15T06:19:00."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          {
+            "longitude": -81.4103622436523,
+            "latitude": 28.5343017578125
+          }
+        ]
+      }
+    },
+    {
+      "id": "2015-00199022",
+      "type": "Feature",
+      "properties": {
+        "isgeocoded": true,
+        "referenceid": "2015-00199022",
+        "processedtodw": true,
+        "location": "2111 S Division Ave",
+        "description": "Commercial alarm",
+        "zipcode": "32805",
+        "geopoint": "0xE6100000010C000000A08D5854C0F4FFFFDF8D843C40",
+        "tweet": "NULL",
+        "calltime": "2015-05-15T06:20:00",
+        "location_1": {
+          "needs_recoding": false,
+          "longitude": "-81.3836441040039",
+          "latitude": "28.5177898406982",
+          "human_address": "{\"address\":\"2111 S Division Ave\",\"city\":\"Orlando\",\"state\":\"FL\",\"zip\":\"32805\"}"
+        },
+        "district": "I4",
+        "errored": "0",
+        "title": "A Commercial alarm has occurred at 2111 S Division Ave on 2015-05-15T06:20:00."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          {
+            "longitude": -81.3836441040039,
+            "latitude": 28.5177898406982
+          }
+        ]
+      }
+    },
+    {
+      "id": "2015-00199021",
+      "type": "Feature",
+      "properties": {
+        "isgeocoded": true,
+        "referenceid": "2015-00199021",
+        "processedtodw": true,
+        "location": "10395 Narcoossee Rd",
+        "description": "Designated Patrol Area - available",
+        "zipcode": "32832",
+        "geopoint": "0xE6100000010C02000080814F54C0020000E0916A3C40",
+        "tweet": "NULL",
+        "calltime": "2015-05-15T06:00:00",
+        "location_1": {
+          "needs_recoding": false,
+          "longitude": "-81.2422790527344",
+          "latitude": "28.4162883758545",
+          "human_address": "{\"address\":\"10395 Narcoossee Rd\",\"city\":\"Orlando\",\"state\":\"FL\",\"zip\":\"32832\"}"
+        },
+        "district": "K7",
+        "errored": "0",
+        "title": "A Designated Patrol Area - available has occurred at 10395 Narcoossee Rd on 2015-05-15T06:00:00."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          {
+            "longitude": -81.2422790527344,
+            "latitude": 28.4162883758545
+          }
+        ]
+      }
+    },
+    {
+      "id": "2015-00199019",
+      "type": "Feature",
+      "properties": {
+        "isgeocoded": true,
+        "referenceid": "2015-00199019",
+        "processedtodw": true,
+        "location": "22 E Washington St",
+        "description": "Commercial alarm",
+        "zipcode": "32801",
+        "geopoint": "0xE6100000010CFFFF7FE9385854C00100C0CE238B3C40",
+        "tweet": "NULL",
+        "calltime": "2015-05-15T06:12:00",
+        "location_1": {
+          "needs_recoding": false,
+          "longitude": "-81.3784736394882",
+          "latitude": "28.5435151308775",
+          "human_address": "{\"address\":\"22 E Washington St\",\"city\":\"Orlando\",\"state\":\"FL\",\"zip\":\"32801\"}"
+        },
+        "district": "D2",
+        "errored": "0",
+        "title": "A Commercial alarm has occurred at 22 E Washington St on 2015-05-15T06:12:00."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          {
+            "longitude": -81.3784736394882,
+            "latitude": 28.5435151308775
+          }
+        ]
+      }
+    },
+    {
+      "id": "2015-00199016",
+      "type": "Feature",
+      "properties": {
+        "isgeocoded": true,
+        "referenceid": "2015-00199016",
+        "processedtodw": true,
+        "location": "W Pine St & S Garland Ave",
+        "description": "Suspicious person",
+        "zipcode": "32801",
+        "geopoint": "0xE6100000010CFFFF5F976E5854C0F4FF3FFF918A3C40",
+        "tweet": "NULL",
+        "calltime": "2015-05-15T05:49:00",
+        "location_1": {
+          "needs_recoding": false,
+          "longitude": "-81.3817499577999",
+          "latitude": "28.5412902384996",
+          "human_address": "{\"address\":\"W Pine St &amp; S Garland Ave\",\"city\":\"Orlando\",\"state\":\"FL\",\"zip\":\"32801\"}"
+        },
+        "district": "D3",
+        "errored": "0",
+        "title": "A Suspicious person has occurred at W Pine St & S Garland Ave on 2015-05-15T05:49:00."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          {
+            "longitude": -81.3817499577999,
+            "latitude": 28.5412902384996
+          }
+        ]
+      }
+    },
+    {
+      "id": "2015-00199011",
+      "type": "Feature",
+      "properties": {
+        "isgeocoded": true,
+        "referenceid": "2015-00199011",
+        "processedtodw": true,
+        "location": "5967 Windhover Dr",
+        "description": "General disturbance",
+        "zipcode": "32819",
+        "geopoint": "0xE6100000010C00000000965D54C009000080477C3C40",
+        "tweet": "NULL",
+        "calltime": "2015-05-15T07:39:00",
+        "location_1": {
+          "needs_recoding": false,
+          "longitude": "-81.4622802734375",
+          "latitude": "28.485466003418",
+          "human_address": "{\"address\":\"5967 Windhover Dr\",\"city\":\"Orlando\",\"state\":\"FL\",\"zip\":\"32819\"}"
+        },
+        "district": "E7",
+        "errored": "0",
+        "title": "A General disturbance has occurred at 5967 Windhover Dr on 2015-05-15T07:39:00."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          {
+            "longitude": -81.4622802734375,
+            "latitude": 28.485466003418
+          }
+        ]
+      }
+    },
+    {
+      "id": "2015-00199008",
+      "type": "Feature",
+      "properties": {
+        "isgeocoded": true,
+        "referenceid": "2015-00199008",
+        "processedtodw": true,
+        "location": "4937 International Dr",
+        "description": "Commercial alarm",
+        "zipcode": "32819",
+        "geopoint": "0xE6100000010CFDFFEF98BA5C54C0FFFF3FA99E793C40",
+        "tweet": "NULL",
+        "calltime": "2015-05-15T06:02:00",
+        "location_1": {
+          "needs_recoding": false,
+          "longitude": "-81.4488890022039",
+          "latitude": "28.475077226758",
+          "human_address": "{\"address\":\"4937 International Dr\",\"city\":\"Orlando\",\"state\":\"FL\",\"zip\":\"32819\"}"
+        },
+        "district": "E2",
+        "errored": "0",
+        "title": "A Commercial alarm has occurred at 4937 International Dr on 2015-05-15T06:02:00."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          {
+            "longitude": -81.4488890022039,
+            "latitude": 28.475077226758
+          }
+        ]
+      }
+    },
+    {
+      "id": "2015-00199005",
+      "type": "Feature",
+      "properties": {
+        "isgeocoded": true,
+        "referenceid": "2015-00199005",
+        "processedtodw": true,
+        "location": "4760 S Hampton Dr",
+        "description": "Battery",
+        "zipcode": "32812",
+        "geopoint": "0xE6100000010C0300F00AE75454C0FFFFFF7D79823C40",
+        "tweet": "NULL",
+        "calltime": "2015-05-15T06:02:00",
+        "location_1": {
+          "needs_recoding": false,
+          "longitude": "-81.326601728797",
+          "latitude": "28.5096663236618",
+          "human_address": "{\"address\":\"4760 S Hampton Dr\",\"city\":\"Orlando\",\"state\":\"FL\",\"zip\":\"32812\"}"
+        },
+        "district": "I7",
+        "errored": "0",
+        "title": "A Battery has occurred at 4760 S Hampton Dr on 2015-05-15T06:02:00."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          {
+            "longitude": -81.326601728797,
+            "latitude": 28.5096663236618
+          }
+        ]
+      }
+    },
+    {
+      "id": "2015-00199004",
+      "type": "Feature",
+      "properties": {
+        "isgeocoded": true,
+        "referenceid": "2015-00199004",
+        "processedtodw": true,
+        "location": "N John Young Pkwy & Old Winter Garden Rd",
+        "description": "Accident (minor)",
+        "zipcode": "32805",
+        "geopoint": "0xE6100000010C29512775785A54C025181812B88B3C40",
+        "tweet": "NULL",
+        "calltime": "2015-05-15T05:37:00",
+        "location_1": {
+          "needs_recoding": false,
+          "longitude": "-81.4136021503406",
+          "latitude": "28.545777445681",
+          "human_address": "{\"address\":\"N John Young Pkwy &amp; Old Winter Garden Rd\",\"city\":\"Orlando\",\"state\":\"FL\",\"zip\":\"32805\"}"
+        },
+        "district": "B1",
+        "errored": "0",
+        "title": "A Accident (minor) has occurred at N John Young Pkwy & Old Winter Garden Rd on 2015-05-15T05:37:00."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          {
+            "longitude": -81.4136021503406,
+            "latitude": 28.545777445681
+          }
+        ]
+      }
+    },
+    {
+      "id": "2015-00198997",
+      "type": "Feature",
+      "properties": {
+        "isgeocoded": true,
+        "referenceid": "2015-00198997",
+        "processedtodw": true,
+        "location": "5480 International Dr",
+        "description": "Mentally-ill person (non-violent)",
+        "zipcode": "32819",
+        "geopoint": "0xE6100000010CFDFF3F8B0E5D54C0F2FFFF3456763C40",
+        "tweet": "NULL",
+        "calltime": "2015-05-15T05:56:00",
+        "location_1": {
+          "needs_recoding": false,
+          "longitude": "-81.4540126919746",
+          "latitude": "28.4622529149055",
+          "human_address": "{\"address\":\"5480 International Dr\",\"city\":\"Orlando\",\"state\":\"FL\",\"zip\":\"32819\"}"
+        },
+        "district": "E8",
+        "errored": "0",
+        "title": "A Mentally-ill person (non-violent) has occurred at 5480 International Dr on 2015-05-15T05:56:00."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          {
+            "longitude": -81.4540126919746,
+            "latitude": 28.4622529149055
+          }
+        ]
+      }
+    },
+    {
+      "id": "2015-00198995",
+      "type": "Feature",
+      "properties": {
+        "isgeocoded": true,
+        "referenceid": "2015-00198995",
+        "processedtodw": true,
+        "location": "4600 Cason Cove Dr",
+        "description": "Suspicious incident",
+        "zipcode": "32811",
+        "geopoint": "0xE6100000010CFEFF3F38175C54C00A00C0FF497F3C40",
+        "tweet": "NULL",
+        "calltime": "2015-05-15T05:57:00",
+        "location_1": {
+          "needs_recoding": false,
+          "longitude": "-81.4389172196388",
+          "latitude": "28.4972228854895",
+          "human_address": "{\"address\":\"4600 Cason Cove Dr\",\"city\":\"Orlando\",\"state\":\"FL\",\"zip\":\"32811\"}"
+        },
+        "district": "E4",
+        "errored": "0",
+        "title": "A Suspicious incident has occurred at 4600 Cason Cove Dr on 2015-05-15T05:57:00."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          {
+            "longitude": -81.4389172196388,
+            "latitude": 28.4972228854895
+          }
+        ]
+      }
+    },
+    {
+      "id": "2015-00198989",
+      "type": "Feature",
+      "properties": {
+        "isgeocoded": true,
+        "referenceid": "2015-00198989",
+        "processedtodw": true,
+        "location": "101 E Central Blvd",
+        "description": "Suspicious person",
+        "zipcode": "32801",
+        "geopoint": "0xE6100000010C020000801F5854C00D0000E0E28A3C40",
+        "tweet": "NULL",
+        "calltime": "2015-05-15T05:29:00",
+        "location_1": {
+          "needs_recoding": false,
+          "longitude": "-81.3769226074219",
+          "latitude": "28.5425243377686",
+          "human_address": "{\"address\":\"101 E Central Blvd\",\"city\":\"Orlando\",\"state\":\"FL\",\"zip\":\"32801\"}"
+        },
+        "district": "D2",
+        "errored": "0",
+        "title": "A Suspicious person has occurred at 101 E Central Blvd on 2015-05-15T05:29:00."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          {
+            "longitude": -81.3769226074219,
+            "latitude": 28.5425243377686
+          }
+        ]
+      }
+    },
+    {
+      "id": "2015-00198979",
+      "type": "Feature",
+      "properties": {
+        "isgeocoded": true,
+        "referenceid": "2015-00198979",
+        "processedtodw": true,
+        "location": "4376 Medallion Dr",
+        "description": "Unknown trouble",
+        "zipcode": "32808",
+        "geopoint": "0xE6100000010CFFFFFF1BEC5B54C0F9FFFF04089A3C40",
+        "tweet": "NULL",
+        "calltime": "2015-05-15T05:19:00",
+        "location_1": {
+          "needs_recoding": false,
+          "longitude": "-81.4362859725952",
+          "latitude": "28.6016848683357",
+          "human_address": "{\"address\":\"4376 Medallion Dr\",\"city\":\"Orlando\",\"state\":\"FL\",\"zip\":\"32808\"}"
+        },
+        "district": "B7",
+        "errored": "0",
+        "title": "A Unknown trouble has occurred at 4376 Medallion Dr on 2015-05-15T05:19:00."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          {
+            "longitude": -81.4362859725952,
+            "latitude": 28.6016848683357
+          }
+        ]
+      }
+    },
+    {
+      "id": "2015-00198977",
+      "type": "Feature",
+      "properties": {
+        "isgeocoded": true,
+        "referenceid": "2015-00198977",
+        "processedtodw": true,
+        "location": "101 S Garland Ave",
+        "description": "Commercial alarm",
+        "zipcode": "32801",
+        "geopoint": "0xE6100000010CFEFFFF7F665854C0FAFFFF1F7B8A3C40",
+        "tweet": "NULL",
+        "calltime": "2015-05-15T05:21:00",
+        "location_1": {
+          "needs_recoding": false,
+          "longitude": "-81.3812561035156",
+          "latitude": "28.5409412384033",
+          "human_address": "{\"address\":\"101 S Garland Ave\",\"city\":\"Orlando\",\"state\":\"FL\",\"zip\":\"32801\"}"
+        },
+        "district": "D3",
+        "errored": "0",
+        "title": "A Commercial alarm has occurred at 101 S Garland Ave on 2015-05-15T05:21:00."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          {
+            "longitude": -81.3812561035156,
+            "latitude": 28.5409412384033
+          }
+        ]
+      }
+    },
+    {
+      "id": "2015-00198976",
+      "type": "Feature",
+      "properties": {
+        "isgeocoded": true,
+        "referenceid": "2015-00198976",
+        "processedtodw": true,
+        "location": "4600 Cason Cove Dr",
+        "description": "Unknown trouble",
+        "zipcode": "32811",
+        "geopoint": "0xE6100000010CFEFF3F38175C54C00A00C0FF497F3C40",
+        "tweet": "NULL",
+        "calltime": "2015-05-15T05:18:00",
+        "location_1": {
+          "needs_recoding": false,
+          "longitude": "-81.4389172196388",
+          "latitude": "28.4972228854895",
+          "human_address": "{\"address\":\"4600 Cason Cove Dr\",\"city\":\"Orlando\",\"state\":\"FL\",\"zip\":\"32811\"}"
+        },
+        "district": "E4",
+        "errored": "0",
+        "title": "A Unknown trouble has occurred at 4600 Cason Cove Dr on 2015-05-15T05:18:00."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          {
+            "longitude": -81.4389172196388,
+            "latitude": 28.4972228854895
+          }
+        ]
+      }
+    },
+    {
+      "id": "2015-00198972",
+      "type": "Feature",
+      "properties": {
+        "isgeocoded": true,
+        "referenceid": "2015-00198972",
+        "processedtodw": true,
+        "location": "9300 Airport Blvd",
+        "description": "Designated Patrol Area - available",
+        "zipcode": "32827",
+        "geopoint": "0xE6100000010C000000009A5354C0FAFFFFBF5A6E3C40",
+        "tweet": "NULL",
+        "calltime": "2015-05-15T04:58:00",
+        "location_1": {
+          "needs_recoding": false,
+          "longitude": "-81.3062744140625",
+          "latitude": "28.4310722351074",
+          "human_address": "{\"address\":\"9300 Airport Blvd\",\"city\":\"Orlando\",\"state\":\"FL\",\"zip\":\"32827\"}"
+        },
+        "district": "88",
+        "errored": "0",
+        "title": "A Designated Patrol Area - available has occurred at 9300 Airport Blvd on 2015-05-15T04:58:00."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          {
+            "longitude": -81.3062744140625,
+            "latitude": 28.4310722351074
+          }
+        ]
+      }
+    },
+    {
+      "id": "2015-00198970",
+      "type": "Feature",
+      "properties": {
+        "isgeocoded": true,
+        "referenceid": "2015-00198970",
+        "processedtodw": true,
+        "location": "535 W Washington St",
+        "description": "House/business check",
+        "zipcode": "32801",
+        "geopoint": "0xE6100000010C000000A0BB5854C0F3FFFFBF548B3C40",
+        "tweet": "NULL",
+        "calltime": "2015-05-15T04:56:00",
+        "location_1": {
+          "needs_recoding": false,
+          "longitude": "-81.3864517211914",
+          "latitude": "28.544261932373",
+          "human_address": "{\"address\":\"535 W Washington St\",\"city\":\"Orlando\",\"state\":\"FL\",\"zip\":\"32801\"}"
+        },
+        "district": "F4",
+        "errored": "0",
+        "title": "A House/business check has occurred at 535 W Washington St on 2015-05-15T04:56:00."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          {
+            "longitude": -81.3864517211914,
+            "latitude": 28.544261932373
+          }
+        ]
+      }
+    },
+    {
+      "id": "2015-00198964",
+      "type": "Feature",
+      "properties": {
+        "isgeocoded": true,
+        "referenceid": "2015-00198964",
+        "processedtodw": true,
+        "location": "Conroy Rd & S John Young Pkwy",
+        "description": "House/business check",
+        "zipcode": "32839",
+        "geopoint": "0xE6100000010CFFFF5FA5B85A54C0F2FFBF64AB7C3C40",
+        "tweet": "NULL",
+        "calltime": "2015-05-15T04:49:00",
+        "location_1": {
+          "needs_recoding": false,
+          "longitude": "-81.4175198972225",
+          "latitude": "28.4869902580976",
+          "human_address": "{\"address\":\"Conroy Rd &amp; S John Young Pkwy\",\"city\":\"Orlando\",\"state\":\"FL\",\"zip\":\"32839\"}"
+        },
+        "district": "E6",
+        "errored": "0",
+        "title": "A House/business check has occurred at Conroy Rd & S John Young Pkwy on 2015-05-15T04:49:00."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          {
+            "longitude": -81.4175198972225,
+            "latitude": 28.4869902580976
+          }
+        ]
+      }
+    },
+    {
+      "id": "2015-00198951",
+      "type": "Feature",
+      "properties": {
+        "isgeocoded": true,
+        "referenceid": "2015-00198951",
+        "processedtodw": true,
+        "location": "1010 S Orange Blossom Trail",
+        "description": "911 hang up",
+        "zipcode": "32805",
+        "geopoint": "0xE6100000010C00000000705954C0FDFFFFBFA5873C40",
+        "tweet": "NULL",
+        "calltime": "2015-05-15T04:33:00",
+        "location_1": {
+          "needs_recoding": false,
+          "longitude": "-81.3974609375",
+          "latitude": "28.5298728942871",
+          "human_address": "{\"address\":\"1010 S Orange Blossom Trail\",\"city\":\"Orlando\",\"state\":\"FL\",\"zip\":\"32805\"}"
+        },
+        "district": "F2",
+        "errored": "0",
+        "title": "A 911 hang up has occurred at 1010 S Orange Blossom Trail on 2015-05-15T04:33:00."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          {
+            "longitude": -81.3974609375,
+            "latitude": 28.5298728942871
+          }
+        ]
+      }
+    },
+    {
+      "id": "2015-00198950",
+      "type": "Feature",
+      "properties": {
+        "isgeocoded": true,
+        "referenceid": "2015-00198950",
+        "processedtodw": true,
+        "location": "616 Yucatan Dr",
+        "description": "Theft",
+        "zipcode": "32807",
+        "geopoint": "0xE6100000010C04000000995354C0090000E01F893C40",
+        "tweet": "NULL",
+        "calltime": "2015-05-15T05:25:00",
+        "location_1": {
+          "needs_recoding": false,
+          "longitude": "-81.3062133789063",
+          "latitude": "28.5356426239014",
+          "human_address": "{\"address\":\"616 Yucatan Dr\",\"city\":\"Orlando\",\"state\":\"FL\",\"zip\":\"32807\"}"
+        },
+        "district": "I8",
+        "errored": "0",
+        "title": "A Theft has occurred at 616 Yucatan Dr on 2015-05-15T05:25:00."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          {
+            "longitude": -81.3062133789063,
+            "latitude": 28.5356426239014
+          }
+        ]
+      }
+    },
+    {
+      "id": "2015-00198947",
+      "type": "Feature",
+      "properties": {
+        "isgeocoded": true,
+        "referenceid": "2015-00198947",
+        "processedtodw": true,
+        "location": "S Cottage Hill Rd & Fitzgerald Dr",
+        "description": "Designated Patrol Area - available",
+        "zipcode": "32805",
+        "geopoint": "0xE6100000010CFEFFBF6E9E5A54C00000807E878A3C40",
+        "tweet": "NULL",
+        "calltime": "2015-05-15T04:21:00",
+        "location_1": {
+          "needs_recoding": false,
+          "longitude": "-81.4159199595451",
+          "latitude": "28.541129976511",
+          "human_address": "{\"address\":\"S Cottage Hill Rd &amp; Fitzgerald Dr\",\"city\":\"Orlando\",\"state\":\"FL\",\"zip\":\"32805\"}"
+        },
+        "district": "G4",
+        "errored": "0",
+        "title": "A Designated Patrol Area - available has occurred at S Cottage Hill Rd & Fitzgerald Dr on 2015-05-15T04:21:00."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          {
+            "longitude": -81.4159199595451,
+            "latitude": 28.541129976511
+          }
+        ]
+      }
+    },
+    {
+      "id": "2015-00198944",
+      "type": "Feature",
+      "properties": {
+        "isgeocoded": true,
+        "referenceid": "2015-00198944",
+        "processedtodw": true,
+        "location": "5858 International Dr",
+        "description": "House/business check",
+        "zipcode": "32819",
+        "geopoint": "0xE6100000010C020000E0795D54C00B0000C029763C40",
+        "tweet": "NULL",
+        "calltime": "2015-05-15T04:15:00",
+        "location_1": {
+          "needs_recoding": false,
+          "longitude": "-81.460563659668",
+          "latitude": "28.4615745544434",
+          "human_address": "{\"address\":\"5858 International Dr\",\"city\":\"Orlando\",\"state\":\"FL\",\"zip\":\"32819\"}"
+        },
+        "district": "E8",
+        "errored": "0",
+        "title": "A House/business check has occurred at 5858 International Dr on 2015-05-15T04:15:00."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          {
+            "longitude": -81.460563659668,
+            "latitude": 28.4615745544434
+          }
+        ]
+      }
+    },
+    {
+      "id": "2015-00198942",
+      "type": "Feature",
+      "properties": {
+        "isgeocoded": true,
+        "referenceid": "2015-00198942",
+        "processedtodw": true,
+        "location": "3301 Edgewater Dr",
+        "description": "Designated Patrol Area - available",
+        "zipcode": "32804",
+        "geopoint": "0xE6100000010C02000080E95854C0090000E0BF943C40",
+        "tweet": "NULL",
+        "calltime": "2015-05-15T04:11:00",
+        "location_1": {
+          "needs_recoding": false,
+          "longitude": "-81.3892517089844",
+          "latitude": "28.5810527801514",
+          "human_address": "{\"address\":\"3301 Edgewater Dr\",\"city\":\"Orlando\",\"state\":\"FL\",\"zip\":\"32804\"}"
+        },
+        "district": "C2",
+        "errored": "0",
+        "title": "A Designated Patrol Area - available has occurred at 3301 Edgewater Dr on 2015-05-15T04:11:00."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          {
+            "longitude": -81.3892517089844,
+            "latitude": 28.5810527801514
+          }
+        ]
+      }
+    },
+    {
+      "id": "2015-00198941",
+      "type": "Feature",
+      "properties": {
+        "isgeocoded": true,
+        "referenceid": "2015-00198941",
+        "processedtodw": true,
+        "location": "516 S Parramore Ave",
+        "description": "General disturbance",
+        "zipcode": "32805",
+        "geopoint": "0xE6100000010CFDFFFFBFE95854C00900008027893C40",
+        "tweet": "NULL",
+        "calltime": "2015-05-15T04:14:00",
+        "location_1": {
+          "needs_recoding": false,
+          "longitude": "-81.3892669677734",
+          "latitude": "28.535758972168",
+          "human_address": "{\"address\":\"516 S Parramore Ave\",\"city\":\"Orlando\",\"state\":\"FL\",\"zip\":\"32805\"}"
+        },
+        "district": "F7",
+        "errored": "0",
+        "title": "A General disturbance has occurred at 516 S Parramore Ave on 2015-05-15T04:14:00."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          {
+            "longitude": -81.3892669677734,
+            "latitude": 28.535758972168
+          }
+        ]
+      }
+    },
+    {
+      "id": "2015-00198935",
+      "type": "Feature",
+      "properties": {
+        "isgeocoded": true,
+        "referenceid": "2015-00198935",
+        "processedtodw": true,
+        "location": "1111 W Central Blvd",
+        "description": "General disturbance",
+        "zipcode": "32805",
+        "geopoint": "0xE6100000010CFFFFFFDF445954C0030000A0D28A3C40",
+        "tweet": "NULL",
+        "calltime": "2015-05-15T03:58:00",
+        "location_1": {
+          "needs_recoding": false,
+          "longitude": "-81.3948287963867",
+          "latitude": "28.5422763824463",
+          "human_address": "{\"address\":\"1111 W Central Blvd\",\"city\":\"Orlando\",\"state\":\"FL\",\"zip\":\"32805\"}"
+        },
+        "district": "F3",
+        "errored": "0",
+        "title": "A General disturbance has occurred at 1111 W Central Blvd on 2015-05-15T03:58:00."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          {
+            "longitude": -81.3948287963867,
+            "latitude": 28.5422763824463
+          }
+        ]
+      }
+    },
+    {
+      "id": "2015-00198930",
+      "type": "Feature",
+      "properties": {
+        "isgeocoded": true,
+        "referenceid": "2015-00198930",
+        "processedtodw": true,
+        "location": "9300 Airport Blvd",
+        "description": "Designated Patrol Area - available",
+        "zipcode": "32827",
+        "geopoint": "0xE6100000010C000000009A5354C0FAFFFFBF5A6E3C40",
+        "tweet": "NULL",
+        "calltime": "2015-05-15T03:48:00",
+        "location_1": {
+          "needs_recoding": false,
+          "longitude": "-81.3062744140625",
+          "latitude": "28.4310722351074",
+          "human_address": "{\"address\":\"9300 Airport Blvd\",\"city\":\"Orlando\",\"state\":\"FL\",\"zip\":\"32827\"}"
+        },
+        "district": "88",
+        "errored": "0",
+        "title": "A Designated Patrol Area - available has occurred at 9300 Airport Blvd on 2015-05-15T03:48:00."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          {
+            "longitude": -81.3062744140625,
+            "latitude": 28.4310722351074
+          }
+        ]
+      }
+    },
+    {
+      "id": "2015-00198927",
+      "type": "Feature",
+      "properties": {
+        "isgeocoded": true,
+        "referenceid": "2015-00198927",
+        "processedtodw": true,
+        "location": "4690 S Kirkman Rd",
+        "description": "Man down",
+        "zipcode": "32811",
+        "geopoint": "0xE6100000010C02000080695D54C001000020897E3C40",
+        "tweet": "NULL",
+        "calltime": "2015-05-15T03:49:00",
+        "location_1": {
+          "needs_recoding": false,
+          "longitude": "-81.4595642089844",
+          "latitude": "28.4942798614502",
+          "human_address": "{\"address\":\"4690 S Kirkman Rd\",\"city\":\"Orlando\",\"state\":\"FL\",\"zip\":\"32811\"}"
+        },
+        "district": "E5",
+        "errored": "0",
+        "title": "A Man down has occurred at 4690 S Kirkman Rd on 2015-05-15T03:49:00."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          {
+            "longitude": -81.4595642089844,
+            "latitude": 28.4942798614502
+          }
+        ]
+      }
+    },
+    {
+      "id": "2015-00198924",
+      "type": "Feature",
+      "properties": {
+        "isgeocoded": true,
+        "referenceid": "2015-00198924",
+        "processedtodw": true,
+        "location": "S Orange Blossom Trail & W South St",
+        "description": "Drug violation",
+        "zipcode": "32805",
+        "geopoint": "0xE6100000010C0300900E6C5954C00D000017CA893C40",
+        "tweet": "NULL",
+        "calltime": "2015-05-15T03:37:00",
+        "location_1": {
+          "needs_recoding": false,
+          "longitude": "-81.3972202688456",
+          "latitude": "28.5382398962975",
+          "human_address": "{\"address\":\"S Orange Blossom Trail &amp; W South St\",\"city\":\"Orlando\",\"state\":\"FL\",\"zip\":\"32805\"}"
+        },
+        "district": "F1",
+        "errored": "0",
+        "title": "A Drug violation has occurred at S Orange Blossom Trail & W South St on 2015-05-15T03:37:00."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          {
+            "longitude": -81.3972202688456,
+            "latitude": 28.5382398962975
+          }
+        ]
+      }
+    },
+    {
+      "id": "2015-00198919",
+      "type": "Feature",
+      "properties": {
+        "isgeocoded": true,
+        "referenceid": "2015-00198919",
+        "processedtodw": true,
+        "location": "5113 Curry Ford Rd",
+        "description": "Suspicious person",
+        "zipcode": "32812",
+        "geopoint": "0xE6100000010CFFFFAFD3A95454C00D00C0033F863C40",
+        "tweet": "NULL",
+        "calltime": "2015-05-15T03:40:00",
+        "location_1": {
+          "needs_recoding": false,
+          "longitude": "-81.3228654116392",
+          "latitude": "28.5243990272284",
+          "human_address": "{\"address\":\"5113 Curry Ford Rd\",\"city\":\"Orlando\",\"state\":\"FL\",\"zip\":\"32812\"}"
+        },
+        "district": "I6",
+        "errored": "0",
+        "title": "A Suspicious person has occurred at 5113 Curry Ford Rd on 2015-05-15T03:40:00."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          {
+            "longitude": -81.3228654116392,
+            "latitude": 28.5243990272284
+          }
+        ]
+      }
+    },
+    {
+      "id": "2015-00198918",
+      "type": "Feature",
+      "properties": {
+        "isgeocoded": true,
+        "referenceid": "2015-00198918",
+        "processedtodw": true,
+        "location": "100 S Hughey Ave",
+        "description": "Attempted suicide",
+        "zipcode": "32801",
+        "geopoint": "0xE6100000010CFEFFFF7F8A5854C00C000020928A3C40",
+        "tweet": "NULL",
+        "calltime": "2015-05-15T03:28:00",
+        "location_1": {
+          "needs_recoding": false,
+          "longitude": "-81.3834533691406",
+          "latitude": "28.5412921905518",
+          "human_address": "{\"address\":\"100 S Hughey Ave\",\"city\":\"Orlando\",\"state\":\"FL\",\"zip\":\"32801\"}"
+        },
+        "district": "E2",
+        "errored": "0",
+        "title": "A Attempted suicide has occurred at 100 S Hughey Ave on 2015-05-15T03:28:00."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          {
+            "longitude": -81.3834533691406,
+            "latitude": 28.5412921905518
+          }
+        ]
+      }
+    },
+    {
+      "id": "2015-00198916",
+      "type": "Feature",
+      "properties": {
+        "isgeocoded": true,
+        "referenceid": "2015-00198916",
+        "processedtodw": true,
+        "location": "101 N Parramore Ave",
+        "description": "Commercial alarm",
+        "zipcode": "32801",
+        "geopoint": "0xE6100000010CFDFFFFBFD55854C000000060588B3C40",
+        "tweet": "NULL",
+        "calltime": "2015-05-15T03:32:00",
+        "location_1": {
+          "needs_recoding": false,
+          "longitude": "-81.3880462646484",
+          "latitude": "28.5443172454834",
+          "human_address": "{\"address\":\"101 N Parramore Ave\",\"city\":\"Orlando\",\"state\":\"FL\",\"zip\":\"32801\"}"
+        },
+        "district": "F4",
+        "errored": "0",
+        "title": "A Commercial alarm has occurred at 101 N Parramore Ave on 2015-05-15T03:32:00."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          {
+            "longitude": -81.3880462646484,
+            "latitude": 28.5443172454834
+          }
+        ]
+      }
+    },
+    {
+      "id": "2015-00198914",
+      "type": "Feature",
+      "properties": {
+        "isgeocoded": true,
+        "referenceid": "2015-00198914",
+        "processedtodw": true,
+        "location": "W Colonial Dr & Drive Buick Ave",
+        "description": "Designated Patrol Area - available",
+        "zipcode": "32808",
+        "geopoint": "0xE6100000010CFFFF5F3C4E5B54C004000000838D3C40",
+        "tweet": "NULL",
+        "calltime": "2015-05-15T03:20:00",
+        "location_1": {
+          "needs_recoding": false,
+          "longitude": "-81.4266501367092",
+          "latitude": "28.5527801513672",
+          "human_address": "{\"address\":\"W Colonial Dr &amp; Drive Buick Ave\",\"city\":\"Orlando\",\"state\":\"FL\",\"zip\":\"32808\"}"
+        },
+        "district": "B2",
+        "errored": "0",
+        "title": "A Designated Patrol Area - available has occurred at W Colonial Dr & Drive Buick Ave on 2015-05-15T03:20:00."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          {
+            "longitude": -81.4266501367092,
+            "latitude": 28.5527801513672
+          }
+        ]
+      }
+    },
+    {
+      "id": "2015-00198913",
+      "type": "Feature",
+      "properties": {
+        "isgeocoded": true,
+        "referenceid": "2015-00198913",
+        "processedtodw": true,
+        "location": "6250 Edgewater Dr",
+        "description": "House/business check",
+        "zipcode": "32810",
+        "geopoint": "0xE6100000010C020000E0035B54C0030000A00A9D3C40",
+        "tweet": "NULL",
+        "calltime": "2015-05-15T03:18:00",
+        "location_1": {
+          "needs_recoding": false,
+          "longitude": "-81.4221115112305",
+          "latitude": "28.6134433746338",
+          "human_address": "{\"address\":\"6250 Edgewater Dr\",\"city\":\"Orlando\",\"state\":\"FL\",\"zip\":\"32810\"}"
+        },
+        "district": "B6",
+        "errored": "0",
+        "title": "A House/business check has occurred at 6250 Edgewater Dr on 2015-05-15T03:18:00."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          {
+            "longitude": -81.4221115112305,
+            "latitude": 28.6134433746338
+          }
+        ]
+      }
+    },
+    {
+      "id": "2015-00198900",
+      "type": "Feature",
+      "properties": {
+        "isgeocoded": true,
+        "referenceid": "2015-00198900",
+        "processedtodw": true,
+        "location": "5915 Leevista Blvd",
+        "description": "Residential B&E",
+        "zipcode": "32822",
+        "geopoint": "0xE6100000010C00000026905354C00D004047D5773C40",
+        "tweet": "NULL",
+        "calltime": "2015-05-15T03:02:00",
+        "location_1": {
+          "needs_recoding": false,
+          "longitude": "-81.305673122406",
+          "latitude": "28.4680981189013",
+          "human_address": "{\"address\":\"5915 Leevista Blvd\",\"city\":\"Orlando\",\"state\":\"FL\",\"zip\":\"32822\"}"
+        },
+        "district": "K4",
+        "errored": "0",
+        "title": "A Residential B&E has occurred at 5915 Leevista Blvd on 2015-05-15T03:02:00."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          {
+            "longitude": -81.305673122406,
+            "latitude": 28.4680981189013
+          }
+        ]
+      }
+    },
+    {
+      "id": "2015-00198892",
+      "type": "Feature",
+      "properties": {
+        "isgeocoded": true,
+        "referenceid": "2015-00198892",
+        "processedtodw": true,
+        "location": "2919 Orange Center Blvd",
+        "description": "General disturbance",
+        "zipcode": "32805",
+        "geopoint": "0xE6100000010C000000A0895A54C0FEFFFF7F4E883C40",
+        "tweet": "NULL",
+        "calltime": "2015-05-15T03:14:00",
+        "location_1": {
+          "needs_recoding": false,
+          "longitude": "-81.4146499633789",
+          "latitude": "28.5324478149414",
+          "human_address": "{\"address\":\"2919 Orange Center Blvd\",\"city\":\"Orlando\",\"state\":\"FL\",\"zip\":\"32805\"}"
+        },
+        "district": "G4",
+        "errored": "0",
+        "title": "A General disturbance has occurred at 2919 Orange Center Blvd on 2015-05-15T03:14:00."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          {
+            "longitude": -81.4146499633789,
+            "latitude": 28.5324478149414
+          }
+        ]
+      }
+    },
+    {
+      "id": "2015-00198889",
+      "type": "Feature",
+      "properties": {
+        "isgeocoded": true,
+        "referenceid": "2015-00198889",
+        "processedtodw": true,
+        "location": "E Pineloch Ave & Orange Ave S",
+        "description": "Suspicious person",
+        "zipcode": "32806",
+        "geopoint": "0xE6100000010C0400604B155854C00A00C0D660823C40",
+        "tweet": "NULL",
+        "calltime": "2015-05-15T02:46:00",
+        "location_1": {
+          "needs_recoding": false,
+          "longitude": "-81.3762997090817",
+          "latitude": "28.5092901438475",
+          "human_address": "{\"address\":\"E Pineloch Ave &amp; Orange Ave S\",\"city\":\"Orlando\",\"state\":\"FL\",\"zip\":\"32806\"}"
+        },
+        "district": "I4",
+        "errored": "0",
+        "title": "A Suspicious person has occurred at E Pineloch Ave & Orange Ave S on 2015-05-15T02:46:00."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          {
+            "longitude": -81.3762997090817,
+            "latitude": 28.5092901438475
+          }
+        ]
+      }
+    },
+    {
+      "id": "2015-00198885",
+      "type": "Feature",
+      "properties": {
+        "isgeocoded": true,
+        "referenceid": "2015-00198885",
+        "processedtodw": true,
+        "location": "N Hughey Ave & W Central Blvd",
+        "description": "Accident (general disturbance)",
+        "zipcode": "32801",
+        "geopoint": "0xE6100000010CFEFF6F1A815854C0FFFFBF20C38A3C40",
+        "tweet": "NULL",
+        "calltime": "2015-05-15T02:55:00",
+        "location_1": {
+          "needs_recoding": false,
+          "longitude": "-81.3828798383474",
+          "latitude": "28.5420399159193",
+          "human_address": "{\"address\":\"N Hughey Ave &amp; W Central Blvd\",\"city\":\"Orlando\",\"state\":\"FL\",\"zip\":\"32801\"}"
+        },
+        "district": "F4",
+        "errored": "0",
+        "title": "A Accident (general disturbance) has occurred at N Hughey Ave & W Central Blvd on 2015-05-15T02:55:00."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          {
+            "longitude": -81.3828798383474,
+            "latitude": 28.5420399159193
+          }
+        ]
+      }
+    },
+    {
+      "id": "2015-00198880",
+      "type": "Feature",
+      "properties": {
+        "isgeocoded": true,
+        "referenceid": "2015-00198880",
+        "processedtodw": true,
+        "location": "N Orange Ave & E Livingston St",
+        "description": "Stolen vehicle",
+        "zipcode": "32801",
+        "geopoint": "0xE6100000010CFFFFEFAA435854C0F8FFBF3F2A8C3C40",
+        "tweet": "NULL",
+        "calltime": "2015-05-15T02:51:00",
+        "location_1": {
+          "needs_recoding": false,
+          "longitude": "-81.3791301101446",
+          "latitude": "28.5475196689367",
+          "human_address": "{\"address\":\"N Orange Ave &amp; E Livingston St\",\"city\":\"Orlando\",\"state\":\"FL\",\"zip\":\"32801\"}"
+        },
+        "district": "D2",
+        "errored": "0",
+        "title": "A Stolen vehicle has occurred at N Orange Ave & E Livingston St on 2015-05-15T02:51:00."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          {
+            "longitude": -81.3791301101446,
+            "latitude": 28.5475196689367
+          }
+        ]
+      }
+    },
+    {
+      "id": "2015-00198877",
+      "type": "Feature",
+      "properties": {
+        "isgeocoded": true,
+        "referenceid": "2015-00198877",
+        "processedtodw": true,
+        "location": "367 N Orange Ave",
+        "description": "General disturbance",
+        "zipcode": "32801",
+        "geopoint": "0xE6100000010C020000E03B5854C0FCFFFFFF048C3C40",
+        "tweet": "NULL",
+        "calltime": "2015-05-15T02:35:00",
+        "location_1": {
+          "needs_recoding": false,
+          "longitude": "-81.3786544799805",
+          "latitude": "28.5469512939453",
+          "human_address": "{\"address\":\"367 N Orange Ave\",\"city\":\"Orlando\",\"state\":\"FL\",\"zip\":\"32801\"}"
+        },
+        "district": "D2",
+        "errored": "0",
+        "title": "A General disturbance has occurred at 367 N Orange Ave on 2015-05-15T02:35:00."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          {
+            "longitude": -81.3786544799805,
+            "latitude": 28.5469512939453
+          }
+        ]
+      }
+    },
+    {
+      "id": "2015-00198863",
+      "type": "Feature",
+      "properties": {
+        "isgeocoded": true,
+        "referenceid": "2015-00198863",
+        "processedtodw": true,
+        "location": "Rio Grande Ave S & W Anderson St",
+        "description": "General disturbance",
+        "zipcode": "32805",
+        "geopoint": "0xE6100000010C00008034B05954C0080000595B893C40",
+        "tweet": "NULL",
+        "calltime": "2015-05-15T02:12:00",
+        "location_1": {
+          "needs_recoding": false,
+          "longitude": "-81.4013797044754",
+          "latitude": "28.5365501046181",
+          "human_address": "{\"address\":\"Rio Grande Ave S &amp; W Anderson St\",\"city\":\"Orlando\",\"state\":\"FL\",\"zip\":\"32805\"}"
+        },
+        "district": "F2",
+        "errored": "0",
+        "title": "A General disturbance has occurred at Rio Grande Ave S & W Anderson St on 2015-05-15T02:12:00."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          {
+            "longitude": -81.4013797044754,
+            "latitude": 28.5365501046181
+          }
+        ]
+      }
+    },
+    {
+      "id": "2015-00198858",
+      "type": "Feature",
+      "properties": {
+        "isgeocoded": true,
+        "referenceid": "2015-00198858",
+        "processedtodw": true,
+        "location": "4550 Oak Haven Dr",
+        "description": "Check the well being of",
+        "zipcode": "32839",
+        "geopoint": "0xE6100000010C02003071DF5B54C0070000972D793C40",
+        "tweet": "NULL",
+        "calltime": "2015-05-15T02:16:00",
+        "location_1": {
+          "needs_recoding": false,
+          "longitude": "-81.4355128258467",
+          "latitude": "28.4733518958092",
+          "human_address": "{\"address\":\"4550 Oak Haven Dr\",\"city\":\"Orlando\",\"state\":\"FL\",\"zip\":\"32839\"}"
+        },
+        "district": "E2",
+        "errored": "0",
+        "title": "A Check the well being of has occurred at 4550 Oak Haven Dr on 2015-05-15T02:16:00."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          {
+            "longitude": -81.4355128258467,
+            "latitude": 28.4733518958092
+          }
+        ]
+      }
+    },
+    {
+      "id": "2015-00198856",
+      "type": "Feature",
+      "properties": {
+        "isgeocoded": true,
+        "referenceid": "2015-00198856",
+        "processedtodw": true,
+        "location": "6012 Bent Pine Dr",
+        "description": "Suspicious incident",
+        "zipcode": "32822",
+        "geopoint": "0xE6100000010C0300F0AD815354C0050040951C793C40",
+        "tweet": "NULL",
+        "calltime": "2015-05-15T02:05:00",
+        "location_1": {
+          "needs_recoding": false,
+          "longitude": "-81.3047900050879",
+          "latitude": "28.473092392087",
+          "human_address": "{\"address\":\"6012 Bent Pine Dr\",\"city\":\"Orlando\",\"state\":\"FL\",\"zip\":\"32822\"}"
+        },
+        "district": "K4",
+        "errored": "0",
+        "title": "A Suspicious incident has occurred at 6012 Bent Pine Dr on 2015-05-15T02:05:00."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          {
+            "longitude": -81.3047900050879,
+            "latitude": 28.473092392087
+          }
+        ]
+      }
+    },
+    {
+      "id": "2015-00198854",
+      "type": "Feature",
+      "properties": {
+        "isgeocoded": true,
+        "referenceid": "2015-00198854",
+        "processedtodw": true,
+        "location": "9448 Airport Blvd",
+        "description": "Designated Patrol Area - available",
+        "zipcode": "32827",
+        "geopoint": "0xE6100000010C03002059885354C0F6FF3F3E606E3C40",
+        "tweet": "NULL",
+        "calltime": "2015-05-15T02:02:00",
+        "location_1": {
+          "needs_recoding": false,
+          "longitude": "-81.3051970303059",
+          "latitude": "28.4311560541391",
+          "human_address": "{\"address\":\"9448 Airport Blvd\",\"city\":\"Orlando\",\"state\":\"FL\",\"zip\":\"32827\"}"
+        },
+        "district": "84",
+        "errored": "0",
+        "title": "A Designated Patrol Area - available has occurred at 9448 Airport Blvd on 2015-05-15T02:02:00."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          {
+            "longitude": -81.3051970303059,
+            "latitude": 28.4311560541391
+          }
+        ]
+      }
+    },
+    {
+      "id": "2015-00198851",
+      "type": "Feature",
+      "properties": {
+        "isgeocoded": true,
+        "referenceid": "2015-00198851",
+        "processedtodw": true,
+        "location": "I-4 W & S Kirkman Rd",
+        "description": "Obstruction on highway",
+        "zipcode": "32819",
+        "geopoint": "0xE6100000010C1007AB595A5D54C0B194AB7AA9783C40",
+        "tweet": "NULL",
+        "calltime": "2015-05-15T02:05:00",
+        "location_1": {
+          "needs_recoding": false,
+          "longitude": "-81.4586395425979",
+          "latitude": "28.4713360470675",
+          "human_address": "{\"address\":\"I-4 W &amp; S Kirkman Rd\",\"city\":\"Orlando\",\"state\":\"FL\",\"zip\":\"32819\"}"
+        },
+        "district": "E7",
+        "errored": "0",
+        "title": "A Obstruction on highway has occurred at I-4 W & S Kirkman Rd on 2015-05-15T02:05:00."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          {
+            "longitude": -81.4586395425979,
+            "latitude": 28.4713360470675
+          }
+        ]
+      }
+    },
+    {
+      "id": "2015-00198848",
+      "type": "Feature",
+      "properties": {
+        "isgeocoded": true,
+        "referenceid": "2015-00198848",
+        "processedtodw": true,
+        "location": "5341 Bamboo Ct",
+        "description": "Noise ordinance violation",
+        "zipcode": "32811",
+        "geopoint": "0xE6100000010C04000000ED5C54C0050000802C7F3C40",
+        "tweet": "NULL",
+        "calltime": "2015-05-15T02:06:00",
+        "location_1": {
+          "needs_recoding": false,
+          "longitude": "-81.4519653320313",
+          "latitude": "28.4967727661133",
+          "human_address": "{\"address\":\"5341 Bamboo Ct\",\"city\":\"Orlando\",\"state\":\"FL\",\"zip\":\"32811\"}"
+        },
+        "district": "E5",
+        "errored": "0",
+        "title": "A Noise ordinance violation has occurred at 5341 Bamboo Ct on 2015-05-15T02:06:00."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          {
+            "longitude": -81.4519653320313,
+            "latitude": 28.4967727661133
+          }
+        ]
+      }
+    },
+    {
+      "id": "2015-00198840",
+      "type": "Feature",
+      "properties": {
+        "isgeocoded": true,
+        "referenceid": "2015-00198840",
+        "processedtodw": true,
+        "location": "3734 W Colonial Dr",
+        "description": "911 hang up",
+        "zipcode": "32808",
+        "geopoint": "0xE6100000010CFFFFEF8B145B54C00900C003748D3C40",
+        "tweet": "NULL",
+        "calltime": "2015-05-15T01:45:00",
+        "location_1": {
+          "needs_recoding": false,
+          "longitude": "-81.4231290668249",
+          "latitude": "28.5525514930487",
+          "human_address": "{\"address\":\"3734 W Colonial Dr\",\"city\":\"Orlando\",\"state\":\"FL\",\"zip\":\"32808\"}"
+        },
+        "district": "B2",
+        "errored": "0",
+        "title": "A 911 hang up has occurred at 3734 W Colonial Dr on 2015-05-15T01:45:00."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          {
+            "longitude": -81.4231290668249,
+            "latitude": 28.5525514930487
+          }
+        ]
+      }
+    },
+    {
+      "id": "2015-00198838",
+      "type": "Feature",
+      "properties": {
+        "isgeocoded": true,
+        "referenceid": "2015-00198838",
+        "processedtodw": true,
+        "location": "9333 Airport Blvd",
+        "description": "Designated Patrol Area - available",
+        "zipcode": "32827",
+        "geopoint": "0xE6100000010C0100F006EC5354C0F5FF7FD26D6E3C40",
+        "tweet": "NULL",
+        "calltime": "2015-05-15T01:42:00",
+        "location_1": {
+          "needs_recoding": false,
+          "longitude": "-81.3112809509039",
+          "latitude": "28.4313632547855",
+          "human_address": "{\"address\":\"9333 Airport Blvd\",\"city\":\"Orlando\",\"state\":\"FL\",\"zip\":\"32827\"}"
+        },
+        "district": "85",
+        "errored": "0",
+        "title": "A Designated Patrol Area - available has occurred at 9333 Airport Blvd on 2015-05-15T01:42:00."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          {
+            "longitude": -81.3112809509039,
+            "latitude": 28.4313632547855
+          }
+        ]
+      }
+    },
+    {
+      "id": "2015-00198837",
+      "type": "Feature",
+      "properties": {
+        "isgeocoded": true,
+        "referenceid": "2015-00198837",
+        "processedtodw": true,
+        "location": "817 E South St",
+        "description": "Stolen vehicle",
+        "zipcode": "32801",
+        "geopoint": "0xE6100000010C0000802D7D5754C0FAFF7FEBDE893C40",
+        "tweet": "NULL",
+        "calltime": "2015-05-15T01:58:00",
+        "location_1": {
+          "needs_recoding": false,
+          "longitude": "-81.3670152425766",
+          "latitude": "28.5385577380657",
+          "human_address": "{\"address\":\"817 E South St\",\"city\":\"Orlando\",\"state\":\"FL\",\"zip\":\"32801\"}"
+        },
+        "district": "C5",
+        "errored": "0",
+        "title": "A Stolen vehicle has occurred at 817 E South St on 2015-05-15T01:58:00."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          {
+            "longitude": -81.3670152425766,
+            "latitude": 28.5385577380657
+          }
+        ]
+      }
+    },
+    {
+      "id": "2015-00198835",
+      "type": "Feature",
+      "properties": {
+        "isgeocoded": true,
+        "referenceid": "2015-00198835",
+        "processedtodw": true,
+        "location": "East-West Expy & Andes Ave",
+        "description": "Non-emergency assistance",
+        "zipcode": "32803",
+        "geopoint": "0xE6100000010C030040156F5454C00900C0203C8A3C40",
+        "tweet": "NULL",
+        "calltime": "2015-05-15T01:41:00",
+        "location_1": {
+          "needs_recoding": false,
+          "longitude": "-81.3192799687386",
+          "latitude": "28.5399799793959",
+          "human_address": "{\"address\":\"East-West Expy &amp; Andes Ave\",\"city\":\"Orlando\",\"state\":\"FL\",\"zip\":\"32803\"}"
+        },
+        "district": "C7",
+        "errored": "0",
+        "title": "A Non-emergency assistance has occurred at East-West Expy & Andes Ave on 2015-05-15T01:41:00."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          {
+            "longitude": -81.3192799687386,
+            "latitude": 28.5399799793959
+          }
+        ]
+      }
+    },
+    {
+      "id": "2015-00198832",
+      "type": "Feature",
+      "properties": {
+        "isgeocoded": true,
+        "referenceid": "2015-00198832",
+        "processedtodw": true,
+        "location": "E Colonial Dr & Bennett Rd",
+        "description": "Disabled occupied vehicle",
+        "zipcode": "32803",
+        "geopoint": "0xE6100000010C030090BD575554C00B000073B58D3C40",
+        "tweet": "NULL",
+        "calltime": "2015-05-15T01:37:00",
+        "location_1": {
+          "needs_recoding": false,
+          "longitude": "-81.3334802538157",
+          "latitude": "28.5535499453545",
+          "human_address": "{\"address\":\"E Colonial Dr &amp; Bennett Rd\",\"city\":\"Orlando\",\"state\":\"FL\",\"zip\":\"32803\"}"
+        },
+        "district": "C7",
+        "errored": "0",
+        "title": "A Disabled occupied vehicle has occurred at E Colonial Dr & Bennett Rd on 2015-05-15T01:37:00."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          {
+            "longitude": -81.3334802538157,
+            "latitude": 28.5535499453545
+          }
+        ]
+      }
+    },
+    {
+      "id": "2015-00198827",
+      "type": "Feature",
+      "properties": {
+        "isgeocoded": true,
+        "referenceid": "2015-00198827",
+        "processedtodw": true,
+        "location": "3076 Curry Ford Rd",
+        "description": "Battery",
+        "zipcode": "32806",
+        "geopoint": "0xE6100000010C0300A05B035654C00500800A2D863C40",
+        "tweet": "NULL",
+        "calltime": "2015-05-15T01:35:00",
+        "location_1": {
+          "needs_recoding": false,
+          "longitude": "-81.3439549505711",
+          "latitude": "28.5241247713566",
+          "human_address": "{\"address\":\"3076 Curry Ford Rd\",\"city\":\"Orlando\",\"state\":\"FL\",\"zip\":\"32806\"}"
+        },
+        "district": "I5",
+        "errored": "0",
+        "title": "A Battery has occurred at 3076 Curry Ford Rd on 2015-05-15T01:35:00."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          {
+            "longitude": -81.3439549505711,
+            "latitude": 28.5241247713566
+          }
+        ]
+      }
+    },
+    {
+      "id": "2015-00198825",
+      "type": "Feature",
+      "properties": {
+        "isgeocoded": true,
+        "referenceid": "2015-00198825",
+        "processedtodw": true,
+        "location": "6200 International Dr",
+        "description": "Designated Patrol Area - available",
+        "zipcode": "32819",
+        "geopoint": "0xE6100000010C030000A0C45D54C0FDFFFFBFBD753C40",
+        "tweet": "NULL",
+        "calltime": "2015-05-15T01:28:00",
+        "location_1": {
+          "needs_recoding": false,
+          "longitude": "-81.4651260375977",
+          "latitude": "28.4599266052246",
+          "human_address": "{\"address\":\"6200 International Dr\",\"city\":\"Orlando\",\"state\":\"FL\",\"zip\":\"32819\"}"
+        },
+        "district": "E8",
+        "errored": "0",
+        "title": "A Designated Patrol Area - available has occurred at 6200 International Dr on 2015-05-15T01:28:00."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          {
+            "longitude": -81.4651260375977,
+            "latitude": 28.4599266052246
+          }
+        ]
+      }
+    },
+    {
+      "id": "2015-00198818",
+      "type": "Feature",
+      "properties": {
+        "isgeocoded": true,
+        "referenceid": "2015-00198818",
+        "processedtodw": true,
+        "location": "Conway Rd S & Lake Underhill Rd",
+        "description": "Suspicious vehicle",
+        "zipcode": "32807",
+        "geopoint": "0xE6100000010CFDFF6F8A325554C0020080F598893C40",
+        "tweet": "NULL",
+        "calltime": "2015-05-15T01:22:00",
+        "location_1": {
+          "needs_recoding": false,
+          "longitude": "-81.3312097638845",
+          "latitude": "28.5374902188778",
+          "human_address": "{\"address\":\"Conway Rd S &amp; Lake Underhill Rd\",\"city\":\"Orlando\",\"state\":\"FL\",\"zip\":\"32807\"}"
+        },
+        "district": "I2",
+        "errored": "0",
+        "title": "A Suspicious vehicle has occurred at Conway Rd S & Lake Underhill Rd on 2015-05-15T01:22:00."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          {
+            "longitude": -81.3312097638845,
+            "latitude": 28.5374902188778
+          }
+        ]
+      }
+    },
+    {
+      "id": "2015-00198812",
+      "type": "Feature",
+      "properties": {
+        "isgeocoded": true,
+        "referenceid": "2015-00198812",
+        "processedtodw": true,
+        "location": "W South St & Lime Ave",
+        "description": "Drug violation",
+        "zipcode": "32805",
+        "geopoint": "0xE6100000010C030080D4D45854C008004011CC893C40",
+        "tweet": "NULL",
+        "calltime": "2015-05-15T01:28:00",
+        "location_1": {
+          "needs_recoding": false,
+          "longitude": "-81.3879901170731",
+          "latitude": "28.5382700711489",
+          "human_address": "{\"address\":\"W South St &amp; Lime Ave\",\"city\":\"Orlando\",\"state\":\"FL\",\"zip\":\"32805\"}"
+        },
+        "district": "F7",
+        "errored": "0",
+        "title": "A Drug violation has occurred at W South St & Lime Ave on 2015-05-15T01:28:00."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          {
+            "longitude": -81.3879901170731,
+            "latitude": 28.5382700711489
+          }
+        ]
+      }
+    },
+    {
+      "id": "2015-00198809",
+      "type": "Feature",
+      "properties": {
+        "isgeocoded": true,
+        "referenceid": "2015-00198809",
+        "processedtodw": true,
+        "location": "S Orange Blossom Trail & Conley St",
+        "description": "Designated Patrol Area - available",
+        "zipcode": "32805",
+        "geopoint": "0xE6100000010CD662E1A56A5954C0DEFBC8DC6C883C40",
+        "tweet": "NULL",
+        "calltime": "2015-05-15T01:10:00",
+        "location_1": {
+          "needs_recoding": false,
+          "longitude": "-81.3971342755352",
+          "latitude": "28.5329111090358",
+          "human_address": "{\"address\":\"S Orange Blossom Trail &amp; Conley St\",\"city\":\"Orlando\",\"state\":\"FL\",\"zip\":\"32805\"}"
+        },
+        "district": "F2",
+        "errored": "0",
+        "title": "A Designated Patrol Area - available has occurred at S Orange Blossom Trail & Conley St on 2015-05-15T01:10:00."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          {
+            "longitude": -81.3971342755352,
+            "latitude": 28.5329111090358
+          }
+        ]
+      }
+    },
+    {
+      "id": "2015-00198804",
+      "type": "Feature",
+      "properties": {
+        "isgeocoded": true,
+        "referenceid": "2015-00198804",
+        "processedtodw": true,
+        "location": "L B McLeod Rd & Willie Mays Pkwy",
+        "description": "Drunk driver",
+        "zipcode": "32811",
+        "geopoint": "0xE6100000010C5F3EF484E95B54C0117E111637823C40",
+        "tweet": "NULL",
+        "calltime": "2015-05-15T01:04:00",
+        "location_1": {
+          "needs_recoding": false,
+          "longitude": "-81.4361278901283",
+          "latitude": "28.5086530487734",
+          "human_address": "{\"address\":\"L B McLeod Rd &amp; Willie Mays Pkwy\",\"city\":\"Orlando\",\"state\":\"FL\",\"zip\":\"32811\"}"
+        },
+        "district": "E4",
+        "errored": "0",
+        "title": "A Drunk driver has occurred at L B McLeod Rd & Willie Mays Pkwy on 2015-05-15T01:04:00."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          {
+            "longitude": -81.4361278901283,
+            "latitude": 28.5086530487734
+          }
+        ]
+      }
+    },
+    {
+      "id": "2015-00198802",
+      "type": "Feature",
+      "properties": {
+        "isgeocoded": true,
+        "referenceid": "2015-00198802",
+        "processedtodw": true,
+        "location": "5247 Millenia Blvd",
+        "description": "Missing person - adult",
+        "zipcode": "32839",
+        "geopoint": "0xE6100000010CFDFF0F7B4F5C54C00700C05F77793C40",
+        "tweet": "NULL",
+        "calltime": "2015-05-15T01:46:00",
+        "location_1": {
+          "needs_recoding": false,
+          "longitude": "-81.4423511177301",
+          "latitude": "28.4744777530432",
+          "human_address": "{\"address\":\"5247 Millenia Blvd\",\"city\":\"Orlando\",\"state\":\"FL\",\"zip\":\"32839\"}"
+        },
+        "district": "E2",
+        "errored": "0",
+        "title": "A Missing person - adult has occurred at 5247 Millenia Blvd on 2015-05-15T01:46:00."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          {
+            "longitude": -81.4423511177301,
+            "latitude": 28.4744777530432
+          }
+        ]
+      }
+    },
+    {
+      "id": "2015-00198801",
+      "type": "Feature",
+      "properties": {
+        "isgeocoded": true,
+        "referenceid": "2015-00198801",
+        "processedtodw": true,
+        "location": "5573 S Kirkman Rd",
+        "description": "Theft by shoplifting",
+        "zipcode": "32819",
+        "geopoint": "0xE6100000010C0300C0BE5A5D54C0F9FF3F623E7B3C40",
+        "tweet": "NULL",
+        "calltime": "2015-05-15T01:08:00",
+        "location_1": {
+          "needs_recoding": false,
+          "longitude": "-81.4586636424065",
+          "latitude": "28.4814206510782",
+          "human_address": "{\"address\":\"5573 S Kirkman Rd\",\"city\":\"Orlando\",\"state\":\"FL\",\"zip\":\"32819\"}"
+        },
+        "district": "E7",
+        "errored": "0",
+        "title": "A Theft by shoplifting has occurred at 5573 S Kirkman Rd on 2015-05-15T01:08:00."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          {
+            "longitude": -81.4586636424065,
+            "latitude": 28.4814206510782
+          }
+        ]
+      }
+    },
+    {
+      "id": "2015-00198797",
+      "type": "Feature",
+      "properties": {
+        "isgeocoded": true,
+        "referenceid": "2015-00198797",
+        "processedtodw": true,
+        "location": "5345 Bamboo Ct",
+        "description": "Noise ordinance violation",
+        "zipcode": "32811",
+        "geopoint": "0xE6100000010C04000000ED5C54C0050000802C7F3C40",
+        "tweet": "NULL",
+        "calltime": "2015-05-15T01:19:00",
+        "location_1": {
+          "needs_recoding": false,
+          "longitude": "-81.4519653320313",
+          "latitude": "28.4967727661133",
+          "human_address": "{\"address\":\"5345 Bamboo Ct\",\"city\":\"Orlando\",\"state\":\"FL\",\"zip\":\"32811\"}"
+        },
+        "district": "E5",
+        "errored": "0",
+        "title": "A Noise ordinance violation has occurred at 5345 Bamboo Ct on 2015-05-15T01:19:00."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          {
+            "longitude": -81.4519653320313,
+            "latitude": 28.4967727661133
+          }
+        ]
+      }
+    },
+    {
+      "id": "2015-00198796",
+      "type": "Feature",
+      "properties": {
+        "isgeocoded": true,
+        "referenceid": "2015-00198796",
+        "processedtodw": true,
+        "location": "S Cottage Hill Rd & Fitzgerald Dr",
+        "description": "Designated Patrol Area - available",
+        "zipcode": "32805",
+        "geopoint": "0xE6100000010CFEFFBF6E9E5A54C00000807E878A3C40",
+        "tweet": "NULL",
+        "calltime": "2015-05-15T00:57:00",
+        "location_1": {
+          "needs_recoding": false,
+          "longitude": "-81.4159199595451",
+          "latitude": "28.541129976511",
+          "human_address": "{\"address\":\"S Cottage Hill Rd &amp; Fitzgerald Dr\",\"city\":\"Orlando\",\"state\":\"FL\",\"zip\":\"32805\"}"
+        },
+        "district": "G4",
+        "errored": "0",
+        "title": "A Designated Patrol Area - available has occurred at S Cottage Hill Rd & Fitzgerald Dr on 2015-05-15T00:57:00."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          {
+            "longitude": -81.4159199595451,
+            "latitude": 28.541129976511
+          }
+        ]
+      }
+    },
+    {
+      "id": "2015-00198794",
+      "type": "Feature",
+      "properties": {
+        "isgeocoded": true,
+        "referenceid": "2015-00198794",
+        "processedtodw": true,
+        "location": "I-4 E & SW Ivanhoe Blvd",
+        "description": "Non-emergency assistance",
+        "zipcode": "32804",
+        "geopoint": "0xE6100000010CB796376B4E5854C088E514C3608F3C40",
+        "tweet": "NULL",
+        "calltime": "2015-05-15T00:58:00",
+        "location_1": {
+          "needs_recoding": false,
+          "longitude": "-81.3797863047465",
+          "latitude": "28.5600702215211",
+          "human_address": "{\"address\":\"I-4 E &amp; SW Ivanhoe Blvd\",\"city\":\"Orlando\",\"state\":\"FL\",\"zip\":\"32804\"}"
+        },
+        "district": "C4",
+        "errored": "0",
+        "title": "A Non-emergency assistance has occurred at I-4 E & SW Ivanhoe Blvd on 2015-05-15T00:58:00."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          {
+            "longitude": -81.3797863047465,
+            "latitude": 28.5600702215211
+          }
+        ]
+      }
+    }
+  ]
+}
