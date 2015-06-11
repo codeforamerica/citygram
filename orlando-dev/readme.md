@@ -10,6 +10,7 @@ This section is for Code For Orlando development and testing.
 
 ###Directory
 
+* <b>Background</b> - Proposed city backgrounds
 * <b>Data</b> - JSON reference objects
 * <b>Icons</b> - icons to be displayed with service/topic options
 * <b>Intermediary</b> - API service that pulls data from Orlando data portal and formats to be city gram compliant
