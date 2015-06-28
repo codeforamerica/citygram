@@ -63,6 +63,8 @@ rake db:create db:migrate DATABASE_URL=postgres://localhost/citygram_test
 rake digests:send
 ```
 
+##### Single City Installation
+
 If you only need to support a single city you can specify the <kbd>ROOT_CITY_TAG</kbd> to bypass the index and load one city.
 
 For example, https://www.citygram.nyc/ is a single city installation with the following environment variable
