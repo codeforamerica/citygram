@@ -6,7 +6,7 @@ else
   ruby '2.2.2'
 end
 
-gem 'activesupport'
+gem 'activesupport', require: 'active_support'
 gem 'airbrake', require: false
 gem 'dedent'
 gem 'dotenv', '~> 1.0'
