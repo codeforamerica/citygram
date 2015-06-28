@@ -1,8 +1,8 @@
-# Citygram [![Build Status](http://img.shields.io/travis/BetaNYC/citygram-nyc.svg)][travis] [![Dependency Status](http://img.shields.io/gemnasium/BetaNYC/citygram-nyc.svg)][gemnasium] [![Code Climate](http://img.shields.io/codeclimate/github/BetaNYC/citygram-nyc.svg)][codeclimate]
+# Citygram [![Build Status](http://img.shields.io/travis/codeforamerica/citygram.svg)][travis] [![Dependency Status](http://img.shields.io/gemnasium/codeforamerica/citygram.svg)][gemnasium] [![Code Climate](http://img.shields.io/codeclimate/github/codeforamerica/citygram.svg)][codeclimate]
 
-[travis]: https://travis-ci.org/BetaNYC/citygram-nyc
-[gemnasium]: https://gemnasium.com/BetaNYC/citygram-nyc
-[codeclimate]: https://codeclimate.com/github/BetaNYC/citygram-nyc
+[travis]: https://travis-ci.org/codeforamerica/citygram
+[gemnasium]: https://gemnasium.com/codeforamerica/citygram
+[codeclimate]: https://codeclimate.com/github/codeforamerica/citygram
 
 __Citygram__ is a geographic notification platform designed to work with open government data. It allows residents to designate area(s) of a city they are interested in and subscribe to one or more topics. When an event for a desired topic occurs in the subscriber's area of interest, a notification (email, SMS, or [webhook]) is delivered. Citygram is a [Code for America] project by the [Charlotte] and [Lexington] teams for the [2014 fellowship].
 
@@ -16,13 +16,9 @@ __Citygram__ is a geographic notification platform designed to work with open go
 
 We believe that there is an opportunity to help residents better understand what’s going on in their area, when it’s going to happen, and why. By providing timely information to residents in areas that are relevant to them, the city can be proactive instead of reactive, build trust through transparency, and increase civic engagement across the board.
 
-### How to contribute
-* You can file an [issue](https://github.com/BetaNYC/citygram-nyc/issues/new)
-* Join in a conversation at [talk.beta.nyc/citygram](https://talk.beta.nyc/c/working-groups/citygram)
-
 ### Who is this made by?
 
-See the [contributors list](https://github.com/betanyc/citygram-nyc/graphs/contributors).
+See the [contributors list](https://github.com/codeforamerica/citygram/graphs/contributors).
 
 ### Technical Overview
 
@@ -61,7 +57,6 @@ rake db:create db:migrate
 rake db:create db:migrate DATABASE_URL=postgres://localhost/citygram_test
 ```
 
-=======
 ##### Single City Installation
 
 If you only need to support a single city you can specify the <kbd>ROOT_CITY_TAG</kbd> to bypass the index and load one city.
@@ -71,6 +66,10 @@ For example, https://www.citygram.nyc/ is a single city installation with the fo
 ```
 ROOT_CITY_TAG=new-york
 ```
+
+### Developing
+
+To boot up the complete application and run background jobs in development:
 
 ```
 bundle exec foreman start
