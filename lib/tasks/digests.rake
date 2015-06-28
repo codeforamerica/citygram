@@ -1,9 +1,13 @@
+require_relative '../digest_helper'
+
 namespace :digests do
   task send: :app do
-    Subscription.notifiables.where(channel: 'email').paged_each do |subscription|
-      if subscription.has_events?
-        Citygram::Workers::Notifier.perform_async(subscription.id, nil)
-      end
+    Citygram::DigestHelper.send
+  end
+
+  task send_if_digest_day: :app do
+    if Citygram::DigestHelper.digest_day?
+      Citygram::DigestHelper.send
     end
   end
 end

@@ -14,3 +14,28 @@ describe Rake::Task['digests:send'] do
     expect{ subject.invoke }.to change{ Citygram::Workers::Notifier.jobs.count }.by(+1)
   end
 end
+
+describe Rake::Task['digests:send_if_digest_day'] do
+  before do
+    allow(Citygram::DigestHelper).to receive(:digest_day?).and_return(digest_day?)
+    allow(Citygram::DigestHelper).to receive(:send)
+  end
+
+  context 'digest_day is today' do
+    let(:digest_day?) { true }
+
+    it 'sends the digest' do
+      subject.invoke
+      expect(Citygram::DigestHelper).to have_received(:send)
+    end
+  end
+
+  context 'digest_day is not today' do
+    let(:digest_day?) { false }
+
+    it 'does not send the digest' do
+      subject.invoke
+      expect(Citygram::DigestHelper).not_to have_received(:send)
+    end
+  end
+end

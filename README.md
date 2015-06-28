@@ -57,7 +57,11 @@ rake db:create db:migrate
 rake db:create db:migrate DATABASE_URL=postgres://localhost/citygram_test
 ```
 
-##### Single City Installation
+##### Sending a Digest
+
+```
+rake digests:send
+```
 
 If you only need to support a single city you can specify the <kbd>ROOT_CITY_TAG</kbd> to bypass the index and load one city.
 
@@ -76,7 +80,20 @@ bundle exec foreman start
 open http://localhost:5000/
 ```
 
+##### Digest Day
+
+[Heroku Scheduler](https://devcenter.heroku.com/articles/scheduler) has a restriction of only running rake tasks daily, hourly or every 10 minutes.
+
+[![Heroku Scheduler](https://cloud.githubusercontent.com/assets/81055/8396560/35936874-1d79-11e5-8ce8-2615e5976789.jpg)](https://devcenter.heroku.com/articles/scheduler)
+
+In order to send the scheduled c
+
 You can now see your site at
+
+```
+ENV['DIGEST_DAY'] = 'wednesday'
+rake digests:send_if_digest_day
+```
 
 ### Testing
 
