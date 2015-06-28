@@ -3,7 +3,7 @@ require 'date'
 module Citygram
   module DigestHelper
     def self.digest_day
-      ENV.fetch('DIGEST_DAY')
+      ENV.fetch('DIGEST_DAY').downcase
     end
 
     def self.today_as_digest_day
