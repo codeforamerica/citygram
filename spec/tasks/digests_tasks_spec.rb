@@ -16,7 +16,7 @@ describe Rake::Task['digests:send'] do
 end
 
 describe Rake::Task['digests:send_if_digest_day'] do
-  before do
+  before :each do
     allow(Citygram::DigestHelper).to receive(:digest_day?).and_return(digest_day?)
     allow(Citygram::DigestHelper).to receive(:send)
   end
