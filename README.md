@@ -57,10 +57,13 @@ rake db:create db:migrate
 rake db:create db:migrate DATABASE_URL=postgres://localhost/citygram_test
 ```
 
-##### Sending a Digest
+### Developing
+
+To boot up the complete application and run background jobs in development:
 
 ```
-rake digests:send
+bundle exec foreman start
+open http://localhost:5000/
 ```
 
 ##### Single City Installation
@@ -73,24 +76,23 @@ For example, https://www.citygram.nyc/ is a single city installation with the fo
 ROOT_CITY_TAG=new-york
 ```
 
-### Developing
-
-To boot up the complete application and run background jobs in development:
+##### Sending a Digest
 
 ```
-bundle exec foreman start
-open http://localhost:5000/
+rake digests:send
 ```
 
-##### Digest Day
+##### Sending a Digest Weekly
 
 [Heroku Scheduler](https://devcenter.heroku.com/articles/scheduler) has a restriction of only running rake tasks daily, hourly or every 10 minutes.
 
 [![Heroku Scheduler](https://cloud.githubusercontent.com/assets/81055/8396560/35936874-1d79-11e5-8ce8-2615e5976789.jpg)](https://devcenter.heroku.com/articles/scheduler)
 
-In order to send the scheduled c
+In order to send the scheduled email on a weekly basis there is another task
+that checks whether the digest day value matches today.
 
-You can now see your site at
+For example, if I want to send my emails on Wednesday, then I would set a
+`DIGEST_DAY` value of `wednesday`
 
 ```
 ENV['DIGEST_DAY'] = 'wednesday'
