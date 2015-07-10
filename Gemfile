@@ -3,17 +3,17 @@ source 'https://rubygems.org'
 if ENV['CI']
   ruby RUBY_VERSION
 else
-  ruby '2.1.2'
+  ruby '2.2.2'
 end
 
-gem 'activesupport'
+gem 'activesupport', require: 'active_support'
 gem 'airbrake', require: false
 gem 'dedent'
 gem 'dotenv', '~> 1.0'
 gem 'faraday', '~> 0.9'
 gem 'faraday_middleware', '~> 0.9'
-gem 'georuby', '~> 2.1'
-gem 'grape', '~> 0.7'
+gem 'georuby', '~> 2.3.0'
+gem 'grape', '~> 0.9.0'
 gem 'pg'
 gem 'phone', '~> 1.3.0.beta0'
 gem 'pony', '~> 1.9'
