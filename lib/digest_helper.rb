@@ -14,7 +14,7 @@ module Citygram
       digest_day == today_as_digest_day
     end
 
-    def send
+    def send_notifications
       ::Citygram::Workers::Notifier
       ::Subscription.notifiables.where(channel: 'email').paged_each do |subscription|
         if subscription.has_events?
@@ -23,7 +23,7 @@ module Citygram
       end
     end
 
-    def send_if_digest_day
+    def send_notifications_if_digest_day
       send if digest_day?
     end
   end

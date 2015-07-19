@@ -6,10 +6,10 @@ namespace :digests do
   end
 
   task send: :app do
-    digest_helper.send
+    digest_helper.send_notifications
   end
 
   task send_if_digest_day: :app do
-    digest_helper.send_if_digest_day
+    digest_helper.send_notifications_if_digest_day
   end
 end
