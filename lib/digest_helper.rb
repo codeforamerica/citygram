@@ -15,7 +15,6 @@ module Citygram
     end
 
     def send_notifications
-      ::Citygram::Workers::Notifier
       ::Subscription.notifiables.where(channel: 'email').paged_each do |subscription|
         if subscription.has_events?
           ::Citygram::Workers::Notifier.perform_async(subscription.id, nil)
@@ -24,7 +23,7 @@ module Citygram
     end
 
     def send_notifications_if_digest_day
-      send if digest_day?
+      send_notifications if digest_day?
     end
   end
 end
