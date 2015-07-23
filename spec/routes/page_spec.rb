@@ -4,13 +4,12 @@ describe Citygram::Routes::Page do
   include Citygram::Routes::TestHelpers
 
   describe 'GET /' do
+    before do
+      ENV.delete 'ROOT_CITY_TAG'
+    end
     context 'ROOT_CITY_TAG is set' do
       before do
         ENV['ROOT_CITY_TAG'] = 'new-york'
-      end
-
-      after do
-        ENV.delete 'ROOT_CITY_TAG'
       end
 
       it 'responds with 200 OK' do
