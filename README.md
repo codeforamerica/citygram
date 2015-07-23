@@ -82,22 +82,17 @@ ROOT_CITY_TAG=new-york
 rake digests:send
 ```
 
-##### Sending a Digest Weekly
+##### Sending a Weekly Digest
 
-[Heroku Scheduler](https://devcenter.heroku.com/articles/scheduler) has a restriction of only running rake tasks daily, hourly or every 10 minutes.
-
-[![Heroku Scheduler](https://cloud.githubusercontent.com/assets/81055/8396560/35936874-1d79-11e5-8ce8-2615e5976789.jpg)](https://devcenter.heroku.com/articles/scheduler)
-
-In order to send the scheduled email on a weekly basis there is another task
-that checks whether the digest day value matches today.
-
-For example, if I want to send my emails on Wednesday, then I would set a
-`DIGEST_DAY` value of `wednesday`
+For Heroku Scheduler users, there is a task that can be executed multiple times,
+but will only deliver mail on the environment's `DIGEST_DAY`.
 
 ```
 ENV['DIGEST_DAY'] = 'wednesday'
 rake digests:send_if_digest_day
 ```
+
+[![Heroku Scheduler](https://cloud.githubusercontent.com/assets/81055/8840908/732942c2-30b5-11e5-8af7-06b9e169d281.png)](https://devcenter.heroku.com/articles/scheduler)
 
 ### Testing
 
