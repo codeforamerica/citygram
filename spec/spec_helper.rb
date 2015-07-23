@@ -6,6 +6,7 @@ require 'webmock/rspec'
 
 # require the application
 require_relative '../app'
+require_relative '../lib/digest_helper'
 
 # require test support files
 Dir['spec/support/**/*.rb'].each { |f| require File.absolute_path(f) }
