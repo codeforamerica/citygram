@@ -1,0 +1,16 @@
+<div class="container">
+  <a href='/'>
+    <img src="<%= asset_path 'icons/citygram-logo-color.png' %>" width="150" class="logo">
+  </a>
+  <img src="<%= asset_path 'icons/engine-light-logo-icon.png' %>" width="50" class="logo">
+  <h1>Engine Light</h1>
+
+  <div class="subscription-box">
+    <div class="row">
+      <div class="col-sm-11">
+        <h5>Status: <%= everything_ok? ? "&#10003; ok" : "&#10060; NOT OK" %></h5>
+        <h6>Updated: <%= Time.now %></h6>
+      </div>
+    </div>
+  </div>
+</div>

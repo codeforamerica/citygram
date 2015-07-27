@@ -1,10 +1,13 @@
 require './app'
 
+set :database, ENV['DATABASE_URL'] || 'postgres://localhost/[YOUR_DATABASE_NAME]'
+
 unprotected_routes = [
   Citygram::Routes::Events,
   Citygram::Routes::Publishers,
   Citygram::Routes::Subscriptions,
-  Citygram::Routes::Digests
+  Citygram::Routes::Digests,
+  Citygram::Routes::Status
 ]
 
 unprotected_routes << if ENV.fetch('ROOT_CITY_TAG', false)
