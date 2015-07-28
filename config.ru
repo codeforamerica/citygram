@@ -1,7 +1,5 @@
 require './app'
 
-set :database, ENV['DATABASE_URL'] || 'postgres://localhost/[YOUR_DATABASE_NAME]'
-
 unprotected_routes = [
   Citygram::Routes::Events,
   Citygram::Routes::Publishers,
