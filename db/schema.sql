@@ -284,7 +284,6 @@ ALTER TABLE ONLY subscriptions
 
 
 --
-
 -- PostgreSQL database dump complete
 --
 
