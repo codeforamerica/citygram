@@ -25,6 +25,10 @@ module Citygram::Models
         active.where(:publisher => Publisher.active)
       end
 
+      def email
+        where(channel: 'email')
+      end
+
       def active
         where(unsubscribed_at: nil)
       end
