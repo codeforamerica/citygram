@@ -1,5 +1,7 @@
 module Citygram::Routes
   class Status < Citygram::App
+    TWILIO_URL = ENV.fetch('TWILIO_URL').freeze
+
     def check
       everything_ok? ? "ok" : "NOT OK"
     end
@@ -14,7 +16,7 @@ module Citygram::Routes
     end
 
     def twilio_response_okay?
-      uri = URI('https://api.twilio.com/2010-04-01')
+      uri = URI(TWILIO_URL)
       res = Net::HTTP.get_response(uri)
       if res.code == "200"
         true
