@@ -34,7 +34,7 @@ Citygram is a web application written in Ruby.
 
 * Install Redis - `brew install redis`
 * [Install PostgreSQL](https://github.com/codeforamerica/howto/blob/master/PostgreSQL.md)
-* [Install Ruby](https://github.com/codeforamerica/howto/blob/master/Ruby.md)
+* Install Ruby ([rbenv guide](https://github.com/sstephenson/rbenv#installation))
 
 In the command line, run the following:
 
@@ -43,9 +43,10 @@ In the command line, run the following:
 ```
 git clone https://github.com/codeforamerica/citygram.git
 cd citygram
-rbenv install local
+rbenv install
 brew install postgresql postgis
 gem install bundler
+rbenv rehash
 bundle install
 ```
 
@@ -55,6 +56,15 @@ bundle install
 cp .env.sample .env
 rake db:create db:migrate
 rake db:create db:migrate DATABASE_URL=postgres://localhost/citygram_test
+```
+
+### Developing
+
+To boot up the complete application and run background jobs in development:
+
+```
+bundle exec foreman start
+open http://localhost:5000/
 ```
 
 ##### Single City Installation
@@ -67,16 +77,23 @@ For example, https://www.citygram.nyc/ is a single city installation with the fo
 ROOT_CITY_TAG=new-york
 ```
 
-### Developing
-
-To boot up the complete application and run background jobs in development:
+##### Sending a Digest
 
 ```
-bundle exec foreman start
-open http://localhost:5000/
+rake digests:send
 ```
 
-You can now see your site at
+##### Sending a Weekly Digest
+
+For Heroku Scheduler users, there is a task that can be executed multiple times,
+but will only deliver mail on the environment's `DIGEST_DAY`.
+
+```
+ENV['DIGEST_DAY'] = 'wednesday'
+rake digests:send_if_digest_day
+```
+
+[![Heroku Scheduler](https://cloud.githubusercontent.com/assets/81055/8840908/732942c2-30b5-11e5-8af7-06b9e169d281.png)](https://devcenter.heroku.com/articles/scheduler)
 
 ### Testing
 
