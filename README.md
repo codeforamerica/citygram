@@ -43,9 +43,10 @@ In the command line, run the following:
 ```
 git clone https://github.com/codeforamerica/citygram.git
 cd citygram
-rbenv install local
+rbenv install
 brew install postgresql postgis
 gem install bundler
+rbenv rehash
 bundle install
 ```
 
