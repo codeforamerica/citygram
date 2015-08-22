@@ -4,7 +4,8 @@ module Citygram::Routes
 
     get '/digests/:subscription_id/reminder' do
       @subscription = Subscription[params[:subscription_id]]
-      @events = Event.from_subscription(@subscription, after_date: @subscription.last_notification)
+      @event_count = Event.from_subscription(@subscription, after_date: @subscription.last_notification).count
+      @events = Event.from_subscription(@subscription, after_date: @subscription.last_notification).limit(100)
       erb :reminder
     end
 
