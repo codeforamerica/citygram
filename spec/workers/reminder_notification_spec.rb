@@ -48,7 +48,7 @@ describe Citygram::Workers::ReminderNotification do
           with(body: {
             "Body" => body,
             "From"=>"15555555555",
-            "To"=>"212-555-1234"}).
+            "To"=>"+12125551234"}).
           to_return(status: 200, body: {
             'sid' => 'SM10ea1dce707f4bedb44204c9fbc02e39',
             'to' => subscription.phone_number,
@@ -60,8 +60,7 @@ describe Citygram::Workers::ReminderNotification do
     end
 
     it 'retrieves the subscription of interest' do
-      expect(Subscription).to receive(:first!).with(id: subscription.id).and_return(subscription)
-      subject.perform(subscription.id)
+      expect{ subject.perform(subscription.id) }.not_to raise_error
     end
 
     it 'logs exceptions from twilio and retries' do

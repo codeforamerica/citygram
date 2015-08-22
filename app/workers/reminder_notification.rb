@@ -17,8 +17,12 @@ module Citygram::Workers
     
     def perform(subscription_id)
       subscription = Subscription.first!(id: subscription_id)
-      publisher = subscription.publisher
-      [reminder_message(subscription), unsub_message(subscription)].each do |body|
+      # form messages based on current state...
+      body_1, body_2 = [reminder_message(subscription), unsub_message(subscription)]
+      
+      # ...but if there is an error sending this message, tomorrow's might work
+      subscription.remind!
+      [body_1, body_2].each do |body|
         Citygram::Services::Channels::SMS.sms(
           from: Citygram::Services::Channels::SMS::FROM_NUMBER,
           to: subscription.phone_number,

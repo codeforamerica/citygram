@@ -28,6 +28,10 @@ module Citygram::Models
       def email
         where(channel: 'email')
       end
+      
+      def sms
+        where(channel: 'sms')
+      end
 
       def active
         where(unsubscribed_at: nil)
@@ -47,8 +51,17 @@ module Citygram::Models
       save!
     end
     
+    def remind!
+      self.last_notified = DateTime.now
+      save!
+    end
+    
     def nominative
       self.email_address.blank? ? self.phone_number : self.email_address
+    end
+    
+    def remindable?
+      needs_activity_evaluation? && requires_notification?
     end
 
     def needs_activity_evaluation?
