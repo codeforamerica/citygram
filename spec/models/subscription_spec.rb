@@ -86,7 +86,7 @@ describe Citygram::Models::Subscription do
     end
   end
   
-  describe 'activity evaluation', focus: true do
+  describe 'activity evaluation' do
     it 'should be the creation date when unevaluated' do
       subscription = build(:subscription, channel: 'sms', phone_number: '555-5555')
       expect(subscription.last_notification).to eq(subscription.created_at)
@@ -110,7 +110,8 @@ describe Citygram::Models::Subscription do
       let(:subscription){ build(:subscription, channel: 'sms', phone_number: '555-5555', last_notified: 3.weeks.ago) }
       let(:expected_opts){ {after_date: subscription.last_notified} }
       it "should reference event count" do
-        expect(Event).to receive(:from_subscription).with(subscription, expected_opts)
+        event_list = double("Sequel::DataSet", count: 0)
+        expect(Event).to receive(:from_subscription).with(subscription, expected_opts){ event_list }
         subscription.deliveries_since_last_notification
       end
       
@@ -132,36 +133,4 @@ describe Citygram::Models::Subscription do
     
   end
 
-  describe 'notification message', focus: true do
-    
-    before(:each) do
-      @subscription = build(:subscription, last_notified: 3.weeks.ago)
-      allow(@subscription).to receive(:deliveries_since_last_notification){ 28 }
-    end
-    
-    subject{ @subscription.notification_message }
-
-    it "should include activity" do
-      expect(subject).to match("28")
-    end
-    
-    it "should include publisher title" do
-      expect(subject).to match(@subscription.publisher.title)
-    end
-    
-    it "should include publisher city" do
-      expect(subject).to match(@subscription.publisher.city)
-    end
-    
-    it "shoud include a date format" do
-      expect(subject).to match(@subscription.last_notification.strftime("%b %d, %Y"))
-    end
-    
-    it "should be shortish" do
-      expect(subject.length).to be <= 140
-    end
-    
-    it "should include an information link"
-    
-  end
 end
