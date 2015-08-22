@@ -47,8 +47,12 @@ module Citygram::Models
       save!
     end
     
+    def nominative
+      self.email_address.blank? ? self.phone_number : self.email_address
+    end
+    
     def notification_message
-      "Since #{last_notification.strftime("%b %d, %Y")}, we've sent you #{self.deliveries_since_last_notification} about #{publisher.title} in #{publisher.city}"
+      "Since #{last_notification_date}, we've sent you #{self.deliveries_since_last_notification} about #{publisher.title} in #{publisher.city}"
     end
     
     def needs_activity_evaluation?
@@ -65,6 +69,10 @@ module Citygram::Models
     
     def last_notification
       self.last_notified || self.created_at
+    end
+    
+    def last_notification_date
+      self.last_notification.strftime("%b %d, %Y")
     end
 
     def validate

@@ -2,6 +2,12 @@ module Citygram::Routes
   class Digests < Citygram::App
     helpers Citygram::Routes::Helpers
 
+    get '/digests/:subscription_id/notification' do
+      @subscription = Subscription[params[:subscription_id]]
+      @events = Event.from_subscription(@subscription, after_date: @subscription.last_notification)
+      erb :notification
+    end
+
     get '/digests/:subscription_id/events' do
       @subscription = Subscription[params[:subscription_id]]
       @events = Event.from_subscription(@subscription, params)
