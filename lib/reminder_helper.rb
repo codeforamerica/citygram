@@ -5,7 +5,7 @@ module Citygram
 
     def send_notifications
       i = 1
-      Subscription.sms.order(:last_notified).paged_each(rows_per_fetch: 10) do |subscription|
+      Subscription.active.sms.order(:last_notified).paged_each(rows_per_fetch: 10) do |subscription|
         if !subscription.remindable?
           Citygram::App.logger.info("Not reminding #{subscription.nominative}")
           next
