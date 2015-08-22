@@ -46,6 +46,26 @@ module Citygram::Models
       self.unsubscribed_at = DateTime.now
       save!
     end
+    
+    def notification_message
+      "Since #{last_notification.strftime("%b %d, %Y")}, we've sent you #{self.deliveries_since_last_notification} about #{publisher.title} in #{publisher.city}"
+    end
+    
+    def needs_activity_evaluation?
+      Time.now > 2.weeks.from_now(last_notification)
+    end
+    
+    def deliveries_since_last_notification
+      Event.from_subscription(self, after_date: self.last_notification)
+    end
+    
+    def requires_notification?
+      self.deliveries_since_last_notification >= 28
+    end
+    
+    def last_notification
+      self.last_notified || self.created_at
+    end
 
     def validate
       super
