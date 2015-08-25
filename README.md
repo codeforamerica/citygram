@@ -30,16 +30,17 @@ Citygram is a web application written in Ruby.
 * Job Queue: [Redis](http://redis.io/), [Sidekiq](https://github.com/mperham/sidekiq)
 * Tests: [RSpec](https://github.com/rspec), [FactoryGirl](https://github.com/thoughtbot/factory_girl), [Rack::Test](https://github.com/brynary/rack-test)
 
-### Setup
+
+### Developing
+
+#### Standard Setup
 
 * Install Redis - `brew install redis`
 * [Install PostgreSQL](https://github.com/codeforamerica/howto/blob/master/PostgreSQL.md)
 * Install PostGIS -- refer to [these troubles](https://github.com/codeforamerica/citygram/issues/188) on Mac OS X
 * [Install Ruby](https://github.com/codeforamerica/howto/blob/master/Ruby.md)
 
-In the command line, run the following:
-
-#### Install Dependencies
+##### Install Dependencies
 
 ```
 git clone https://github.com/codeforamerica/citygram.git
@@ -50,7 +51,7 @@ gem install bundler
 bundle install
 ```
 
-#### Configure Environment
+##### Configure Environment
 
 ```
 cp .env.sample .env
@@ -58,7 +59,41 @@ rake db:create db:migrate
 rake db:create db:migrate DATABASE_URL=postgres://localhost/citygram_test
 ```
 
-### Developing
+##### Running tests
+
+Run all tests in the `spec/` directory.
+
+```
+rake
+```
+
+
+
+#### Docker Setup (experimental)
+
+Citygram is experimenting with a Docker-based approach to development to see if it aids in developer onboarding.
+
+There is no requirement other than Docker and a command-line.
+
+```
+bin/setup
+bin/test
+```
+
+The first command will download and build all images needed to run Citygram in a local container.
+The second command runs tests.  You can make changes and run tests from there.  
+
+##### Docker Migrations
+
+If your changes need migrations, this command will run them:
+
+```
+docker-compose run web bundle exec rake db:migrate
+```
+
+In fact, most arbitrary commands will work inside the container if you preface them with ```docker-compose run web```
+
+### Running
 
 To boot up the complete application and run background jobs in development:
 
@@ -66,6 +101,7 @@ To boot up the complete application and run background jobs in development:
 bundle exec foreman start
 open http://localhost:5000/
 ```
+
 
 ##### Single City Installation
 
@@ -95,10 +131,3 @@ rake digests:send_if_digest_day
 
 [![Heroku Scheduler](https://cloud.githubusercontent.com/assets/81055/8840908/732942c2-30b5-11e5-8af7-06b9e169d281.png)](https://devcenter.heroku.com/articles/scheduler)
 
-### Testing
-
-Run all tests in the `spec/` directory.
-
-```
-rake
-```
