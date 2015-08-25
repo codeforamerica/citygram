@@ -4,7 +4,7 @@ redis:
   image: redis:3.0.3
 web:
   image: citygram:latest
-  env_file: .env
+  env_file: .env.sample
   environment:
     DB_NAME: citygram_development
     PG_USER: postgres
