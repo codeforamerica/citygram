@@ -35,6 +35,23 @@ namespace :db do
   task :schema_dump do
     Citygram::DatabaseHelper.schema_dump
   end
+  
+  namespace :docker do
+    desc 'Reset the database'
+    task :reset do
+      Citygram::DatabaseHelper.docker_reset
+    end
+
+    desc 'Drop the database'
+    task :drop do
+      Citygram::DatabaseHelper.docker_drop_db
+    end
+
+    desc 'Create the database'
+    task :create do
+      Citygram::DatabaseHelper.docker_create_db
+    end    
+  end
 end
 
 namespace :g do

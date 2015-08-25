@@ -1,0 +1,20 @@
+db:
+  image: mdillon/postgis
+redis:
+  image: redis:3.0.3
+web:
+  image: citygram:latest
+  env_file: .env
+  environment:
+    DB_NAME: citygram_development
+    PG_USER: postgres
+    PG_HOST: citygram_db_1
+    DATABASE_URL: postgres://postgres@citygram_db_1/citygram_development
+  command: bundle exec rackup -b '0.0.0.0'
+  volumes:
+    - .:/usr/src/app/citygram
+  ports:
+    - "9292:9292"
+  links:
+    - db
+    - redis
