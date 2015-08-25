@@ -80,6 +80,22 @@
           37.7749295
         ]
       }
+    },
+        {
+      "id": "triangle",
+      "type": "Feature",
+      "properties": {
+        "title": "Triangle Region NC",
+        "background": "triangle.jpg",
+        "zoom": 11
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.7879963,
+          35.880079
+        ]
+      }
     }
 
   ]
