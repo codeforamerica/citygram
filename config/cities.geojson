@@ -54,7 +54,7 @@
       "type": "Feature",
       "properties": {
         "title": "New York",
-        "background": "new-york.png",
+        "background": "new-york.jpg",
         "zoom": 11
       },
       "geometry": {
@@ -78,6 +78,22 @@
         "coordinates": [
           -122.4194155,
           37.7749295
+        ]
+      }
+    },
+        {
+      "id": "triangle",
+      "type": "Feature",
+      "properties": {
+        "title": "Triangle Region NC",
+        "background": "triangle.jpg",
+        "zoom": 11
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.7879963,
+          35.880079
         ]
       }
     }
