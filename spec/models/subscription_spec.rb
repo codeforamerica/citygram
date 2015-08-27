@@ -85,4 +85,52 @@ describe Citygram::Models::Subscription do
       end
     end
   end
+  
+  describe 'activity evaluation' do
+    it 'should be the creation date when unevaluated' do
+      subscription = build(:subscription, channel: 'sms', phone_number: '555-5555')
+      expect(subscription.last_notification).to eq(subscription.created_at)
+    end
+    it 'should be an assignable field' do
+      ntime = 2.weeks.ago
+      subscription = build(:subscription, channel: 'sms', phone_number: '555-5555', last_notified: ntime)
+      expect(subscription.last_notification).to eq(ntime)
+    end
+    it 'should not be required within 2 weeks' do
+      subscription = build(:subscription, channel: 'sms', phone_number: '555-5555', last_notified: 1.weeks.ago)
+      expect(subscription.needs_activity_evaluation?).not_to eq(true)
+    end
+    it 'should be required after 2 weeks' do
+      subscription = build(:subscription, channel: 'sms', phone_number: '555-5555', last_notified: 3.weeks.ago)
+      expect(subscription.needs_activity_evaluation?).to eq(true)
+    end
+        
+    context 'measuring deliveries' do
+      
+      let(:subscription){ build(:subscription, channel: 'sms', phone_number: '555-5555', last_notified: 3.weeks.ago) }
+      let(:expected_opts){ {after_date: subscription.last_notified} }
+      it "should reference event count" do
+        event_list = double("Sequel::DataSet", count: 0)
+        expect(Event).to receive(:from_subscription).with(subscription, expected_opts){ event_list }
+        subscription.deliveries_since_last_notification
+      end
+      
+      context 'action' do
+        
+        it "should not be required at 27 messages" do
+          allow(subscription).to receive(:deliveries_since_last_notification){ 27 }
+          expect(subscription.requires_notification?).not_to eq(true)
+        end
+        
+        it "should be required at 28 messages" do
+          allow(subscription).to receive(:deliveries_since_last_notification){ 28 }
+          expect(subscription.requires_notification?).to eq(true)
+        end
+        
+      end
+      
+    end
+    
+  end
+
 end
