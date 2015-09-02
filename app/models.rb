@@ -3,7 +3,7 @@ require 'phone'
 require 'sequel'
 
 ENV['DATABASE_URL'] ||= "postgres://localhost/citygram_#{Citygram::App.environment}"
-DB = Sequel.connect(ENV['DATABASE_URL'])
+DB = Sequel.connect(ENV['DATABASE_URL'], max_connections: ENV.fetch('MAX_CONNECTIONS', 20))
 
 Sequel.default_timezone = :utc
 
