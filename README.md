@@ -32,14 +32,18 @@ Citygram is a web application written in Ruby.
 
 ### Setup
 
-* Install Redis - `brew install redis`
+### Installation
+
+First, follow the instructions to install each of the following:
+
+* [Install Ruby](https://github.com/codeforamerica/howto/blob/master/Ruby.md) and [rbenv](https://github.com/sstephenson/rbenv#installation)
 * [Install PostgreSQL](https://github.com/codeforamerica/howto/blob/master/PostgreSQL.md)
 * Install PostGIS -- refer to [these troubles](https://github.com/codeforamerica/citygram/issues/188) on Mac OS X
-* [Install Ruby](https://github.com/codeforamerica/howto/blob/master/Ruby.md) ([rbenv guide](https://github.com/sstephenson/rbenv#installation))
-
-In the command line, run the following:
+* Install Redis - `brew install redis`
 
 #### Install Dependencies
+
+In the command line, run the following:
 
 ```
 git clone https://github.com/codeforamerica/citygram.git
@@ -51,7 +55,12 @@ rbenv rehash
 bundle install
 ```
 
+This will copy the code locally, then install all Ruby package dependencies.
+
+
 #### Configure Environment
+
+Make sure your PostgreSQL server is running, then in the terminal run:
 
 ```
 cp .env.sample .env
@@ -62,11 +71,15 @@ rake db:create db:migrate DATABASE_URL=postgres://localhost/citygram_test
 ### Developing
 
 To boot up the complete application and run background jobs in development:
-
 ```
 bundle exec foreman start
+```
+
+Then, in a new terminal window, run:
+```
 open http://localhost:5000/
 ```
+
 
 ##### Single City Installation
 
