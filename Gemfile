@@ -1,10 +1,7 @@
 source 'https://rubygems.org'
 
-if ENV['CI']
-  ruby RUBY_VERSION
-else
-  ruby '2.2.2'
-end
+raise 'Ruby should be >= 2.0' unless RUBY_VERSION.to_f >= 2.0
+ruby RUBY_VERSION
 
 gem 'activesupport', require: 'active_support'
 gem 'airbrake', require: false
