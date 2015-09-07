@@ -30,17 +30,27 @@ Citygram is a web application written in Ruby.
 * Job Queue: [Redis](http://redis.io/), [Sidekiq](https://github.com/mperham/sidekiq)
 * Tests: [RSpec](https://github.com/rspec), [FactoryGirl](https://github.com/thoughtbot/factory_girl), [Rack::Test](https://github.com/brynary/rack-test)
 
-### Requirements
+## Installation and configuration
 
-* Redis
-* [PostgreSQL](https://github.com/codeforamerica/howto/blob/master/PostgreSQL.md) and PostGIS
-* [Ruby](https://github.com/codeforamerica/howto/blob/master/Ruby.md) and bundler ([rbenv guide](https://github.com/sstephenson/rbenv#installation))
+### Installation
 
-Please note that [Heroku](https://www.heroku.com) is our host of record, and a Code for America sponsor.  We will be specifying the point release of the Ruby 2.2 family that [Heroku supports](https://devcenter.heroku.com/articles/ruby-support).
+First, follow the instructions to install each of the following:
 
-In the command line, run the following:
+* [Install Ruby](https://github.com/codeforamerica/howto/blob/master/Ruby.md)
+* [Install PostgreSQL](https://github.com/codeforamerica/howto/blob/master/PostgreSQL.md)
+* Install Redis - `brew install redis` on OS X, available from your package manager on Linux or [direct download](http://redis.io/download)
+
+Then, in the command line, run the following to copy the citygram code locally and install all Ruby package dependencies:
+
+```
+git clone https://github.com/codeforamerica/citygram.git
+cd citygram
+bundle install
+```
 
 #### Configure Environment
+
+Make sure your PostgreSQL server is running, then in the terminal run:
 
 ```
 cp .env.sample .env
@@ -48,48 +58,40 @@ rake db:create db:migrate
 rake db:create db:migrate DATABASE_URL=postgres://localhost/citygram_test
 ```
 
-#### Data acquisition
+### Running Citygram Website and Services
 
-If you'd like to start with Citygram data in your database, you can issue these commands to acquire some data.
+Basic things you'll want to do with your Citygram server:
+
+##### Run the server
+
+To boot up the complete application and run background jobs in development:
+```
+bundle exec foreman start
+```
+
+You can then open [http://localhost:5000/](http://localhost:5000/) in your web browser.
+
+#### Acquiring data
+
+When you can run the application, you're capable of getting some example data.
+
+*Before running these commands, ensure foreman is running per the instructions in the previous section!*
 
 ```
 bundle exec rake publishers:download
-```
-
-### Developing
-
-To boot up the complete application and run background jobs in development:
-
-```
-bundle exec foreman start
-open http://localhost:5000/
-```
-
-If you have acquired data as described in a previous step, you can issue this command to acquire some data for yourself:
-
-```
 bundle exec rake publishers:update
 ```
 
-Note that not all data sources are guaranteed to be working at any moment, so you may wish to adjust the publishers you wish to have in your database before (or after) running the above command.
+The first command downloads active publishers from Citygram. The second command will update those publishers from open data portals across the country.
 
-##### Single City Installation
 
-If you only need to support a single city you can specify the <kbd>ROOT_CITY_TAG</kbd> to bypass the index and load one city.
-
-For example, https://www.citygram.nyc/ is a single city installation with the following environment variable
-
-```
-ROOT_CITY_TAG=new-york
-```
-
-##### Sending a Digest
+##### Send a digest
 
 ```
 rake digests:send
 ```
 
-##### Sending a Weekly Digest
+##### Send a a weekly Digest
 
 For Heroku Scheduler users, there is a task that can be executed multiple times,
 but will only deliver mail on the environment's `DIGEST_DAY`.
@@ -101,10 +103,24 @@ rake digests:send_if_digest_day
 
 [![Heroku Scheduler](https://cloud.githubusercontent.com/assets/81055/8840908/732942c2-30b5-11e5-8af7-06b9e169d281.png)](https://devcenter.heroku.com/articles/scheduler)
 
-### Testing
 
-Run all tests in the `spec/` directory.
+### Developing
 
+As a developer you may want to:
+
+##### Set up a Single City Installation
+
+If you only need to support a single city you can specify the <kbd>ROOT_CITY_TAG</kbd> to bypass the index and load one city.
+
+For example, https://www.citygram.nyc/ is a single city installation with the following environment variable
+
+```
+ROOT_CITY_TAG=new-york
+```
+
+##### Test the code
+
+Run all tests in the `spec/` directory, by running:
 ```
 rake
 ```
