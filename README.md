@@ -30,26 +30,15 @@ Citygram is a web application written in Ruby.
 * Job Queue: [Redis](http://redis.io/), [Sidekiq](https://github.com/mperham/sidekiq)
 * Tests: [RSpec](https://github.com/rspec), [FactoryGirl](https://github.com/thoughtbot/factory_girl), [Rack::Test](https://github.com/brynary/rack-test)
 
-### Setup
+### Requirements
 
-* Install Redis - `brew install redis`
-* [Install PostgreSQL](https://github.com/codeforamerica/howto/blob/master/PostgreSQL.md)
-* Install PostGIS -- refer to [these troubles](https://github.com/codeforamerica/citygram/issues/188) on Mac OS X
-* [Install Ruby](https://github.com/codeforamerica/howto/blob/master/Ruby.md) ([rbenv guide](https://github.com/sstephenson/rbenv#installation))
+* Redis
+* [PostgreSQL](https://github.com/codeforamerica/howto/blob/master/PostgreSQL.md) and PostGIS
+* [Ruby](https://github.com/codeforamerica/howto/blob/master/Ruby.md) and bundler ([rbenv guide](https://github.com/sstephenson/rbenv#installation))
+
+Please note that [Heroku](https://www.heroku.com) is our host of record, and a Code for America sponsor.  We will be specifying the point release of the Ruby 2.2 family that [Heroku supports](https://devcenter.heroku.com/articles/ruby-support).
 
 In the command line, run the following:
-
-#### Install Dependencies
-
-```
-git clone https://github.com/codeforamerica/citygram.git
-cd citygram
-rbenv install
-brew install postgresql postgis
-gem install bundler
-rbenv rehash
-bundle install
-```
 
 #### Configure Environment
 
@@ -62,6 +51,7 @@ rake db:create db:migrate DATABASE_URL=postgres://localhost/citygram_test
 #### Data acquisition
 
 If you'd like to start with Citygram data in your database, you can issue these commands to acquire some data.
+
 ```
 bundle exec rake publishers:download
 ```
