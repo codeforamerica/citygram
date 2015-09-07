@@ -1,10 +1,12 @@
 require 'open-uri'
 namespace :publishers do
+  desc "Prompt publishers to update themselves"
   task update: :app do
     Publisher.active.select(:id, :endpoint).paged_each do |publisher|
       Citygram::Workers::PublisherPoll.perform_async(publisher.id, publisher.endpoint)
     end
   end
+  desc "Download publishers from Citygram"
   task download: :app do
     pub_file = open("https://www.citygram.org/publishers.json").read
     publishers = JSON.parse(pub_file)

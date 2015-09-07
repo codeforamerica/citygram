@@ -59,6 +59,13 @@ rake db:create db:migrate
 rake db:create db:migrate DATABASE_URL=postgres://localhost/citygram_test
 ```
 
+#### Data acquisition
+
+If you'd like to start with Citygram data in your database, you can issue these commands to acquire some data.
+```
+bundle exec rake publishers:download
+```
+
 ### Developing
 
 To boot up the complete application and run background jobs in development:
@@ -67,6 +74,14 @@ To boot up the complete application and run background jobs in development:
 bundle exec foreman start
 open http://localhost:5000/
 ```
+
+If you have acquired data as described in a previous step, you can issue this command to acquire some data for yourself:
+
+```
+bundle exec rake publishers:update
+```
+
+Note that not all data sources are guaranteed to be working at any moment, so you may wish to adjust the publishers you wish to have in your database before (or after) running the above command.
 
 ##### Single City Installation
 
