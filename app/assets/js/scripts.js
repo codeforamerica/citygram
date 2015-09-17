@@ -257,9 +257,6 @@ app.scrollToElement = function(el) {
 };
 
 app.geocode = function(address, city, state, callback, context) {
-  // address += ' Triangle, NC';
-  // var addr = city + ', ' + state;
-  // console.log('addr = ', addr);
   var url = 'https://maps.googleapis.com/maps/api/geocode/json?address=';
   if(city === 'Triangle NC'){
     address += ' Triangle, NC';
