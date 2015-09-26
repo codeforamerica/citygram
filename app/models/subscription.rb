@@ -65,7 +65,7 @@ module Citygram::Models
     end
 
     def needs_activity_evaluation?
-      Time.now > 2.weeks.from_now(last_notification)
+      Time.now > 2.weeks.since(last_notification)
     end
     
     def deliveries_since_last_notification
