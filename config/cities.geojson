@@ -96,6 +96,23 @@
           35.880079
         ]
       }
+    },
+        {
+      "id": "Tulsa",
+      "type": "Feature",
+      "properties": {
+        "title": "Tulsa OK",
+        "background": "tulsa.jpg",
+        "zoom": 11
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.7879963,
+          36.152846 
+        
+        ]
+      }
     }
 
   ]
