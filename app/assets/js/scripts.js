@@ -178,9 +178,7 @@ app.hookupSteps = function() {
 
 app.setPublisher = function($publisher) {
   app.state.publisher_id = $publisher.data('publisher-id');
-
-  // todo: make eventsArePolygons a property of a publisher
-  app.eventsArePolygons = $publisher.data('publisher-title').match(/Leaf Collection/);
+  app.eventsArePolygons = $publisher.data('publisher-events-are-polygons');
 
   if ($publisher.data('publisher-event-display-endpoint')) {
     app.eventDisplayEndpoint = $publisher.data('publisher-event-display-endpoint');
@@ -191,7 +189,6 @@ app.setPublisher = function($publisher) {
   $('.js-dot-legend').css('visibility', app.eventsArePolygons ? 'hidden' : 'visible');
   $('.confirmationType').html($publisher.data('publisher-title'));
 }
-
 
 app.hyperlink = Autolinker.link;
 
