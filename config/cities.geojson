@@ -96,7 +96,24 @@
           35.880079
         ]
       }
+    },
+    {
+      "id": "austin",
+      "type": "Feature",
+      "properties": {
+        "title": "Austin",
+        "background": "austin.jpg",
+        "zoom": 11
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.746683,
+          30.265108
+        ]
+      }
     }
+	
 
   ]
 }
