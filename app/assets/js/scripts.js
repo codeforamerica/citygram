@@ -29,20 +29,22 @@ app.hookupSteps = function() {
     app.scrollToElement($('#step1'));
   });
 
-  $('.publisher:not(.soon)').on('click', function(event) {
-    $('.publisher')
-      .removeClass('selected')
-      .removeClass('is-active');
-
+  $('.publisher:not(.soon)').on('mouseover', function(event) {
+    $('.publisher').removeClass('is-active');
 
     var $publisher = $(event.currentTarget);
-    $publisher
-      .addClass('selected')
-      .addClass('is-active');
+    $publisher.addClass('is-active');
+  });
+
+  $('.publisher:not(.soon)').on('mouseout', function(event) {
+    $('.publisher').removeClass('is-active');
   });
 
   $('.publisher:not(.soon) .publisher-btn').on('click', function(event) {
+    $('.publisher').removeClass('selected');
+
     var $publisher = $(this).parents('.publisher:not(.soon)');
+    $publisher.addClass('selected');
 
     // Update the confirmation section with the name
     app.state.publisher_id = $publisher.data('publisher-id');
