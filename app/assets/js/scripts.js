@@ -29,10 +29,8 @@ app.hookupSteps = function() {
     app.scrollToElement($('#step1'));
   });
 
-  $('.publisher:not(.soon)').on('click', function(event) {
-    $('.publisher')
-      .removeClass('selected')
-      .removeClass('is-active');
+  $('.publisher:not(.soon)').on('mouseover', function(event) {
+    $('.publisher').removeClass('is-active');
 
     var $publisher = $(event.currentTarget);
     $publisher.addClass('is-active');
