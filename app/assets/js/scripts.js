@@ -46,12 +46,7 @@ app.hookupSteps = function() {
     var $publisher = $(this).parents('.publisher:not(.soon)');
     $publisher.addClass('selected');
 
-    // Update the confirmation section with the name
-    app.state.publisher_id = $publisher.data('publisher-id');
-    app.eventsArePolygons = $publisher.data('publisher-title').match(/Leaf Collection/);
-    $('.js-dot-legend').css('visibility', app.eventsArePolygons ? 'hidden' : 'visible');
-
-    $('.confirmationType').html($publisher.data('publisher-title'));
+    app.setPublisher($publisher);
 
     // Remove disabled state styling from subscribe buttons
     $('.smsButton, .emailButton').removeClass('disabledButton');
@@ -184,6 +179,20 @@ app.hookupSteps = function() {
 
 };
 
+app.setPublisher = function($publisher) {
+  app.state.publisher_id = $publisher.data('publisher-id');
+  app.eventsArePolygons = $publisher.data('publisher-events-are-polygons');
+
+  if ($publisher.data('publisher-event-display-endpoint')) {
+    app.eventDisplayEndpoint = $publisher.data('publisher-event-display-endpoint');
+  } else {
+    app.eventDisplayEndpoint = '/publishers/'+app.state.publisher_id+'/events';
+  }
+
+  $('.js-dot-legend').css('visibility', app.eventsArePolygons ? 'hidden' : 'visible');
+  $('.confirmationType').html($publisher.data('publisher-title'));
+}
+
 app.hyperlink = Autolinker.link;
 
 // Populate events
@@ -244,7 +253,7 @@ app.displayEventMarker = function(event) {
 
 app.updateEventsForGeometry = function(geometry, callback){
   if (!app.state.publisher_id) return;
-  $.getJSON('/publishers/'+app.state.publisher_id+'/events', { geometry: geometry }, callback);
+  $.getJSON(app.eventDisplayEndpoint, { geometry: geometry }, callback);
 };
 
 app.getEventsCount = function(publisherId, geometry, since, callback){
@@ -277,6 +286,7 @@ app.geocode = function(address, city, state, callback, context) {
 
 app.resetState = function() {
   app.state.publisher_id = undefined;
+  app.eventDisplayEndpoint = undefined;
   $('.publisher').removeClass('selected');
 
   // Let's leave the location and phone number in place, for easy re-subscribe
