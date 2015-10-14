@@ -146,11 +146,9 @@ app.hookupSteps = function() {
       prevMarker = L.marker(latlng).addTo(app.map);
       prevCircle = L.circle(latlng, radiusMeters, { color:'#0B377F' }).addTo(app.map);
 
-
       if (app.eventsArePolygons) {
-        // copy title from the surrounding event polygon to the address marker
         app.updateEventsForGeometry(app.state.geom, function(events) {
-          prevMarker.bindPopup("<p>"+app.hyperlink(events[0]['title'])+"</p>").openPopup();
+          app.copyEventTitleToMarker(events, prevMarker);
         });
       }
 
@@ -178,6 +176,22 @@ app.hookupSteps = function() {
   $('#geolocateForm').on('submit', function(){ return false });
 
 };
+
+app.copyEventTitleToMarker = function(events, marker) {
+  var surroundingEvent;
+  var markerGeoJSON = marker.toGeoJSON();
+
+  events.forEach(function(event) {
+    var polygon = {"type": "Feature", geometry: JSON.parse(event.geom)};
+    if (turf.inside(markerGeoJSON, polygon)) {
+      surroundingEvent = event;
+    }
+  });
+
+  if (surroundingEvent) {
+    marker.bindPopup("<p>"+app.hyperlink(surroundingEvent.title)+"</p>").openPopup();
+  }
+}
 
 app.setPublisher = function($publisher) {
   app.state.publisher_id = $publisher.data('publisher-id');
