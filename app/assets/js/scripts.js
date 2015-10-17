@@ -126,10 +126,15 @@ app.hookupSteps = function() {
     var city = $('.publisher.selected').data('publisher-city');
     var state = $('.publisher.selected').data('publisher-state');
     var radiusMiles = parseFloat($('#user-selected-radius').val());
+    var locality = $('#user-selected-locality').val();
     var radiusKm =radiusMiles * 1.60934
     var radiusMeters = radiusKm * 1000;
     var oneWeekAgo = new Date();
     oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
+
+    if(locality){
+      city = locality;
+    }
 
     app.geocode(address, city, state, function(latlng) {
       // Set the new app state
@@ -177,6 +182,7 @@ app.hookupSteps = function() {
     if ($('#geolocate').val().trim() !== '') app.geolocate();
   });
   $('#user-selected-radius').on('change', app.geolocate);
+  $('#user-selected-locality').on('change', app.geolocate);
   $('#geolocate').on('change', app.geolocate);
   $('#geolocateForm').on('submit', function(){ return false });
 
