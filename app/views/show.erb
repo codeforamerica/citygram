@@ -58,11 +58,22 @@
 
   <div class="row">
     <form id="geolocateForm" role="form">
-      <div class="col-xs-offset-1 col-xs-10 col-md-offset-1 col-md-5">
+      <div class="col-xs-offset-1 col-xs-10 col-md-offset-1 col-md-3">
         <input type="text" id="geolocate" placeholder="Your address"></input>
       </div>
 
-      <div class="col-xs-offset-1 col-md-offset-0 col-xs-10 col-md-5">
+      <div class="col-xs-offset-1 col-md-offset-0 col-xs-10 col-md-3">
+        <span class="bigSelect">
+          <select id="user-selected-radius">
+            <option value="cary">Cary, NC</option>
+            <option value="durham">Durham, NC</option>
+            <option value="raleigh">Raleigh, NC</option>
+            <span class="caret"></span>
+          </select>
+        </span>
+      </div>
+
+      <div class="col-xs-offset-1 col-md-offset-0 col-xs-10 col-md-4">
         <span class="bigSelect">
           <select id="user-selected-radius">
             <option value="0.1">Within a 1/10 mile (about a stone's throw)</option>
