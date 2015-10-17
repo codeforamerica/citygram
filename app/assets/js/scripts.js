@@ -263,15 +263,9 @@ app.scrollToElement = function(el) {
 };
 
 app.geocode = function(address, city, state, callback, context) {
-  var url = 'https://maps.googleapis.com/maps/api/geocode/json?address=';
-  if(city === 'Triangle NC'){
-    address += ' Triangle, NC';
-    url += encodeURIComponent(address);
-  } else {
-    url += encodeURIComponent(address);
-    url += '&components=locality:' + encodeURIComponent(city);
-    url += '|administrative_area:' + encodeURIComponent(state);
-  }
+  var url = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + encodeURIComponent(address);
+      url += '&components=locality:' + encodeURIComponent(city);
+      url += '|administrative_area:' + encodeURIComponent(state);
 
   $.getJSON(url, function(response) {
     if (response.error || response.results.length === 0) {
