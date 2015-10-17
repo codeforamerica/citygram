@@ -96,7 +96,41 @@
           35.880079
         ]
       }
+    },
+        {
+      "id": "tulsa",
+      "type": "Feature",
+      "properties": {
+        "title": "Tulsa OK",
+        "background": "tulsa.jpg",
+        "zoom": 11
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+            -95.991433,
+            36.156718
+        
+        ]
+      }
+    },
+    {
+      "id": "austin",
+      "type": "Feature",
+      "properties": {
+        "title": "Austin",
+        "background": "austin.jpg",
+        "zoom": 11
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.746683,
+          30.265108
+        ]
+      }
     }
+	
 
   ]
 }
