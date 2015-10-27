@@ -2,7 +2,7 @@ db:
   image: mdillon/postgis
 redis:
   image: redis:3.0.3
-web:
+citygram:
   image: citygram:latest
   env_file: .env.sample
   environment:
@@ -10,7 +10,7 @@ web:
     PG_USER: postgres
     PG_HOST: citygram_db_1
     DATABASE_URL: postgres://postgres@citygram_db_1/citygram_development
-  command: bundle exec rackup -b '0.0.0.0'
+  command: bundle exec foreman start
   volumes:
     - .:/usr/src/app/citygram
   ports:
