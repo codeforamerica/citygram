@@ -87,7 +87,7 @@
           <span class="bigSelect">
             <select id="user-selected-locality">
               <% @city.sub_cities.each do |sub_city| %>
-                <option value="#{sub_city.id}"><%= sub_city['properties']['title'] %></option>
+                <option value="<%= sub_city['id'] %>"><%= sub_city['properties']['title'] %></option>
               <% end %>
               <span class="caret"></span>
             </select>
