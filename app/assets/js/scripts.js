@@ -29,24 +29,27 @@ app.hookupSteps = function() {
     app.scrollToElement($('#step1'));
   });
 
-  $('.publisher:not(.soon)').on('mouseover', function(event) {
-    $('.publisher').removeClass('is-active');
+  $('.publisher:not(.soon)').on('click', function(event) {
+    $('.publisher')
+      .removeClass('selected')
+      .removeClass('is-active');
+
 
     var $publisher = $(event.currentTarget);
-    $publisher.addClass('is-active');
-  });
-
-  $('.publisher:not(.soon)').on('mouseout', function(event) {
-    $('.publisher').removeClass('is-active');
+    $publisher
+      .addClass('selected')
+      .addClass('is-active');
   });
 
   $('.publisher:not(.soon) .publisher-btn').on('click', function(event) {
-    $('.publisher').removeClass('selected');
-
     var $publisher = $(this).parents('.publisher:not(.soon)');
-    $publisher.addClass('selected');
 
-    app.setPublisher($publisher);
+    // Update the confirmation section with the name
+    app.state.publisher_id = $publisher.data('publisher-id');
+    app.eventsArePolygons = $publisher.data('publisher-title').match(/Leaf Collection/);
+    $('.js-dot-legend').css('visibility', app.eventsArePolygons ? 'hidden' : 'visible');
+
+    $('.confirmationType').html($publisher.data('publisher-title'));
 
     // Remove disabled state styling from subscribe buttons
     $('.smsButton, .emailButton').removeClass('disabledButton');
@@ -123,10 +126,15 @@ app.hookupSteps = function() {
     var city = $('.publisher.selected').data('publisher-city');
     var state = $('.publisher.selected').data('publisher-state');
     var radiusMiles = parseFloat($('#user-selected-radius').val());
+    var locality = $('#user-selected-locality').val();
     var radiusKm =radiusMiles * 1.60934
     var radiusMeters = radiusKm * 1000;
     var oneWeekAgo = new Date();
     oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
+
+    if(locality){
+      city = locality;
+    }
 
     app.geocode(address, city, state, function(latlng) {
       // Set the new app state
@@ -146,9 +154,11 @@ app.hookupSteps = function() {
       prevMarker = L.marker(latlng).addTo(app.map);
       prevCircle = L.circle(latlng, radiusMeters, { color:'#0B377F' }).addTo(app.map);
 
+
       if (app.eventsArePolygons) {
+        // copy title from the surrounding event polygon to the address marker
         app.updateEventsForGeometry(app.state.geom, function(events) {
-          app.copyEventTitleToMarker(events, prevMarker);
+          prevMarker.bindPopup("<p>"+app.hyperlink(events[0]['title'])+"</p>").openPopup();
         });
       }
 
@@ -172,40 +182,11 @@ app.hookupSteps = function() {
     if ($('#geolocate').val().trim() !== '') app.geolocate();
   });
   $('#user-selected-radius').on('change', app.geolocate);
+  $('#user-selected-locality').on('change', app.geolocate);
   $('#geolocate').on('change', app.geolocate);
   $('#geolocateForm').on('submit', function(){ return false });
 
 };
-
-app.copyEventTitleToMarker = function(events, marker) {
-  var surroundingEvent;
-  var markerGeoJSON = marker.toGeoJSON();
-
-  events.forEach(function(event) {
-    var polygon = {"type": "Feature", geometry: JSON.parse(event.geom)};
-    if (turf.inside(markerGeoJSON, polygon)) {
-      surroundingEvent = event;
-    }
-  });
-
-  if (surroundingEvent) {
-    marker.bindPopup("<p>"+app.hyperlink(surroundingEvent.title)+"</p>").openPopup();
-  }
-}
-
-app.setPublisher = function($publisher) {
-  app.state.publisher_id = $publisher.data('publisher-id');
-  app.eventsArePolygons = $publisher.data('publisher-events-are-polygons');
-
-  if ($publisher.data('publisher-event-display-endpoint')) {
-    app.eventDisplayEndpoint = $publisher.data('publisher-event-display-endpoint');
-  } else {
-    app.eventDisplayEndpoint = '/publishers/'+app.state.publisher_id+'/events';
-  }
-
-  $('.js-dot-legend').css('visibility', app.eventsArePolygons ? 'hidden' : 'visible');
-  $('.confirmationType').html($publisher.data('publisher-title'));
-}
 
 app.hyperlink = Autolinker.link;
 
@@ -267,7 +248,7 @@ app.displayEventMarker = function(event) {
 
 app.updateEventsForGeometry = function(geometry, callback){
   if (!app.state.publisher_id) return;
-  $.getJSON(app.eventDisplayEndpoint, { geometry: geometry }, callback);
+  $.getJSON('/publishers/'+app.state.publisher_id+'/events', { geometry: geometry }, callback);
 };
 
 app.getEventsCount = function(publisherId, geometry, since, callback){
@@ -300,7 +281,6 @@ app.geocode = function(address, city, state, callback, context) {
 
 app.resetState = function() {
   app.state.publisher_id = undefined;
-  app.eventDisplayEndpoint = undefined;
   $('.publisher').removeClass('selected');
 
   // Let's leave the location and phone number in place, for easy re-subscribe

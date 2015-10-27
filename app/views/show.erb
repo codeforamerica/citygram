@@ -1,5 +1,3 @@
-<script src="//api.tiles.mapbox.com/mapbox.js/plugins/turf/v2.0.0/turf.min.js"></script>
-
 <meta name="mapCenter" content="<%= @city.center.reverse.to_json %>">
 <style type="text/css">
   header { background: url(<%= asset_path "cities/backgrounds/#{@city.background}" %>); }
@@ -34,13 +32,7 @@
           <p class="alert alert-danger">You are using an older browser that is not currently supported. <a href="http://whatbrowser.org/">Upgrade your browser today</a> to fully use the site.</p>
       <![endif]-->
       <% @publishers.each do |publisher| %>
-        <div class="publisher <%= 'soon' unless publisher.active %>"
-          data-publisher-event-display-endpoint="<%= publisher.event_display_endpoint %>"
-          data-publisher-events-are-polygons="<%= publisher.events_are_polygons %>"
-          data-publisher-id="<%= publisher.id %>"
-          data-publisher-title="<%= publisher.title %>"
-          data-publisher-city="<%= publisher.city %>"
-          data-publisher-state="<%= publisher.state %>">
+        <div class="publisher <%= 'soon' unless publisher.active %>" data-publisher-id="<%= publisher.id %>" data-publisher-title="<%= publisher.title %>" data-publisher-city="<%= publisher.city %>" data-publisher-state="<%= publisher.state %>">
           <div class="publisher-topic">
             <div class="title"><%= publisher.title %></div>
             <img src="<%= asset_path "publishers/icons/#{publisher.icon}" %>">
@@ -66,24 +58,57 @@
 
   <div class="row">
     <form id="geolocateForm" role="form">
-      <div class="col-xs-offset-1 col-xs-10 col-md-offset-1 col-md-5">
-        <input type="text" id="geolocate" placeholder="Your address"></input>
-      </div>
+      <% if @city.sub_cities.nil? %>
+        <div class="col-xs-offset-1 col-xs-10 col-md-offset-1 col-md-5">
+          <input type="text" id="geolocate" placeholder="Your address"></input>
+        </div>
 
-      <div class="col-xs-offset-1 col-md-offset-0 col-xs-10 col-md-5">
-        <span class="bigSelect">
-          <select id="user-selected-radius">
-            <option value="0.1">Within a 1/10 mile (about a stone's throw)</option>
-            <option value="0.25">Within a 1/4 mile (about a 5 min leisurely stroll)</option>
-            <option value="0.5">Within a 1/2 mile (about an 8 min power walk)</option>
-            <option value="1">Within 1 mile (about 15 min on horse and buggy)</option>
-            <option value="2">Within 2 miles (about a 7 min bicycle jaunt)</option>
-            <option value="3">Within 3 miles (about an 8 min vespa ride)</option>
-            <option value="4">Within 4 miles (about a 2 day bear crawl)</option>
-            <span class="caret"></span>
-          </select>
-        </span>
-      </div>
+        <div class="col-xs-offset-1 col-md-offset-0 col-xs-10 col-md-5">
+          <span class="bigSelect">
+            <select id="user-selected-radius">
+              <option value="0.1">Within a 1/10 mile (about a stone's throw)</option>
+              <option value="0.25">Within a 1/4 mile (about a 5 min leisurely stroll)</option>
+              <option value="0.5">Within a 1/2 mile (about an 8 min power walk)</option>
+              <option value="1">Within 1 mile (about 15 min on horse and buggy)</option>
+              <option value="2">Within 2 miles (about a 7 min bicycle jaunt)</option>
+              <option value="3">Within 3 miles (about an 8 min vespa ride)</option>
+              <option value="4">Within 4 miles (about a 2 day bear crawl)</option>
+              <span class="caret"></span>
+            </select>
+          </span>
+        </div>
+
+      <% else %>
+        <div class="col-xs-offset-1 col-xs-10 col-md-offset-1 col-md-3">
+          <input type="text" id="geolocate" placeholder="Your address"></input>
+        </div>
+
+        <div class="col-xs-offset-1 col-md-offset-0 col-xs-10 col-md-3">
+          <span class="bigSelect">
+            <select id="user-selected-locality">
+              <% @city.sub_cities.each do |sub_city| %>
+                <option value="#{sub_city.id}"><%= sub_city['properties']['title'] %></option>
+              <% end %>
+              <span class="caret"></span>
+            </select>
+          </span>
+        </div>
+
+        <div class="col-xs-offset-1 col-md-offset-0 col-xs-10 col-md-4">
+          <span class="bigSelect">
+            <select id="user-selected-radius">
+              <option value="0.1">Within a 1/10 mile (about a stone's throw)</option>
+              <option value="0.25">Within a 1/4 mile (about a 5 min leisurely stroll)</option>
+              <option value="0.5">Within a 1/2 mile (about an 8 min power walk)</option>
+              <option value="1">Within 1 mile (about 15 min on horse and buggy)</option>
+              <option value="2">Within 2 miles (about a 7 min bicycle jaunt)</option>
+              <option value="3">Within 3 miles (about an 8 min vespa ride)</option>
+              <option value="4">Within 4 miles (about a 2 day bear crawl)</option>
+              <span class="caret"></span>
+            </select>
+          </span>
+        </div>
+      <% end %>
     </form>
   </div>
 
