@@ -143,7 +143,9 @@ CREATE TABLE publishers (
     visible boolean DEFAULT true,
     state text,
     description text,
-    tags text[] DEFAULT '{}'::text[] NOT NULL
+    tags text[] DEFAULT '{}'::text[] NOT NULL,
+    event_display_endpoint text,
+    events_are_polygons boolean
 );
 
 

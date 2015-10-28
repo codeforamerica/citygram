@@ -1,3 +1,5 @@
+<script src="//api.tiles.mapbox.com/mapbox.js/plugins/turf/v2.0.0/turf.min.js"></script>
+
 <meta name="mapCenter" content="<%= @city.center.reverse.to_json %>">
 <style type="text/css">
   header { background: url(<%= asset_path "cities/backgrounds/#{@city.background}" %>); }
@@ -32,7 +34,13 @@
           <p class="alert alert-danger">You are using an older browser that is not currently supported. <a href="http://whatbrowser.org/">Upgrade your browser today</a> to fully use the site.</p>
       <![endif]-->
       <% @publishers.each do |publisher| %>
-        <div class="publisher <%= 'soon' unless publisher.active %>" data-publisher-id="<%= publisher.id %>" data-publisher-title="<%= publisher.title %>" data-publisher-city="<%= publisher.city %>" data-publisher-state="<%= publisher.state %>">
+        <div class="publisher <%= 'soon' unless publisher.active %>"
+          data-publisher-event-display-endpoint="<%= publisher.event_display_endpoint %>"
+          data-publisher-events-are-polygons="<%= publisher.events_are_polygons %>"
+          data-publisher-id="<%= publisher.id %>"
+          data-publisher-title="<%= publisher.title %>"
+          data-publisher-city="<%= publisher.city %>"
+          data-publisher-state="<%= publisher.state %>">
           <div class="publisher-topic">
             <div class="title"><%= publisher.title %></div>
             <img src="<%= asset_path "publishers/icons/#{publisher.icon}" %>">
