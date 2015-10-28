@@ -11,8 +11,9 @@ namespace :publishers do
     pub_file = open("https://www.citygram.org/publishers.json").read
     publishers = JSON.parse(pub_file)
     Citygram::Models::Publisher.set_allowed_columns(
-      :title, :endpoint, :active, :visible, 
-      :city, :state, :icon, :description, :tags
+      :title, :endpoint, :active, :visible,
+      :city, :state, :icon, :description, :tags,
+      :event_display_endpoint, :events_are_polygons
     )
     publishers.each do |pub|
       pub.delete("id")
