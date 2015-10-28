@@ -79,29 +79,44 @@ module Citygram
       database.disconnect
       pg_command("dropdb #{db_name}")
     end
-    
+
     def self.docker_create_db
-      pg_connection.exec("create database #{db_name}")
+      pg_connection.exec(<<-SQL
+      DO
+      $do$
+      BEGIN
+
+      IF EXISTS (SELECT 1 FROM pg_database WHERE datname = '#{db_name}') THEN
+         RAISE NOTICE 'Citygram database exists, you are ready to test.';
+      ELSE
+         PERFORM dblink_exec('dbname=' || current_database()  -- current db
+                           , 'CREATE DATABASE #{db_name}');
+      END IF;
+
+      END
+      $do$
+SQL
+      )
     end
 
     def self.docker_drop_db
       database.disconnect
       pg_connection.exec("drop database #{db_name}")
     end
-    
+
     def self.docker_reset
       docker_drop_db
       docker_create_db
       migrate_db
     end
-    
+
     def self.pg_connection
       PG.connect(
         host: ENV["PG_HOST"],
         user: ENV["PG_USER"]
       )
     end
-    
+
     def self.schema_dump
       `rm #{schema_path}`
       pg_command("pg_dump -i -s -x -O -f #{schema_path} #{db_name}")
