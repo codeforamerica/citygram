@@ -12,11 +12,11 @@ citygram:
     DATABASE_URL: postgres://postgres@citygram_db_1/citygram_development
     REDIS_PROVIDER: REDIS_URL
     REDIS_URL: redis://redis:6379/
-  command: bundle exec foreman start -f Procfile.docker
+  command: bundle exec rackup -o 0.0.0.0 -p 9292
   volumes:
     - .:/usr/src/app/citygram
   ports:
-    - "5000:5000"
+    - "9292:9292"
   links:
     - db
     - redis
