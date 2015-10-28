@@ -1,2 +1,3 @@
-docker build -t citygram:latest .
-docker-compose run citygram rake db:docker:create db:migrate
+docker-compose build
+docker-compose run citygram rake db:docker:create
+docker-compose run citygram rake db:migrate

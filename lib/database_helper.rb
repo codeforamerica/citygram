@@ -81,22 +81,25 @@ module Citygram
     end
 
     def self.docker_create_db
-      pg_connection.exec(<<-SQL
+      con = pg_connection
+      @exists = false
+      con.set_notice_receiver{|result| @exists = true }
+      val = con.exec(<<-SQL
       DO
       $do$
       BEGIN
 
       IF EXISTS (SELECT 1 FROM pg_database WHERE datname = '#{db_name}') THEN
          RAISE NOTICE 'Citygram database exists, you are ready to test.';
-      ELSE
-         PERFORM dblink_exec('dbname=' || current_database()  -- current db
-                           , 'CREATE DATABASE #{db_name}');
       END IF;
-
       END
       $do$
 SQL
       )
+      if !@exists
+        puts "Creating DB"
+        pg_connection.exec("create database #{db_name}")
+      end
     end
 
     def self.docker_drop_db
@@ -118,7 +121,7 @@ SQL
     end
 
     def self.schema_dump
-      `rm #{schema_path}`
+      `rm #{schema_path}` if File.exist?(schema_path)
       pg_command("pg_dump -i -s -x -O -f #{schema_path} #{db_name}")
     end
 
