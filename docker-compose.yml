@@ -3,18 +3,20 @@ db:
 redis:
   image: redis:3.0.3
 citygram:
-  image: citygram:latest
+  build: .
   env_file: .env.sample
   environment:
     DB_NAME: citygram_development
     PG_USER: postgres
     PG_HOST: citygram_db_1
     DATABASE_URL: postgres://postgres@citygram_db_1/citygram_development
-  command: bundle exec foreman start
+    REDIS_PROVIDER: REDIS_URL
+    REDIS_URL: redis://redis:6379/
+  command: bundle exec foreman start -f Procfile.docker
   volumes:
     - .:/usr/src/app/citygram
   ports:
-    - "9292:9292"
+    - "5000:5000"
   links:
     - db
     - redis
