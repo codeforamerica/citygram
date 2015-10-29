@@ -13,6 +13,7 @@ app.state = {
 app.eventMarkers = new L.FeatureGroup();
 
 app.hookupMap = function() {
+  document.getElementById('locatormap').innerHTML = "<div id='map'><div class='map-key-panel js-dot-legend'><span class='map-event-dot'></span>Click to see notification</div></div>";
   var center = JSON.parse($('meta[name=mapCenter]').attr('content'));
   var options = {
     zoom: 13,
@@ -22,6 +23,14 @@ app.hookupMap = function() {
   };
   var mapId = $('meta[name=mapId]').attr('content');
   var map = app.map = L.mapbox.map('map', mapId, options);
+  document.getElementById('user-selected-locality').onclick = function(e) {
+    e.preventDefault();
+    var pos = e.target.getAttribute('data-position');
+    if (pos) {
+        var loc = pos.split(',');
+        app.map.setView(loc, 13);
+    }
+  }
 };
 
 app.hookupSteps = function() {
@@ -182,7 +191,7 @@ app.hookupSteps = function() {
     if ($('#geolocate').val().trim() !== '') app.geolocate();
   });
   $('#user-selected-radius').on('change', app.geolocate);
-  $('#user-selected-locality').on('change', app.geolocate);
+  // $('#user-selected-locality').on('change', app.geolocate);
   $('#geolocate').on('change', app.geolocate);
   $('#geolocateForm').on('submit', function(){ return false });
 
