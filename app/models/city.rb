@@ -2,7 +2,7 @@ require 'json'
 
 module Citygram
   module Models
-    class City < Struct.new(:id, :title, :background, :center, :zoom)
+    class City < Struct.new(:id, :title, :background, :center, :zoom, :sub_cities)
       NotFound = Class.new(StandardError)
 
       def self.all
@@ -14,7 +14,8 @@ module Citygram
               feature['properties']['title'],
               feature['properties']['background'],
               feature['geometry']['coordinates'],
-              feature['properties']['zoom']
+              feature['properties']['zoom'],
+              feature['features']
             )
           }
 

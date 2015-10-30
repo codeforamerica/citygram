@@ -81,9 +81,9 @@
         ]
       }
     },
-        {
+    {
       "id": "triangle",
-      "type": "Feature",
+      "type": "FeatureCollection",
       "properties": {
         "title": "Triangle Region NC",
         "background": "triangle.jpg",
@@ -95,9 +95,56 @@
           -78.7879963,
           35.880079
         ]
-      }
-    },
+      },
+      "features": [
         {
+          "id": "cary",
+          "type": "Feature",
+          "properties": {
+            "title": "Cary NC",
+            "zoom": 11
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -78.8003,
+              35.7789
+            ]
+          }
+        },
+        {
+          "id": "durham",
+          "type": "Feature",
+          "properties": {
+            "title": "Durham NC",
+            "zoom": 11
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -78.9072,
+              35.9886
+            ]
+          }
+        },
+        {
+          "id": "raleigh",
+          "type": "Feature",
+          "properties": {
+            "title": "Raleigh NC",
+            "zoom": 11
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -78.6389,
+              35.7806
+            ]
+          }
+        }
+      ]
+    },
+    {
       "id": "tulsa",
       "type": "Feature",
       "properties": {
@@ -110,7 +157,7 @@
         "coordinates": [
             -95.991433,
             36.156718
-        
+
         ]
       }
     },
@@ -130,7 +177,5 @@
         ]
       }
     }
-	
-
   ]
 }
