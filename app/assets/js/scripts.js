@@ -23,12 +23,15 @@ app.hookupMap = function() {
   };
   var mapId = $('meta[name=mapId]').attr('content');
   var map = app.map = L.mapbox.map('map', mapId, options);
-  document.getElementById('user-selected-locality').onclick = function(e) {
-    e.preventDefault();
-    var pos = e.target.getAttribute('data-position');
-    if (pos) {
-        var loc = pos.split(',');
-        app.map.setView(loc, 13);
+  var locality = document.getElementById('user-selected-locality');
+  if ( locality != null ) {
+    locality.onclick = function(e) {
+      e.preventDefault();
+      var pos = e.target.getAttribute('data-position');
+      if (pos) {
+          var loc = pos.split(',');
+          app.map.setView(loc, 13);
+      };
     }
   }
 };
