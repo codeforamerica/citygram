@@ -28,6 +28,8 @@ app.hookupMap = function() {
     locality.onclick = function(e) {
       e.preventDefault();
       // console.log('target is: ', $(e.target).text());
+      $('.menu-ui a.selected').removeClass('selected');
+      $(e.target).addClass('selected');
       app.geolocate(e);
 
       // var pos = e.target.getAttribute('data-position');
@@ -135,9 +137,9 @@ app.hookupSteps = function() {
     var address = $('#geolocate').val();
     if (! address) { return }
 
-    var city = $(e.target).text().split(" ")[0];
+    var city = $('.menu-ui a.selected').text().split(" ")[0];
+  //$(e.target).text().split(" ")[0];
   //$('.publisher.selected').data('publisher-city');
-    console.log('city = ', city);
     var state = $('.publisher.selected').data('publisher-state');
     var radiusMiles = parseFloat($('#user-selected-radius').val());
     var locality = $('#user-selected-locality').val();
@@ -332,3 +334,4 @@ app.resetState = function() {
 app.submitSubscription = function(callback) {
   $.post('/subscriptions', { subscription: app.state }, callback);
 };
+
