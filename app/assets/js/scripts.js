@@ -141,11 +141,12 @@ app.hookupSteps = function() {
     var address = $('#geolocate').val();
     if (! address) { return }
 
-    var city = $('.menu-ui a.selected').text().split(" ")[0];
-  console.log('other city = ', $('.publisher.selected').data('publisher-city'));
+    var city = $('.publisher.selected').data('publisher-city');
+    if(city === 'Triangle NC'){
+      city = $('.menu-ui a.selected').text().split(" ")[0];
+    }
     var state = $('.publisher.selected').data('publisher-state');
     var radiusMiles = parseFloat($('#user-selected-radius').val());
-    // var locality = $('#user-selected-locality').val();
     var radiusKm =radiusMiles * 1.60934
     var radiusMeters = radiusKm * 1000;
     var oneWeekAgo = new Date();
@@ -195,7 +196,6 @@ app.hookupSteps = function() {
     if ($('#geolocate').val().trim() !== '') app.geolocate();
   });
   $('#user-selected-radius').on('change', app.geolocate);
-  // $('#user-selected-locality').on('change', app.geolocate);
   $('#geolocate').on('change', app.geolocate);
   $('#geolocateForm').on('submit', function(){ return false });
 
