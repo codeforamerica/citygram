@@ -27,11 +27,20 @@ app.hookupMap = function() {
   if ( locality != null ) {
     locality.onclick = function(e) {
       e.preventDefault();
-      var pos = e.target.getAttribute('data-position');
-      if (pos) {
-          var loc = pos.split(',');
-          app.map.setView(loc, 13);
-      };
+
+      $('.menu-ui a.selected').removeClass('selected');
+      $(e.target).addClass('selected');
+
+      var address = $('#geolocate').val();
+      if (! address) { //if address is not avail, center map on region when clicked. 
+          var pos = e.target.getAttribute('data-position');
+          if (pos) {
+              var loc = pos.split(',');
+              app.map.setView(loc, 13);
+          };
+      } else {
+        app.geolocate(e);
+      }
     }
   }
 };
@@ -133,17 +142,15 @@ app.hookupSteps = function() {
     if (! address) { return }
 
     var city = $('.publisher.selected').data('publisher-city');
+    if(city === 'Triangle NC'){
+      city = $('.menu-ui a.selected').text().split(" ")[0];
+    }
     var state = $('.publisher.selected').data('publisher-state');
     var radiusMiles = parseFloat($('#user-selected-radius').val());
-    var locality = $('#user-selected-locality').val();
     var radiusKm =radiusMiles * 1.60934
     var radiusMeters = radiusKm * 1000;
     var oneWeekAgo = new Date();
     oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
-
-    if(locality){
-      city = locality;
-    }
 
     app.geocode(address, city, state, function(latlng) {
       // Set the new app state
@@ -175,7 +182,7 @@ app.hookupSteps = function() {
       // Frequency estimate
       app.getEventsCount(app.state.publisher_id, app.state.geom, oneWeekAgo, function(response) {
         $('#freqRadius').html(radiusMiles + ' mi');
-        $('#freqAddress').html(address);
+        $('#freqAddress').html(address + ' ' + city + ', ' + state);
         $('#freqNum').html(response.events_count + ' citygrams');
       });
 
@@ -189,7 +196,6 @@ app.hookupSteps = function() {
     if ($('#geolocate').val().trim() !== '') app.geolocate();
   });
   $('#user-selected-radius').on('change', app.geolocate);
-  // $('#user-selected-locality').on('change', app.geolocate);
   $('#geolocate').on('change', app.geolocate);
   $('#geolocateForm').on('submit', function(){ return false });
 
@@ -327,3 +333,4 @@ app.resetState = function() {
 app.submitSubscription = function(callback) {
   $.post('/subscriptions', { subscription: app.state }, callback);
 };
+
