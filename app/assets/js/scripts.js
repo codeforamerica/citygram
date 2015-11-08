@@ -27,11 +27,14 @@ app.hookupMap = function() {
   if ( locality != null ) {
     locality.onclick = function(e) {
       e.preventDefault();
-      var pos = e.target.getAttribute('data-position');
-      if (pos) {
-          var loc = pos.split(',');
-          app.map.setView(loc, 13);
-      };
+      // console.log('target is: ', $(e.target).text());
+      app.geolocate(e);
+
+      // var pos = e.target.getAttribute('data-position');
+      // if (pos) {
+      //     var loc = pos.split(',');
+      //     app.map.setView(loc, 13);
+      // };
     }
   }
 };
@@ -132,7 +135,9 @@ app.hookupSteps = function() {
     var address = $('#geolocate').val();
     if (! address) { return }
 
-    var city = $('.publisher.selected').data('publisher-city');
+    var city = $(e.target).text().split(" ")[0];
+  //$('.publisher.selected').data('publisher-city');
+    console.log('city = ', city);
     var state = $('.publisher.selected').data('publisher-state');
     var radiusMiles = parseFloat($('#user-selected-radius').val());
     var locality = $('#user-selected-locality').val();
