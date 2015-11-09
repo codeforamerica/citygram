@@ -37,7 +37,7 @@ Citygram is a web application written in Ruby.
 First, follow the instructions to install each of the following:
 
 * [Install Ruby](https://github.com/codeforamerica/howto/blob/master/Ruby.md)
-* [Install PostgreSQL](https://github.com/codeforamerica/howto/blob/master/PostgreSQL.md)
+* [Install PostgreSQL and PostGIS](https://github.com/codeforamerica/howto/blob/master/PostgreSQL.md) 
 * Install Redis - `brew install redis` on OS X, available from your package manager on Linux or [direct download](http://redis.io/download)
 
 Then, in the command line, run the following to copy the citygram code locally and install all Ruby package dependencies:
