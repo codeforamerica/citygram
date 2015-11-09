@@ -93,7 +93,7 @@
       <% if !@city.sub_cities.nil? %>
         <div id="user-selected-locality" class="menu-ui">
           <% @city.sub_cities.each do |sub_city| %>
-            <a href="#" data-position="<%= sub_city['geometry']['coordinates'].reverse.join(",") %>"><%= sub_city['properties']['title'] %></a>
+            <a href="#" data-position="<%= sub_city['geometry']['coordinates'].reverse.join(",") %>" data-city="<%= sub_city['properties']['title'] %>" data-state="<%= sub_city['properties']['state'] %>"><%= sub_city['properties']['title'] %></a>
           <% end %>
         </div>
       <% end %>

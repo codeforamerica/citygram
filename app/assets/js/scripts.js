@@ -32,7 +32,7 @@ app.hookupMap = function() {
       $(e.target).addClass('selected');
 
       var address = $('#geolocate').val();
-      if (! address) { //if address is not avail, center map on region when clicked. 
+      if (! address) { //if address is not avail, center map on region when clicked.
           var pos = e.target.getAttribute('data-position');
           if (pos) {
               var loc = pos.split(',');
@@ -140,12 +140,22 @@ app.hookupSteps = function() {
     e && e.preventDefault();
     var address = $('#geolocate').val();
     if (! address) { return }
-
-    var city = $('.publisher.selected').data('publisher-city');
-    if(city === 'Triangle NC'){
-      city = $('.menu-ui a.selected').text().split(" ")[0];
+    var city = undefined;
+    var state = undefined;
+    // if within a geography that has localities, e.g. Triangle
+    // that consideration is primary.
+    var usesLocality = $("#user-selected-locality");
+    if (usesLocality && usesLocality.length == 0){
+      var publisherSelection = $('.publisher.selected');
+      city = publisherSelection.data('publisher-city');
+      state = publisherSelection.data('publisher-state');
+    } else {
+      // locality cannot activate without selection
+      var localitySelection = $("#user-selected-locality a.selected");
+      if (! localitySelection) { return }
+      city = localitySelection.data('city');
+      state = localitySelection.data('state');
     }
-    var state = $('.publisher.selected').data('publisher-state');
     var radiusMiles = parseFloat($('#user-selected-radius').val());
     var radiusKm =radiusMiles * 1.60934
     var radiusMeters = radiusKm * 1000;

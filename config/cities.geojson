@@ -6,6 +6,7 @@
       "type": "Feature",
       "properties": {
         "title": "Seattle",
+        "state": "WA",
         "background": "seattle.jpg",
         "zoom": 13
       },
@@ -22,6 +23,7 @@
       "type": "Feature",
       "properties": {
         "title": "Charlotte",
+        "state": "NC",
         "background": "charlotte.jpg",
         "zoom": 13
       },
@@ -38,6 +40,7 @@
       "type": "Feature",
       "properties": {
         "title": "Lexington",
+        "state": "KY",
         "background": "lexington.png",
         "zoom": 13
       },
@@ -54,6 +57,7 @@
       "type": "Feature",
       "properties": {
         "title": "New York",
+        "state": "NY",
         "background": "new-york.jpg",
         "zoom": 11
       },
@@ -70,6 +74,7 @@
       "type": "Feature",
       "properties": {
         "title": "San Francisco",
+        "state": "CA",
         "background": "san-francisco.jpg",
         "zoom": 11
       },
@@ -85,7 +90,7 @@
       "id": "triangle",
       "type": "FeatureCollection",
       "properties": {
-        "title": "Triangle Region NC",
+        "title": "Research Triangle, NC",
         "background": "triangle.jpg",
         "zoom": 11
       },
@@ -101,7 +106,8 @@
           "id": "cary",
           "type": "Feature",
           "properties": {
-            "title": "Cary NC",
+            "title": "Cary",
+            "state": "NC",
             "zoom": 11
           },
           "geometry": {
@@ -116,7 +122,8 @@
           "id": "durham",
           "type": "Feature",
           "properties": {
-            "title": "Durham NC",
+            "title": "Durham",
+            "state": "NC",
             "zoom": 11
           },
           "geometry": {
@@ -131,7 +138,8 @@
           "id": "raleigh",
           "type": "Feature",
           "properties": {
-            "title": "Raleigh NC",
+            "title": "Raleigh",
+            "state": "NC",
             "zoom": 11
           },
           "geometry": {
