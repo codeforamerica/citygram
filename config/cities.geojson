@@ -91,7 +91,7 @@
       "type": "FeatureCollection",
       "properties": {
         "title": "Research Triangle, NC",
-        "background": "triangle.jpg",
+        "background": "triangle.png",
         "zoom": 11
       },
       "geometry": {
