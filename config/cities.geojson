@@ -6,6 +6,7 @@
       "type": "Feature",
       "properties": {
         "title": "Miami",
+        "state": "FL",
         "background": "miami.jpg",
         "zoom": 11
       },
@@ -16,11 +17,13 @@
           25.7979842
         ]
       }
+    },
     {
       "id": "seattle",
       "type": "Feature",
       "properties": {
         "title": "Seattle",
+        "state": "WA",
         "background": "seattle.jpg",
         "zoom": 13
       },
@@ -37,6 +40,7 @@
       "type": "Feature",
       "properties": {
         "title": "Charlotte",
+        "state": "NC",
         "background": "charlotte.jpg",
         "zoom": 13
       },
@@ -53,6 +57,7 @@
       "type": "Feature",
       "properties": {
         "title": "Lexington",
+        "state": "KY",
         "background": "lexington.png",
         "zoom": 13
       },
@@ -69,6 +74,7 @@
       "type": "Feature",
       "properties": {
         "title": "New York",
+        "state": "NY",
         "background": "new-york.jpg",
         "zoom": 11
       },
@@ -85,6 +91,7 @@
       "type": "Feature",
       "properties": {
         "title": "San Francisco",
+        "state": "CA",
         "background": "san-francisco.jpg",
         "zoom": 11
       },
@@ -96,11 +103,11 @@
         ]
       }
     },
-        {
+    {
       "id": "triangle",
-      "type": "Feature",
+      "type": "FeatureCollection",
       "properties": {
-        "title": "Triangle Region NC",
+        "title": "Research Triangle, NC",
         "background": "triangle.jpg",
         "zoom": 11
       },
@@ -110,9 +117,59 @@
           -78.7879963,
           35.880079
         ]
-      }
-    },
+      },
+      "features": [
         {
+          "id": "cary",
+          "type": "Feature",
+          "properties": {
+            "title": "Cary",
+            "state": "NC",
+            "zoom": 11
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -78.8003,
+              35.7789
+            ]
+          }
+        },
+        {
+          "id": "durham",
+          "type": "Feature",
+          "properties": {
+            "title": "Durham",
+            "state": "NC",
+            "zoom": 11
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -78.9072,
+              35.9886
+            ]
+          }
+        },
+        {
+          "id": "raleigh",
+          "type": "Feature",
+          "properties": {
+            "title": "Raleigh",
+            "state": "NC",
+            "zoom": 11
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -78.6389,
+              35.7806
+            ]
+          }
+        }
+      ]
+    },
+    {
       "id": "tulsa",
       "type": "Feature",
       "properties": {
@@ -145,7 +202,5 @@
         ]
       }
     }
-
-
   ]
 }
