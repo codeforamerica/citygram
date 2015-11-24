@@ -2,6 +2,21 @@
   "type": "FeatureCollection",
   "features": [
     {
+      "id": "miami",
+      "type": "Feature",
+      "properties": {
+        "title": "Miami",
+        "background": "miami.jpg",
+        "zoom": 11
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.2235446,
+          25.7979842
+        ]
+      }
+    {
       "id": "seattle",
       "type": "Feature",
       "properties": {
@@ -110,7 +125,7 @@
         "coordinates": [
             -95.991433,
             36.156718
-        
+
         ]
       }
     },
@@ -130,7 +145,7 @@
         ]
       }
     }
-	
+
 
   ]
 }
