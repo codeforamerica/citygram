@@ -2,6 +2,22 @@
   "type": "FeatureCollection",
   "features": [
     {
+      "id": "san-diego",
+      "type": "Feature",
+      "properties": {
+        "title": "San Diego",
+        "background": "san-diego.jpg",
+        "zoom": 13
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.164979,
+          32.715797
+        ]
+      }
+    },
+    {
       "id": "miami",
       "type": "Feature",
       "properties": {
