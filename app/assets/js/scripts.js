@@ -83,10 +83,10 @@ app.hookupSteps = function() {
     $('.publisher').removeClass('is-active');
   });
 
-  $('.publisher:not(.soon) .publisher-btn').on('click', function(event) {
+  $('.publisher:not(.soon)').on('click', function(event) {
     $('.publisher').removeClass('selected');
 
-    var $publisher = $(this).parents('.publisher:not(.soon)');
+    var $publisher = $(this);
     $publisher.addClass('selected');
 
     app.setPublisher($publisher);
@@ -102,6 +102,7 @@ app.hookupSteps = function() {
 
     app.scrollToElement($('#step2'));
   });
+
 
   app.handleChannelClick = function(channel, channelBtn) {
     if (channelBtn.hasClass('disabledButton')) {
@@ -200,7 +201,7 @@ app.hookupSteps = function() {
       // Preserve references to new layers
       prevMarker = L.marker(latlng).addTo(app.map);
       prevCircle = L.circle(latlng, radiusMeters, { color:'#0B377F' }).addTo(app.map);
-      
+
 
       if (app.eventsArePolygons) {
         app.updateEventsForGeometry(app.state.geom, function(events) {
