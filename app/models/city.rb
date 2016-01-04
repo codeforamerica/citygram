@@ -17,9 +17,7 @@ module Citygram
               feature['properties']['zoom'],
               feature['features']
             )
-          }
-
-          cities
+          }.sort_by{|c| c[:title]}
         end
       end
 
