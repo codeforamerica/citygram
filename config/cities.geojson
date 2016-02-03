@@ -2,10 +2,64 @@
   "type": "FeatureCollection",
   "features": [
     {
+<<<<<<< HEAD
+=======
+      "id": "san-diego",
+      "type": "Feature",
+      "properties": {
+        "title": "San Diego",
+        "background": "san-diego.jpg",
+        "zoom": 13
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.164979,
+          32.715797
+        ]
+      }
+    },
+    {
+      "id": "miami",
+      "type": "Feature",
+      "properties": {
+        "title": "Miami",
+        "state": "FL",
+        "background": "miami.jpg",
+        "zoom": 11
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.2235446,
+          25.7979842
+        ]
+      }
+    },
+    {
+      "id": "seattle",
+      "type": "Feature",
+      "properties": {
+        "title": "Seattle",
+        "state": "WA",
+        "background": "seattle.jpg",
+        "zoom": 13
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.336014,
+          47.604432
+        ]
+      }
+    },
+    {
+>>>>>>> codeforamerica/master
       "id": "charlotte",
       "type": "Feature",
       "properties": {
         "title": "Charlotte",
+        "state": "NC",
         "background": "charlotte.jpg",
         "zoom": 13
       },
@@ -22,6 +76,7 @@
       "type": "Feature",
       "properties": {
         "title": "Lexington",
+        "state": "KY",
         "background": "lexington.png",
         "zoom": 13
       },
@@ -38,7 +93,8 @@
       "type": "Feature",
       "properties": {
         "title": "New York",
-        "background": "new-york.png",
+        "state": "NY",
+        "background": "new-york.jpg",
         "zoom": 11
       },
       "geometry": {
@@ -70,6 +126,7 @@
       "type": "Feature",
       "properties": {
         "title": "San Francisco",
+        "state": "CA",
         "background": "san-francisco.jpg",
         "zoom": 11
       },
@@ -82,18 +139,115 @@
       }
     },
     {
+<<<<<<< HEAD
       "id": "seattle",
       "type": "Feature",
       "properties": {
         "title": "Seattle",
         "background": "seattle.jpg",
         "zoom": 13
+=======
+      "id": "triangle",
+      "type": "FeatureCollection",
+      "properties": {
+        "title": "Research Triangle, NC",
+        "background": "triangle.png",
+        "zoom": 11
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
+          -78.7879963,
+          35.880079
+        ]
+      },
+      "features": [
+        {
+          "id": "cary",
+          "type": "Feature",
+          "properties": {
+            "title": "Cary",
+            "state": "NC",
+            "zoom": 11
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -78.8003,
+              35.7789
+            ]
+          }
+        },
+        {
+          "id": "durham",
+          "type": "Feature",
+          "properties": {
+            "title": "Durham",
+            "state": "NC",
+            "zoom": 11
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -78.9072,
+              35.9886
+            ]
+          }
+        },
+        {
+          "id": "raleigh",
+          "type": "Feature",
+          "properties": {
+            "title": "Raleigh",
+            "state": "NC",
+            "zoom": 11
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -78.6389,
+              35.7806
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "tulsa",
+      "type": "Feature",
+      "properties": {
+        "title": "Tulsa OK",
+        "background": "tulsa.jpg",
+        "zoom": 11
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+            -95.991433,
+            36.156718
+
+        ]
+      }
+    },
+    {
+      "id": "austin",
+      "type": "Feature",
+      "properties": {
+        "title": "Austin",
+        "background": "austin.jpg",
+        "zoom": 11
+>>>>>>> codeforamerica/master
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+<<<<<<< HEAD
           -122.336014,
           47.604432
+=======
+          -97.746683,
+          30.265108
+>>>>>>> codeforamerica/master
         ]
       }
     }

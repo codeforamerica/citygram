@@ -120,7 +120,7 @@ input:focus, select:focus {
 }
 
 header {
-  background: url(<%= asset_path 'cities/backgrounds/seattle.jpg' %>);
+  background: #182a4a;
   background-size: cover;
   min-height: 450px;
   position: relative;
@@ -181,6 +181,10 @@ section h3 {
   font-weight: 200;
 }
 
+.hide {
+  display: none;
+}
+
 /*********** Publisher Section **************/
 
 #step1 .publishers {
@@ -208,7 +212,7 @@ section h3 {
 #step1 .publisher .publisher-description {
   background-color: #8b969e;
   color: #fff;
-  border-radius: 15px;
+  border-radius: 10px;
   padding: 20px 15px;
   line-height: 1.2;
   position: absolute;
@@ -222,11 +226,15 @@ section h3 {
 
 #step1 .publisher .publisher-description .definition {
   height: 65%;
-  overflow: scroll;
+  overflow: auto;
 }
 
 #step1 .publisher.is-active .publisher-description {
   opacity: 1;
+}
+
+#step1 .publisher.selected {
+  border: 5px solid #182A4A;
 }
 
 #step1 .publisher .city {
@@ -537,3 +545,41 @@ Comment out to test necessity of buttons
   line-height: 50px;
   text-align: center;
 }
+
+
+.menu-ui {
+  background:#fff;
+  position:absolute;
+  top:25px;right:20px;
+  z-index:1;
+  border-radius:3px;
+  width:120px;
+  border:1px solid rgba(0,0,0,0.4);
+  }
+  .menu-ui a {
+    font-size:0.75em;
+    color:#404040;
+    display:block;
+    margin:0;padding:0;
+    padding:10px;
+    text-decoration:none;
+    border-bottom:1px solid rgba(0,0,0,0.25);
+    text-align:center;
+    }
+   .menu-ui a.selected,
+   .menu-ui a.selected:hover {
+      color: #fff;
+      background-color: #182A4A;
+   }
+    .menu-ui a:first-child {
+      border-radius:3px 3px 0 0;
+      }
+    .menu-ui a:last-child {
+      border:none;
+      border-radius:0 0 3px 3px;
+      }
+    .menu-ui a:hover {
+      background:#f8f8f8;
+      color:#404040;
+      }
+

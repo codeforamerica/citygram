@@ -1,6 +1,7 @@
 $(document).ready(function() {
   app.hookupMap();
   app.hookupSteps();
+  app.hideSteps();
 });
 
 var app = app || {};
@@ -13,6 +14,7 @@ app.state = {
 app.eventMarkers = new L.FeatureGroup();
 
 app.hookupMap = function() {
+  document.getElementById('locatormap').innerHTML = "<div id='map'><div class='map-key-panel js-dot-legend'><span class='map-event-dot'></span>Click to see notification</div></div>";
   var center = JSON.parse($('meta[name=mapCenter]').attr('content'));
   var options = {
     zoom: 13,
@@ -22,34 +24,72 @@ app.hookupMap = function() {
   };
   var mapId = $('meta[name=mapId]').attr('content');
   var map = app.map = L.mapbox.map('map', mapId, options);
+  var locality = document.getElementById('user-selected-locality');
+  if ( locality != null ) {
+    locality.onclick = function(e) {
+      e.preventDefault();
+
+      $('.menu-ui a.selected').removeClass('selected');
+      $(e.target).addClass('selected');
+
+      var address = $('#geolocate').val();
+      if (! address) { //if address is not avail, center map on region when clicked.
+          var pos = e.target.getAttribute('data-position');
+          if (pos) {
+              var loc = pos.split(',');
+              app.map.setView(loc, 13);
+          };
+      } else {
+        app.geolocate(e);
+      }
+    }
+  }
 };
+
+app.hideSteps = function(){
+  app.hideStep2();
+  app.hideStep3();
+}
+
+app.showStep2 = function(){
+  $('#step2').removeClass('hide');
+}
+
+app.showStep3 = function(){
+  $('#step3').removeClass('hide');
+}
+
+app.hideStep2 = function(){
+  $('#step2').addClass('hide');
+}
+
+app.hideStep3 = function(){
+  $('#step3').addClass('hide');
+}
 
 app.hookupSteps = function() {
   $('.startButton').on('click', function() {
     app.scrollToElement($('#step1'));
   });
 
-  $('.publisher:not(.soon)').on('click', function(event) {
-    $('.publisher')
-      .removeClass('selected')
-      .removeClass('is-active');
-
+  $('.publisher:not(.soon)').on('mouseover', function(event) {
+    $('.publisher').removeClass('is-active');
 
     var $publisher = $(event.currentTarget);
-    $publisher
-      .addClass('selected')
-      .addClass('is-active');
+    $publisher.addClass('is-active');
   });
 
-  $('.publisher:not(.soon) .publisher-btn').on('click', function(event) {
-    var $publisher = $(this).parents('.publisher:not(.soon)');
+  $('.publisher:not(.soon)').on('mouseout', function(event) {
+    $('.publisher').removeClass('is-active');
+  });
 
-    // Update the confirmation section with the name
-    app.state.publisher_id = $publisher.data('publisher-id');
-    app.eventsArePolygons = $publisher.data('publisher-title').match(/Leaf Collection/);
-    $('.js-dot-legend').css('visibility', app.eventsArePolygons ? 'hidden' : 'visible');
+  $('.publisher:not(.soon)').on('click', function(event) {
+    $('.publisher').removeClass('selected');
 
-    $('.confirmationType').html($publisher.data('publisher-title'));
+    var $publisher = $(this);
+    $publisher.addClass('selected');
+
+    app.setPublisher($publisher);
 
     // Remove disabled state styling from subscribe buttons
     $('.smsButton, .emailButton').removeClass('disabledButton');
@@ -62,6 +102,7 @@ app.hookupSteps = function() {
 
     app.scrollToElement($('#step2'));
   });
+
 
   app.handleChannelClick = function(channel, channelBtn) {
     if (channelBtn.hasClass('disabledButton')) {
@@ -122,9 +163,22 @@ app.hookupSteps = function() {
     e && e.preventDefault();
     var address = $('#geolocate').val();
     if (! address) { return }
-
-    var city = $('.publisher.selected').data('publisher-city');
-    var state = $('.publisher.selected').data('publisher-state');
+    var city = undefined;
+    var state = undefined;
+    // if within a geography that has localities, e.g. Triangle
+    // that consideration is primary.
+    var usesLocality = $("#user-selected-locality");
+    if (usesLocality && usesLocality.length == 0){
+      var publisherSelection = $('.publisher.selected');
+      city = publisherSelection.data('publisher-city');
+      state = publisherSelection.data('publisher-state');
+    } else {
+      // locality cannot activate without selection
+      var localitySelection = $("#user-selected-locality a.selected");
+      if (! localitySelection) { return }
+      city = localitySelection.data('city');
+      state = localitySelection.data('state');
+    }
     var radiusMiles = parseFloat($('#user-selected-radius').val());
     var radiusKm =radiusMiles * 1.60934
     var radiusMeters = radiusKm * 1000;
@@ -140,7 +194,6 @@ app.hookupSteps = function() {
         type: 'Polygon',
         coordinates: [bbox],
       });
-
       // Remove old layers
       if (prevMarker) app.map.removeLayer(prevMarker);
       if (prevCircle) app.map.removeLayer(prevCircle);
@@ -151,9 +204,8 @@ app.hookupSteps = function() {
 
 
       if (app.eventsArePolygons) {
-        // copy title from the surrounding event polygon to the address marker
         app.updateEventsForGeometry(app.state.geom, function(events) {
-          prevMarker.bindPopup("<p>"+app.hyperlink(events[0]['title'])+"</p>").openPopup();
+          app.copyEventTitleToMarker(events, prevMarker);
         });
       }
 
@@ -163,9 +215,11 @@ app.hookupSteps = function() {
       // Frequency estimate
       app.getEventsCount(app.state.publisher_id, app.state.geom, oneWeekAgo, function(response) {
         $('#freqRadius').html(radiusMiles + ' mi');
-        $('#freqAddress').html(address);
+        $('#freqAddress').html(address + ' ' + city + ', ' + state);
         $('#freqNum').html(response.events_count + ' citygrams');
       });
+
+      app.showStep3();
 
     });
   };
@@ -181,6 +235,38 @@ app.hookupSteps = function() {
   $('#geolocateForm').on('submit', function(){ return false });
 
 };
+
+app.copyEventTitleToMarker = function(events, marker) {
+  var surroundingEvent;
+  var markerGeoJSON = marker.toGeoJSON();
+
+  events.forEach(function(event) {
+    var polygon = {"type": "Feature", geometry: JSON.parse(event.geom)};
+    if (turf.inside(markerGeoJSON, polygon)) {
+      surroundingEvent = event;
+    }
+  });
+
+  if (surroundingEvent) {
+    marker.bindPopup("<p>"+app.hyperlink(surroundingEvent.title)+"</p>").openPopup();
+  }
+}
+
+app.setPublisher = function($publisher) {
+  app.state.publisher_id = $publisher.data('publisher-id');
+  app.eventsArePolygons = $publisher.data('publisher-events-are-polygons');
+
+  if ($publisher.data('publisher-event-display-endpoint')) {
+    app.eventDisplayEndpoint = $publisher.data('publisher-event-display-endpoint');
+  } else {
+    app.eventDisplayEndpoint = '/publishers/'+app.state.publisher_id+'/events';
+  }
+
+  $('.js-dot-legend').css('visibility', app.eventsArePolygons ? 'hidden' : 'visible');
+  $('.confirmationType').html($publisher.data('publisher-title'));
+
+  app.showStep2();
+}
 
 app.hyperlink = Autolinker.link;
 
@@ -242,7 +328,7 @@ app.displayEventMarker = function(event) {
 
 app.updateEventsForGeometry = function(geometry, callback){
   if (!app.state.publisher_id) return;
-  $.getJSON('/publishers/'+app.state.publisher_id+'/events', { geometry: geometry }, callback);
+  $.getJSON(app.eventDisplayEndpoint, { geometry: geometry }, callback);
 };
 
 app.getEventsCount = function(publisherId, geometry, since, callback){
@@ -257,7 +343,7 @@ app.scrollToElement = function(el) {
 };
 
 app.geocode = function(address, city, state, callback, context) {
-  var url = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + encodeURIComponent(address);
+   var url = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + encodeURIComponent(address);
       url += '&components=locality:' + encodeURIComponent(city);
       url += '|administrative_area:' + encodeURIComponent(state);
 
@@ -275,6 +361,7 @@ app.geocode = function(address, city, state, callback, context) {
 
 app.resetState = function() {
   app.state.publisher_id = undefined;
+  app.eventDisplayEndpoint = undefined;
   $('.publisher').removeClass('selected');
 
   // Let's leave the location and phone number in place, for easy re-subscribe
@@ -283,3 +370,4 @@ app.resetState = function() {
 app.submitSubscription = function(callback) {
   $.post('/subscriptions', { subscription: app.state }, callback);
 };
+
