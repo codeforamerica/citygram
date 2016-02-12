@@ -65,7 +65,7 @@ module Citygram
 
       class Feature < Struct.new(:data)
         def id
-          data['id']
+          data['id'] || properties['id']
         end
 
         def title
