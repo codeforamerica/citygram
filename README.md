@@ -155,9 +155,7 @@ The second command runs tests.  You can make changes and run tests from there.
 If your changes need migrations, this command will run them:
 
 ```
-docker-compose run web bundle exec rake db:migrate
+docker-compose run citygram bundle exec rake db:migrate
 ```
 
-In fact, most arbitrary commands will work inside the container if you preface them with ```docker-compose run web```
-
-
+In fact, most arbitrary commands will work inside the container if you preface them with ```docker-compose run citygram```

@@ -1,7 +1,7 @@
 FROM ruby:2.2.3
 
 # ExecJS runtime -- not optimal
-RUN apt-get update && apt-get install curl
+RUN apt-get update && apt-get install curl --yes
 RUN curl --silent --location https://deb.nodesource.com/setup_0.12 | bash -
 RUN apt-get install --yes nodejs
 
