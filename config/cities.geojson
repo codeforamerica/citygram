@@ -2,8 +2,6 @@
   "type": "FeatureCollection",
   "features": [
     {
-<<<<<<< HEAD
-=======
       "id": "san-diego",
       "type": "Feature",
       "properties": {
@@ -54,7 +52,6 @@
       }
     },
     {
->>>>>>> codeforamerica/master
       "id": "charlotte",
       "type": "Feature",
       "properties": {
@@ -139,14 +136,6 @@
       }
     },
     {
-<<<<<<< HEAD
-      "id": "seattle",
-      "type": "Feature",
-      "properties": {
-        "title": "Seattle",
-        "background": "seattle.jpg",
-        "zoom": 13
-=======
       "id": "triangle",
       "type": "FeatureCollection",
       "properties": {
@@ -236,18 +225,12 @@
         "title": "Austin",
         "background": "austin.jpg",
         "zoom": 11
->>>>>>> codeforamerica/master
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-<<<<<<< HEAD
-          -122.336014,
-          47.604432
-=======
           -97.746683,
           30.265108
->>>>>>> codeforamerica/master
         ]
       }
     }
