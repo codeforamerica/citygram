@@ -34,6 +34,18 @@ Citygram is a web application written in Ruby.
 
 ### Installation
 
+You can use [vagrant](http://vagrantup.com) to get up and running quickly:
+
+```bash
+# starts up an ubuntu box and installs postgres and all other dependencies
+vagrant up
+
+# login to the box and start the program:
+vagrant ssh
+cd /vagrant
+bundle exec foreman start
+```
+
 First, follow the instructions to install each of the following:
 
 * [Install Ruby](https://github.com/codeforamerica/howto/blob/master/Ruby.md)
