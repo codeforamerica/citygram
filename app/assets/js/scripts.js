@@ -272,6 +272,9 @@ app.hyperlink = Autolinker.link;
 
 // Populate events
 app.updateEvents = function(bounds) {
+  // Update Leaflet map size on mobile
+  app.map.invalidateSize();
+
   var mapGeometry = {
     type: 'Polygon',
     coordinates: [[
