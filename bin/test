@@ -1,0 +1,1 @@
+docker-compose run citygram bundle exec rake

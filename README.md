@@ -37,7 +37,7 @@ Citygram is a web application written in Ruby.
 First, follow the instructions to install each of the following:
 
 * [Install Ruby](https://github.com/codeforamerica/howto/blob/master/Ruby.md)
-* [Install PostgreSQL](https://github.com/codeforamerica/howto/blob/master/PostgreSQL.md)
+* [Install PostgreSQL and PostGIS](https://github.com/codeforamerica/howto/blob/master/PostgreSQL.md) 
 * Install Redis - `brew install redis` on OS X, available from your package manager on Linux or [direct download](http://redis.io/download)
 
 Then, in the command line, run the following to copy the citygram code locally and install all Ruby package dependencies:
@@ -155,9 +155,7 @@ The second command runs tests.  You can make changes and run tests from there.
 If your changes need migrations, this command will run them:
 
 ```
-docker-compose run web bundle exec rake db:migrate
+docker-compose run citygram bundle exec rake db:migrate
 ```
 
-In fact, most arbitrary commands will work inside the container if you preface them with ```docker-compose run web```
-
-
+In fact, most arbitrary commands will work inside the container if you preface them with ```docker-compose run citygram```
