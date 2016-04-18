@@ -272,6 +272,9 @@ app.hyperlink = Autolinker.link;
 
 // Populate events
 app.updateEvents = function(bounds) {
+  // Update Leaflet map size on mobile
+  app.map.invalidateSize();
+
   var mapGeometry = {
     type: 'Polygon',
     coordinates: [[
@@ -320,8 +323,11 @@ app.displayEventMarker = function(event) {
   } else {
     marker = L.circleMarker([geometry.coordinates[1], geometry.coordinates[0]], { radius: 6, color: '#FC442A' })
   }
-  marker.addTo(app.map).bindPopup(html);
-
+  try {
+    marker.addTo(app.map).bindPopup(html);
+  } catch (e) {
+    console.log("Error loading event '", event.title.substr(0, 10), "'", e);
+  }
   app.eventMarkers.addLayer(marker);
   return marker;
 }
