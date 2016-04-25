@@ -6,6 +6,7 @@
       "type": "Feature",
       "properties": {
         "title": "San Diego",
+        "state": "CA",
         "background": "san-diego.jpg",
         "zoom": 13
       },
@@ -107,6 +108,7 @@
       "type": "Feature",
       "properties": {
         "title": "Orlando",
+        "state": "FL",
         "background": "orlando.jpg",
         "zoom": 10
       },
@@ -139,7 +141,8 @@
       "id": "triangle",
       "type": "FeatureCollection",
       "properties": {
-        "title": "Research Triangle, NC",
+        "title": "Research Triangle",
+        "state": "NC",
         "background": "triangle.png",
         "zoom": 11
       },
@@ -205,7 +208,8 @@
       "id": "tulsa",
       "type": "Feature",
       "properties": {
-        "title": "Tulsa OK",
+        "title": "Tulsa",
+        "state": "OK",
         "background": "tulsa.jpg",
         "zoom": 11
       },
@@ -223,6 +227,7 @@
       "type": "Feature",
       "properties": {
         "title": "Austin",
+        "state": "TX",
         "background": "austin.jpg",
         "zoom": 11
       },
