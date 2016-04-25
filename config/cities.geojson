@@ -103,6 +103,22 @@
       }
     },
     {
+      "id": "orlando",
+      "type": "Feature",
+      "properties": {
+        "title": "Orlando",
+        "background": "orlando.jpg",
+        "zoom": 10
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -81.377430,
+          28.542858
+        ]
+      }
+    },
+    {
       "id": "san-francisco",
       "type": "Feature",
       "properties": {
