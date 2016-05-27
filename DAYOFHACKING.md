@@ -4,7 +4,7 @@ National Day of Civic Hacking 2016
 Summary
 -------
 
-[See the home page ("read me" document) for the Repo](https://github.com/codefordurham/citygram). We should have dev instances setup for you to look at during the hackathon.
+Welcome! To get the WHY? and TECH overview, [see the home page ("read me" document) of this repository](https://github.com/codefordurham/citygram). For tech setup, we should have development instances setup on the cloud for you to look at during the hackathon.
 
 Citygram in RTP consists of two github projects:
  * The citygram.org website, which this project is a fork of. It shows the user the website, it polls provider datasets (all the points on the maps), and it sends notifications via SMS or email to users. It is implemented in Ruby, using Sinatra, uses Twilio for SMS. Postgres database is used to store provider data.
@@ -18,17 +18,17 @@ task (but feel free to explore any task, or pair up with someone with more
 experience).
 
 
-You can go to waffle to see tasks that are ready for you to tackle:
+You can click below and also see all the tasks in waffle to see tasks that are ready for you to tackle:
 
 [![Stories in Ready](https://badge.waffle.io/codefordurham/citygram.svg?label=ready&title=Ready)](http://waffle.io/codefordurham/citygram)
 
-Opinions Needed
+Citizens - Opinions Needed
 ---------------
 
 These tasks need non-technical, organization, brain-storming, contacting
 someone, some copy writing, or just help thinking about the task at hand.
 
-[List of Opinion Tasks](https://github.com/dsummersl/citygram/labels/Opinions%20Needed)
+[List of Opinion Tasks](https://github.com/codefordurham/citygram/labels/Citizen%20-%20Opinions%20Needed)
 
 
 Data Analysis
@@ -36,7 +36,7 @@ Data Analysis
 
 Some tasks need people to evaluate or find existing data sources. For these tasks you would: find the datasets, document the data columns, and check that the data is updated regularly.
 
-[List of Analysis Tasks](https://github.com/dsummersl/citygram/labels/Analysis)
+[List of Data Tasks](https://github.com/dsummersl/citygram/labels/Data%20Analysis)
 
 Frontend
 --------
