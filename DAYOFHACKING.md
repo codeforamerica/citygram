@@ -20,7 +20,7 @@ experience).
 
 You can go to waffle to see tasks that are ready for you to tackle:
 
-[![Stories in Backlog](https://badge.waffle.io/codefordurham/citygram.svg?label=backlog&title=Backlog)](http://waffle.io/codefordurham/citygram)
+[![Stories in Ready](https://badge.waffle.io/codefordurham/citygram.svg?label=ready&title=Ready)](http://waffle.io/codefordurham/citygram)
 
 Opinions Needed
 ---------------
