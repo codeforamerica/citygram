@@ -1,6 +1,9 @@
 National Day of Civic Hacking 2016
 ==================================
 
+Technology Setup
+-----------------
+[See the home page ("read me" document) for the Repo](https://github.com/codefordurham/citygram)
 
 Tasks
 =====
