@@ -1,9 +1,14 @@
 National Day of Civic Hacking 2016
 ==================================
 
-Technology Setup
------------------
-[See the home page ("read me" document) for the Repo](https://github.com/codefordurham/citygram)
+Summary
+-------
+
+[See the home page ("read me" document) for the Repo](https://github.com/codefordurham/citygram). We should have dev instances setup for you to look at during the hackathon.
+
+Citygram in RTP consists of two github projects:
+ * The citygram.org website, which this project is a fork of. It shows the user the website, it polls provider datasets (all the points on the maps), and it sends notifications via SMS or email to users.
+ * The RTP [citygrame-connector](https://github.com/nigelterry/Citygram-Connector). This projects polls various RTP data portals, scrapes city datasources, and provides data for citygram.org to pull from. It also stores this data to provide more detailed reporting (at the moment, just maps).
 
 Tasks
 =====
@@ -11,6 +16,11 @@ Tasks
 All tasks have been tagged with the skills you would likely need to work on the
 task (but feel free to explore any task, or pair up with someone with more
 experience).
+
+
+You can go to waffle to see tasks that are ready for you to tackle:
+
+[![Stories in Ready](https://badge.waffle.io/codefordurham/citygram.svg?label=ready&title=Ready)](http://waffle.io/codefordurham/citygram)
 
 Opinions Needed
 ---------------
