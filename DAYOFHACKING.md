@@ -20,6 +20,14 @@ someone, some copy writing, or just help thinking about the task at hand.
 
 [List of Opinion Tasks](https://github.com/dsummersl/citygram/labels/Opinions%20Needed)
 
+
+Data Analysis
+-------------
+
+Some tasks need people to evaluate or find existing data sources. For these tasks you would: find the datasets, document the data columns, and check that the data is updated regularly.
+
+[List of Analysis Tasks](https://github.com/dsummersl/citygram/labels/Analysis)
+
 Frontend
 --------
 
