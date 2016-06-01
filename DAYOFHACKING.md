@@ -10,6 +10,8 @@ Citygram in RTP consists of two github projects:
  * The citygram.org website, which this project is a fork of. It shows the user the website, it polls provider datasets (all the points on the maps), and it sends notifications via SMS or email to users. It is implemented in Ruby, using Sinatra, uses Twilio for SMS. Postgres database is used to store provider data.
  * The RTP [citygram-connector](https://github.com/nigelterry/Citygram-Connector). This projects polls various RTP data portals, scrapes city datasources, and provides data for citygram.org to pull from. It also stores this data to provide more detailed reporting (at the moment, just maps). This is a PHP project, using the YII framework, backing to MongoDB.
 
+See the [dev setup](#devsetup)
+
 Tasks
 =====
 
@@ -60,3 +62,21 @@ These tasks will need someone who can find or make icons, and is familiar with
 CSS and hex coloring, or confidence organizing page layout and making a mockup.
 
 [List of Design Tasks](https://github.com/dsummersl/citygram/labels/Design)
+
+Developer Setup
+===============
+
+There are two projects that make up RTP Citygram: the website (citygram
+project), and the data provider (citygram-connector).
+
+Citygram
+--------
+
+Use [these instructions](https://github.com/codefordurham/citygram#installation).
+
+Once the app works, you can prepopulate it with data using [these instructions](https://github.com/codefordurham/citygram#acquiring-data).
+
+Citygram-Connector
+------------------
+
+Use [these instructions](https://github.com/dsummersl/Citygram-Connector/tree/vagrantfile#developer-setup-in-vagrant).
