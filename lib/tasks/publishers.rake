@@ -8,7 +8,7 @@ namespace :publishers do
   end
   desc "Download publishers from Citygram"
   task download: :app do
-    pub_file = open("https://www.citygram.org/publishers.json").read
+    pub_file = open("./publishers.json").read
     publishers = JSON.parse(pub_file)
     Citygram::Models::Publisher.set_allowed_columns(
       :title, :endpoint, :active, :visible,

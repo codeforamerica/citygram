@@ -1,0 +1,187 @@
+[
+  {
+    "id": 37,
+    "title": "Building Permits",
+    "endpoint": "http://citygram.codeforcary.org/permit-message",
+    "updated_at": "2016-04-25 18:40:29 UTC",
+    "created_at": "2016-04-25 18:31:59 UTC",
+    "active": true,
+    "city": "Research Triangle",
+    "icon": "building-permits.png",
+    "visible": true,
+    "state": "NC",
+    "description": "Building Permit Applications from local Planning Departments",
+    "tags": [
+      "triangle"
+    ],
+    "event_display_endpoint": null,
+    "events_are_polygons": null
+  },
+  {
+    "id": 36,
+    "title": "OPD Reports",
+    "endpoint": "http://orlando-citygram-api.azurewebsites.net/?service=police",
+    "updated_at": "2016-04-25 17:07:47 UTC",
+    "created_at": "2016-04-25 13:35:54 UTC",
+    "active": true,
+    "city": "Orlando",
+    "icon": "police-incidents.png",
+    "visible": true,
+    "state": "FL",
+    "description": "Orlando police incident reports. Updated in real-time as reports are closed.",
+    "tags": [
+      "orlando",
+      "orl",
+      "crime",
+      "police"
+    ],
+    "event_display_endpoint": null,
+    "events_are_polygons": null
+  },
+  {
+    "id": 35,
+    "title": "Road Closures",
+    "endpoint": "https://citygram-services.herokuapp.com/clt-road-closures",
+    "updated_at": "2016-04-09 20:17:21 UTC",
+    "created_at": "2016-04-09 20:07:53 UTC",
+    "active": true,
+    "city": "Charlotte",
+    "icon": "street-closures.png",
+    "visible": true,
+    "state": "NC",
+    "description": "Planned road closures by the City of Charlotte",
+    "tags": [
+      "charlotte"
+    ],
+    "event_display_endpoint": null,
+    "events_are_polygons": null
+  },
+  {
+    "id": 34,
+    "title": "Police Alerts",
+    "endpoint": "https://citygram-services.herokuapp.com/tulsa-crime-dispatch",
+    "updated_at": "2016-03-30 18:30:07 UTC",
+    "created_at": "2016-03-30 18:00:41 UTC",
+    "active": true,
+    "city": "Tulsa",
+    "icon": "police-incidents.png",
+    "visible": true,
+    "state": "OK",
+    "description": "Current police reports.",
+    "tags": [
+      "tulsa"
+    ],
+    "event_display_endpoint": null,
+    "events_are_polygons": null
+  },
+  {
+    "id": 33,
+    "title": "Building Permits",
+    "endpoint": "https://citygram-services.herokuapp.com/miami-building-permits",
+    "updated_at": "2016-03-10 15:53:54 UTC",
+    "created_at": "2016-03-10 12:46:07 UTC",
+    "active": true,
+    "city": "Miami",
+    "icon": "building-permits.png",
+    "visible": true,
+    "state": "FL",
+    "description": "Building permits",
+    "tags": [
+      "miami"
+    ],
+    "event_display_endpoint": null,
+    "events_are_polygons": null
+  },
+  {
+    "id": 32,
+    "title": "Earthquakes",
+    "endpoint": "https://citygram-services.herokuapp.com/tulsa-earthquakes",
+    "updated_at": "2016-03-10 12:51:26 UTC",
+    "created_at": "2016-03-10 12:42:22 UTC",
+    "active": true,
+    "city": "Tulsa",
+    "icon": "electrical-permits.png",
+    "visible": true,
+    "state": "OK",
+    "description": "Quakes within 100km of Tulsa, OK. Enter only 'Tulsa, OK' as your address.",
+    "tags": [
+      "tulsa",
+      "earthquakes",
+      "oklahoma"
+    ],
+    "event_display_endpoint": null,
+    "events_are_polygons": null
+  },
+  {
+    "id": 31,
+    "title": "Code Violations",
+    "endpoint": "https://sd-notifications.herokuapp.com/dsd/code-enforcement",
+    "updated_at": "2015-12-29 17:50:27 UTC",
+    "created_at": "2015-12-29 17:37:39 UTC",
+    "active": true,
+    "city": "San Diego",
+    "icon": "code-violations.png",
+    "visible": true,
+    "state": "CA",
+    "description": "Current information about complaints received that have become cases for further investigation.",
+    "tags": [
+      "san-diego"
+    ],
+    "event_display_endpoint": null,
+    "events_are_polygons": null
+  },
+  {
+    "id": 30,
+    "title": "311 Service Requests",
+    "endpoint": "https://citygram-services.herokuapp.com/miami-311",
+    "updated_at": "2015-11-24 22:22:58 UTC",
+    "created_at": "2015-11-24 22:02:34 UTC",
+    "active": true,
+    "city": "Miami",
+    "icon": "phone.png",
+    "visible": true,
+    "state": "FL",
+    "description": "Recent 311 Service Requests",
+    "tags": [
+      "miami"
+    ],
+    "event_display_endpoint": null,
+    "events_are_polygons": null
+  },
+  {
+    "id": 29,
+    "title": "Street Projects",
+    "endpoint": "https://citygram-services.herokuapp.com/tulsa-street-projects",
+    "updated_at": "2015-10-21 15:30:56 UTC",
+    "created_at": "2015-10-21 15:15:55 UTC",
+    "active": true,
+    "city": "Tulsa",
+    "icon": "street-closures.png",
+    "visible": true,
+    "state": "OK",
+    "description": "Street and Bridge projects.",
+    "tags": [
+      "tulsa"
+    ],
+    "event_display_endpoint": null,
+    "events_are_polygons": null
+  },
+  {
+    "id": 28,
+    "title": "Fire Dispatches",
+    "endpoint": "https://citygram-services.herokuapp.com/tulsa-fire-dispatch",
+    "updated_at": "2015-10-13 14:11:26 UTC",
+    "created_at": "2015-10-13 11:10:55 UTC",
+    "active": true,
+    "city": "Tulsa",
+    "icon": "fire-calls.png",
+    "visible": true,
+    "state": "OK",
+    "description": "Recent Tulsa Fire Department Dispatches.",
+    "tags": [
+      "tulsa"
+    ],
+    "event_display_endpoint": null,
+    "events_are_polygons": null
+  }
+]
