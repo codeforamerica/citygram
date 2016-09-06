@@ -238,6 +238,21 @@
           30.265108
         ]
       }
+    },
+    {
+      "id": "chattanooga",
+      "type": "Feature",
+      "properties": {
+        "title": "Chattanooga",
+        "background": "chattanooga.png",
+        "zoom": 11
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-85.310426,
+          35.051199
+        ]
+      }
     }
   ]
 }
