@@ -63,6 +63,51 @@ describe Citygram::Models::Subscription do
     end
   end
 
+  describe 'determining duplicates' do
+    it 'includes subscriptions with same publisher, geometry, and phone' do
+      subscription = create(:subscription, channel: 'sms', phone_number: '+15555555555')
+      dupe = create(:subscription,
+        publisher_id: subscription.publisher_id,
+        channel: subscription.channel,
+        geom: subscription.geom,
+        phone_number: subscription.phone_number)
+
+      # use count because we can't guarantee if subscription or dupe will be returned
+      expect(Subscription.duplicates.count).to eq 1
+    end
+
+    it 'excludes subscriptions with different phone' do
+      subscription = create(:subscription, phone_number: '+15555555555')
+      non_dupe = create(:subscription,
+        publisher_id: subscription.publisher_id,
+        geom: subscription.geom,
+        phone_number: '+16666666666')
+
+      expect(Subscription.duplicates.all).to be_empty
+    end
+
+    it 'includes subscriptions with same publisher, geometry, and email' do
+      subscription = create(:subscription, channel: 'email', email_address: 'a@b.cc')
+      dupe = create(:subscription,
+        publisher_id: subscription.publisher_id,
+        geom: subscription.geom,
+        channel: subscription.channel,
+        email_address: subscription.email_address)
+
+      expect(Subscription.duplicates.count).to eq 1
+    end
+
+    it 'excludes subscriptions with different email' do
+      subscription = create(:subscription, email_address: 'a@b.cc')
+      non_dupe = create(:subscription,
+        publisher_id: subscription.publisher_id,
+        geom: subscription.geom,
+        email_address: 'different@b.cc')
+
+      expect(Subscription.duplicates.first).to be_nil
+    end
+  end
+
   describe 'contact channel validations' do
     context 'webhook' do
       it 'requires the contact to be a valid url' do

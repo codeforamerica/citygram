@@ -25,6 +25,17 @@ module Citygram::Models
         active.where(:publisher => Publisher.active)
       end
 
+      def duplicates
+        active.where(<<-SQL)
+          CAST(id as varchar) NOT IN
+          (
+            SELECT MIN(cast(id AS varchar))
+            FROM subscriptions
+            GROUP BY publisher_id, channel, geom, phone_number, email_address
+          ) -- set of deduped subscriptions
+        SQL
+      end
+
       def email
         where(channel: 'email')
       end
