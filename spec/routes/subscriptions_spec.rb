@@ -17,6 +17,17 @@ describe Citygram::Routes::Subscriptions do
       expect { post '/subscriptions', params }.to change{ Subscription.count }.by(+1)
     end
 
+    it 'does not create duplicate records' do
+      expect { put '/subscriptions', params }.to change{ Subscription.count }.by(+1)
+      expect { put '/subscriptions', params }.to change{ Subscription.count }.by(0)
+    end
+
+    it 'creates a record after previous unsubscribe' do
+      subscription = Subscription.create!(params[:subscription])
+      subscription.unsubscribe!
+      expect { put '/subscriptions', params }.to change{ Subscription.count }.by(+1)
+    end
+
     it 'returns the record' do
       post '/subscriptions', params
       expect(last_response.body).to eq Subscription.last.to_json

@@ -25,6 +25,18 @@ module Citygram::Models
         active.where(:publisher => Publisher.active)
       end
 
+      def duplicates_for(attr)
+        geojson = attr[:geom]
+        attr.delete(:geom)
+        Subscription.active
+          .where(attr)
+          .where('ST_AsText(geom) = ST_AsText(ST_GeomFromGeoJSON(?))', geojson)
+      end
+
+      def duplicate?(attr)
+        duplicates_for(attr).count > 0
+      end
+
       def duplicates
         active.where(<<-SQL)
           CAST(id as varchar) NOT IN

@@ -77,9 +77,10 @@ describe Citygram::Models::Subscription do
     end
 
     it 'excludes subscriptions with different phone' do
-      subscription = create(:subscription, phone_number: '+15555555555')
+      subscription = create(:subscription, channel: 'sms', phone_number: '+15555555555')
       non_dupe = create(:subscription,
         publisher_id: subscription.publisher_id,
+        channel: subscription.channel,
         geom: subscription.geom,
         phone_number: '+16666666666')
 
@@ -98,9 +99,10 @@ describe Citygram::Models::Subscription do
     end
 
     it 'excludes subscriptions with different email' do
-      subscription = create(:subscription, email_address: 'a@b.cc')
+      subscription = create(:subscription, channel: 'email', email_address: 'a@b.cc')
       non_dupe = create(:subscription,
         publisher_id: subscription.publisher_id,
+        channel: subscription.channel,
         geom: subscription.geom,
         email_address: 'different@b.cc')
 
