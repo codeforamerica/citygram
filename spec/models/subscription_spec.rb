@@ -65,19 +65,18 @@ describe Citygram::Models::Subscription do
 
   describe 'determining duplicates' do
     it 'includes subscriptions with same publisher, geometry, and phone' do
-      subscription = create(:subscription, channel: 'sms', phone_number: '+15555555555')
-      dupe = create(:subscription,
-        publisher_id: subscription.publisher_id,
-        channel: subscription.channel,
-        geom: subscription.geom,
-        phone_number: subscription.phone_number)
-
-      # use count because we can't guarantee if subscription or dupe will be returned
-      expect(Subscription.duplicates.count).to eq 1
+      expect do
+        subscription = create(:subscription, channel: 'sms', phone_number: '555-555-5555')
+        dupe = create(:subscription,
+          publisher_id: subscription.publisher_id,
+          channel: subscription.channel,
+          geom: subscription.geom,
+          phone_number: subscription.phone_number)
+      end.to change{ Subscription.duplicates.count }.by(+1)
     end
 
     it 'excludes subscriptions with different phone' do
-      subscription = create(:subscription, channel: 'sms', phone_number: '+15555555555')
+      subscription = create(:subscription, channel: 'sms', phone_number: '555-555-5555')
       non_dupe = create(:subscription,
         publisher_id: subscription.publisher_id,
         channel: subscription.channel,
@@ -88,14 +87,14 @@ describe Citygram::Models::Subscription do
     end
 
     it 'includes subscriptions with same publisher, geometry, and email' do
-      subscription = create(:subscription, channel: 'email', email_address: 'a@b.cc')
-      dupe = create(:subscription,
-        publisher_id: subscription.publisher_id,
-        geom: subscription.geom,
-        channel: subscription.channel,
-        email_address: subscription.email_address)
-
-      expect(Subscription.duplicates.count).to eq 1
+      expect do
+        subscription = create(:subscription, channel: 'email', email_address: 'a@b.cc')
+        dupe = create(:subscription,
+          publisher_id: subscription.publisher_id,
+          geom: subscription.geom,
+          channel: subscription.channel,
+          email_address: subscription.email_address)
+      end.to change{ Subscription.duplicates.count }.by(+1)
     end
 
     it 'excludes subscriptions with different email' do
