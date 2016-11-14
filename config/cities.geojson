@@ -260,7 +260,7 @@
       "type": "Feature",
       "properties": {
         "title": "Edmonton",
-        "background": "edmonton.png",
+        "background": "edmonton.jpg",
         "zoom": 11
       },
       "geometry": {
