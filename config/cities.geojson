@@ -254,6 +254,22 @@
           35.051199
         ]
       }
+    },
+    {
+      "id": "edmonton",
+      "type": "Feature",
+      "properties": {
+        "title": "Edmonton",
+        "background": "edmonton.png",
+        "zoom": 11
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -113.5841918,
+          53.3080829
+        ]
+      }
     }
   ]
 }
