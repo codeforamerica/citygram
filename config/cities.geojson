@@ -254,14 +254,13 @@
           35.051199
         ]
       }
-    }
     },
     {
       "id": "edmonton",
       "type": "Feature",
       "properties": {
         "title": "Edmonton",
-        "background": "edmonton.png",
+        "background"`: "edmonton.png",
         "zoom": 11
       },
       "geometry": {
