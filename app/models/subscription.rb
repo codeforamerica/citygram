@@ -25,6 +25,35 @@ module Citygram::Models
         active.where(:publisher => Publisher.active)
       end
 
+      def manually_serialize(attr)
+        return attr unless (attr[:phone_number])
+
+        # serialize to compare against serialized value in db
+        attr.merge(phone_number: Phoner::Phone.parse(attr[:phone_number]).to_s)
+      end
+
+      def duplicates_for(attr)
+        # covert geom with PG for apples to apples comparison
+        Subscription.active
+          .where(manually_serialize(attr.except(:geom)))
+          .where('ST_AsText(geom) = ST_AsText(ST_GeomFromGeoJSON(?))', attr[:geom])
+      end
+
+      def duplicate?(attr)
+        Subscription.new(attr).valid? && duplicates_for(attr).count > 0
+      end
+
+      def duplicates
+        active.where(<<-SQL)
+          CAST(id as varchar) NOT IN
+          (
+            SELECT MIN(cast(id AS varchar))
+            FROM subscriptions
+            GROUP BY publisher_id, channel, geom, phone_number, email_address
+          ) -- set of deduped subscriptions
+        SQL
+      end
+
       def email
         where(channel: 'email')
       end
