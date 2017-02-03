@@ -374,6 +374,11 @@ app.resetState = function() {
 };
 
 app.submitSubscription = function(callback) {
-  $.post('/subscriptions', { subscription: app.state }, callback);
+  $.ajax({
+    type: 'PUT',
+    url: '/subscriptions',
+    contentType: 'application/json',
+    data: JSON.stringify({ subscription: app.state }),
+  }).done(callback);
 };
 
