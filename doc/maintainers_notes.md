@@ -1,3 +1,7 @@
+## Jobs queue
+
+There exists a citygram-jobs app in Heroku to monitor job health.  Code for America and Jim have access.
+
 ## Database
 
 This function pair can trim historical events.  First run 2/16/17
