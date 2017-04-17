@@ -316,8 +316,21 @@ app.selectTinyRadius = function() {
 
 app.displayEventMarker = function(event) {
   var geometry = JSON.parse(event.geom);
+  var titleParts = event.title.split("<br/>");  // hack, knowing DB output.
+  var addrParts = titleParts[0].split("at:");
+  var linkParts = titleParts[2].split("at:");
+  var html = "<div class='citygram-popup'>";
+  html += "<p class='addr'><span class='addr-title'>" + addrParts[0] + "at:</span><br/>";
+  html += "<span class='addr-value'>" + addrParts[1] + "</span></p>";
+  html += "<p class='title'>" + titleParts[1] + "<br/>";
+  html += "<a class='event-link' href='" + linkParts[1] + "'>More info</a></p>";
+  if (event.created_at) {
+    var dateString = (new Date(event.created_at)).toLocaleString('en').split(",")[0];
+    html += "<p class='date'>Posted on " + dateString + "</p>";
+  }
+  html += "</div>";
   var marker;
-  var html = "<p>"+app.hyperlink(event.title)+"</p>"
+
   if (app.eventsArePolygons) {
     marker = L.geoJson({"type": "Feature", "geometry": geometry});
   } else {
