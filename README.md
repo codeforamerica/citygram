@@ -9,7 +9,7 @@ __Citygram__ is a geographic notification platform designed to work with open go
 [webhook]: http://en.wikipedia.org/wiki/Webhook
 [Code for America]: https://github.com/codeforamerica
 [Charlotte]: http://team-charlotte.tumblr.com/
-[Lexington]: http://teambiglex.tumblr.com/
+Lexington
 [2014 fellowship]: http://www.codeforamerica.org/geeks/our-geeks/2014-fellows/
 
 ### Why are we doing this?
