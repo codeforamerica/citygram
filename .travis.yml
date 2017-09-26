@@ -6,8 +6,8 @@ services:
   - postgresql
 addons:
   postgresql: 9.6
-    apt:
-      packages:
+  apt:
+    packages:
       - postgresql-9.6-postgis-2.3
 matrix:
   allow_failures:
