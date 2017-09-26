@@ -4,15 +4,23 @@ rvm:
   - ruby-head
 services:
   - postgresql
+addons:
+  postgresql: 9.6
+  apt:
+    packages:
+      - postgresql-9.6-postgis-2.3
 matrix:
   allow_failures:
     - rvm: ruby-head
-script:
+before_install:
+  - psql -c 'create database citygram_test;' -U postgres
   - psql -U postgres -c "create extension postgis"
+script:
   - cp .env.sample .env
-  - bundle exec rake db:create db:migrate DATABASE_URL=postgres://localhost/citygram_test
+  - bundle exec rake db:migrate DATABASE_URL=postgres://localhost/citygram_test
   - bundle exec rake
 notifications:
   webhooks: http://project-monitor.codeforamerica.org/projects/77db7e4d-a05a-4ee8-b7ab-3bd29c6dd1b0/status
-sudo: enabled
+dist: trusty
+sudo: false
 cache: bundler
