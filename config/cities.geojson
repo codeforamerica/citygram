@@ -270,6 +270,22 @@
           53.3080829
         ]
       }
+    },
+        {
+      "id": "sacramento",
+      "type": "Feature",
+      "properties": {
+        "title": "Sacramento",
+        "background": "sacramento.jpg",
+        "zoom": 11
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.4917403,
+          38.5754351
+        ]
+      }
     }
   ]
 }
