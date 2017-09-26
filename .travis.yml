@@ -8,7 +8,7 @@ matrix:
   allow_failures:
     - rvm: ruby-head
 script:
-  - psql -V
+  - psql -U postgres -c "create extension postgis"
   - cp .env.sample .env
   - bundle exec rake db:create db:migrate DATABASE_URL=postgres://localhost/citygram_test
   - bundle exec rake
