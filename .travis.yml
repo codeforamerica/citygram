@@ -14,5 +14,4 @@ script:
   - bundle exec rake
 notifications:
   webhooks: http://project-monitor.codeforamerica.org/projects/77db7e4d-a05a-4ee8-b7ab-3bd29c6dd1b0/status
-sudo: false
 cache: bundler
