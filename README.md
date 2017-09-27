@@ -61,6 +61,7 @@ First, follow the instructions to install each of the following:
 * Install Redis - `brew install redis` on OS X, available from your package manager on Linux or [direct download](http://redis.io/download)
 
 Then, in the command line, run the following to copy the citygram code locally and install all Ruby package dependencies:
+##### Install Dependencies
 
 ```
 git clone https://github.com/codeforamerica/citygram.git
@@ -68,7 +69,7 @@ cd citygram
 bundle install
 ```
 
-#### Configure Environment
+##### Configure Environment
 
 Make sure your PostgreSQL server is running, then in the terminal run:
 
@@ -144,3 +145,37 @@ Run all tests in the `spec/` directory, by running:
 ```
 rake
 ```
+
+##### Running tests
+
+Run all tests in the `spec/` directory.
+
+```
+rake
+```
+
+
+
+#### Docker Setup (experimental)
+
+Citygram is experimenting with a Docker-based approach to development to see if it aids in developer onboarding.
+
+There is no requirement other than Docker and a command-line.
+
+```
+bin/setup
+bin/test
+```
+
+The first command will download and build all images needed to run Citygram in a local container.
+The second command runs tests.  You can make changes and run tests from there.  
+
+##### Docker Migrations
+
+If your changes need migrations, this command will run them:
+
+```
+docker-compose run citygram bundle exec rake db:migrate
+```
+
+In fact, most arbitrary commands will work inside the container if you preface them with ```docker-compose run citygram```
