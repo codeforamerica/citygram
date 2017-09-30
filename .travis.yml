@@ -17,6 +17,7 @@ before_install:
   - psql -c 'create database citygram_test;' -U postgres
   - psql -U postgres -c "create extension postgis"
   - docker build -f docker/data/Dockerfile -t citygram/data .
+  - docker build -f docker/citygram/Dockerfile -t citygram/citygram .
 script:
   - cp .env.sample .env
   - bundle exec rake db:migrate DATABASE_URL=postgres://localhost/citygram_test
@@ -25,6 +26,7 @@ after_success:
   - if [ "$TRAVIS_BRANCH" == "master" ]; then
     docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
     docker push citygram/data;
+    docker push citygram/citygram;
     fi
 
 notifications:
