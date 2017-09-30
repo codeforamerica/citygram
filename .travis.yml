@@ -22,7 +22,7 @@ script:
   - bundle exec rake db:migrate DATABASE_URL=postgres://localhost/citygram_test
   - bundle exec rake
 after_success:
-  - if [ "$TRAVIS_BRANCH" == "docker-containers" ]; then
+  - if [ "$TRAVIS_BRANCH" == "master" ]; then
     docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
     docker push citygram/data;
     fi
