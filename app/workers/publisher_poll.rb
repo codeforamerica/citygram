@@ -21,8 +21,12 @@ module Citygram::Workers
 
         # save any new events
         feature_collection = response.body
-        new_events = Citygram::Services::PublisherUpdate.call(feature_collection.fetch('features'), publisher)
-        
+        new_events = []
+        if !(ENV["SMS_ENABLED"]=="false")
+          new_events = Citygram::Services::PublisherUpdate.call(feature_collection.fetch('features'), publisher)
+        else
+          Citygram::App.logger.info("Suppressing SMS per env setting")
+        end
         publisher.close_outage
 
         # OPTIONAL PAGINATION:
@@ -35,6 +39,7 @@ module Citygram::Workers
           self.class.perform_async(publisher_id, next_page, page_number + 1)
         end
       rescue Faraday::ClientError => e
+        Citygram::App.logger.info("Recording outage for #{publisher.title} for #{publisher.city}")
         publisher.open_outage(e)
       end
     end
