@@ -23,7 +23,7 @@ module Citygram::Workers
         feature_collection = response.body
         new_events = Citygram::Services::PublisherUpdate.call(feature_collection.fetch('features'), publisher)
         
-        close_outage
+        publisher.close_outage
 
         # OPTIONAL PAGINATION:
         #
@@ -34,15 +34,9 @@ module Citygram::Workers
         if new_events.any? && valid_next_page?(next_page, url) && page_number < MAX_PAGE_NUMBER
           self.class.perform_async(publisher_id, next_page, page_number + 1)
         end
-      rescue Faraday::ClientError
-        open_outage
+      rescue Faraday::ClientError => e
+        publisher.open_outage(e)
       end
-    end
-    
-    def close_outage
-    end
-    
-    def open_outage
     end
 
     private

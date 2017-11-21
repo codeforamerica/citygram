@@ -24,6 +24,17 @@ describe Citygram::Workers::PublisherPoll do
         to receive(:call).with(features, publisher).and_return(new_events)
       subject.perform(publisher.id, publisher.endpoint)
     end
+    
+    it 'should end an existing active outage' do
+      outage = create(:outage, publisher: publisher, 
+                        created_at: 10.minutes.ago)
+      expect {
+        subject.perform(publisher.id, publisher.endpoint)
+      }.not_to change{ Citygram::Models::Outage.count }
+      outage.reload
+      expect(outage).not_to be_active
+      expect(outage.ended_at).not_to be_nil
+    end    
   end
 
   describe '#perform with pagination' do
@@ -61,6 +72,7 @@ describe Citygram::Workers::PublisherPoll do
         last_job = Citygram::Workers::PublisherPoll.jobs.last
         expect(last_job['args']).to eq [publisher.id, next_page, 2]
       end
+
     end
 
     context 'failure' do
@@ -79,10 +91,18 @@ describe Citygram::Workers::PublisherPoll do
           }.not_to change{ Citygram::Workers::PublisherPoll.jobs.count }
         end
         
-        it 'creates an outage' do
+        it 'can create an outage' do
           expect {
             subject.perform(publisher.id, publisher.endpoint)
           }.to change{ Citygram::Models::Outage.count }.by(1)
+        end
+        
+        it 'should update an existing outage' do
+          outage = create(:outage, publisher: publisher, 
+                            created_at: 10.minutes.ago)
+          expect {
+            subject.perform(publisher.id, publisher.endpoint)
+          }.not_to change{ Citygram::Models::Outage.count }
         end
       end
       
