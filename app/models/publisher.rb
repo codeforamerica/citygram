@@ -2,6 +2,7 @@ module Citygram::Models
   class Publisher < Sequel::Model
     one_to_many :subscriptions
     one_to_many :events
+    many_to_one :sms_credentials
 
     plugin :url_validation
     plugin :serialization, :pg_array, :tags
@@ -19,6 +20,9 @@ module Citygram::Models
         where(active: true)
       end
     end
+    
+    delegate :credential_name, :from_number, :account_sid, :auth_token, to: :sms_credentials
+    
 
     def validate
       super

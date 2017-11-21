@@ -5,6 +5,8 @@ services:
     image: citygram/data
     networks:
       - citygram
+    ports:
+      - "25432:5432"
     container_name: citygram_db
   redis:
     image: redis:3.0.3

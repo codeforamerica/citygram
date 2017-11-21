@@ -83,6 +83,7 @@ end
 require 'app/models/city'
 require 'app/models/event'
 require 'app/models/publisher'
+require 'app/models/sms_credentials'
 require 'app/models/subscription'
 
 # access model class constants without qualifying namespace
