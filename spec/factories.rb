@@ -17,6 +17,10 @@ FactoryGirl.define do
     feature_id { SecureRandom.hex(10) }
     geom FixtureHelpers.fixture('disjoint-geom.geojson')
   end
+  
+  factory :outage, class: Citygram::Models::Outage do
+    publisher
+  end
 
   factory :subscription, class: Citygram::Models::Subscription do
     publisher

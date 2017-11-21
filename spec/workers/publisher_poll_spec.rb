@@ -64,6 +64,28 @@ describe Citygram::Workers::PublisherPoll do
     end
 
     context 'failure' do
+      
+      context '500 error' do
+        before do
+          stub_request(:get, publisher.endpoint).
+            with(headers: {'Accept'=>'application/json'}).
+            to_return(status: 500, body: "<h1>Internal Server Error</h1>")
+        end
+
+
+        it 'does not create a new publisher poll job' do
+          expect {
+            subject.perform(publisher.id, publisher.endpoint)
+          }.not_to change{ Citygram::Workers::PublisherPoll.jobs.count }
+        end
+        
+        it 'creates an outage' do
+          expect {
+            subject.perform(publisher.id, publisher.endpoint)
+          }.to change{ Citygram::Models::Outage.count }.by(1)
+        end
+      end
+      
       context 'empty header value' do
         let(:next_page) { ' ' }
 
