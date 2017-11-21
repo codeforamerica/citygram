@@ -3,6 +3,7 @@ module Citygram::Models
     one_to_many :subscriptions
     one_to_many :events
     many_to_one :sms_credentials
+    one_to_many :outages
 
     plugin :url_validation
     plugin :serialization, :pg_array, :tags
@@ -23,6 +24,22 @@ module Citygram::Models
     
     delegate :credential_name, :from_number, :account_sid, :auth_token, to: :sms_credentials
     
+    
+    def active_outage
+      Outage.by_publisher(self.id).active.first
+    end
+    
+    def open_outage(error)
+      if active_outage
+        active_outage.touch
+      else
+        Outage.create(publisher_id: self.id)
+      end
+    end
+    
+    def close_outage
+      active_outage.close! if active_outage
+    end
 
     def validate
       super

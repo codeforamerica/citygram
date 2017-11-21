@@ -24,6 +24,7 @@ Sequel::Model.plugin :json_serializer
 Sequel::Model.plugin :save_helpers
 Sequel::Model.plugin :serialization
 Sequel::Model.plugin :timestamps, update_on_create: true
+Sequel::Model.plugin :touch
 Sequel::Model.plugin :validation_helpers
 
 Sequel::Plugins::Serialization.register_format(:pg_array,
@@ -82,6 +83,7 @@ end
 
 require 'app/models/city'
 require 'app/models/event'
+require 'app/models/outage'
 require 'app/models/publisher'
 require 'app/models/sms_credentials'
 require 'app/models/subscription'

@@ -19,6 +19,10 @@ FactoryGirl.define do
     geom FixtureHelpers.fixture('disjoint-geom.geojson')
   end
   
+  factory :outage, class: Citygram::Models::Outage do
+    publisher
+  end
+  
   factory :sms_credentials, class: Citygram::Models::SmsCredentials do
     credential_name "test-credential"
     from_number "15555555555"
