@@ -5,3 +5,4 @@ log
 .bundle
 dump.rdb
 .vagrant
+latest.dump
