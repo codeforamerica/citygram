@@ -292,7 +292,7 @@ app.updateEvents = function(bounds) {
     });
 
     // tiny radius mimics an address point inside event polygon
-    if (app.eventsArePolygons) { app.selectTinyRadius(); }
+    // if (app.eventsArePolygons) { app.selectTinyRadius(); }
 
     events.forEach(function(event, index) {
       var marker = app.displayEventMarker(event);
