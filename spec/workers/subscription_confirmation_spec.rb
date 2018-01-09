@@ -38,12 +38,13 @@ describe Citygram::Workers::SubscriptionConfirmation do
 
   context 'sms' do
     let(:publisher) { subscription.publisher }
+    let(:sms_credentials) { publisher.sms_credentials }
     let!(:subscription) { create(:subscription, channel: 'sms', phone_number: '212-555-1234') }
 
     before do
       body = "Welcome! You are now subscribed to #{publisher.title} in #{publisher.city}. To see current Citygrams please visit #{subject.digest_url(subscription)}. To unsubscribe from all messages, reply REMOVE."
 
-      stub_request(:post, "https://dev-account-sid:dev-auth-token@api.twilio.com/2010-04-01/Accounts/dev-account-sid/Messages.json").
+      stub_request(:post, "https://#{sms_credentials.account_sid}:#{sms_credentials.auth_token}@api.twilio.com/2010-04-01/Accounts/#{sms_credentials.account_sid}/Messages.json").
         with(body: {
           "Body" => body,
           "From"=>"15555555555",

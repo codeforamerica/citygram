@@ -21,6 +21,7 @@ module Citygram
   end
 end
 
+require 'app/modules/sms_sender'
 require 'app/services/channels/base'
 require 'app/services/channels/email'
 require 'app/services/channels/sms'

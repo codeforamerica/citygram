@@ -25,6 +25,17 @@ describe Citygram::Models::Publisher do
     expect(publisher).not_to be_valid
   end
 
+  it 'allows a null event display endpoint' do
+    publisher = build(:publisher)
+    publisher.event_display_endpoint = nil
+    expect(publisher).to be_valid
+  end
+
+  it 'validates fully qualified event display endpoint if present' do
+    publisher = build(:publisher, event_display_endpoint: 'foo.com/events')
+    expect(publisher).not_to be_valid
+  end
+
   it 'requires a unique endpoint' do
     publisher = create(:publisher)
     other = build(:publisher, endpoint: publisher.endpoint)

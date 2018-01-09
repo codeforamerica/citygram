@@ -1,6 +1,8 @@
 module Citygram::Workers
   class SubscriptionConfirmation
     include Sidekiq::Worker
+    include ::Citygram::SmsSender
+
     sidekiq_options retry: 5
 
     def digest_url(subscription)
@@ -15,12 +17,7 @@ module Citygram::Workers
       case subscription.channel
       when 'sms'
         body = "Welcome! You are now subscribed to #{publisher.title} in #{publisher.city}. To see current Citygrams please visit #{digest_url(subscription)}. To unsubscribe from all messages, reply REMOVE."
-
-        Citygram::Services::Channels::SMS.sms(
-          from: Citygram::Services::Channels::SMS::FROM_NUMBER,
-          to: subscription.phone_number,
-          body: body
-        )
+        send_sms(subscription, body)
       when 'email'
         body = <<-BODY.dedent
           <p>Thank you for subscribing! <a href="#{digest_url(subscription)}">View Citygrams</a> in a browser.</p>

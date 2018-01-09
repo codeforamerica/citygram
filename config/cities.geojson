@@ -2,10 +2,45 @@
   "type": "FeatureCollection",
   "features": [
     {
+      "id": "san-diego",
+      "type": "Feature",
+      "properties": {
+        "title": "San Diego",
+        "state": "CA",
+        "background": "san-diego.jpg",
+        "zoom": 13
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.164979,
+          32.715797
+        ]
+      }
+    },
+    {
+      "id": "miami",
+      "type": "Feature",
+      "properties": {
+        "title": "Miami",
+        "state": "FL",
+        "background": "miami.jpg",
+        "zoom": 11
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.2235446,
+          25.7979842
+        ]
+      }
+    },
+    {
       "id": "seattle",
       "type": "Feature",
       "properties": {
         "title": "Seattle",
+        "state": "WA",
         "background": "seattle.jpg",
         "zoom": 13
       },
@@ -22,6 +57,7 @@
       "type": "Feature",
       "properties": {
         "title": "Charlotte",
+        "state": "NC",
         "background": "charlotte.jpg",
         "zoom": 13
       },
@@ -38,6 +74,7 @@
       "type": "Feature",
       "properties": {
         "title": "Lexington",
+        "state": "KY",
         "background": "lexington.png",
         "zoom": 13
       },
@@ -54,6 +91,7 @@
       "type": "Feature",
       "properties": {
         "title": "New York",
+        "state": "NY",
         "background": "new-york.jpg",
         "zoom": 11
       },
@@ -66,10 +104,28 @@
       }
     },
     {
+      "id": "orlando",
+      "type": "Feature",
+      "properties": {
+        "title": "Orlando",
+        "state": "FL",
+        "background": "orlando.jpg",
+        "zoom": 10
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -81.377430,
+          28.542858
+        ]
+      }
+    },
+    {
       "id": "san-francisco",
       "type": "Feature",
       "properties": {
         "title": "San Francisco",
+        "state": "CA",
         "background": "san-francisco.jpg",
         "zoom": 11
       },
@@ -81,12 +137,13 @@
         ]
       }
     },
-        {
+    {
       "id": "triangle",
-      "type": "Feature",
+      "type": "FeatureCollection",
       "properties": {
-        "title": "Triangle Region NC",
-        "background": "triangle.jpg",
+        "title": "Research Triangle",
+        "state": "NC",
+        "background": "triangle.png",
         "zoom": 11
       },
       "geometry": {
@@ -95,6 +152,74 @@
           -78.7879963,
           35.880079
         ]
+      },
+      "features": [
+        {
+          "id": "cary",
+          "type": "Feature",
+          "properties": {
+            "title": "Cary",
+            "state": "NC",
+            "zoom": 11
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -78.8003,
+              35.7789
+            ]
+          }
+        },
+        {
+          "id": "durham",
+          "type": "Feature",
+          "properties": {
+            "title": "Durham",
+            "state": "NC",
+            "zoom": 11
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -78.9072,
+              35.9886
+            ]
+          }
+        },
+        {
+          "id": "raleigh",
+          "type": "Feature",
+          "properties": {
+            "title": "Raleigh",
+            "state": "NC",
+            "zoom": 11
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -78.6389,
+              35.7806
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "tulsa",
+      "type": "Feature",
+      "properties": {
+        "title": "Tulsa",
+        "state": "OK",
+        "background": "tulsa.jpg",
+        "zoom": 11
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+            -95.991433,
+            36.156718
+
+        ]
       }
     },
     {
@@ -102,6 +227,7 @@
       "type": "Feature",
       "properties": {
         "title": "Austin",
+        "state": "TX",
         "background": "austin.jpg",
         "zoom": 11
       },
@@ -112,8 +238,54 @@
           30.265108
         ]
       }
+    },
+    {
+      "id": "chattanooga",
+      "type": "Feature",
+      "properties": {
+        "title": "Chattanooga",
+        "background": "chattanooga.png",
+        "zoom": 11
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.310426,
+          35.051199
+        ]
+      }
+    },
+    {
+      "id": "edmonton",
+      "type": "Feature",
+      "properties": {
+        "title": "Edmonton",
+        "background": "edmonton.jpg",
+        "zoom": 11
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -113.5841918,
+          53.3080829
+        ]
+      }
+    },
+        {
+      "id": "sacramento",
+      "type": "Feature",
+      "properties": {
+        "title": "Sacramento",
+        "background": "sacramento.jpg",
+        "zoom": 11
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.4917403,
+          38.5754351
+        ]
+      }
     }
-	
-
   ]
 }

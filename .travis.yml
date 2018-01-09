@@ -2,17 +2,39 @@ language: ruby
 rvm:
   - 2.2.2
   - ruby-head
+services:
+  - postgresql
+  - docker
 addons:
-  postgresql: "9.3"
+  postgresql: 9.6
+  apt:
+    packages:
+      - postgresql-9.6-postgis-2.3
 matrix:
   allow_failures:
     - rvm: ruby-head
+before_install:
+  - curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+  - sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+  - sudo apt-get update
+  - sudo apt-get -y install docker-ce
+  - psql -c 'create database citygram_test;' -U postgres
+  - psql -U postgres -c "create extension postgis"
+  - docker build -f docker/data/Dockerfile -t citygram/data .
+  - docker build -f docker/citygram/Dockerfile -t citygram/citygram .
 script:
-  - psql -V
   - cp .env.sample .env
-  - bundle exec rake db:create db:migrate DATABASE_URL=postgres://localhost/citygram_test
+  - bundle exec rake db:migrate DATABASE_URL=postgres://localhost/citygram_test
   - bundle exec rake
+after_success:
+  - if [ "$TRAVIS_BRANCH" == "master" ]; then
+    docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
+    docker push citygram/data;
+    docker push citygram/citygram;
+    fi
+
 notifications:
   webhooks: http://project-monitor.codeforamerica.org/projects/77db7e4d-a05a-4ee8-b7ab-3bd29c6dd1b0/status
-sudo: false
+dist: trusty
+sudo: required
 cache: bundler
