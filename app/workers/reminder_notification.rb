@@ -1,6 +1,7 @@
 module Citygram::Workers
   class ReminderNotification
     include Sidekiq::Worker
+    include ::Citygram::SmsSender
     sidekiq_options retry: 5
 
     def reminder_url(subscription)
@@ -23,11 +24,7 @@ module Citygram::Workers
       # ...but if there is an error sending this message, tomorrow's might work
       subscription.remind!
       [body_1, body_2].each do |body|
-        Citygram::Services::Channels::SMS.sms(
-          from: Citygram::Services::Channels::SMS::FROM_NUMBER,
-          to: subscription.phone_number,
-          body: body
-        )
+        send_sms(subscription, body)
       end
     rescue Twilio::REST::RequestError => e
       Citygram::App.logger.error(e)

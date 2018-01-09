@@ -82,7 +82,7 @@ module Citygram
 
     def self.schema_dump
       `rm #{schema_path}`
-      pg_command("pg_dump -i -s -x -O -f #{schema_path} #{db_name}")
+      pg_command("pg_dump -s -x -O -f #{schema_path} #{db_name}")
     end
 
     def self.rollback_db(version = nil)

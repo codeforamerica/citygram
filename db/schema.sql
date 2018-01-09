@@ -2,12 +2,17 @@
 -- PostgreSQL database dump
 --
 
+-- Dumped from database version 9.6.3
+-- Dumped by pg_dump version 10.1
+
 SET statement_timeout = 0;
 SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SET check_function_bodies = false;
 SET client_min_messages = warning;
+SET row_security = off;
 
 --
 -- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: -
@@ -72,7 +77,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: events; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: events; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE events (
@@ -108,7 +113,7 @@ ALTER SEQUENCE events_id_seq OWNED BY events.id;
 
 
 --
--- Name: http_requests; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: http_requests; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE http_requests (
@@ -128,7 +133,7 @@ CREATE TABLE http_requests (
 
 
 --
--- Name: publishers; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: publishers; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE publishers (
@@ -143,7 +148,10 @@ CREATE TABLE publishers (
     visible boolean DEFAULT true,
     state text,
     description text,
-    tags text[] DEFAULT '{}'::text[] NOT NULL
+    tags text[] DEFAULT '{}'::text[] NOT NULL,
+    event_display_endpoint text,
+    events_are_polygons boolean,
+    sms_credentials_id integer
 );
 
 
@@ -167,7 +175,7 @@ ALTER SEQUENCE publishers_id_seq OWNED BY publishers.id;
 
 
 --
--- Name: schema_info; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: schema_info; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE schema_info (
@@ -176,7 +184,41 @@ CREATE TABLE schema_info (
 
 
 --
--- Name: subscriptions; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: sms_credentials; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE sms_credentials (
+    id integer NOT NULL,
+    credential_name text,
+    from_number text,
+    account_sid text,
+    auth_token text,
+    updated_at timestamp without time zone,
+    created_at timestamp without time zone
+);
+
+
+--
+-- Name: sms_credentials_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE sms_credentials_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: sms_credentials_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE sms_credentials_id_seq OWNED BY sms_credentials.id;
+
+
+--
+-- Name: subscriptions; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE subscriptions (
@@ -195,21 +237,28 @@ CREATE TABLE subscriptions (
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: events id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY events ALTER COLUMN id SET DEFAULT nextval('events_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: publishers id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY publishers ALTER COLUMN id SET DEFAULT nextval('publishers_id_seq'::regclass);
 
 
 --
--- Name: events_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: sms_credentials id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY sms_credentials ALTER COLUMN id SET DEFAULT nextval('sms_credentials_id_seq'::regclass);
+
+
+--
+-- Name: events events_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY events
@@ -217,7 +266,7 @@ ALTER TABLE ONLY events
 
 
 --
--- Name: http_requests_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: http_requests http_requests_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY http_requests
@@ -225,7 +274,7 @@ ALTER TABLE ONLY http_requests
 
 
 --
--- Name: publishers_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: publishers publishers_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY publishers
@@ -233,7 +282,15 @@ ALTER TABLE ONLY publishers
 
 
 --
--- Name: subscriptions_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: sms_credentials sms_credentials_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY sms_credentials
+    ADD CONSTRAINT sms_credentials_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: subscriptions subscriptions_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY subscriptions
@@ -241,35 +298,35 @@ ALTER TABLE ONLY subscriptions
 
 
 --
--- Name: events_geom_gist; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: events_geom_gist; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX events_geom_gist ON events USING gist (geom);
 
 
 --
--- Name: events_publisher_id_feature_id_index; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: events_publisher_id_feature_id_index; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE UNIQUE INDEX events_publisher_id_feature_id_index ON events USING btree (publisher_id, feature_id);
 
 
 --
--- Name: publishers_endpoint_index; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: publishers_endpoint_index; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE UNIQUE INDEX publishers_endpoint_index ON publishers USING btree (endpoint);
 
 
 --
--- Name: subscriptions_geom_gist; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: subscriptions_geom_gist; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX subscriptions_geom_gist ON subscriptions USING gist (geom);
 
 
 --
--- Name: events_publisher_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: events events_publisher_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY events
@@ -277,7 +334,15 @@ ALTER TABLE ONLY events
 
 
 --
--- Name: subscriptions_publisher_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: publishers publishers_sms_credentials_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY publishers
+    ADD CONSTRAINT publishers_sms_credentials_id_fkey FOREIGN KEY (sms_credentials_id) REFERENCES sms_credentials(id);
+
+
+--
+-- Name: subscriptions subscriptions_publisher_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY subscriptions

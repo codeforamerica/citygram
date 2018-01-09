@@ -3,6 +3,7 @@ require 'spec_helper'
 describe Citygram::Workers::ReminderNotification do
   let(:reminder){ Citygram::Workers::ReminderNotification.new }
   let(:publisher) { subscription.publisher }
+  let(:sms_credentials) { publisher.sms_credentials }
   let!(:subscription) { create(:subscription, channel: 'sms', phone_number: '212-555-1234', last_notified: 3.weeks.ago) }
   
   subject { reminder }
@@ -44,10 +45,10 @@ describe Citygram::Workers::ReminderNotification do
       body_1 = subject.reminder_message(subscription)
       body_2 = subject.unsub_message(subscription)
       [body_1, body_2].each do |body|
-        stub_request(:post, "https://dev-account-sid:dev-auth-token@api.twilio.com/2010-04-01/Accounts/dev-account-sid/Messages.json").
+        stub_request(:post, "https://#{sms_credentials.account_sid}:#{sms_credentials.auth_token}@api.twilio.com/2010-04-01/Accounts/#{sms_credentials.account_sid}/Messages.json").
           with(body: {
             "Body" => body,
-            "From"=>"15555555555",
+            "From"=> '15555555555',
             "To"=>"+12125551234"}).
           to_return(status: 200, body: {
             'sid' => 'SM10ea1dce707f4bedb44204c9fbc02e39',

@@ -4,11 +4,13 @@ describe Citygram::Services::Channels::SMS do
   subject { Citygram::Services::Channels::SMS }
 
   let(:subscription) { create(:subscription, channel: 'sms', phone_number: '+15559874567') }
+  let(:publisher) { subscription.publisher }
+  let(:sms_credentials) { publisher.sms_credentials }
   let(:event) { create(:event) }
 
-  let(:from_number) { ENV.fetch('TWILIO_FROM_NUMBER') }
-  let(:account_sid) { ENV.fetch('TWILIO_ACCOUNT_SID') }
-  let(:auth_token) { ENV.fetch('TWILIO_AUTH_TOKEN') }
+  let(:from_number) { sms_credentials.from_number }
+  let(:account_sid) { sms_credentials.account_sid }
+  let(:auth_token) { sms_credentials.auth_token }
   let(:sms_endpoint) do
     "https://%s:%s@api.twilio.com/2010-04-01/Accounts/%s/Messages.json" % [account_sid, auth_token, account_sid]
   end
@@ -93,7 +95,7 @@ describe Citygram::Services::Channels::SMS do
           args = { from: from_number, to: subscription.phone_number, body: event.title }
 
           expect(Citygram::Services::Channels::SMS).to receive(:sms).
-            with(args).
+            with(account_sid, auth_token, args).
             and_raise(unsubscribed_error)
 
           expect {

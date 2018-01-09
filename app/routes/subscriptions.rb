@@ -27,9 +27,14 @@ module Citygram::Routes
       end
     end
 
-    post '/subscriptions' do
-      Subscription.create!(params[:subscription]).tap do |subscription|
-        Citygram::Workers::SubscriptionConfirmation.perform_async(subscription.id)
+    put '/subscriptions' do
+      attr = Hashie.symbolize_keys(params[:subscription].to_h)
+
+      unless (Subscription.duplicate?(attr))
+        Subscription.create!(params[:subscription]).tap do |subscription|
+          status 201
+          Citygram::Workers::SubscriptionConfirmation.perform_async(subscription.id)
+        end
       end
     end
   end

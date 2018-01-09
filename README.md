@@ -9,7 +9,7 @@ __Citygram__ is a geographic notification platform designed to work with open go
 [webhook]: http://en.wikipedia.org/wiki/Webhook
 [Code for America]: https://github.com/codeforamerica
 [Charlotte]: http://team-charlotte.tumblr.com/
-[Lexington]: http://teambiglex.tumblr.com/
+Lexington
 [2014 fellowship]: http://www.codeforamerica.org/geeks/our-geeks/2014-fellows/
 
 ### Why are we doing this?
@@ -34,10 +34,30 @@ Citygram is a web application written in Ruby.
 
 ### Installation
 
+#### Option 1:
+For an OSX setup, you can use [vagrant](http://vagrantup.com) to get up and running quickly with [virtual box](http://virtualbox.org) and [homebrew](http:/brew.sh). This option will provide you with a smooth straight forward way of quickly getting you up and running.
+
+```bash
+# setup homebrew
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+# setup virtualbox
+brew cask install virtualbox
+
+# starts up an ubuntu box and installs postgres and all other dependencies
+vagrant up
+
+# login to the box and start the program:
+vagrant ssh
+cd /vagrant
+bundle exec foreman start
+```
+
+#### Option 2:
 First, follow the instructions to install each of the following:
 
 * [Install Ruby](https://github.com/codeforamerica/howto/blob/master/Ruby.md)
-* [Install PostgreSQL](https://github.com/codeforamerica/howto/blob/master/PostgreSQL.md)
+* [Install PostgreSQL and PostGIS](https://github.com/codeforamerica/howto/blob/master/PostgreSQL.md)
 * Install Redis - `brew install redis` on OS X, available from your package manager on Linux or [direct download](http://redis.io/download)
 
 Then, in the command line, run the following to copy the citygram code locally and install all Ruby package dependencies:
