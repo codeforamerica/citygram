@@ -72,11 +72,11 @@ Vagrant.configure(2) do |config|
     curl -L https://get.rvm.io | bash -s stable --autolibs=enabled --ruby
 
     source "$HOME/.rvm/scripts/rvm"
-    rvm install 2.2.3
-    rvm use 2.2.3
+    rvm install 2.5.0
+    rvm use 2.5.0
 
     echo 'source "$HOME/.rvm/scripts/rvm"' >> .bashrc
-    echo "rvm use 2.2.3" >> .bashrc
+    echo "rvm use 2.5.0" >> .bashrc
 
     # install postgres
     sudo apt-get -y install postgresql postgresql-contrib libpq-dev postgresql-9.3-postgis-2.1 redis-server
