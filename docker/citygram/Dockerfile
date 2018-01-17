@@ -1,5 +1,5 @@
 FROM node:6.11 as nodejs
-FROM ruby:2.2.3
+FROM ruby:2.5.0
 
 COPY --from=nodejs /usr/local/lib/node_modules /usr/local/lib/node_modules/
 COPY --from=nodejs /usr/local/include/node /usr/local/include/node/
