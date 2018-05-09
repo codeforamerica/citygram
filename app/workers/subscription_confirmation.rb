@@ -16,7 +16,7 @@ module Citygram::Workers
       # TODO: get rid of this case statement
       case subscription.channel
       when 'sms'
-        body = "Welcome! You are now subscribed to #{publisher.title} in #{publisher.city}. To see current Citygrams please visit #{digest_url(subscription)}. To unsubscribe from all messages, reply REMOVE."
+        body = "Welcome! You are now subscribed to #{publisher.title} in #{publisher.city}. To see current Citygrams please visit #{digest_url(subscription)} To unsubscribe from all messages, reply REMOVE."
         send_sms(subscription, body)
       when 'email'
         body = <<-BODY.dedent
