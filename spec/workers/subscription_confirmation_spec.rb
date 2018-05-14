@@ -42,7 +42,7 @@ describe Citygram::Workers::SubscriptionConfirmation do
     let!(:subscription) { create(:subscription, channel: 'sms', phone_number: '212-555-1234') }
 
     before do
-      body = "Welcome! You are now subscribed to #{publisher.title} in #{publisher.city}. To see current Citygrams please visit #{subject.digest_url(subscription)}. To unsubscribe from all messages, reply REMOVE."
+      body = "Welcome! You are now subscribed to #{publisher.title} in #{publisher.city}. To see current Citygrams please visit #{subject.digest_url(subscription)} To unsubscribe from all messages, reply REMOVE."
 
       stub_request(:post, "https://#{sms_credentials.account_sid}:#{sms_credentials.auth_token}@api.twilio.com/2010-04-01/Accounts/#{sms_credentials.account_sid}/Messages.json").
         with(body: {
