@@ -43,13 +43,14 @@ Vagrant.configure(2) do |config|
   # backing providers for Vagrant. These expose provider-specific options.
   # Example for VirtualBox:
   #
-  # config.vm.provider "virtualbox" do |vb|
+  config.vm.provider "virtualbox" do |vb|
+    vb.name = "citygram"
   #   # Display the VirtualBox GUI when booting the machine
   #   vb.gui = true
   #
   #   # Customize the amount of memory on the VM:
   #   vb.memory = "1024"
-  # end
+  end
   #
   # View the documentation for the provider you are using for more
   # information on available options.
@@ -66,34 +67,34 @@ Vagrant.configure(2) do |config|
   # documentation for more information about their specific syntax and use.
   config.vm.provision "shell", privileged: false, inline: <<-SHELL
     # print command to stdout before executing it:
-    set -x
+    set -o xtrace
 
-    curl -sSL https://rvm.io/mpapis.asc | gpg --import -
-    curl -L https://get.rvm.io | bash -s stable --autolibs=enabled --ruby
-
-    source "$HOME/.rvm/scripts/rvm"
-    rvm install 2.5.0
-    rvm use 2.5.0
-
-    echo 'source "$HOME/.rvm/scripts/rvm"' >> .bashrc
-    echo "rvm use 2.5.0" >> .bashrc
+    curl --silent --show-error --location https://rvm.io/mpapis.asc | gpg --import -
+    curl --location https://get.rvm.io | bash -s stable --autolibs=enabled --ruby
+    echo 'source "$HOME/.rvm/scripts/rvm"' >> $HOME/.bashrc
 
     # install postgres
-    sudo apt-get -y install postgresql postgresql-contrib libpq-dev postgresql-9.3-postgis-2.1 redis-server
-    sudo -u postgres psql -c "CREATE USER vagrant WITH PASSWORD 'vagrant';"
-    sudo -u postgres psql -c "ALTER ROLE vagrant SUPERUSER CREATEROLE CREATEDB REPLICATION;"
-    sudo -u postgres psql -c "CREATE EXTENSION postgis;"
+    sudo apt-get --assume-yes install postgresql postgresql-contrib libpq-dev postgresql-9.3-postgis-2.1 redis-server
+    sudo -u postgres psql --command "CREATE USER vagrant WITH PASSWORD 'vagrant';"
+    sudo -u postgres psql --command "ALTER ROLE vagrant SUPERUSER CREATEROLE CREATEDB REPLICATION;"
+    sudo -u postgres psql --command "CREATE EXTENSION postgis;"
 
     cd /vagrant
+
+    source "$HOME/.rvm/scripts/rvm"
+    rvm install $(cat .ruby-version)
+    rvm use $(cat .ruby-version)
+
     cp .env.sample .env
     echo "DATABASE_URL=postgres://vagrant:vagrant@localhost/citygram_development" >> .env
 
-    sudo apt-get install -y libgmp-dev node
+    sudo apt-get install --assume-yes git libgmp-dev node
     gem install bundle
     bundle install
 
     bundle exec rake db:create db:migrate
 
     sudo service redis-server stop
+    sudo update-rc.d redis-server disable
   SHELL
 end
