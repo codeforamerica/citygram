@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="mapId" content="<%= Citygram::App.map_id %>">
+  <title>Citygram<%= " - #{@city.title}" if @city %></title>
+
+  <link rel="icon" type="image/png" href="<%= asset_path 'splash/parachute-indigo.png' %>">
+  <!--[if IE]><link rel="shortcut icon" href="<%= asset_path 'splash/parachute-indigo.png' %>" type="image/vnd.microsoft.icon" /><![endif]-->
+
+  <!-- typekit -->
+  <script type="text/javascript" src="//use.typekit.net/olg1fvr.js"></script>
+  <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
+  <link rel="stylesheet" href="//api.tiles.mapbox.com/mapbox.js/v1.6.4/mapbox.css" />
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+  <!-- the freshest styles -->
+  <link rel="stylesheet" type="text/css" href="<%= asset_path 'application.css' %>">
+  <link rel="stylesheet" type="text/css" href="<%= asset_path 'footer.css' %>">
+</head>
+<body>
+  <%= yield %>
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+  <script src="//api.tiles.mapbox.com/mapbox.js/v1.6.4/mapbox.js"></script>
+
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+  <!-- the highest quality javascripts -->
+  <script type="text/javascript" src="<%= asset_path 'application.js' %>"></script>
+  <%= erb :'layouts/analytics' %>
+
+  <script>
+    $("#title").fitText(1, { minFontSize: '40px', maxFontSize: '76px' });
+    $(".fit-h2").fitText(1, { minFontSize: '24px', maxFontSize: '40px' });
+    $(".fit-h3").fitText(1, { minFontSize: '16px', maxFontSize: '26px' });
+  </script>
+</body>
+</html>

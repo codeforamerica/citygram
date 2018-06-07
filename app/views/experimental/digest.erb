@@ -1,0 +1,24 @@
+<div class="container">
+  <a href='/'>
+    <img src="<%= asset_path 'icons/citygram-logo-color.png' %>" width="150" class="logo">
+  </a>
+  <h1>Latest <span class="topic"><%= @subscription.publisher.title %></span>
+    for <span class="phone"><%= @subscription.nominative %></span></h1>
+
+  <div class="subscription-box">
+    <div class="row">
+      <div class="col-sm-1">
+        <img src="<%= asset_path "publishers/icons/#{@subscription.publisher.icon}" %>" class="icon">
+      </div>
+      <div class="col-sm-11">
+        <h5>YOUR SUBSCRIPTION FOR THE LAST WEEK:</h5>
+        <% single = @events.count == 1 %>
+        <!-- <h3>There <%=  single ? 'was' : 'were' %> <span class="orange"><%= @events.count %> citygram<%= single ? '' : 's' %></span> for <span class="navy"><%= @subscription.publisher.title %></span> within <span class="green">2 miles</span> of <span class="red">125 9th Street, Seattle.</span></h3> -->
+        <h3>There <%=  single ? 'was' : 'were' %> <span class="orange"><%= @events.count %> citygram<%= single ? '' : 's' %></span> for <span class="green"><%= @subscription.publisher.title %></span> in the area you selected.</h3>
+         <a href = "/unsubscribe/<%= @subscription.id %>">One-click Unsubscribe</a>
+      </div>
+    </div>
+  </div>
+
+  <%= erb :_digest_events %>
+</div>

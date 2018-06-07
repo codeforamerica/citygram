@@ -23,7 +23,7 @@ module Citygram
       set :root, File.expand_path('../', __FILE__)
       set :logger, Logger.new(test? ? nil : STDOUT)
       set :map_id, ENV.fetch('MAP_ID') { 'codeforamerica.inb9loae' }
-      set :views, 'app/views'
+      set :views, ENV.fetch('VIEWS_DIR') { 'app/views' }
       set :erb, escape_html: true,
                 layout_options: { views: 'app/views/layouts' }
     end
