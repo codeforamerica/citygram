@@ -29,12 +29,11 @@ script:
   - bundle exec rake db:migrate DATABASE_URL=postgres://localhost/citygram_test
   - bundle exec rake
 after_success:
-  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - if [ "$TRAVIS_BRANCH" == "master" ]; then
-    docker push citygram/data;
-    docker push citygram/citygram;
+  - if [[ "$TRAVIS_REPO_SLUG" == 'codeforamerica/citygram' && "$TRAVIS_BRANCH" == "master" ]] ; then
+      echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+      docker push citygram/data;
+      docker push citygram/citygram;
     fi
-
 notifications:
   webhooks: http://project-monitor.codeforamerica.org/projects/77db7e4d-a05a-4ee8-b7ab-3bd29c6dd1b0/status
 dist: trusty
