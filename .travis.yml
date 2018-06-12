@@ -36,6 +36,15 @@ after_success:
     fi
 notifications:
   webhooks: http://project-monitor.codeforamerica.org/projects/77db7e4d-a05a-4ee8-b7ab-3bd29c6dd1b0/status
+deploy:
+  provider: heroku
+  api_key:
+    "$HEROKU_API_KEY"
+  app: "$HEROKU_APP"
+  on:
+    branch: master
+    condition: "$HEROKU_API_KEY != '' && $HEROKU_APP != ''"
+    ruby: '2.5.0'
 dist: trusty
 sudo: required
 cache: bundler
