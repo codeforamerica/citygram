@@ -47,6 +47,7 @@ jobs:
         on:
           branch: master
     - stage: deploy
+      if: "branch = master AND env(HEROKU_API_KEY) IS present AND env(HEROKU_APP) is present"
       before_install: skip
       install: skip
       script: skip
@@ -55,6 +56,3 @@ jobs:
         api_key:
           "$HEROKU_API_KEY"
         app: "$HEROKU_APP"
-        on:
-          branch: master
-          condition: "$HEROKU_API_KEY != '' && $HEROKU_APP != ''"
