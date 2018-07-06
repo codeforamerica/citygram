@@ -22,5 +22,9 @@ module Citygram::Routes
       geom = GeoRuby::GeojsonParser.new.parse(params[:geometry]).as_ewkt
       Event.from_geom(geom, params).limit(1000)
     end
+
+    get 'events/:event_id' do
+      Event.with_pk!(params[:event_id])
+    end
   end
 end

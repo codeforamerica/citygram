@@ -13,4 +13,13 @@ describe Citygram::Routes::Events do
       expect(last_response.body).to eq events.reverse.to_json
     end
   end
+
+  describe 'GET events/:id' do
+    it 'returns events for a given description' do
+      event = create(:event)
+
+      get "/events/#{event.id}"
+      expect(JSON.parse(last_response.body)["id"]).to eq event.id
+    end
+  end
 end
