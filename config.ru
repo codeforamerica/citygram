@@ -1,5 +1,12 @@
 require './app'
 
+use Rack::Cors do
+  allow do
+    origins '*'
+    resource '*', headers: ['Content-Type'], methods: :get
+  end
+end
+
 unprotected_routes = [
   Citygram::Routes::Events,
   Citygram::Routes::Publishers,
