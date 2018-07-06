@@ -1,10 +1,10 @@
+sudo: false
 language: ruby
 rvm:
   - 2.5.0
   - ruby-head
 services:
   - postgresql
-  - docker
 addons:
   postgresql: 9.6
   apt:
@@ -14,37 +14,45 @@ matrix:
   allow_failures:
     - rvm: ruby-head
 before_install:
-  - curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-  - sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
-  - sudo apt-get update
-  - sudo apt-get -y install docker-ce
   - psql -c 'create database citygram_test;' -U postgres
   - psql -U postgres -c "create extension postgis"
-  - docker build -f docker/data/Dockerfile -t citygram/data .
-  - docker build -f docker/citygram/Dockerfile -t citygram/citygram .
   - gem update --system
   - gem install bundler
 script:
   - cp .env.sample .env
   - bundle exec rake db:migrate DATABASE_URL=postgres://localhost/citygram_test
   - bundle exec rake
-after_success:
-  - if [[ "$TRAVIS_REPO_SLUG" == 'codeforamerica/citygram' && "$TRAVIS_BRANCH" == "master" ]] ; then
-      echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-      docker push citygram/data;
-      docker push citygram/citygram;
-    fi
 notifications:
   webhooks: http://project-monitor.codeforamerica.org/projects/77db7e4d-a05a-4ee8-b7ab-3bd29c6dd1b0/status
-deploy:
-  provider: heroku
-  api_key:
-    "$HEROKU_API_KEY"
-  app: "$HEROKU_APP"
-  on:
-    branch: master
-    condition: "$HEROKU_API_KEY != '' && $HEROKU_APP != ''"
-    ruby: '2.5.0'
-dist: trusty
-sudo: required
 cache: bundler
+
+jobs:
+  include:
+    - stage: images
+      services:
+        - docker
+      dist: trusty
+      sudo: required
+      before_install: skip
+      install: skip
+      script:
+        - docker build -f docker/data/Dockerfile -t citygram/data .
+        - docker build -f docker/citygram/Dockerfile -t citygram/citygram .
+      deploy: # needs to be part of this step to have access to the built images
+        provider: script
+        script:
+          - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+          - docker push citygram/data
+          - docker push citygram/citygram
+        on:
+          branch: master
+    - stage: deploy
+      if: "branch = master AND env(HEROKU_API_KEY) IS present AND env(HEROKU_APP) is present"
+      before_install: skip
+      install: skip
+      script: skip
+      deploy:
+        provider: heroku
+        api_key:
+          "$HEROKU_API_KEY"
+        app: "$HEROKU_APP"
