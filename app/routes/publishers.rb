@@ -12,10 +12,13 @@ module Citygram::Routes
     params do
       optional :page, type: Integer, default: 1
       optional :per, type: Integer, default: 10, max: 1000
+      optional :tag, type: String
     end
 
     get '/publishers' do
-      Publisher.dataset.paginate(params[:page], params[:per]).order(Sequel.desc(:created_at))
+      Publisher.dataset.yield_self do |publishers|
+        params[:tag] ? publishers.tagged(params[:tag]) : publishers
+      end.paginate(params[:page], params[:per]).order(Sequel.desc(:created_at))
     end
 
     desc <<-DESC

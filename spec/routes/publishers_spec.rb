@@ -16,6 +16,13 @@ describe Citygram::Routes::Publishers do
       get '/publishers', params
       expect(last_response.body).to eq [publishers[2], publishers[1]].to_json
     end
+
+    it 'filters by tag' do
+      tagged_publisher = create(:publisher, tags: ['tagged', 'foobar'])
+      create(:publisher, tags: ['foobar'])
+      get '/publishers', { tag: 'tagged' }
+      expect(last_response.body).to eq [tagged_publisher].to_json
+    end
   end
 
   describe 'GET /publishers/:publisher_id/events_count' do
