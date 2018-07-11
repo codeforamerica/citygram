@@ -46,6 +46,7 @@ jobs:
           - docker push citygram/citygram
         on:
           branch: master
+          condition: "$DOCKER_PASSWORD != '' && $DOCKER_USERNAME != ''"
     - stage: deploy
       if: "branch = master AND env(HEROKU_API_KEY) IS present AND env(HEROKU_APP) is present"
       before_install: skip
