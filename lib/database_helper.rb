@@ -46,7 +46,7 @@ module Citygram
     end
 
     def self.db_name
-      @db_name ||= URI(database.url).path.gsub('/', '')
+      @db_name ||= URI(database_url).path.gsub('/', '')
     end
 
     def self.db_version
@@ -72,7 +72,7 @@ module Citygram
     end
 
     def self.create_db
-      pg_command("createdb #{db_name} -w")
+      pg_command("createdb #{db_name}")
     end
 
     def self.drop_db
@@ -97,7 +97,15 @@ module Citygram
     end
 
     def self.pg_command(command)
-      res = system(command)
+      uri = URI(database_url)
+
+      env = {}
+      env["PGHOST"] = uri.host if uri.host
+      env["PGPORT"] = uri.port.to_s if uri.port
+      env["PGPASSWORD"] = uri.password if uri.password
+      env["PGUSER"] = uri.user if uri.user
+
+      res = system(env, command)
       raise res if PG_ERROR === res
     end
 
