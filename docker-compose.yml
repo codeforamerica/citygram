@@ -2,7 +2,7 @@ version: "3.1"
 
 services:
   db:
-    image: citygram/data
+    image: mdillon/postgis
     networks:
       - citygram
     ports:
@@ -13,6 +13,17 @@ services:
     networks:
       - citygram
     container_name: citygram_redis
+
+  citygram_migration:
+    image: citygram/citygram
+    networks:
+      - citygram
+    environment:
+      DATABASE_URL: postgres://postgres@citygram_db/citygram_development
+    command: bundle exec rake db:create db:migrate
+    depends_on:
+      - db
+
   citygram:
     image: citygram/citygram
     environment:
@@ -21,5 +32,9 @@ services:
       - "9292:9292"
     networks:
       - citygram
+    depends_on:
+      - db
+      - redis
+      - citygram_migration
 networks:
   citygram:
