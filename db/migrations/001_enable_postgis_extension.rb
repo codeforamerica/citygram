@@ -1,6 +1,6 @@
 Sequel.migration do
   up do
-    execute %{ CREATE EXTENSION "postgis"; }
+    execute %{ CREATE EXTENSION IF NOT EXISTS "postgis"; }
   end
 
   down do
