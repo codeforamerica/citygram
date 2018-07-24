@@ -1,5 +1,15 @@
 require './app'
 
+# Allow external querying of Citygram data from another origin
+if allowed_origins = ENV.fetch('CORS_ALLOWED_ORIGINS', false)
+  use Rack::Cors do
+    allow do
+      origins allowed_origins
+      resource '*', headers: ['Content-Type'], methods: :get
+    end
+  end
+end
+
 unprotected_routes = [
   Citygram::Routes::Events,
   Citygram::Routes::Publishers,
