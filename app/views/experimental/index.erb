@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Citygram</title>
+
+  <!-- typekit -->
+  <script src="//use.typekit.net/fgr4sfu.js"></script>
+  <script>try{Typekit.load();}catch(e){}</script>
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+  <!-- the freshest styles -->
+  <link rel="stylesheet" type="text/css" href="<%= asset_path 'splash.css' %>">
+  <link rel="stylesheet" type="text/css" href="<%= asset_path 'footer.css' %>">
+
+</head>
+<body>
+<div class="jumbotron">
+  <div class="container">
+    <div class="row">
+      <div class="logo"></div>
+    </div>
+    <div>
+      <!--[if lt IE 10]>
+          <p class="alert alert-danger">You are using an older browser that is not currently supported. <a href="http://whatbrowser.org/">Upgrade your browser today</a> to fully use the site.</p>
+      <![endif]-->
+    </div>
+    <div class="row subscribe">
+      <h1 class="col-md-12">Subscribe to
+        <span class="dropdown">
+          <select id="select-city">
+            <option>your city</option>
+            <% @cities.each do |city| %>
+              <option value="/<%= city.id %>"><%= city.title %></option>
+            <% end %>
+          </select>
+        </span>
+      </h1>
+    </div>
+    <div class="row">
+      <h2 class="col-md-5">Get updates on the topics and areas you care about.</h2>
+    </div>
+  </div>
+</div>
+
+<section id="intro">
+  <div class="container">
+    <div class="row">
+      <span class="intro-q">Curious about the construction on your street?</span>
+      <span class="intro-q">How about the new restaurant going in down the block?</span>
+      <span class="intro-q">Want to know when there's a code violation in your area?</span>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="row">
+          <div class="col-md-12">
+            <h3><div class="parachute"></div> Introducing Citygram</h3>
+          </div>
+          <div class="col-md-12">
+            <p>Citygram is a notifications platform for subscribing to your city, whether it's foreclosures in your area or building permits along your commute. Sign up to find out about the things that matter to you where they matter to you.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+         <div class="row">
+          <div class="col-md-12">
+            <h3><div class="gears"></div> How it works</h3>
+          </div>
+          <div class="col-md-12">
+            <p>Citygram is a web application that can be hooked up to your city's open data platform. To create the notifications, the application regularly checks for new data and transforms it into human speak according to a template you define.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-2 text-bubble">
+      </div>
+      <div class="col-md-9 contact-form">
+        <form action="https://docs.google.com/a/codeforamerica.org/forms/d/1JB1rrofsW3H310KSbmWXRiLjUbVKU06dUiGvratQRfw/formResponse" method="POST" id="ss-form" target="_self" onsubmit=""><ol role="list" class="ss-question-list" style="padding-left: 0">
+          <p>I want Citygram in <span class="city">
+            <input name="entry.2092787615" placeholder="MY CITY" type="text"></span> . My name is <span class="name">
+            <input name="entry.310801395" placeholder="FULL NAME" type="text"></span> and my email is <span class="email">
+             <input name="entry.1324690126" placeholder="YOU@EMAIL" type="text"></span>. Some topics I'd want: <span class="ideas">
+             <input name="entry.311709427" placeholder="ANY IDEAS HERE" type="text"></span>.</p>
+          <div class="submit-btn" onclick="$('#ss-form').submit()">Submit</div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%= erb :'layouts/footer' %>
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+<!-- take me to my city! -->
+<script>
+
+var app = {};
+app.scrollToElement = function(el) {
+  $('html,body').animate({
+    scrollTop: el.offset().top
+  }, 800);
+};
+
+$("#select-city").change(function(e) {
+  var value = $(e.target).val();
+  if (value === "your-city") {
+    app.scrollToElement($("#ss-form"));
+  } else {
+    window.location.href = value;
+  }
+});
+</script>
+<%= erb :'layouts/analytics' %>
+</body>
+</html>
