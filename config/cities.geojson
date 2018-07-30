@@ -286,6 +286,23 @@
           38.5754351
         ]
       }
+    },
+    {
+      "id": "los-angeles",
+      "type": "Feature",
+      "properties": {
+        "title": "Los Angeles",
+        "state": "CA",
+        "background": "los-angeles.jpg",
+        "zoom": 11
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.2436849,
+          34.0522342
+        ]
+      }
     }
   ]
 }
