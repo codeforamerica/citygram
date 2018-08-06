@@ -36,17 +36,17 @@ jobs:
       before_install: skip
       install: skip
       script:
-        - docker build -f docker/data/Dockerfile -t ${DOCKER_IMAGE_DATA-citygram/data} .
-        - docker build -f docker/citygram/Dockerfile -t ${DOCKER_IMAGE_CITYGRAM-citygram/citygram} .
+        - docker build -f docker/data/Dockerfile -t ${DOCKER_IMAGE_DATA} .
+        - docker build -f docker/citygram/Dockerfile -t ${DOCKER_IMAGE_CITYGRAM} .
       deploy: # needs to be part of this step to have access to the built images
         provider: script
         script:
           - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-          - docker push ${DOCKER_IMAGE_DATA-citygram/data}
-          - docker push ${DOCKER_IMAGE_CITYGRAM-citygram/citygram}
+          - docker push ${DOCKER_IMAGE_DATA}
+          - docker push ${DOCKER_IMAGE_CITYGRAM}
         on:
           branch: master
-          condition: "$DOCKER_PASSWORD != '' && $DOCKER_USERNAME != ''"
+          condition: "$DOCKER_PASSWORD != '' && $DOCKER_USERNAME != '' && $DOCKER_IMAGE_CITYGRAM != ''"
     - stage: deploy
       if: "branch = master AND env(HEROKU_API_KEY) IS present AND env(HEROKU_APP) is present"
       before_install: skip
