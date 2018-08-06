@@ -1,4 +1,4 @@
-# Citygram [![Build Status](http://img.shields.io/travis/codeforamerica/citygram.svg)][travis] [![Dependency Status](http://img.shields.io/gemnasium/codeforamerica/citygram.svg)][gemnasium] [![Code Climate](http://img.shields.io/codeclimate/github/codeforamerica/citygram.svg)][codeclimate]
+# Citygram [![Build Status](http://img.shields.io/travis/codeforamerica/citygram.svg)][travis] [![Dependency Status](http://img.shields.io/gemnasium/codeforamerica/citygram.svg)][gemnasium] [![Test Coverage](https://api.codeclimate.com/v1/badges/c755948ff06d3caf50c7/test_coverage)](https://codeclimate.com/github/codeforamerica/citygram/test_coverage)  [![Maintainability](https://api.codeclimate.com/v1/badges/c755948ff06d3caf50c7/maintainability)](https://codeclimate.com/github/codeforamerica/citygram/maintainability)
 
 [travis]: https://travis-ci.org/codeforamerica/citygram
 [gemnasium]: https://gemnasium.com/codeforamerica/citygram
