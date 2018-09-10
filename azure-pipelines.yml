@@ -12,17 +12,23 @@ steps:
     versionSpec: '>= 2.5'
 
 - script: |
-    sudo apt-get install -y postgresql postgresql-contrib libpq-dev redis-server
+    sudo apt-get install -y postgresql postgresql-contrib libpq-dev postgresql-9.5-postgis-2.2 redis-server
   displayName: 'install bundle dependencies'
   
 - script: |
-    sudo apt-cache search postgis
-  displayName: 'discover additional dependency packages'
+    psql -c 'create database citygram_test;' -U postgres && \
+    psql -U postgres -c "create extension postgis" &&\
+    cp env.sample .env
+  displayName: 'database setup'
   
 - script: |
     gem install bundler
     bundle install --retry=3 --jobs=4
   displayName: 'bundle install'
+
+- script: |
+    bundle exec rake db:migrate DATABASE_URL=postgres://localhost/citygram_test
+  displayName: 'migrate database'
 
 - script: bundle exec rake
   displayName: 'bundle exec rake'
