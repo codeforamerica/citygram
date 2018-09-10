@@ -18,7 +18,7 @@ steps:
 - script: |
     psql -c 'create database citygram_test;' -U postgres && \
     psql -U postgres -c "create extension postgis" &&\
-    cp env.sample .env
+    cp .env.sample .env
   displayName: 'database setup'
   
 - script: |
