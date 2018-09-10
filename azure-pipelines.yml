@@ -12,7 +12,7 @@ steps:
     versionSpec: '>= 2.5'
 
 - script: |
-    sudo apt-get install postgresql postgresql-contrib libpq-dev redis-server
+    sudo apt-get install -y postgresql postgresql-contrib libpq-dev redis-server
   displayName: 'install bundle dependencies'
   
 - script: |
