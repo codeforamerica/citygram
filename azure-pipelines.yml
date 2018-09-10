@@ -12,7 +12,7 @@ steps:
     versionSpec: '>= 2.5'
 
 - script: |
-    sudo apt-get install postgresql postgresql-contrib libpq-dev postgresql-9.3-postgis-2.1 redis-server
+    sudo apt-get install postgresql postgresql-contrib libpq-dev postgresql-postgis redis-server
   displayName: 'install bundle dependencies'
 
 
