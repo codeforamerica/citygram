@@ -40,7 +40,7 @@
       "properties": {
         "title": "City Of Miami",
         "state": "FL",
-        "background": "CityOfMiami.jpg",
+        "background": "city-of-miami.jpg",
         "zoom": 12
       },
       "geometry": {
