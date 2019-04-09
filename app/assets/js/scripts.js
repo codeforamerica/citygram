@@ -350,10 +350,9 @@ app.scrollToElement = function(el) {
 
 app.geocode = function(address, city, state, callback, context) {
    var url = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + encodeURIComponent(address);
+      url += encodeURIComponent(' '+city);
+      url += encodeURIComponent(' '+state);
       url += '&key=AIzaSyCeF_VBd1M0V4ErSBbeerMgSyhalX9PIeM';
-      url += '&components=locality:' + encodeURIComponent(city);
-      url += '|administrative_area:' + encodeURIComponent(state);
-      url += '|administrative_area:' + encodeURIComponent(state);      
 
   $.getJSON(url, function(response) {
     if (response.error || response.results.length === 0) {
