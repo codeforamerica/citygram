@@ -11,6 +11,8 @@ app.state = {
   publisher_id: undefined,
 };
 
+L.mapbox.accessToken = 'pk.eyJ1IjoiYmlnZmxlZXQiLCJhIjoiY2swaDRqamQ3MDBkNzNtcGVzcnFwcDBvaiJ9.zX2y5xUXjSzqdLOA1dhG1A';
+
 app.eventMarkers = new L.FeatureGroup();
 
 app.hookupMap = function() {
