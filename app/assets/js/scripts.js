@@ -322,7 +322,7 @@ app.displayEventMarker = function(event) {
   var marker;
   var html = "<p>"+app.hyperlink(event.title)+"</p>"
   if (app.eventsArePolygons) {
-    marker = L.geoJson({"type": "Feature", "geometry": geometry, {color: '#FC442A'}});
+    marker = L.geoJson({"type": "Feature", "geometry": geometry});
   } else {
     marker = L.circleMarker([geometry.coordinates[1], geometry.coordinates[0]], { radius: 6, color: '#FC442A' })
   }
