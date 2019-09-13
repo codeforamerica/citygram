@@ -26,7 +26,7 @@ app.hookupMap = function() {
   };
   var mapId = $('meta[name=mapId]').attr('content');
   var map = app.map = L.mapbox.map('map', mapId, options);
-  L.mapbox.styleLayer("mapbox://styles/examples/cji3d7gpt1i8m2rn7l7w0vl99").addTo(map);
+  L.mapbox.styleLayer("mapbox://styles/bigfleet/ck0i6duy10nm61co20ho8buia").addTo(map);
   var locality = document.getElementById('user-selected-locality');
   if ( locality != null ) {
     locality.onclick = function(e) {
