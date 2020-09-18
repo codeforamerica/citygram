@@ -6,6 +6,10 @@ COPY --from=nodejs /usr/local/include/node /usr/local/include/node/
 COPY --from=nodejs /usr/local/bin /usr/local/bin/
 COPY --from=nodejs /opt/yarn /opt/yarn
 
+# needed for lib/database_helper.rb
+RUN echo deb http://apt.postgresql.org/pub/repos/apt/ stretch-pgdg main > /etc/apt/sources.list.d/pgdg.list && \
+    wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add -
+RUN apt update && apt install --yes postgresql-client-10
 
 RUN     mkdir -p /app
 ENV     PORT         9292
