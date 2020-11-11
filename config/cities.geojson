@@ -34,6 +34,22 @@
           25.7979842
         ]
       }
+    },{
+      "id": "city-of-miami",
+      "type": "Feature",
+      "properties": {
+        "title": "City Of Miami",
+        "state": "FL",
+        "background": "miami.jpg",
+        "zoom": 12
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.191788,
+          25.802000
+        ]
+      }
     },
     {
       "id": "seattle",
