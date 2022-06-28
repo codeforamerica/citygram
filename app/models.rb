@@ -2,10 +2,10 @@ require 'geo_ruby/geojson'
 require 'phone'
 require 'sequel'
 
-ENV['DATABASE_URL'] ||= "postgres://localhost/citygram_#{Citygram::App.environment}"
-DB = Sequel.connect(ENV['DATABASE_URL'], max_connections: ENV.fetch('MAX_CONNECTIONS', 20))
+DB ||= Sequel.connect(Citygram::App::PG_DATABASE_URL)
 
 Sequel.default_timezone = :utc
+Sequel::Model.plugin :whitelist_security
 
 # no mass-assignable columns by default
 Sequel::Model.set_allowed_columns(*[])

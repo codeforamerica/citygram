@@ -14,6 +14,7 @@ require 'sinatra/assets_extension'
 require 'sinatra/error_logging_extension'
 
 module Citygram
+  
   class App < Sinatra::Base
     register Sinatra::AssetsExtension
     register Sinatra::ErrorLoggingExtension
@@ -33,6 +34,8 @@ module Citygram
       require 'rack/ssl'
       use Rack::SSL unless ENV['NO_SSL'] == 'true'
     end
+    
+    PG_DATABASE_URL ||= ENV.fetch('DATABASE_URL', "postgres://localhost/citygram_#{Citygram::App.environment}")
   end
 end
 

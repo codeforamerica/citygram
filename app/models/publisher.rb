@@ -22,7 +22,20 @@ module Citygram::Models
       end
     end
     
-    delegate :credential_name, :from_number, :account_sid, :auth_token, to: :sms_credentials
+    def credential_name
+      sms_credentials.credential_name
+    end
+    def from_number
+      sms_credentials.from_number
+    end
+    def account_sid
+      sms_credentials.account_sid
+    end
+    def auth_token
+      sms_credentials.auth_token
+    end
+
+    #delegate :credential_name, :from_number, :account_sid, :auth_token, to: :sms_credentials
     
     
     def active_outage

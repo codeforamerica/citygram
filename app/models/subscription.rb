@@ -113,7 +113,20 @@ module Citygram::Models
       self.last_notification.strftime("%b %d, %Y")
     end
     
-    delegate :credential_name, :from_number, :account_sid, :auth_token, to: :publisher
+    def credential_name
+      publisher.credential_name
+    end
+    def from_number
+      publisher.from_number
+    end
+    def account_sid
+      publisher.account_sid
+    end
+    def auth_token
+      publisher.auth_token
+    end
+
+    #delegate :credential_name, :from_number, :account_sid, :auth_token, to: :publisher
 
     def validate
       super
