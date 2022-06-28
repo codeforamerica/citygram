@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 if ENV['CI']
   ruby RUBY_VERSION
 else
-  ruby '2.6.2'
+  ruby '2.7.6'
 end
 
 gem 'activesupport', require: 'active_support'
@@ -22,7 +22,7 @@ gem 'rack-cors', :require => 'rack/cors'
 gem 'rack-ssl'
 gem 'rake'
 gem 'sass', '~> 3.4'
-gem 'sequel', '4.12'
+gem 'sequel', '4.49'
 gem 'sidekiq', '~> 3.0'
 gem 'sinatra', '~> 1.4'
 gem 'sprockets', '~> 2.12'

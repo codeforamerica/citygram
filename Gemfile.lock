@@ -117,7 +117,7 @@ GEM
     rspec-support (3.3.0)
     safe_yaml (1.0.4)
     sass (3.4.19)
-    sequel (4.12.0)
+    sequel (4.49.0)
     sidekiq (3.5.1)
       celluloid (~> 0.17.2)
       connection_pool (~> 2.2, >= 2.2.0)
@@ -185,7 +185,7 @@ DEPENDENCIES
   rake
   rspec (~> 3.0)
   sass (~> 3.4)
-  sequel (= 4.12)
+  sequel (= 4.49)
   sidekiq (~> 3.0)
   sinatra (~> 1.4)
   sprockets (~> 2.12)
@@ -195,7 +195,7 @@ DEPENDENCIES
   webmock
 
 RUBY VERSION
-   ruby 2.6.2p47
+   ruby 2.7.6p219
 
 BUNDLED WITH
    1.17.2
