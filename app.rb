@@ -13,6 +13,9 @@ require 'sinatra/base'
 require 'sinatra/assets_extension'
 require 'sinatra/error_logging_extension'
 
+require 'active_support/time'
+
+
 module Citygram
   
   class App < Sinatra::Base
