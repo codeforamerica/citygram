@@ -3,7 +3,7 @@ module Citygram
   end
 end
 
-require 'app/routes/validations/max'
+#require 'app/routes/validations/max'
 
 require 'app/routes/helpers'
 

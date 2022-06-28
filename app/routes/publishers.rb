@@ -11,7 +11,7 @@ module Citygram::Routes
 
     params do
       optional :page, type: Integer, default: 1
-      optional :per, type: Integer, default: 10, max: 1000
+      optional :per, type: Integer, default: 10#, max: 1000
       optional :tag, type: String
     end
 
