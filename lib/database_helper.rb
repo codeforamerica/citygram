@@ -114,7 +114,7 @@ module Citygram
       if ENV['RACK_ENV'] == 'test'
         require 'factory_girl'
         require File.join(app_root, 'spec/factories')
-        ctx.send :include, FactoryGirl::Syntax::Methods
+        ctx.send :include, FactoryBot::Syntax::Methods
       end
       require 'irb'
       ARGV.clear

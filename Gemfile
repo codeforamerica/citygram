@@ -21,7 +21,7 @@ gem 'pony', '~> 1.9'
 gem 'rack-cors', :require => 'rack/cors'
 gem 'rack-ssl'
 gem 'rake'
-gem 'sass', '~> 3.4'
+gem 'sassc', '~> 2.4'
 gem 'sequel', '5.57'
 gem 'sidekiq', '~> 6.5'
 gem 'sinatra', '~> 2.2'
@@ -39,7 +39,7 @@ group :development do
 end
 
 group :test do
-  gem 'factory_girl'
+  gem 'factory_bot'
   gem 'rack-test'
   gem 'rspec', '~> 3.0'
   gem 'webmock'
